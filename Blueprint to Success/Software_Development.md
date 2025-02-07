@@ -10,15 +10,31 @@ Software development involves creating, testing, and maintaining applications, f
 - **DevOps Engineer**: Manages and automates the software development process.
 
 ## Getting Started
-### 30-Day Learning Plan
-- **Week 1**: Learn Programming Languages
-  - Start with Python, JavaScript, or Java. [Watch this video](https://www.youtube.com/watch?v=rfscVS0vtbw)
-- **Week 2**: Online Courses
-  - Explore platforms like Coursera, Udemy, and Codecademy.
-- **Week 3**: Build Projects
-  - Create small projects to apply what you learn. [Watch this video](https://www.youtube.com/watch?v=8DvywoWv6fI)
-- **Week 4**: Join Communities
-  - Engage with communities like Stack Overflow or GitHub.
+### 30-Day Learning Plan for Each Career Path
+
+- **Software Engineer**:
+  - **Week 1**: Learn data structures and algorithms.
+  - **Week 2**: Study software design patterns.
+  - **Week 3**: Build a small software project.
+  - **Week 4**: Contribute to open-source projects.
+
+- **Web Developer**:
+  - **Week 1**: Learn HTML, CSS, and JavaScript.
+  - **Week 2**: Explore frameworks like React or Angular.
+  - **Week 3**: Build a personal website or blog.
+  - **Week 4**: Join web development communities.
+
+- **Mobile App Developer**:
+  - **Week 1**: Learn Android (Java/Kotlin) or iOS (Swift) basics.
+  - **Week 2**: Build a simple mobile app.
+  - **Week 3**: Study mobile app design principles.
+  - **Week 4**: Publish your app on a platform.
+
+- **DevOps Engineer**:
+  - **Week 1**: Learn about CI/CD pipelines.
+  - **Week 2**: Study containerization with Docker.
+  - **Week 3**: Explore cloud platforms like AWS or Azure.
+  - **Week 4**: Automate a small project using DevOps tools.
 
 ### Steps for Each Career Path
 - **Software Engineer**:
@@ -37,6 +53,9 @@ Software development involves creating, testing, and maintaining applications, f
 ### Practice Suggestions
 - Start a blog using WordPress or Medium.
 - Build a portfolio by contributing to open-source projects on GitHub.
+- Participate in coding challenges on platforms like LeetCode or HackerRank.
+- Attend hackathons to collaborate on projects and network with peers.
+- Create a GitHub repository to showcase your projects and code samples.
 
 ## Additional Resources
 - **📚 Books**: 

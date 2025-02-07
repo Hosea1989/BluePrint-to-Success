@@ -10,15 +10,31 @@ Digital marketing involves promoting products or brands via digital channels. It
 - **Content Strategist**: Plans and manages content across digital platforms.
 
 ## Getting Started
-### 30-Day Learning Plan
-- **Week 1**: Learn the Basics
-  - Understand SEO, PPC, and social media marketing. [Watch this video](https://www.youtube.com/watch?v=0eNCy0k54gA)
-- **Week 2**: Online Courses
-  - Explore platforms like HubSpot Academy and Google Digital Garage.
-- **Week 3**: Certifications
-  - Consider certifications like Google Ads or Facebook Blueprint.
-- **Week 4**: Practice
-  - Start a blog or manage social media accounts to gain experience. [Watch this video](https://www.youtube.com/watch?v=3Qmy5qZt8cE)
+### 30-Day Learning Plan for Each Career Path
+
+- **Digital Marketing Specialist**:
+  - **Week 1**: Learn digital marketing fundamentals.
+  - **Week 2**: Study analytics and campaign management.
+  - **Week 3**: Create a digital marketing strategy.
+  - **Week 4**: Implement and analyze a campaign.
+
+- **SEO Expert**:
+  - **Week 1**: Master keyword research techniques.
+  - **Week 2**: Learn on-page and off-page SEO.
+  - **Week 3**: Optimize a website for search engines.
+  - **Week 4**: Monitor and report SEO performance.
+
+- **Social Media Manager**:
+  - **Week 1**: Learn content creation and engagement strategies.
+  - **Week 2**: Study social media analytics.
+  - **Week 3**: Develop a social media campaign.
+  - **Week 4**: Analyze campaign results and adjust strategies.
+
+- **Content Strategist**:
+  - **Week 1**: Learn content planning and SEO.
+  - **Week 2**: Create an editorial calendar.
+  - **Week 3**: Develop content for multiple platforms.
+  - **Week 4**: Measure content performance and optimize.
 
 ### Steps for Each Career Path
 - **Digital Marketing Specialist**:

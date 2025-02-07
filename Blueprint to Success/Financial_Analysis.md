@@ -10,15 +10,31 @@ Financial analysis involves evaluating businesses, projects, budgets, and other 
 - **Risk Manager**: Identifies and mitigates financial risks.
 
 ## Getting Started
-### 30-Day Learning Plan
-- **Week 1**: Learn Financial Concepts
-  - Understand financial statements, ratios, and valuation methods. [Watch this video](https://www.youtube.com/watch?v=7xFYmCfZcy4)
-- **Week 2**: Excel Skills
-  - Gain proficiency in Excel for financial modeling. [Watch this video](https://www.youtube.com/watch?v=0nbkaYsR94c)
-- **Week 3**: Online Courses
-  - Explore courses on platforms like Coursera or LinkedIn Learning.
-- **Week 4**: Certifications
-  - Consider CFA or CPA for advanced career opportunities.
+### 30-Day Learning Plan for Each Career Path
+
+- **Financial Analyst**:
+  - **Week 1**: Learn financial statement analysis.
+  - **Week 2**: Study financial ratios and valuation methods.
+  - **Week 3**: Build a financial model in Excel.
+  - **Week 4**: Present analysis to a peer group.
+
+- **Investment Banker**:
+  - **Week 1**: Understand corporate finance basics.
+  - **Week 2**: Learn financial modeling and valuation.
+  - **Week 3**: Work on a mock investment banking project.
+  - **Week 4**: Network with industry professionals.
+
+- **Portfolio Manager**:
+  - **Week 1**: Study investment strategies and risk management.
+  - **Week 2**: Analyze market trends and economic indicators.
+  - **Week 3**: Create a mock investment portfolio.
+  - **Week 4**: Review and adjust portfolio based on performance.
+
+- **Risk Manager**:
+  - **Week 1**: Learn risk assessment techniques.
+  - **Week 2**: Study regulatory requirements and compliance.
+  - **Week 3**: Develop a risk management plan.
+  - **Week 4**: Present risk mitigation strategies.
 
 ### Steps for Each Career Path
 - **Financial Analyst**:

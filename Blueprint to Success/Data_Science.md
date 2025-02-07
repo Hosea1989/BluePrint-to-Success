@@ -10,13 +10,31 @@ Data science involves analyzing and interpreting complex data to help organizati
 - **Business Intelligence Analyst**: Analyzes data to improve business processes.
 
 ## Getting Started
-### 30-Day Learning Plan
-- **Week 1**: Learn Statistics and Mathematics
-  - Understand the basics of statistics and linear algebra. [Watch this video](https://www.youtube.com/watch?v=5Zg-C8AAIGg)
-- **Week 2**: Programming
-  - Learn Python and R, popular languages in data science. [Watch this video](https://www.youtube.com/watch?v=rfscVS0vtbw)
-- **Week 3**: Projects
-  - Work on data analysis projects using real-world datasets. [Watch this video](https://www.youtube.com/watch?v=otm0PH8M9X4)
+### 30-Day Learning Plan for Each Career Path
+
+- **Data Scientist**:
+  - **Week 1**: Learn machine learning basics.
+  - **Week 2**: Study data visualization techniques.
+  - **Week 3**: Work on a data science project.
+  - **Week 4**: Present findings in a report.
+
+- **Data Analyst**:
+  - **Week 1**: Master Excel and SQL.
+  - **Week 2**: Learn data visualization tools like Tableau.
+  - **Week 3**: Analyze a dataset and create a dashboard.
+  - **Week 4**: Share insights with a community.
+
+- **Machine Learning Engineer**:
+  - **Week 1**: Learn deep learning frameworks like TensorFlow.
+  - **Week 2**: Build a simple machine learning model.
+  - **Week 3**: Deploy a model in a production environment.
+  - **Week 4**: Optimize model performance.
+
+- **Business Intelligence Analyst**:
+  - **Week 1**: Learn BI tools and business metrics.
+  - **Week 2**: Create a BI report using real data.
+  - **Week 3**: Focus on data storytelling.
+  - **Week 4**: Present BI insights to stakeholders.
 
 ### Steps for Each Career Path
 - **Data Scientist**:
