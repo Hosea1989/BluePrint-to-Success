@@ -9,16 +9,16 @@ Digital marketing involves promoting products or brands via digital channels. It
 ## Career Paths
 - **Digital Marketing Specialist**: Develops and implements marketing strategies.
   - **Salary**: $50K - $100K+
-  - **Tools**: Google Analytics, HubSpot, SEMrush, Hootsuite.
+  - **Tools**: [Google Analytics](https://analytics.google.com/), [HubSpot](https://www.hubspot.com/), [SEMrush](https://www.semrush.com/), [Hootsuite](https://hootsuite.com/).
 - **SEO Expert**: Optimizes websites for search engines to increase visibility.
   - **Salary**: $45K - $90K+
-  - **Tools**: Google Search Console, Ahrefs, Moz, Yoast.
+  - **Tools**: [Google Search Console](https://search.google.com/search-console/about), [Ahrefs](https://ahrefs.com/), [Moz](https://moz.com/), [Yoast](https://yoast.com/).
 - **Social Media Manager**: Manages and grows social media presence.
   - **Salary**: $40K - $85K+
-  - **Tools**: Buffer, Hootsuite, Canva, Sprout Social.
+  - **Tools**: [Buffer](https://buffer.com/), [Hootsuite](https://hootsuite.com/), [Canva](https://www.canva.com/), [Sprout Social](https://sproutsocial.com/).
 - **Content Strategist**: Plans and manages content across digital platforms.
   - **Salary**: $50K - $95K+
-  - **Tools**: WordPress, Google Analytics, SEMrush, Trello.
+  - **Tools**: [WordPress](https://wordpress.com/), [Google Analytics](https://analytics.google.com/), [SEMrush](https://www.semrush.com/), [Trello](https://trello.com/).
 
 ## Getting Started
 ### 30-Day Learning Plan for Each Career Path
@@ -90,10 +90,10 @@ Digital marketing involves promoting products or brands via digital channels. It
 - **Content Strategist**: Create a content strategy for a blog.
 
 ## Certifications
-- **Digital Marketing Specialist**: HubSpot Content Marketing Certification
-- **SEO Expert**: Google Analytics Individual Qualification
-- **Social Media Manager**: Hootsuite Social Marketing Certification
-- **Content Strategist**: Content Marketing Institute Certification
+- **Digital Marketing Specialist**: [HubSpot Content Marketing Certification](https://academy.hubspot.com/courses/content-marketing)
+- **SEO Expert**: [Google Analytics Individual Qualification](https://skillshop.exceedlms.com/student/path/293-google-analytics-individual-qualification)
+- **Social Media Manager**: [Hootsuite Social Marketing Certification](https://education.hootsuite.com/courses/social-marketing-certification)
+- **Content Strategist**: [Content Marketing Institute Certification](https://www.contentmarketinginstitute.com/certification/)
 
 ## Next Steps for Long-Term Growth
 - **1-3 Years In**: Specialize in a niche (SEO, PPC, content marketing).

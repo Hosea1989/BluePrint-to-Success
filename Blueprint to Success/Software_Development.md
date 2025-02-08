@@ -9,16 +9,16 @@ Software development is one of the most sought-after skills, offering high salar
 ## Career Paths
 - **Software Engineer**: Designs and develops software applications.
   - **Salary**: $70K - $150K+
-  - **Tools**: Python, Java, C++, Git, IDEs like VS Code or IntelliJ.
+  - **Tools**: [Python](https://www.python.org/), [Java](https://www.oracle.com/java/), [C++](https://isocpp.org/), [Git](https://git-scm.com/), IDEs like [VS Code](https://code.visualstudio.com/) or [IntelliJ](https://www.jetbrains.com/idea/).
 - **Web Developer**: Builds and maintains websites.
   - **Salary**: $50K - $120K+
-  - **Tools**: HTML, CSS, JavaScript, React, Node.js, GitHub, Bootstrap.
+  - **Tools**: [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML), [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), [React](https://reactjs.org/), [Node.js](https://nodejs.org/), [GitHub](https://github.com/), [Bootstrap](https://getbootstrap.com/).
 - **Mobile App Developer**: Creates applications for mobile devices.
   - **Salary**: $60K - $140K+
-  - **Tools**: Swift, Kotlin, Flutter, Firebase.
+  - **Tools**: [Swift](https://developer.apple.com/swift/), [Kotlin](https://kotlinlang.org/), [Flutter](https://flutter.dev/), [Firebase](https://firebase.google.com/).
 - **DevOps Engineer**: Manages and automates the software development process.
   - **Salary**: $80K - $160K+
-  - **Tools**: Docker, Kubernetes, Jenkins, AWS, Terraform.
+  - **Tools**: [Docker](https://www.docker.com/), [Kubernetes](https://kubernetes.io/), [Jenkins](https://www.jenkins.io/), [AWS](https://aws.amazon.com/), [Terraform](https://www.terraform.io/).
 
 ## Getting Started
 ### 30-Day Learning Plan for Each Career Path
@@ -90,10 +90,10 @@ Software development is one of the most sought-after skills, offering high salar
 - **DevOps Engineer**: Automate server deployment or create a CI/CD pipeline.
 
 ## Certifications
-- **Software Engineer**: Microsoft Certified: Azure Developer Associate
-- **Web Developer**: Meta Front-End Developer Professional Certificate
-- **Mobile App Developer**: Google Associate Android Developer
-- **DevOps Engineer**: AWS Certified DevOps Engineer
+- **Software Engineer**: [Microsoft Certified: Azure Developer Associate](https://learn.microsoft.com/en-us/certifications/azure-developer/)
+- **Web Developer**: [Meta Front-End Developer Professional Certificate](https://www.coursera.org/professional-certificates/meta-front-end-developer)
+- **Mobile App Developer**: [Google Associate Android Developer](https://developers.google.com/certification/associate-android-developer)
+- **DevOps Engineer**: [AWS Certified DevOps Engineer](https://aws.amazon.com/certification/certified-devops-engineer-professional/)
 
 ## Next Steps for Long-Term Growth
 - **1-3 Years In**: Specialize in a niche (AI, security, cloud, full-stack development).

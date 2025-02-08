@@ -6,16 +6,16 @@ Data science is a rapidly growing field that offers high salaries, diverse caree
 ## Career Paths
 - **Data Scientist**: Extracts insights from data using statistical methods.
   - **Salary**: $80K - $160K+
-  - **Tools**: Python, R, SQL, TensorFlow, Jupyter.
+  - **Tools**: [Python](https://www.python.org/), [R](https://www.r-project.org/), [SQL](https://www.mysql.com/), [TensorFlow](https://www.tensorflow.org/), [Jupyter](https://jupyter.org/).
 - **Data Analyst**: Interprets data to help make business decisions.
   - **Salary**: $50K - $100K+
-  - **Tools**: Excel, SQL, Tableau, Power BI.
+  - **Tools**: [Excel](https://www.microsoft.com/en-us/microsoft-365/excel), [SQL](https://www.mysql.com/), [Tableau](https://www.tableau.com/), [Power BI](https://powerbi.microsoft.com/).
 - **Machine Learning Engineer**: Designs and implements machine learning models.
   - **Salary**: $90K - $180K+
-  - **Tools**: TensorFlow, PyTorch, Scikit-learn, AWS.
+  - **Tools**: [TensorFlow](https://www.tensorflow.org/), [PyTorch](https://pytorch.org/), [Scikit-learn](https://scikit-learn.org/), [AWS](https://aws.amazon.com/).
 - **Business Intelligence Analyst**: Analyzes data to improve business processes.
   - **Salary**: $60K - $120K+
-  - **Tools**: Power BI, Tableau, SQL, Excel.
+  - **Tools**: [Power BI](https://powerbi.microsoft.com/), [Tableau](https://www.tableau.com/), [SQL](https://www.mysql.com/), [Excel](https://www.microsoft.com/en-us/microsoft-365/excel).
 
 ### More Hands-On Project Ideas
 - **Data Scientist**: Develop a predictive model for stock prices.
@@ -24,10 +24,10 @@ Data science is a rapidly growing field that offers high salaries, diverse caree
 - **Business Intelligence Analyst**: Analyze customer data to identify trends.
 
 ## Certifications
-- **Data Scientist**: IBM Data Science Professional Certificate
-- **Data Analyst**: Google Data Analytics Professional Certificate
-- **Machine Learning Engineer**: AWS Certified Machine Learning – Specialty
-- **Business Intelligence Analyst**: Microsoft Certified: Data Analyst Associate
+- **Data Scientist**: [IBM Data Science Professional Certificate](https://www.coursera.org/professional-certificates/ibm-data-science)
+- **Data Analyst**: [Google Data Analytics Professional Certificate](https://www.coursera.org/professional-certificates/google-data-analytics)
+- **Machine Learning Engineer**: [AWS Certified Machine Learning – Specialty](https://aws.amazon.com/certification/certified-machine-learning-specialty/)
+- **Business Intelligence Analyst**: [Microsoft Certified: Data Analyst Associate](https://learn.microsoft.com/en-us/certifications/data-analyst/)
 
 ## Next Steps for Long-Term Growth
 - **1-3 Years In**: Specialize in a niche (NLP, computer vision, big data).
