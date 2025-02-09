@@ -36,4 +36,4 @@ Instagram and TikTok are two of the most popular social media platforms, offerin
 - **Collaborate with Influencers**: Partner with influencers in your niche to reach a broader audience.
 - **Stay Updated with Trends**: Regularly check trending hashtags and challenges to keep your content relevant.
 
-By utilizing these tools and strategies, you can effectively grow your Instagram and TikTok accounts and increase your follower count. 
+By utilizing these tools and strategies, you can effectively grow your Instagram and TikTok accounts and increase your follower count.
