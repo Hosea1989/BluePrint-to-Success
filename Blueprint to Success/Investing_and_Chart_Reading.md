@@ -32,10 +32,14 @@ Higher potential returns usually come with higher risk.
 | Individual Stocks | High | High |
 | Cryptocurrency | Very High | Very High |
 
+![Risk vs Return Graph](path/to/risk_vs_return_graph.png)
+
 ### 2. Diversification
 
 - **Diversification**: Spreading investments across various assets to reduce risk.
 - **How to Diversify**: Beginners can start with index funds like S&P 500 ETFs.
+
+![Diversification Chart](path/to/diversification_chart.png)
 
 ### 3. Asset Classes
 
@@ -53,6 +57,8 @@ Charts are visual representations of data, often used in investing to track the 
 1. **Line Charts**: Show the price movement of an asset over time.
 2. **Bar Charts**: Display the open, high, low, and close prices for a specific period.
 3. **Candlestick Charts**: Similar to bar charts but more visually detailed.
+
+![Types of Charts](path/to/types_of_charts.png)
 
 ### Key Chart Components
 
@@ -76,24 +82,21 @@ Charts help investors identify **patterns and trends** to make informed decision
 - **Downtrend**: Prices are generally decreasing.
 - **Sideways/Flat**: Prices are stable.
 
+![Trend Examples](path/to/trend_examples.png)
+
 ### Step 3: Understand Support and Resistance
 
 - **Support**: A price level where a downtrend can be expected to pause due to a concentration of demand.
 - **Resistance**: A price level where an uptrend can be expected to pause due to a concentration of supply.
+
+![Support and Resistance](path/to/support_and_resistance.png)
 
 ### Step 4: Use Indicators
 
 - **Moving Averages**: Average price over a specific period, used to smooth out price data.
 - **Relative Strength Index (RSI)**: Measures the speed and change of price movements.
 
-**Quick Cheat Sheet** for Reference:
-| Term | Meaning |
-|------|---------|
-| Uptrend | Prices consistently moving higher |
-| Downtrend | Prices consistently moving lower |
-| Support | Price level where buying pressure is strong |
-| Resistance | Price level where selling pressure is strong |
-| Moving Average | Smooths out price data to identify trends |
+![Indicators Example](path/to/indicators_example.png)
 
 ## Skills to Develop
 
@@ -152,4 +155,12 @@ Investing and chart reading **aren't just for experts—they're for anyone who w
 ## Common Mistakes to Avoid
 
 - **Emotional Investing**: Making decisions based on emotions rather than data.
-- **Not Diversifying**: Putting all your money into one investment. 
+- **Not Diversifying**: Putting all your money into one investment.
+
+## Free Resources and Tools
+
+- **[Investopedia](https://www.investopedia.com/)**: Comprehensive resource for investing education.
+- **[Yahoo Finance](https://finance.yahoo.com/)**: Free stock market data and news.
+- **[TradingView](https://www.tradingview.com/)**: Free charting tools and market analysis.
+- **[Morningstar](https://www.morningstar.com/)**: Free investment research and analysis.
+- **[MarketWatch](https://www.marketwatch.com/)**: Free financial news and market data. 

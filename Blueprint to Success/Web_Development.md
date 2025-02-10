@@ -18,6 +18,55 @@
 | 9-10 | Work with **Databases** (MySQL, MongoDB, or Firebase) |
 | 11-12 | Build & Deploy **3 Portfolio Projects** |
 
+### Essential Tools for Web Development
+
+To effectively learn and build websites, you'll need a set of tools that cater to different aspects of web development:
+
+#### Code Editors
+
+- **[Visual Studio Code](https://code.visualstudio.com/)**: A popular, free code editor with a wide range of extensions for web development.
+- **[Sublime Text](https://www.sublimetext.com/)**: A lightweight and fast editor with powerful features.
+- **[Atom](https://atom.io/)**: An open-source editor with a customizable interface.
+
+#### Version Control
+
+- **[Git](https://git-scm.com/)**: A version control system to track changes in your code.
+- **[GitHub](https://github.com/)**: A platform for hosting and collaborating on Git repositories.
+
+#### Front-End Development
+
+- **[Chrome DevTools](https://developer.chrome.com/docs/devtools/)**: Built-in tools in the Chrome browser for debugging and optimizing web pages.
+- **[Bootstrap](https://getbootstrap.com/)**: A front-end framework for building responsive websites quickly.
+- **[Sass](https://sass-lang.com/)**: A CSS preprocessor to write more maintainable and efficient styles.
+
+#### Back-End Development
+
+- **[Node.js](https://nodejs.org/)**: A JavaScript runtime for building server-side applications.
+- **[Express](https://expressjs.com/)**: A web application framework for Node.js.
+- **[Postman](https://www.postman.com/)**: A tool for testing APIs.
+
+#### Databases
+
+- **[MySQL](https://www.mysql.com/)**: A widely-used relational database management system.
+- **[MongoDB](https://www.mongodb.com/)**: A NoSQL database for handling large volumes of data.
+- **[Firebase](https://firebase.google.com/)**: A platform for building mobile and web applications with real-time databases.
+
+#### Deployment
+
+- **[Netlify](https://www.netlify.com/)**: A platform for deploying static websites.
+- **[Heroku](https://www.heroku.com/)**: A cloud platform for deploying and managing applications.
+- **[Vercel](https://vercel.com/)**: A platform for deploying front-end applications with ease.
+
+#### Free Resources and Cheat Sheets
+
+- **[MDN Web Docs](https://developer.mozilla.org/en-US/)**: Comprehensive documentation and tutorials for HTML, CSS, and JavaScript.
+- **[W3Schools](https://www.w3schools.com/)**: Free tutorials and references on web development languages.
+- **[CSS-Tricks](https://css-tricks.com/)**: Tips, tricks, and techniques on using CSS.
+- **[JavaScript.info](https://javascript.info/)**: A modern tutorial on JavaScript.
+- **[FreeCodeCamp](https://www.freecodecamp.org/)**: Interactive learning platform for web development.
+- **[Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)**: A handy reference for Git commands.
+- **[Bootstrap Cheat Sheet](https://hackerthemes.com/bootstrap-cheatsheet/)**: Quick reference for Bootstrap classes and components.
+
 ## Portfolio Projects
 
 ### Project Ideas

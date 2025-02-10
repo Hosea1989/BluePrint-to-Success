@@ -169,4 +169,13 @@ By focusing on both the internal development and external marketing aspects, you
 - **Cybersecurity Tool** → Protects systems from unauthorized access and threats
 - **API Development** → Builds and documents APIs for integration with other software
 
-These projects can help you gain experience in various areas of software development, from system design to implementation and testing. 
+These projects can help you gain experience in various areas of software development, from system design to implementation and testing.
+
+## Free Resources and Cheat Sheets
+
+- **[GeeksforGeeks](https://www.geeksforgeeks.org/)**: Tutorials and resources for software development concepts.
+- **[LeetCode](https://leetcode.com/)**: Free coding challenges to practice algorithms and data structures.
+- **[HackerRank](https://www.hackerrank.com/)**: Practice coding and prepare for interviews with free challenges.
+- **[GitHub Learning Lab](https://lab.github.com/)**: Free courses on Git and GitHub.
+- **[Python Cheat Sheet](https://www.pythoncheatsheet.org/)**: A quick reference for Python programming.
+- **[Java Cheat Sheet](https://introcs.cs.princeton.edu/java/11cheatsheet/)**: A handy reference for Java programming. 

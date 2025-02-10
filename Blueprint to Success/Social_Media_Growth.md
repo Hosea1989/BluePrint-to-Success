@@ -36,4 +36,12 @@ Instagram and TikTok are two of the most popular social media platforms, offerin
 - **Collaborate with Influencers**: Partner with influencers in your niche to reach a broader audience.
 - **Stay Updated with Trends**: Regularly check trending hashtags and challenges to keep your content relevant.
 
+## Free Resources and Tools
+
+- **[Buffer Blog](https://buffer.com/resources/)**: Free resources and tips for social media marketing.
+- **[Hootsuite Blog](https://blog.hootsuite.com/)**: Free guides and strategies for social media growth.
+- **[Canva](https://www.canva.com/)**: Free design tool for creating social media graphics.
+- **[Later Blog](https://later.com/blog/)**: Free resources for Instagram marketing and scheduling.
+- **[Social Media Examiner](https://www.socialmediaexaminer.com/)**: Free articles and podcasts on social media strategies.
+
 By utilizing these tools and strategies, you can effectively grow your Instagram and TikTok accounts and increase your follower count.
