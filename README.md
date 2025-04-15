@@ -22,6 +22,9 @@ Welcome to the "Blueprint to Success" repository, a comprehensive guide designed
 ### 6. [Software Development](Blueprint%20to%20Success/Software_Development.md)
 - **Purpose**: A detailed guide for aspiring software developers. It includes career paths, learning plans, project ideas, and resources to help you succeed in the software development industry.
 
+### 7. [Credit Scores Guide](Credit_Scores_Guide.md)
+- **Purpose**: A comprehensive guide to understanding and managing credit scores. It includes information on how credit scores are calculated, tips for building and fixing credit, a 5-month credit rebuild plan, and a glossary of key terms.
+
 ## How to Use This Repository
 
 Each document is designed to be a standalone guide, providing you with the necessary tools and knowledge to succeed in your chosen field. While exploring these resources, it's recommended to focus on one path or skill at a time to maintain clarity and effectiveness in your learning journey. This approach helps you stay focused and achieve mastery in your chosen area before moving on to the next.
