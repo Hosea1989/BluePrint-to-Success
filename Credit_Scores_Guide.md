@@ -93,8 +93,45 @@
 - **Websites and Tools for Credit Monitoring**: List of useful sites and apps.
 - **Books and Courses on Financial Literacy**: Recommended reading and learning resources.
 
-## Glossary of Terms (optional)
-- **APR, Utilization, Charge-off, Inquiry, Tradeline, etc.**: Definitions of common credit terms.
+## Glossary of Terms
+
+- **APR (Annual Percentage Rate)**: The annual rate charged for borrowing or earned through an investment, expressed as a percentage.
+- **Credit Utilization**: The ratio of your current credit card balances to your credit limits. High credit utilization can negatively impact your credit score.
+- **Charge-off**: A debt that a creditor has given up on collecting after the borrower has missed payments for several months.
+- **Inquiry**: A request to check your credit report. Hard inquiries can affect your credit score, while soft inquiries do not.
+- **Tradeline**: A record of activity for any type of credit extended to a borrower and reported to a credit reporting agency.
+- **Secured Credit Card**: A type of credit card that requires a cash deposit as collateral, which serves as your credit limit.
+- **Credit Builder Loan**: A small loan designed to help improve your credit score by making regular payments.
+- **Authorized User**: A person who is allowed to use a credit card account but is not responsible for paying the bill.
+- **Debt Validation Letter**: A letter sent to a debt collector requesting proof that you owe the debt they are attempting to collect.
+- **Pay-for-Delete**: An agreement with a creditor to remove negative information from your credit report in exchange for payment.
+
+## 5-Month Credit Rebuild Plan
+
+### Month 1: Assess and Plan
+- **Check Your Credit Report**: Obtain your credit report from AnnualCreditReport.com.
+- **Identify Issues**: Look for errors, late payments, and high credit utilization.
+- **Set Goals**: Define clear, achievable credit goals for the next five months.
+
+### Month 2: Address Errors and Start Payments
+- **Dispute Errors**: Contact credit bureaus to correct inaccuracies.
+- **Make Timely Payments**: Ensure all bills are paid on time to avoid late fees.
+- **Reduce Credit Utilization**: Aim to pay down credit card balances.
+
+### Month 3: Build Positive Credit Habits
+- **Use a Secured Credit Card**: If you don't have credit, consider opening a secured card.
+- **Keep Utilization Low**: Maintain credit card balances below 30% of the limit.
+- **Set Up Autopay**: Automate payments to ensure they're always on time.
+
+### Month 4: Monitor and Adjust
+- **Track Your Progress**: Use credit monitoring tools to check your score.
+- **Adjust Spending**: Cut unnecessary expenses to free up funds for debt repayment.
+- **Avoid New Hard Inquiries**: Refrain from applying for new credit.
+
+### Month 5: Review and Plan Ahead
+- **Review Credit Report Again**: Check for improvements and remaining issues.
+- **Celebrate Milestones**: Acknowledge progress made in rebuilding credit.
+- **Plan for the Future**: Set long-term credit goals and continue positive habits.
 
 ---
 
