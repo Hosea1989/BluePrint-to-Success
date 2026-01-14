@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Education Hub | Blueprint to Success</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h1>📚 Education Hub</h1>
+                <p>Blueprint to Success</p>
+            </div>
+            
+            <div class="nav-section">
+                <button class="nav-item active" data-view="home">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">Home</span>
+                </button>
+            </div>
+            
+            <div class="nav-section">
+                <h3 class="nav-title">Learning Tracks</h3>
+                <button class="nav-item" data-view="stocks">
+                    <span class="nav-icon">📈</span>
+                    <span class="nav-text">Stock Market</span>
+                    <span class="nav-progress" id="nav-progress-stocks">0%</span>
+                </button>
+                <button class="nav-item" data-view="taxes">
+                    <span class="nav-icon">🧾</span>
+                    <span class="nav-text">Business Taxes</span>
+                    <span class="nav-progress" id="nav-progress-taxes">0%</span>
+                </button>
+                <button class="nav-item" data-view="nonprofits">
+                    <span class="nav-icon">🤝</span>
+                    <span class="nav-text">Nonprofits</span>
+                    <span class="nav-progress" id="nav-progress-nonprofits">0%</span>
+                </button>
+                <button class="nav-item" data-view="labor">
+                    <span class="nav-icon">⚖️</span>
+                    <span class="nav-text">Labor Laws</span>
+                    <span class="nav-progress" id="nav-progress-labor">0%</span>
+                </button>
+            </div>
+            
+            <div class="nav-section">
+                <h3 class="nav-title">Tools</h3>
+                <a href="../budget-planner/index.html" class="nav-item nav-link">
+                    <span class="nav-icon">💰</span>
+                    <span class="nav-text">Budget Planner</span>
+                </a>
+            </div>
+            
+            <div class="sidebar-footer">
+                <button id="theme-toggle" class="theme-btn">🌙</button>
+                <button id="reset-progress" class="reset-btn">Reset Progress</button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Home View -->
+            <section class="view active" id="view-home">
+                <div class="view-header">
+                    <h1>Welcome to the Financial Education Hub</h1>
+                    <p>Master finance from beginner to pro. Choose a track to start learning.</p>
+                </div>
+                
+                <div class="overall-progress">
+                    <h3>Overall Progress</h3>
+                    <div class="progress-bar large">
+                        <div class="progress-fill" id="overall-progress-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-text" id="overall-progress-text">0% Complete</span>
+                </div>
+                
+                <div class="track-cards">
+                    <div class="track-card" data-track="stocks">
+                        <div class="track-icon">📈</div>
+                        <div class="track-info">
+                            <h2>Stock Market</h2>
+                            <p>Learn how the stock market works, from basic terminology to advanced trading strategies.</p>
+                            <div class="track-meta">
+                                <span class="levels">5 Levels</span>
+                                <span class="time">~4 hours</span>
+                            </div>
+                        </div>
+                        <div class="track-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="home-progress-stocks" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-label" id="home-label-stocks">Not Started</span>
+                        </div>
+                        <button class="track-btn">Start Learning →</button>
+                    </div>
+                    
+                    <div class="track-card" data-track="taxes">
+                        <div class="track-icon">🧾</div>
+                        <div class="track-info">
+                            <h2>Business Taxes</h2>
+                            <p>Understand why businesses pay taxes, deductions, and strategies to minimize tax burden legally.</p>
+                            <div class="track-meta">
+                                <span class="levels">5 Levels</span>
+                                <span class="time">~3 hours</span>
+                            </div>
+                        </div>
+                        <div class="track-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="home-progress-taxes" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-label" id="home-label-taxes">Not Started</span>
+                        </div>
+                        <button class="track-btn">Start Learning →</button>
+                    </div>
+                    
+                    <div class="track-card" data-track="nonprofits">
+                        <div class="track-icon">🤝</div>
+                        <div class="track-info">
+                            <h2>Nonprofit Organizations</h2>
+                            <p>Learn how nonprofits work, their tax benefits, and how to start your own 501(c)(3).</p>
+                            <div class="track-meta">
+                                <span class="levels">5 Levels</span>
+                                <span class="time">~2.5 hours</span>
+                            </div>
+                        </div>
+                        <div class="track-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="home-progress-nonprofits" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-label" id="home-label-nonprofits">Not Started</span>
+                        </div>
+                        <button class="track-btn">Start Learning →</button>
+                    </div>
+                    
+                    <div class="track-card" data-track="labor">
+                        <div class="track-icon">⚖️</div>
+                        <div class="track-info">
+                            <h2>Labor Laws</h2>
+                            <p>Know your rights as an employee and understand employment law fundamentals.</p>
+                            <div class="track-meta">
+                                <span class="levels">5 Levels</span>
+                                <span class="time">~2.5 hours</span>
+                            </div>
+                        </div>
+                        <div class="track-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="home-progress-labor" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-label" id="home-label-labor">Not Started</span>
+                        </div>
+                        <button class="track-btn">Start Learning →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Track View Template (used for all 4 tracks) -->
+            <section class="view" id="view-stocks">
+                <div class="view-header with-back">
+                    <button class="back-btn" data-view="home">← Back to Home</button>
+                    <div class="header-content">
+                        <h1>📈 Stock Market</h1>
+                        <p>From beginner to pro investor</p>
+                    </div>
+                    <div class="track-overall-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="track-progress-stocks" style="width: 0%"></div>
+                        </div>
+                        <span id="track-progress-text-stocks">0% Complete</span>
+                    </div>
+                </div>
+                
+                <div class="levels-container" id="levels-stocks">
+                    <!-- Levels will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <section class="view" id="view-taxes">
+                <div class="view-header with-back">
+                    <button class="back-btn" data-view="home">← Back to Home</button>
+                    <div class="header-content">
+                        <h1>🧾 Business Taxes</h1>
+                        <p>Master business taxation</p>
+                    </div>
+                    <div class="track-overall-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="track-progress-taxes" style="width: 0%"></div>
+                        </div>
+                        <span id="track-progress-text-taxes">0% Complete</span>
+                    </div>
+                </div>
+                
+                <div class="levels-container" id="levels-taxes">
+                    <!-- Levels will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <section class="view" id="view-nonprofits">
+                <div class="view-header with-back">
+                    <button class="back-btn" data-view="home">← Back to Home</button>
+                    <div class="header-content">
+                        <h1>🤝 Nonprofit Organizations</h1>
+                        <p>Understanding 501(c)(3) and beyond</p>
+                    </div>
+                    <div class="track-overall-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="track-progress-nonprofits" style="width: 0%"></div>
+                        </div>
+                        <span id="track-progress-text-nonprofits">0% Complete</span>
+                    </div>
+                </div>
+                
+                <div class="levels-container" id="levels-nonprofits">
+                    <!-- Levels will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <section class="view" id="view-labor">
+                <div class="view-header with-back">
+                    <button class="back-btn" data-view="home">← Back to Home</button>
+                    <div class="header-content">
+                        <h1>⚖️ Labor Laws</h1>
+                        <p>Know your workplace rights</p>
+                    </div>
+                    <div class="track-overall-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="track-progress-labor" style="width: 0%"></div>
+                        </div>
+                        <span id="track-progress-text-labor">0% Complete</span>
+                    </div>
+                </div>
+                
+                <div class="levels-container" id="levels-labor">
+                    <!-- Levels will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Lesson View -->
+            <section class="view" id="view-lesson">
+                <div class="view-header with-back">
+                    <button class="back-btn" id="lesson-back-btn">← Back to Track</button>
+                    <div class="header-content">
+                        <h1 id="lesson-title">Lesson Title</h1>
+                        <p id="lesson-subtitle">Level X • Topic Y</p>
+                    </div>
+                </div>
+                
+                <div class="lesson-container">
+                    <div class="lesson-content" id="lesson-content">
+                        <!-- Lesson content loaded dynamically -->
+                    </div>
+                    
+                    <div class="lesson-nav">
+                        <button class="lesson-nav-btn prev" id="lesson-prev">← Previous</button>
+                        <span class="lesson-progress" id="lesson-progress">1 of 5</span>
+                        <button class="lesson-nav-btn next" id="lesson-next">Next →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quiz View -->
+            <section class="view" id="view-quiz">
+                <div class="view-header with-back">
+                    <button class="back-btn" id="quiz-back-btn">← Back to Track</button>
+                    <div class="header-content">
+                        <h1 id="quiz-title">Level Quiz</h1>
+                        <p id="quiz-subtitle">Test your knowledge</p>
+                    </div>
+                </div>
+                
+                <div class="quiz-container">
+                    <div class="quiz-progress-header">
+                        <span id="quiz-question-num">Question 1 of 5</span>
+                        <div class="quiz-score">Score: <span id="quiz-current-score">0</span>/<span id="quiz-total-questions">5</span></div>
+                    </div>
+                    
+                    <div class="quiz-question-container">
+                        <h2 class="quiz-question" id="quiz-question">Question text goes here?</h2>
+                        
+                        <div class="quiz-options" id="quiz-options">
+                            <!-- Options populated by JS -->
+                        </div>
+                        
+                        <div class="quiz-feedback" id="quiz-feedback">
+                            <!-- Feedback shown after answering -->
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-nav">
+                        <button class="quiz-btn" id="quiz-next-btn" disabled>Next Question →</button>
+                    </div>
+                </div>
+                
+                <!-- Quiz Results -->
+                <div class="quiz-results hidden" id="quiz-results">
+                    <div class="results-card">
+                        <div class="results-icon" id="results-icon">🎉</div>
+                        <h2 id="results-title">Congratulations!</h2>
+                        <p id="results-message">You passed the quiz!</p>
+                        <div class="results-score">
+                            <span class="score-number" id="results-score">80%</span>
+                            <span class="score-label">Final Score</span>
+                        </div>
+                        <div class="results-actions">
+                            <button class="results-btn primary" id="results-continue">Continue to Next Level →</button>
+                            <button class="results-btn secondary" id="results-retry">Retry Quiz</button>
+                            <button class="results-btn secondary" id="results-review">Review Lessons</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="data/stocks.js"></script>
+    <script src="data/taxes.js"></script>
+    <script src="data/nonprofits.js"></script>
+    <script src="data/labor.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

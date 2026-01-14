@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Planner | Blueprint to Success</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>💰 Budget Planner</h1>
+            <p class="subtitle">Blueprint to Success - 2026 Financial Dashboard</p>
+            <button id="theme-toggle" class="theme-btn" title="Toggle dark/light mode">🌙</button>
+        </header>
+
+        <!-- Quick Stats Dashboard -->
+        <section class="dashboard">
+            <div class="stat-card income">
+                <span class="stat-label">Monthly Income</span>
+                <span class="stat-value" id="total-income">$0</span>
+            </div>
+            <div class="stat-card expenses">
+                <span class="stat-label">Total Expenses</span>
+                <span class="stat-value" id="total-expenses">$0</span>
+            </div>
+            <div class="stat-card remaining">
+                <span class="stat-label">Remaining</span>
+                <span class="stat-value" id="remaining-amount">$0</span>
+            </div>
+            <div class="stat-card debt">
+                <span class="stat-label">Total Debt</span>
+                <span class="stat-value" id="total-debt">$0</span>
+            </div>
+        </section>
+
+        <!-- Main Content Grid -->
+        <div class="main-grid">
+            <!-- Income Section -->
+            <section class="card">
+                <h2>📥 Income</h2>
+                <div class="form-group">
+                    <label for="monthly-income">Monthly Take-Home Pay</label>
+                    <div class="input-wrapper">
+                        <span class="currency">$</span>
+                        <input type="number" id="monthly-income" placeholder="0" min="0" step="0.01">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="other-income">Other Income (side gigs, etc.)</label>
+                    <div class="input-wrapper">
+                        <span class="currency">$</span>
+                        <input type="number" id="other-income" placeholder="0" min="0" step="0.01">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fixed Expenses Section -->
+            <section class="card">
+                <h2>🏠 Fixed Expenses</h2>
+                <div class="expense-list" id="fixed-expenses">
+                    <div class="expense-item">
+                        <input type="text" placeholder="Expense name" value="Rent/Housing" class="expense-name">
+                        <div class="input-wrapper small">
+                            <span class="currency">$</span>
+                            <input type="number" placeholder="0" min="0" step="0.01" class="expense-amount">
+                        </div>
+                        <button class="remove-btn" title="Remove">×</button>
+                    </div>
+                    <div class="expense-item">
+                        <input type="text" placeholder="Expense name" value="Car Payment" class="expense-name">
+                        <div class="input-wrapper small">
+                            <span class="currency">$</span>
+                            <input type="number" placeholder="0" min="0" step="0.01" class="expense-amount">
+                        </div>
+                        <button class="remove-btn" title="Remove">×</button>
+                    </div>
+                    <div class="expense-item">
+                        <input type="text" placeholder="Expense name" value="Car Insurance" class="expense-name">
+                        <div class="input-wrapper small">
+                            <span class="currency">$</span>
+                            <input type="number" placeholder="0" min="0" step="0.01" class="expense-amount">
+                        </div>
+                        <button class="remove-btn" title="Remove">×</button>
+                    </div>
+                    <div class="expense-item">
+                        <input type="text" placeholder="Expense name" value="Phone Bill" class="expense-name">
+                        <div class="input-wrapper small">
+                            <span class="currency">$</span>
+                            <input type="number" placeholder="0" min="0" step="0.01" class="expense-amount">
+                        </div>
+                        <button class="remove-btn" title="Remove">×</button>
+                    </div>
+                    <div class="expense-item">
+                        <input type="text" placeholder="Expense name" value="Utilities" class="expense-name">
+                        <div class="input-wrapper small">
+                            <span class="currency">$</span>
+                            <input type="number" placeholder="0" min="0" step="0.01" class="expense-amount">
+                        </div>
+                        <button class="remove-btn" title="Remove">×</button>
+                    </div>
+                </div>
+                <button class="add-btn" id="add-fixed-expense">+ Add Expense</button>
+            </section>
+
+            <!-- Subscriptions Section -->
+            <section class="card">
+                <h2>📱 Subscriptions Audit</h2>
+                <p class="hint">Track all your recurring subscriptions. Cancel what you don't use!</p>
+                <div class="expense-list" id="subscriptions">
+                    <div class="expense-item subscription">
+                        <input type="checkbox" class="sub-active" checked>
+                        <input type="text" placeholder="Service name" value="Netflix" class="expense-name">
+                        <div class="input-wrapper small">
+                            <span class="currency">$</span>
+                            <input type="number" placeholder="0" min="0" step="0.01" class="expense-amount">
+                        </div>
+                        <button class="remove-btn" title="Remove">×</button>
+                    </div>
+                    <div class="expense-item subscription">
+                        <input type="checkbox" class="sub-active" checked>
+                        <input type="text" placeholder="Service name" value="Spotify" class="expense-name">
+                        <div class="input-wrapper small">
+                            <span class="currency">$</span>
+                            <input type="number" placeholder="0" min="0" step="0.01" class="expense-amount">
+                        </div>
+                        <button class="remove-btn" title="Remove">×</button>
+                    </div>
+                    <div class="expense-item subscription">
+                        <input type="checkbox" class="sub-active" checked>
+                        <input type="text" placeholder="Service name" class="expense-name">
+                        <div class="input-wrapper small">
+                            <span class="currency">$</span>
+                            <input type="number" placeholder="0" min="0" step="0.01" class="expense-amount">
+                        </div>
+                        <button class="remove-btn" title="Remove">×</button>
+                    </div>
+                </div>
+                <button class="add-btn" id="add-subscription">+ Add Subscription</button>
+                <div class="subscription-total">
+                    <span>Active Subscriptions Total:</span>
+                    <span id="sub-total">$0/mo</span>
+                </div>
+            </section>
+
+            <!-- Variable Expenses Section -->
+            <section class="card">
+                <h2>🛒 Variable Expenses</h2>
+                <div class="expense-list" id="variable-expenses">
+                    <div class="expense-item">
+                        <input type="text" placeholder="Expense name" value="Groceries" class="expense-name">
+                        <div class="input-wrapper small">
+                            <span class="currency">$</span>
+                            <input type="number" placeholder="0" min="0" step="0.01" class="expense-amount">
+                        </div>
+                        <button class="remove-btn" title="Remove">×</button>
+                    </div>
+                    <div class="expense-item">
+                        <input type="text" placeholder="Expense name" value="Gas/Transportation" class="expense-name">
+                        <div class="input-wrapper small">
+                            <span class="currency">$</span>
+                            <input type="number" placeholder="0" min="0" step="0.01" class="expense-amount">
+                        </div>
+                        <button class="remove-btn" title="Remove">×</button>
+                    </div>
+                    <div class="expense-item">
+                        <input type="text" placeholder="Expense name" value="Eating Out" class="expense-name">
+                        <div class="input-wrapper small">
+                            <span class="currency">$</span>
+                            <input type="number" placeholder="0" min="0" step="0.01" class="expense-amount">
+                        </div>
+                        <button class="remove-btn" title="Remove">×</button>
+                    </div>
+                    <div class="expense-item">
+                        <input type="text" placeholder="Expense name" value="Entertainment" class="expense-name">
+                        <div class="input-wrapper small">
+                            <span class="currency">$</span>
+                            <input type="number" placeholder="0" min="0" step="0.01" class="expense-amount">
+                        </div>
+                        <button class="remove-btn" title="Remove">×</button>
+                    </div>
+                </div>
+                <button class="add-btn" id="add-variable-expense">+ Add Expense</button>
+            </section>
+
+            <!-- Debt Tracker Section -->
+            <section class="card debt-section">
+                <h2>💳 Debt Tracker</h2>
+                <div class="debt-list" id="debt-list">
+                    <div class="debt-item">
+                        <div class="debt-header">
+                            <input type="text" placeholder="Debt name" value="Credit Card" class="debt-name">
+                            <button class="remove-btn" title="Remove">×</button>
+                        </div>
+                        <div class="debt-details">
+                            <div class="debt-field">
+                                <label>Balance</label>
+                                <div class="input-wrapper small">
+                                    <span class="currency">$</span>
+                                    <input type="number" placeholder="0" min="0" step="0.01" class="debt-balance">
+                                </div>
+                            </div>
+                            <div class="debt-field">
+                                <label>APR %</label>
+                                <input type="number" placeholder="0" min="0" max="100" step="0.1" class="debt-apr">
+                            </div>
+                            <div class="debt-field">
+                                <label>Min Payment</label>
+                                <div class="input-wrapper small">
+                                    <span class="currency">$</span>
+                                    <input type="number" placeholder="0" min="0" step="0.01" class="debt-min-payment">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="debt-item">
+                        <div class="debt-header">
+                            <input type="text" placeholder="Debt name" value="Student Loans" class="debt-name">
+                            <button class="remove-btn" title="Remove">×</button>
+                        </div>
+                        <div class="debt-details">
+                            <div class="debt-field">
+                                <label>Balance</label>
+                                <div class="input-wrapper small">
+                                    <span class="currency">$</span>
+                                    <input type="number" placeholder="0" min="0" step="0.01" class="debt-balance">
+                                </div>
+                            </div>
+                            <div class="debt-field">
+                                <label>APR %</label>
+                                <input type="number" placeholder="0" min="0" max="100" step="0.1" class="debt-apr">
+                            </div>
+                            <div class="debt-field">
+                                <label>Min Payment</label>
+                                <div class="input-wrapper small">
+                                    <span class="currency">$</span>
+                                    <input type="number" placeholder="0" min="0" step="0.01" class="debt-min-payment">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="debt-item">
+                        <div class="debt-header">
+                            <input type="text" placeholder="Debt name" value="Car Loan" class="debt-name">
+                            <button class="remove-btn" title="Remove">×</button>
+                        </div>
+                        <div class="debt-details">
+                            <div class="debt-field">
+                                <label>Balance</label>
+                                <div class="input-wrapper small">
+                                    <span class="currency">$</span>
+                                    <input type="number" placeholder="0" min="0" step="0.01" class="debt-balance">
+                                </div>
+                            </div>
+                            <div class="debt-field">
+                                <label>APR %</label>
+                                <input type="number" placeholder="0" min="0" max="100" step="0.1" class="debt-apr">
+                            </div>
+                            <div class="debt-field">
+                                <label>Min Payment</label>
+                                <div class="input-wrapper small">
+                                    <span class="currency">$</span>
+                                    <input type="number" placeholder="0" min="0" step="0.01" class="debt-min-payment">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="add-btn" id="add-debt">+ Add Debt</button>
+                
+                <div class="debt-strategy">
+                    <h3>Payoff Strategy</h3>
+                    <div class="strategy-toggle">
+                        <button class="strategy-btn active" data-strategy="avalanche">
+                            🏔️ Avalanche
+                            <span class="strategy-desc">Highest interest first (saves money)</span>
+                        </button>
+                        <button class="strategy-btn" data-strategy="snowball">
+                            ⛄ Snowball
+                            <span class="strategy-desc">Smallest balance first (builds momentum)</span>
+                        </button>
+                    </div>
+                    <div class="payoff-order" id="payoff-order">
+                        <p class="hint">Add your debts above to see recommended payoff order</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Savings Goals Section -->
+            <section class="card goals-section">
+                <h2>🎯 Savings Goals</h2>
+                <div class="goals-list" id="goals-list">
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <input type="text" placeholder="Goal name" value="Classes (Jan-Feb)" class="goal-name">
+                            <span class="goal-deadline">
+                                <label>By:</label>
+                                <input type="date" class="goal-date" value="2026-01-31">
+                            </span>
+                            <button class="remove-btn" title="Remove">×</button>
+                        </div>
+                        <div class="goal-details">
+                            <div class="goal-field">
+                                <label>Target Amount</label>
+                                <div class="input-wrapper small">
+                                    <span class="currency">$</span>
+                                    <input type="number" placeholder="0" min="0" step="0.01" class="goal-target">
+                                </div>
+                            </div>
+                            <div class="goal-field">
+                                <label>Saved So Far</label>
+                                <div class="input-wrapper small">
+                                    <span class="currency">$</span>
+                                    <input type="number" placeholder="0" min="0" step="0.01" class="goal-saved">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <input type="text" placeholder="Goal name" value="March Trip" class="goal-name">
+                            <span class="goal-deadline">
+                                <label>By:</label>
+                                <input type="date" class="goal-date" value="2026-03-01">
+                            </span>
+                            <button class="remove-btn" title="Remove">×</button>
+                        </div>
+                        <div class="goal-details">
+                            <div class="goal-field">
+                                <label>Target Amount</label>
+                                <div class="input-wrapper small">
+                                    <span class="currency">$</span>
+                                    <input type="number" placeholder="0" min="0" step="0.01" class="goal-target">
+                                </div>
+                            </div>
+                            <div class="goal-field">
+                                <label>Saved So Far</label>
+                                <div class="input-wrapper small">
+                                    <span class="currency">$</span>
+                                    <input type="number" placeholder="0" min="0" step="0.01" class="goal-saved">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <input type="text" placeholder="Goal name" value="Emergency Fund" class="goal-name">
+                            <span class="goal-deadline">
+                                <label>By:</label>
+                                <input type="date" class="goal-date" value="2026-12-31">
+                            </span>
+                            <button class="remove-btn" title="Remove">×</button>
+                        </div>
+                        <div class="goal-details">
+                            <div class="goal-field">
+                                <label>Target Amount</label>
+                                <div class="input-wrapper small">
+                                    <span class="currency">$</span>
+                                    <input type="number" placeholder="1000" min="0" step="0.01" class="goal-target" value="1000">
+                                </div>
+                            </div>
+                            <div class="goal-field">
+                                <label>Saved So Far</label>
+                                <div class="input-wrapper small">
+                                    <span class="currency">$</span>
+                                    <input type="number" placeholder="0" min="0" step="0.01" class="goal-saved">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="add-btn" id="add-goal">+ Add Goal</button>
+            </section>
+
+            <!-- Budget Breakdown -->
+            <section class="card breakdown-section">
+                <h2>📊 Budget Breakdown (50/30/20 Rule)</h2>
+                <div class="breakdown-chart">
+                    <div class="breakdown-bar">
+                        <div class="bar-segment needs" id="needs-bar" style="width: 0%">
+                            <span class="bar-label">Needs</span>
+                        </div>
+                        <div class="bar-segment wants" id="wants-bar" style="width: 0%">
+                            <span class="bar-label">Wants</span>
+                        </div>
+                        <div class="bar-segment savings" id="savings-bar" style="width: 0%">
+                            <span class="bar-label">Savings</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="breakdown-legend">
+                    <div class="legend-item">
+                        <span class="legend-color needs"></span>
+                        <span class="legend-label">Needs (50%): <strong id="needs-amount">$0</strong></span>
+                        <span class="legend-actual">Actual: <span id="needs-actual">$0</span></span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color wants"></span>
+                        <span class="legend-label">Wants (30%): <strong id="wants-amount">$0</strong></span>
+                        <span class="legend-actual">Actual: <span id="wants-actual">$0</span></span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color savings"></span>
+                        <span class="legend-label">Savings/Debt (20%): <strong id="savings-amount">$0</strong></span>
+                        <span class="legend-actual">Actual: <span id="savings-actual">$0</span></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer Actions -->
+        <footer>
+            <div class="footer-links">
+                <a href="../education-hub/index.html" class="education-link">📚 Financial Education Hub</a>
+            </div>
+            <div class="footer-actions">
+                <button class="action-btn save-btn" id="save-data">💾 Save Data</button>
+                <button class="action-btn export-btn" id="export-data">📤 Export</button>
+                <button class="action-btn reset-btn" id="reset-data">🔄 Reset All</button>
+            </div>
+            <p class="footer-note">Data is saved locally in your browser</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
