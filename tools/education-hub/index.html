@@ -3,32 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Education Hub | Blueprint to Success</title>
+    <title>Education Hub | Blueprint to Success</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .site-nav { position: fixed; top: 0; left: 0; right: 0; height: 50px; background: var(--bg-primary, #fff); border-bottom: 1px solid var(--border-color, #e2e8f0); z-index: 1001; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
-        .site-nav .nav-brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; color: inherit; }
-        .site-nav .nav-links { display: flex; gap: 4px; }
-        .site-nav .nav-links a { padding: 8px 12px; border-radius: 6px; text-decoration: none; color: var(--text-secondary, #64748b); font-size: 0.9rem; transition: all 0.2s; }
-        .site-nav .nav-links a:hover, .site-nav .nav-links a.active { background: var(--accent-primary, #6366f1); color: white; }
-        .app-container { padding-top: 50px; }
-        [data-theme="dark"] .site-nav { background: #1e293b; border-color: #334155; }
+        /* Main Navigation - matches site style */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-links a {
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .nav-links a:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+        .nav-links a.active {
+            background: var(--accent-gradient);
+            color: white;
+        }
+        .app-container { padding-top: 60px; }
+        
+        /* Education Hub Hero */
+        .edu-hero {
+            background: var(--accent-gradient);
+            padding: 40px 24px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .edu-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .edu-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .edu-hero h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .edu-hero p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .edu-hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 20px;
+        }
+        .edu-hero-stat {
+            text-align: center;
+        }
+        .edu-hero-stat .stat-num {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .edu-hero-stat .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .edu-hero h1 { font-size: 1.5rem; }
+            .edu-hero-stats { gap: 20px; }
+            .edu-hero-stat .stat-num { font-size: 1.4rem; }
+        }
     </style>
 </head>
 <body>
-    <!-- Site Navigation -->
-    <nav class="site-nav">
-        <a href="../../index.html" class="nav-brand">📘 Blueprint to Success</a>
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <a href="../../index.html" class="nav-brand">
+            <span>📘</span>
+            <span>Blueprint to Success</span>
+        </a>
         <div class="nav-links">
             <a href="../../index.html">Dashboard</a>
             <a href="../../roadmap.html">Roadmap</a>
             <a href="../../guides/index.html">Guides</a>
             <a href="../budget-planner/index.html">Budget</a>
-            <a href="index.html" class="active">Learn</a>
+            <a href="index.html" class="active">Education Hub</a>
         </div>
     </nav>
 
     <div class="app-container">
+        <!-- Education Hub Hero -->
+        <section class="edu-hero" id="edu-hero">
+            <div class="edu-hero-content">
+                <h1>🎓 Education Hub</h1>
+                <p>Master new skills from beginner to pro with interactive lessons, quizzes, and final exams.</p>
+                <div class="edu-hero-stats">
+                    <div class="edu-hero-stat">
+                        <span class="stat-num">17</span>
+                        <span class="stat-label">Tracks</span>
+                    </div>
+                    <div class="edu-hero-stat">
+                        <span class="stat-num">85+</span>
+                        <span class="stat-label">Lessons</span>
+                    </div>
+                    <div class="edu-hero-stat">
+                        <span class="stat-num" id="hero-progress">0%</span>
+                        <span class="stat-label">Complete</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Sidebar Navigation -->
         <nav class="sidebar">
             <div class="sidebar-header">
@@ -152,6 +284,41 @@
                 <div class="levels-container" id="levels-container">
                     <!-- Levels will be populated by JavaScript -->
                 </div>
+                
+                <!-- Final Exam Banner -->
+                <div class="final-exam-banner locked" id="final-exam-banner">
+                    <div class="final-exam-info">
+                        <span class="final-exam-icon">📝</span>
+                        <div class="final-exam-text">
+                            <h3>Final Exam</h3>
+                            <p id="final-exam-desc">Complete all levels to unlock the final exam</p>
+                        </div>
+                    </div>
+                    <button class="final-exam-btn" id="final-exam-btn" disabled>Locked</button>
+                </div>
+                
+                <!-- Track Complete Card (hidden until exam passed) -->
+                <div class="track-complete-card hidden" id="track-complete-card">
+                    <h3>🎉 Track Completed!</h3>
+                    <p id="track-complete-msg">You've mastered this topic</p>
+                    <div class="completion-badges">
+                        <div class="completion-badge">
+                            <div class="badge-icon">📚</div>
+                            <div class="badge-label">Lessons</div>
+                            <div class="badge-value" id="complete-lessons">0</div>
+                        </div>
+                        <div class="completion-badge">
+                            <div class="badge-icon">✅</div>
+                            <div class="badge-label">Quizzes Passed</div>
+                            <div class="badge-value" id="complete-quizzes">0</div>
+                        </div>
+                        <div class="completion-badge">
+                            <div class="badge-icon">🏆</div>
+                            <div class="badge-label">Final Exam</div>
+                            <div class="badge-value" id="complete-exam">--</div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- Lesson View -->
@@ -224,6 +391,57 @@
                             <button class="results-btn primary" id="results-continue">Continue to Next Level →</button>
                             <button class="results-btn secondary" id="results-retry">Retry Quiz</button>
                             <button class="results-btn secondary" id="results-review">Review Lessons</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Final Exam View -->
+            <section class="view" id="view-final-exam">
+                <div class="view-header with-back">
+                    <button class="back-btn" id="final-exam-back-btn">← Back to Track</button>
+                    <div class="header-content">
+                        <h1 id="final-exam-title">📝 Final Exam</h1>
+                        <p id="final-exam-subtitle">Comprehensive test covering all topics</p>
+                    </div>
+                </div>
+                
+                <div class="quiz-container">
+                    <div class="quiz-progress-header">
+                        <span id="final-exam-question-num">Question 1 of 10</span>
+                        <div class="quiz-score">Score: <span id="final-exam-current-score">0</span>/<span id="final-exam-total">10</span></div>
+                    </div>
+                    
+                    <div class="quiz-question-container">
+                        <h2 class="quiz-question" id="final-exam-question">Question text goes here?</h2>
+                        
+                        <div class="quiz-options" id="final-exam-options">
+                            <!-- Options populated by JS -->
+                        </div>
+                        
+                        <div class="quiz-feedback" id="final-exam-feedback">
+                            <!-- Feedback shown after answering -->
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-nav">
+                        <button class="quiz-btn" id="final-exam-next-btn" disabled>Next Question →</button>
+                    </div>
+                </div>
+                
+                <!-- Final Exam Results -->
+                <div class="quiz-results hidden" id="final-exam-results">
+                    <div class="results-card">
+                        <div class="results-icon" id="final-exam-results-icon">🎉</div>
+                        <h2 id="final-exam-results-title">Congratulations!</h2>
+                        <p id="final-exam-results-message">You passed the final exam!</p>
+                        <div class="results-score">
+                            <span class="score-number" id="final-exam-results-score">80%</span>
+                            <span class="score-label">Final Score</span>
+                        </div>
+                        <div class="results-actions">
+                            <button class="results-btn primary" id="final-exam-back-home">Back to Education Hub →</button>
+                            <button class="results-btn secondary" id="final-exam-retry">Retry Exam</button>
                         </div>
                     </div>
                 </div>

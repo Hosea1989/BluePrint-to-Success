@@ -67,7 +67,8 @@ body {
     display: flex;
     flex-direction: column;
     position: fixed;
-    height: 100vh;
+    top: 60px;
+    height: calc(100vh - 60px);
     overflow-y: auto;
     z-index: 100;
 }
@@ -1123,6 +1124,135 @@ body {
 
 .results-btn:hover {
     transform: scale(1.02);
+}
+
+/* Final Exam Styles */
+.final-exam-banner {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-top: 32px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.final-exam-banner.locked {
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+.final-exam-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.final-exam-icon {
+    font-size: 2.5rem;
+}
+
+.final-exam-text h3 {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+.final-exam-text p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.final-exam-btn {
+    padding: 12px 24px;
+    background: white;
+    color: #d97706;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.final-exam-btn:hover:not(:disabled) {
+    transform: scale(1.05);
+}
+
+.final-exam-btn:disabled {
+    background: rgba(255,255,255,0.3);
+    cursor: not-allowed;
+}
+
+.final-exam-banner.locked .final-exam-btn {
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+}
+
+/* Exam Results Badge */
+.exam-passed-badge {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Track Completion Card */
+.track-complete-card {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.15));
+    border: 2px solid var(--success);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    text-align: center;
+    margin-top: 32px;
+}
+
+.track-complete-card h3 {
+    font-size: 1.5rem;
+    color: var(--success);
+    margin-bottom: 8px;
+}
+
+.track-complete-card p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.completion-badges {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.completion-badge {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 16px 24px;
+    text-align: center;
+}
+
+.completion-badge .badge-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.completion-badge .badge-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.completion-badge .badge-value {
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
 /* Utilities */

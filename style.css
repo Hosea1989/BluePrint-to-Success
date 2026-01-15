@@ -415,6 +415,26 @@ a {
     border-color: var(--accent-primary);
 }
 
+.tool-card.featured {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.1));
+    border: 2px solid var(--accent-primary);
+    position: relative;
+}
+
+.tool-card.featured::before {
+    content: '⭐ FEATURED';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--accent-gradient);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+}
+
 .tool-icon {
     font-size: 3rem;
 }

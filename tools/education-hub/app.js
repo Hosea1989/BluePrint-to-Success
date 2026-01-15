@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderTrackCards();
     setupEventListeners();
     updateAllProgress();
+    updateHeroProgress();
     showView('home');
     checkGettingStarted();
 });
@@ -411,15 +412,21 @@ function filterByCategory(category) {
 // ==================== VIEW MANAGEMENT ====================
 function showView(viewId) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    
+
     const view = document.getElementById(`view-${viewId}`);
     if (view) view.classList.add('active');
-    
+
     // Update nav
     document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.toggle('active', item.dataset.view === viewId);
     });
     
+    // Show/hide hero based on view
+    const hero = document.getElementById('edu-hero');
+    if (hero) {
+        hero.style.display = viewId === 'home' ? 'block' : 'none';
+    }
+
     state.currentView = viewId;
     window.scrollTo(0, 0);
 }
@@ -430,18 +437,18 @@ function showTrack(trackId) {
         console.error('Track not found:', trackId);
         return;
     }
-    
+
     state.currentTrack = trackId;
-    
+
     // Update track view header
     document.getElementById('track-view-title').textContent = `${track.icon} ${track.title}`;
     document.getElementById('track-view-subtitle').textContent = track.description;
-    
+
     // Update progress
     const progress = getTrackProgress(trackId);
     document.getElementById('track-progress-bar').style.width = progress + '%';
     document.getElementById('track-progress-text').textContent = progress + '% Complete';
-    
+
     // Update graduation goal
     const goalText = document.getElementById('goal-text');
     if (goalText && track.graduationGoal) {
@@ -449,10 +456,13 @@ function showTrack(trackId) {
     } else if (goalText) {
         goalText.textContent = 'Complete all levels to master this topic';
     }
-    
+
     // Render levels
     renderTrackLevels(trackId);
     
+    // Update final exam banner
+    updateFinalExamBanner(trackId);
+
     showView('track');
 }
 
@@ -891,4 +901,264 @@ function setupEventListeners() {
     if (quizNext) {
         quizNext.addEventListener('click', nextQuizQuestion);
     }
+    
+    // Final exam button
+    const finalExamBtn = document.getElementById('final-exam-btn');
+    if (finalExamBtn) {
+        finalExamBtn.addEventListener('click', startFinalExam);
+    }
+    
+    // Final exam navigation
+    const finalExamNextBtn = document.getElementById('final-exam-next-btn');
+    if (finalExamNextBtn) {
+        finalExamNextBtn.addEventListener('click', nextFinalExamQuestion);
+    }
+    
+    const finalExamBackBtn = document.getElementById('final-exam-back-btn');
+    if (finalExamBackBtn) {
+        finalExamBackBtn.addEventListener('click', () => showTrack(state.currentTrack));
+    }
+    
+    const finalExamBackHome = document.getElementById('final-exam-back-home');
+    if (finalExamBackHome) {
+        finalExamBackHome.addEventListener('click', () => showView('home'));
+    }
+    
+    const finalExamRetry = document.getElementById('final-exam-retry');
+    if (finalExamRetry) {
+        finalExamRetry.addEventListener('click', startFinalExam);
+    }
+}
+
+// ==================== FINAL EXAM ====================
+let finalExamState = {
+    questions: [],
+    currentIndex: 0,
+    score: 0,
+    answered: false
+};
+
+function isTrackComplete(trackId) {
+    const track = tracks[trackId];
+    if (!track || !track.levels) return false;
+    
+    const progress = state.progress[trackId];
+    if (!progress || !progress.completedLevels) return false;
+    
+    return progress.completedLevels.length >= track.levels.length;
+}
+
+function updateFinalExamBanner(trackId) {
+    const banner = document.getElementById('final-exam-banner');
+    const btn = document.getElementById('final-exam-btn');
+    const desc = document.getElementById('final-exam-desc');
+    const completeCard = document.getElementById('track-complete-card');
+    
+    if (!banner) return;
+    
+    const track = tracks[trackId];
+    const progress = state.progress[trackId];
+    const isComplete = isTrackComplete(trackId);
+    const examPassed = progress?.examPassed;
+    
+    // Hide complete card by default
+    if (completeCard) completeCard.classList.add('hidden');
+    
+    if (examPassed) {
+        // Exam already passed - show completion card
+        banner.classList.add('hidden');
+        if (completeCard) {
+            completeCard.classList.remove('hidden');
+            document.getElementById('track-complete-msg').textContent = 
+                `You've mastered ${track.title}. ${track.graduationGoal}`;
+            document.getElementById('complete-lessons').textContent = 
+                progress.completedTopics?.length || 0;
+            document.getElementById('complete-quizzes').textContent = 
+                track.levels?.length || 0;
+            document.getElementById('complete-exam').textContent = 
+                `${progress.examScore || 0}%`;
+        }
+    } else if (isComplete) {
+        // All levels done - unlock exam
+        banner.classList.remove('locked', 'hidden');
+        btn.disabled = false;
+        btn.textContent = 'Take Final Exam';
+        desc.textContent = `Test your knowledge across all ${track.levels.length} levels`;
+    } else {
+        // Not complete yet
+        banner.classList.remove('hidden');
+        banner.classList.add('locked');
+        btn.disabled = true;
+        btn.textContent = 'Locked';
+        const completedLevels = progress?.completedLevels?.length || 0;
+        const totalLevels = track.levels?.length || 0;
+        desc.textContent = `Complete all ${totalLevels} levels to unlock (${completedLevels}/${totalLevels} done)`;
+    }
+}
+
+function startFinalExam() {
+    const trackId = state.currentTrack;
+    const track = tracks[trackId];
+    
+    if (!track || !isTrackComplete(trackId)) return;
+    
+    // Gather questions from all levels
+    finalExamState.questions = [];
+    track.levels.forEach(level => {
+        if (level.quiz && level.quiz.length > 0) {
+            // Take 1-2 random questions from each level
+            const shuffled = [...level.quiz].sort(() => Math.random() - 0.5);
+            finalExamState.questions.push(...shuffled.slice(0, 2));
+        }
+    });
+    
+    // Shuffle all questions
+    finalExamState.questions = finalExamState.questions.sort(() => Math.random() - 0.5);
+    
+    // Limit to 10-15 questions
+    if (finalExamState.questions.length > 15) {
+        finalExamState.questions = finalExamState.questions.slice(0, 15);
+    }
+    
+    finalExamState.currentIndex = 0;
+    finalExamState.score = 0;
+    finalExamState.answered = false;
+    
+    // Update UI
+    document.getElementById('final-exam-title').textContent = `📝 Final Exam: ${track.title}`;
+    document.getElementById('final-exam-subtitle').textContent = 
+        `${finalExamState.questions.length} questions from all levels`;
+    document.getElementById('final-exam-total').textContent = finalExamState.questions.length;
+    
+    // Show exam view
+    showView('final-exam');
+    document.querySelector('#view-final-exam .quiz-container').style.display = 'block';
+    document.getElementById('final-exam-results').classList.add('hidden');
+    
+    showFinalExamQuestion();
+}
+
+function showFinalExamQuestion() {
+    const q = finalExamState.questions[finalExamState.currentIndex];
+    if (!q) return;
+    
+    finalExamState.answered = false;
+    
+    document.getElementById('final-exam-question-num').textContent = 
+        `Question ${finalExamState.currentIndex + 1} of ${finalExamState.questions.length}`;
+    document.getElementById('final-exam-current-score').textContent = finalExamState.score;
+    document.getElementById('final-exam-question').textContent = q.question;
+    
+    const optionsContainer = document.getElementById('final-exam-options');
+    optionsContainer.innerHTML = q.options.map((opt, i) => `
+        <button class="quiz-option" data-index="${i}">${opt}</button>
+    `).join('');
+    
+    // Add click listeners
+    optionsContainer.querySelectorAll('.quiz-option').forEach(btn => {
+        btn.addEventListener('click', () => handleFinalExamAnswer(parseInt(btn.dataset.index)));
+    });
+    
+    document.getElementById('final-exam-feedback').innerHTML = '';
+    document.getElementById('final-exam-next-btn').disabled = true;
+    
+    // Update button text
+    const isLast = finalExamState.currentIndex >= finalExamState.questions.length - 1;
+    document.getElementById('final-exam-next-btn').textContent = isLast ? 'See Results' : 'Next Question →';
+}
+
+function handleFinalExamAnswer(selectedIndex) {
+    if (finalExamState.answered) return;
+    finalExamState.answered = true;
+    
+    const q = finalExamState.questions[finalExamState.currentIndex];
+    const isCorrect = selectedIndex === q.correct;
+    
+    if (isCorrect) finalExamState.score++;
+    
+    // Update UI
+    const options = document.querySelectorAll('#final-exam-options .quiz-option');
+    options.forEach((btn, i) => {
+        btn.disabled = true;
+        if (i === q.correct) btn.classList.add('correct');
+        if (i === selectedIndex && !isCorrect) btn.classList.add('incorrect');
+    });
+    
+    document.getElementById('final-exam-current-score').textContent = finalExamState.score;
+    document.getElementById('final-exam-feedback').innerHTML = `
+        <div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
+            <strong>${isCorrect ? '✓ Correct!' : '✗ Incorrect'}</strong>
+            <p>${q.explanation || ''}</p>
+        </div>
+    `;
+    
+    document.getElementById('final-exam-next-btn').disabled = false;
+}
+
+function nextFinalExamQuestion() {
+    if (finalExamState.currentIndex >= finalExamState.questions.length - 1) {
+        showFinalExamResults();
+    } else {
+        finalExamState.currentIndex++;
+        showFinalExamQuestion();
+    }
+}
+
+function showFinalExamResults() {
+    const total = finalExamState.questions.length;
+    const score = finalExamState.score;
+    const percent = Math.round((score / total) * 100);
+    const passed = percent >= 70;
+    
+    document.querySelector('#view-final-exam .quiz-container').style.display = 'none';
+    document.getElementById('final-exam-results').classList.remove('hidden');
+    
+    document.getElementById('final-exam-results-icon').textContent = passed ? '🎉' : '📚';
+    document.getElementById('final-exam-results-title').textContent = 
+        passed ? 'Congratulations!' : 'Keep Practicing';
+    document.getElementById('final-exam-results-message').textContent = 
+        passed ? 'You passed the final exam!' : 'You need 70% to pass. Review the lessons and try again.';
+    document.getElementById('final-exam-results-score').textContent = `${percent}%`;
+    
+    if (passed) {
+        // Save exam pass
+        const trackId = state.currentTrack;
+        if (!state.progress[trackId]) {
+            state.progress[trackId] = { completedTopics: [], completedLevels: [], quizScores: {} };
+        }
+        state.progress[trackId].examPassed = true;
+        state.progress[trackId].examScore = percent;
+        saveProgress();
+        
+        // Show graduation celebration
+        setTimeout(() => showGraduationCelebration(trackId), 500);
+    }
+}
+
+// ==================== HERO PROGRESS UPDATE ====================
+function updateHeroProgress() {
+    const heroProgress = document.getElementById('hero-progress');
+    if (!heroProgress) return;
+    
+    let totalTopics = 0;
+    let completedTopics = 0;
+    
+    Object.keys(tracks).forEach(trackId => {
+        const track = tracks[trackId];
+        if (track && track.levels) {
+            track.levels.forEach(level => {
+                if (level.topics) {
+                    totalTopics += level.topics.length;
+                }
+            });
+        }
+        
+        const progress = state.progress[trackId];
+        if (progress && progress.completedTopics) {
+            completedTopics += progress.completedTopics.length;
+        }
+    });
+    
+    const percent = totalTopics > 0 ? Math.round((completedTopics / totalTopics) * 100) : 0;
+    heroProgress.textContent = `${percent}%`;
 }
