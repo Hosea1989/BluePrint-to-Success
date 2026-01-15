@@ -1,13 +1,68 @@
 // Education Hub App - Blueprint to Success
-// Main application logic for the financial education hub
+// Main application logic for the education hub
+
+// ==================== TRACK METADATA ====================
+const trackCategories = {
+    finance: {
+        name: 'Finance',
+        icon: '💰',
+        tracks: ['stocks', 'realestate', 'crypto', 'credit', 'retirement', 'taxes']
+    },
+    business: {
+        name: 'Business',
+        icon: '💼',
+        tracks: ['business', 'freelancing', 'negotiation', 'marketing']
+    },
+    tech: {
+        name: 'Tech',
+        icon: '💻',
+        tracks: ['ai', 'cybersecurity']
+    },
+    civic: {
+        name: 'Civic & Rights',
+        icon: '⚖️',
+        tracks: ['politics', 'california', 'labor', 'nonprofits']
+    },
+    personal: {
+        name: 'Personal',
+        icon: '🌱',
+        tracks: ['productivity']
+    }
+};
 
 // ==================== DATA & STATE ====================
-const tracks = {
-    stocks: stocksData,
-    taxes: taxesData,
-    nonprofits: nonprofitsData,
-    labor: laborData
-};
+// Tracks will be populated as data files load
+const tracks = {};
+
+// Initialize tracks from loaded data
+function initializeTracks() {
+    // Finance
+    if (typeof stocksData !== 'undefined') tracks.stocks = { ...stocksData, category: 'finance' };
+    if (typeof realestateData !== 'undefined') tracks.realestate = { ...realestateData, category: 'finance' };
+    if (typeof cryptoData !== 'undefined') tracks.crypto = { ...cryptoData, category: 'finance' };
+    if (typeof creditData !== 'undefined') tracks.credit = { ...creditData, category: 'finance' };
+    if (typeof retirementData !== 'undefined') tracks.retirement = { ...retirementData, category: 'finance' };
+    if (typeof taxesData !== 'undefined') tracks.taxes = { ...taxesData, category: 'finance' };
+    
+    // Business
+    if (typeof businessData !== 'undefined') tracks.business = { ...businessData, category: 'business' };
+    if (typeof freelancingData !== 'undefined') tracks.freelancing = { ...freelancingData, category: 'business' };
+    if (typeof negotiationData !== 'undefined') tracks.negotiation = { ...negotiationData, category: 'business' };
+    if (typeof marketingData !== 'undefined') tracks.marketing = { ...marketingData, category: 'business' };
+    
+    // Tech
+    if (typeof aiData !== 'undefined') tracks.ai = { ...aiData, category: 'tech' };
+    if (typeof cybersecurityData !== 'undefined') tracks.cybersecurity = { ...cybersecurityData, category: 'tech' };
+    
+    // Civic & Rights
+    if (typeof politicsData !== 'undefined') tracks.politics = { ...politicsData, category: 'civic' };
+    if (typeof californiaData !== 'undefined') tracks.california = { ...californiaData, category: 'civic' };
+    if (typeof laborData !== 'undefined') tracks.labor = { ...laborData, category: 'civic' };
+    if (typeof nonprofitsData !== 'undefined') tracks.nonprofits = { ...nonprofitsData, category: 'civic' };
+    
+    // Personal
+    if (typeof productivityData !== 'undefined') tracks.productivity = { ...productivityData, category: 'personal' };
+}
 
 let state = {
     currentView: 'home',
@@ -15,15 +70,18 @@ let state = {
     currentLevel: null,
     currentTopicIndex: 0,
     quizState: null,
-    progress: {}
+    progress: {},
+    currentCategory: 'all'
 };
 
 // ==================== INITIALIZATION ====================
 document.addEventListener('DOMContentLoaded', () => {
+    initializeTracks();
     loadProgress();
     initTheme();
+    renderSidebar();
+    renderTrackCards();
     setupEventListeners();
-    renderAllTracks();
     updateAllProgress();
     showView('home');
     checkGettingStarted();
@@ -34,7 +92,6 @@ function checkGettingStarted() {
     const guide = document.getElementById('edu-getting-started');
     if (!guide) return;
     
-    // Hide if already dismissed or if user has progress
     const dismissed = localStorage.getItem('eduHubIntroDismissed');
     const hasProgress = Object.keys(state.progress).some(track => 
         state.progress[track]?.completedTopics?.length > 0
@@ -62,7 +119,7 @@ function toggleTheme() {
 
 function updateThemeButton(theme) {
     const btn = document.getElementById('theme-toggle');
-    btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
 }
 
 // ==================== PROGRESS MANAGEMENT ====================
@@ -70,16 +127,18 @@ function loadProgress() {
     const saved = localStorage.getItem('educationHubProgress');
     if (saved) {
         state.progress = JSON.parse(saved);
-    } else {
-        // Initialize empty progress
-        Object.keys(tracks).forEach(trackId => {
+    }
+    
+    // Ensure all tracks have progress entries
+    Object.keys(tracks).forEach(trackId => {
+        if (!state.progress[trackId]) {
             state.progress[trackId] = {
                 completedTopics: [],
                 completedLevels: [],
                 quizScores: {}
             };
-        });
-    }
+        }
+    });
 }
 
 function saveProgress() {
@@ -98,11 +157,15 @@ function resetProgress() {
             };
         });
         updateAllProgress();
+        renderTrackCards();
         showView('home');
     }
 }
 
 function markTopicComplete(trackId, levelId, topicId) {
+    if (!state.progress[trackId]) {
+        state.progress[trackId] = { completedTopics: [], completedLevels: [], quizScores: {} };
+    }
     const key = `${levelId}-${topicId}`;
     if (!state.progress[trackId].completedTopics.includes(key)) {
         state.progress[trackId].completedTopics.push(key);
@@ -112,6 +175,9 @@ function markTopicComplete(trackId, levelId, topicId) {
 }
 
 function markLevelComplete(trackId, levelId, score) {
+    if (!state.progress[trackId]) {
+        state.progress[trackId] = { completedTopics: [], completedLevels: [], quizScores: {} };
+    }
     if (!state.progress[trackId].completedLevels.includes(levelId)) {
         state.progress[trackId].completedLevels.push(levelId);
     }
@@ -122,17 +188,18 @@ function markLevelComplete(trackId, levelId, score) {
 
 function isLevelUnlocked(trackId, levelId) {
     if (levelId === 1) return true;
-    return state.progress[trackId].completedLevels.includes(levelId - 1);
+    return state.progress[trackId]?.completedLevels?.includes(levelId - 1) || false;
 }
 
 function isLevelCompleted(trackId, levelId) {
-    return state.progress[trackId].completedLevels.includes(levelId);
+    return state.progress[trackId]?.completedLevels?.includes(levelId) || false;
 }
 
 function getTrackProgress(trackId) {
     const track = tracks[trackId];
+    if (!track || !track.levels) return 0;
     const totalTopics = track.levels.reduce((sum, level) => sum + level.topics.length, 0);
-    const completedTopics = state.progress[trackId].completedTopics.length;
+    const completedTopics = state.progress[trackId]?.completedTopics?.length || 0;
     return totalTopics > 0 ? Math.round((completedTopics / totalTopics) * 100) : 0;
 }
 
@@ -141,8 +208,10 @@ function getOverallProgress() {
     let completed = 0;
     Object.keys(tracks).forEach(trackId => {
         const track = tracks[trackId];
-        total += track.levels.reduce((sum, level) => sum + level.topics.length, 0);
-        completed += state.progress[trackId].completedTopics.length;
+        if (track && track.levels) {
+            total += track.levels.reduce((sum, level) => sum + level.topics.length, 0);
+            completed += state.progress[trackId]?.completedTopics?.length || 0;
+        }
     });
     return total > 0 ? Math.round((completed / total) * 100) : 0;
 }
@@ -156,38 +225,139 @@ function updateAllProgress() {
     if (overallFill) overallFill.style.width = overall + '%';
     if (overallText) overallText.textContent = overall + '% Complete';
     
-    // Update each track
+    // Update sidebar progress
     Object.keys(tracks).forEach(trackId => {
         const progress = getTrackProgress(trackId);
-        
-        // Nav progress
         const navProgress = document.getElementById(`nav-progress-${trackId}`);
         if (navProgress) navProgress.textContent = progress + '%';
+    });
+}
+
+// ==================== SIDEBAR RENDERING ====================
+function renderSidebar() {
+    const container = document.getElementById('sidebar-tracks');
+    if (!container) return;
+    
+    let html = '';
+    
+    Object.keys(trackCategories).forEach(catId => {
+        const cat = trackCategories[catId];
+        const catTracks = cat.tracks.filter(tid => tracks[tid]);
         
-        // Home card progress
-        const homeFill = document.getElementById(`home-progress-${trackId}`);
-        const homeLabel = document.getElementById(`home-label-${trackId}`);
-        if (homeFill) homeFill.style.width = progress + '%';
-        if (homeLabel) {
-            if (progress === 0) homeLabel.textContent = 'Not Started';
-            else if (progress === 100) homeLabel.textContent = 'Completed! 🎉';
-            else homeLabel.textContent = progress + '% Complete';
+        if (catTracks.length === 0) return;
+        
+        html += `<h3 class="nav-title">${cat.icon} ${cat.name}</h3>`;
+        
+        catTracks.forEach(trackId => {
+            const track = tracks[trackId];
+            const progress = getTrackProgress(trackId);
+            html += `
+                <button class="nav-item" data-view="${trackId}">
+                    <span class="nav-icon">${track.icon}</span>
+                    <span class="nav-text">${track.title}</span>
+                    <span class="nav-progress" id="nav-progress-${trackId}">${progress}%</span>
+                </button>
+            `;
+        });
+    });
+    
+    container.innerHTML = html;
+    
+    // Re-attach event listeners
+    container.querySelectorAll('.nav-item[data-view]').forEach(item => {
+        item.addEventListener('click', () => {
+            const view = item.dataset.view;
+            if (tracks[view]) {
+                showTrack(view);
+            }
+        });
+    });
+}
+
+// ==================== TRACK CARDS RENDERING ====================
+function renderTrackCards() {
+    const container = document.getElementById('track-cards-container');
+    if (!container) return;
+    
+    const category = state.currentCategory;
+    let html = '';
+    
+    Object.keys(trackCategories).forEach(catId => {
+        const cat = trackCategories[catId];
+        const catTracks = cat.tracks.filter(tid => tracks[tid]);
+        
+        if (catTracks.length === 0) return;
+        if (category !== 'all' && category !== catId) return;
+        
+        // Category header
+        if (category === 'all') {
+            html += `
+                <div class="category-section-header" style="grid-column: 1 / -1; margin-top: ${html ? '32px' : '0'};">
+                    <span class="category-icon">${cat.icon}</span>
+                    <h3>${cat.name}</h3>
+                </div>
+            `;
         }
         
-        // Track view progress
-        const trackFill = document.getElementById(`track-progress-${trackId}`);
-        const trackText = document.getElementById(`track-progress-text-${trackId}`);
-        if (trackFill) trackFill.style.width = progress + '%';
-        if (trackText) trackText.textContent = progress + '% Complete';
+        // Track cards for this category
+        catTracks.forEach(trackId => {
+            const track = tracks[trackId];
+            const progress = getTrackProgress(trackId);
+            const levelCount = track.levels ? track.levels.length : 0;
+            
+            let progressLabel = 'Not Started';
+            if (progress === 100) progressLabel = 'Completed! 🎉';
+            else if (progress > 0) progressLabel = progress + '% Complete';
+            
+            html += `
+                <div class="track-card" data-track="${trackId}">
+                    <div class="track-icon">${track.icon}</div>
+                    <div class="track-info">
+                        <h2>${track.title}</h2>
+                        <p>${track.description}</p>
+                        <div class="track-meta">
+                            <span class="levels">${levelCount} Levels</span>
+                            <span class="time">~${Math.ceil(levelCount * 0.75)} hours</span>
+                        </div>
+                    </div>
+                    <div class="track-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${progress}%"></div>
+                        </div>
+                        <span class="progress-label">${progressLabel}</span>
+                    </div>
+                    <button class="track-btn">${progress > 0 ? 'Continue Learning →' : 'Start Learning →'}</button>
+                </div>
+            `;
+        });
     });
+    
+    container.innerHTML = html;
+    
+    // Re-attach event listeners
+    container.querySelectorAll('.track-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const trackId = card.dataset.track;
+            showTrack(trackId);
+        });
+    });
+}
+
+function filterByCategory(category) {
+    state.currentCategory = category;
+    
+    // Update active tab
+    document.querySelectorAll('.category-tab').forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.category === category);
+    });
+    
+    renderTrackCards();
 }
 
 // ==================== VIEW MANAGEMENT ====================
 function showView(viewId) {
-    // Hide all views
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     
-    // Show target view
     const view = document.getElementById(`view-${viewId}`);
     if (view) view.classList.add('active');
     
@@ -197,15 +367,39 @@ function showView(viewId) {
     });
     
     state.currentView = viewId;
-    
-    // Scroll to top
     window.scrollTo(0, 0);
 }
 
 function showTrack(trackId) {
+    const track = tracks[trackId];
+    if (!track) {
+        console.error('Track not found:', trackId);
+        return;
+    }
+    
     state.currentTrack = trackId;
+    
+    // Update track view header
+    document.getElementById('track-view-title').textContent = `${track.icon} ${track.title}`;
+    document.getElementById('track-view-subtitle').textContent = track.description;
+    
+    // Update progress
+    const progress = getTrackProgress(trackId);
+    document.getElementById('track-progress-bar').style.width = progress + '%';
+    document.getElementById('track-progress-text').textContent = progress + '% Complete';
+    
+    // Update graduation goal
+    const goalText = document.getElementById('goal-text');
+    if (goalText && track.graduationGoal) {
+        goalText.textContent = track.graduationGoal;
+    } else if (goalText) {
+        goalText.textContent = 'Complete all levels to master this topic';
+    }
+    
+    // Render levels
     renderTrackLevels(trackId);
-    showView(trackId);
+    
+    showView('track');
 }
 
 function showLesson(trackId, levelId, topicIndex = 0) {
@@ -217,19 +411,11 @@ function showLesson(trackId, levelId, topicIndex = 0) {
     const level = track.levels.find(l => l.id === levelId);
     const topic = level.topics[topicIndex];
     
-    // Update header
     document.getElementById('lesson-title').textContent = topic.title;
     document.getElementById('lesson-subtitle').textContent = `Level ${levelId} • ${track.title}`;
-    
-    // Update back button
-    document.getElementById('lesson-back-btn').dataset.view = trackId;
-    
-    // Update content
+    document.getElementById('lesson-back-btn').onclick = () => showTrack(trackId);
     document.getElementById('lesson-content').innerHTML = topic.content;
-    
-    // Update navigation
-    document.getElementById('lesson-progress').textContent = 
-        `${topicIndex + 1} of ${level.topics.length}`;
+    document.getElementById('lesson-progress').textContent = `${topicIndex + 1} of ${level.topics.length}`;
     
     document.getElementById('lesson-prev').disabled = topicIndex === 0;
     
@@ -251,18 +437,17 @@ function showLesson(trackId, levelId, topicIndex = 0) {
     showView('lesson');
 }
 
-// ==================== TRACK RENDERING ====================
-function renderAllTracks() {
-    Object.keys(tracks).forEach(trackId => {
-        renderTrackLevels(trackId);
-    });
-}
-
+// ==================== TRACK LEVELS RENDERING ====================
 function renderTrackLevels(trackId) {
-    const container = document.getElementById(`levels-${trackId}`);
+    const container = document.getElementById('levels-container');
     if (!container) return;
     
     const track = tracks[trackId];
+    if (!track || !track.levels) {
+        container.innerHTML = '<p>No levels available for this track yet.</p>';
+        return;
+    }
+    
     container.innerHTML = '';
     
     track.levels.forEach(level => {
@@ -292,7 +477,7 @@ function renderTrackLevels(trackId) {
                 <ul class="topics-list">
                     ${level.topics.map((topic, idx) => {
                         const topicKey = `${level.id}-${topic.id}`;
-                        const isTopicDone = state.progress[trackId].completedTopics.includes(topicKey);
+                        const isTopicDone = state.progress[trackId]?.completedTopics?.includes(topicKey) || false;
                         return `
                             <li class="topic-item${isTopicDone ? ' completed' : ''}" 
                                 data-track="${trackId}" 
@@ -325,7 +510,6 @@ function renderTrackLevels(trackId) {
             </div>
         `;
         
-        // Toggle expand on header click
         levelCard.querySelector('.level-header').addEventListener('click', () => {
             levelCard.classList.toggle('expanded');
         });
@@ -368,6 +552,11 @@ function startQuiz(trackId, levelId) {
     const track = tracks[trackId];
     const level = track.levels.find(l => l.id === levelId);
     
+    if (!level.quiz || level.quiz.length === 0) {
+        alert('No quiz available for this level yet.');
+        return;
+    }
+    
     state.quizState = {
         trackId,
         levelId,
@@ -377,13 +566,11 @@ function startQuiz(trackId, levelId) {
         answered: false
     };
     
-    // Update quiz header
     document.getElementById('quiz-title').textContent = `Level ${levelId} Quiz`;
     document.getElementById('quiz-subtitle').textContent = `${level.title} - ${track.title}`;
-    document.getElementById('quiz-back-btn').dataset.view = trackId;
+    document.getElementById('quiz-back-btn').onclick = () => showTrack(trackId);
     document.getElementById('quiz-total-questions').textContent = level.quiz.length;
     
-    // Hide results, show quiz
     document.getElementById('quiz-results').classList.add('hidden');
     document.querySelector('.quiz-container').style.display = 'block';
     
@@ -392,13 +579,11 @@ function startQuiz(trackId, levelId) {
 }
 
 function renderQuizQuestion() {
-    const { questions, currentQuestion, score, answered } = state.quizState;
+    const { questions, currentQuestion, score } = state.quizState;
     const q = questions[currentQuestion];
     
-    document.getElementById('quiz-question-num').textContent = 
-        `Question ${currentQuestion + 1} of ${questions.length}`;
+    document.getElementById('quiz-question-num').textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
     document.getElementById('quiz-current-score').textContent = score;
-    
     document.getElementById('quiz-question').textContent = q.question;
     
     const optionsContainer = document.getElementById('quiz-options');
@@ -409,16 +594,13 @@ function renderQuizQuestion() {
         </div>
     `).join('');
     
-    // Add click handlers
     optionsContainer.querySelectorAll('.quiz-option').forEach(opt => {
         opt.addEventListener('click', () => selectAnswer(parseInt(opt.dataset.index)));
     });
     
-    // Hide feedback
     const feedback = document.getElementById('quiz-feedback');
     feedback.classList.remove('show', 'correct', 'incorrect');
     
-    // Reset next button
     const nextBtn = document.getElementById('quiz-next-btn');
     nextBtn.disabled = true;
     nextBtn.textContent = currentQuestion === questions.length - 1 ? 'See Results' : 'Next Question →';
@@ -434,7 +616,6 @@ function selectAnswer(selectedIndex) {
     
     if (isCorrect) state.quizState.score++;
     
-    // Update UI
     const options = document.querySelectorAll('.quiz-option');
     options.forEach((opt, idx) => {
         opt.classList.add('disabled');
@@ -443,7 +624,6 @@ function selectAnswer(selectedIndex) {
         if (idx === selectedIndex) opt.classList.add('selected');
     });
     
-    // Show feedback
     const feedback = document.getElementById('quiz-feedback');
     feedback.classList.add('show', isCorrect ? 'correct' : 'incorrect');
     feedback.innerHTML = `
@@ -451,15 +631,13 @@ function selectAnswer(selectedIndex) {
         <p>${q.explanation}</p>
     `;
     
-    // Enable next button
     document.getElementById('quiz-next-btn').disabled = false;
 }
 
 function nextQuizQuestion() {
-    const { questions, currentQuestion, score, trackId, levelId } = state.quizState;
+    const { questions, currentQuestion } = state.quizState;
     
     if (currentQuestion === questions.length - 1) {
-        // Quiz complete
         showQuizResults();
     } else {
         state.quizState.currentQuestion++;
@@ -473,7 +651,6 @@ function showQuizResults() {
     const percentage = Math.round((score / questions.length) * 100);
     const passed = percentage >= 70;
     
-    // Update results
     document.getElementById('results-icon').textContent = passed ? '🎉' : '📚';
     document.getElementById('results-title').textContent = passed ? 'Congratulations!' : 'Keep Learning!';
     document.getElementById('results-message').textContent = passed 
@@ -481,7 +658,6 @@ function showQuizResults() {
         : 'You need 70% to pass. Review the lessons and try again.';
     document.getElementById('results-score').textContent = percentage + '%';
     
-    // Show/hide buttons based on pass/fail
     const continueBtn = document.getElementById('results-continue');
     const retryBtn = document.getElementById('results-retry');
     const reviewBtn = document.getElementById('results-review');
@@ -489,32 +665,25 @@ function showQuizResults() {
     if (passed) {
         markLevelComplete(trackId, levelId, percentage);
         
-        // Check if there's a next level
         const track = tracks[trackId];
         const nextLevel = track.levels.find(l => l.id === levelId + 1);
-        
-        // Check if track is now complete
         const trackComplete = state.progress[trackId].completedLevels.length === track.levels.length;
         
         if (trackComplete) {
-            // Show graduation celebration
             showGraduationCelebration(trackId);
             return;
         }
         
         if (nextLevel) {
             continueBtn.style.display = 'block';
+            continueBtn.textContent = 'Continue to Next Level →';
             continueBtn.onclick = () => {
-                renderTrackLevels(trackId);
                 showLesson(trackId, levelId + 1, 0);
             };
         } else {
             continueBtn.style.display = 'block';
             continueBtn.textContent = 'Back to Track';
-            continueBtn.onclick = () => {
-                renderTrackLevels(trackId);
-                showTrack(trackId);
-            };
+            continueBtn.onclick = () => showTrack(trackId);
         }
         retryBtn.style.display = 'none';
     } else {
@@ -525,7 +694,6 @@ function showQuizResults() {
     
     reviewBtn.onclick = () => showLesson(trackId, levelId, 0);
     
-    // Show results modal
     document.querySelector('.quiz-container').style.display = 'none';
     document.getElementById('quiz-results').classList.remove('hidden');
 }
@@ -533,174 +701,70 @@ function showQuizResults() {
 // ==================== GRADUATION CELEBRATION ====================
 function showGraduationCelebration(trackId) {
     const track = tracks[trackId];
-    const graduationMessages = {
-        stocks: {
-            title: "You're Ready to Invest!",
-            message: "You've completed the Stock Market track. You now have the knowledge to open a brokerage account and make your first informed investment.",
-            next: "Continue to Business Taxes to understand tax implications of your investments.",
-            nextLink: "taxes"
-        },
-        taxes: {
-            title: "Tax Strategist!",
-            message: "You've mastered Business Taxes. You're now confident to handle tax planning for your business or side hustle.",
-            next: "Ready to start a business? Check out the LLC and Entrepreneurship guides.",
-            nextLink: null
-        },
-        nonprofits: {
-            title: "Nonprofit Expert!",
-            message: "You've completed the Nonprofits track. You're prepared to start or meaningfully contribute to a 501(c)(3) organization.",
-            next: "Learn about Labor Laws to understand employment regulations.",
-            nextLink: "labor"
-        },
-        labor: {
-            title: "Know Your Rights!",
-            message: "You've completed the Labor Laws track. You now know your workplace rights and can advocate for yourself confidently.",
-            next: "Ready to be your own boss? Explore the Entrepreneurship guides.",
-            nextLink: null
-        }
-    };
     
-    const grad = graduationMessages[trackId];
-    
-    // Create celebration modal
     const modal = document.createElement('div');
     modal.className = 'graduation-modal';
     modal.innerHTML = `
         <div class="graduation-content">
             <div class="confetti-container" id="confetti"></div>
             <div class="graduation-icon">🎓</div>
-            <h1>${grad.title}</h1>
-            <p class="graduation-message">${grad.message}</p>
+            <h1>${track.graduationGoal || 'Congratulations!'}</h1>
+            <p class="graduation-message">You've completed the ${track.title} track. You now have the knowledge to take action!</p>
             <div class="graduation-badge">
-                <span class="badge-icon">${track.title === 'Stock Market' ? '📈' : track.title === 'Business Taxes' ? '🧾' : track.title === 'Nonprofits' ? '🤝' : '⚖️'}</span>
+                <span class="badge-icon">${track.icon}</span>
                 <span class="badge-text">${track.title} Graduate</span>
             </div>
-            <p class="graduation-next">${grad.next}</p>
             <div class="graduation-actions">
-                ${grad.nextLink ? `<button class="grad-btn primary" onclick="closeGraduation(); showTrack('${grad.nextLink}')">Continue Learning</button>` : ''}
-                <button class="grad-btn ${grad.nextLink ? 'secondary' : 'primary'}" onclick="closeGraduation(); showView('home')">Back to Home</button>
+                <button class="grad-btn primary" onclick="closeGraduation(); showView('home')">Explore More Tracks</button>
                 <a href="../../roadmap.html" class="grad-btn secondary">View Roadmap</a>
             </div>
         </div>
     `;
     
-    // Add modal styles
     const style = document.createElement('style');
     style.textContent = `
         .graduation-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            animation: fadeIn 0.3s ease;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.9); display: flex; align-items: center;
+            justify-content: center; z-index: 10000; animation: fadeIn 0.3s ease;
         }
         .graduation-content {
-            background: var(--bg-secondary, #fff);
-            border-radius: 24px;
-            padding: 48px;
-            text-align: center;
-            max-width: 500px;
-            position: relative;
-            overflow: hidden;
+            background: var(--bg-secondary, #fff); border-radius: 24px; padding: 48px;
+            text-align: center; max-width: 500px; position: relative; overflow: hidden;
             animation: slideUp 0.5s ease;
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .graduation-icon {
-            font-size: 5rem;
-            margin-bottom: 16px;
-            animation: bounce 1s ease infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+        .graduation-icon { font-size: 5rem; margin-bottom: 16px; animation: bounce 1s ease infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         .graduation-content h1 {
-            font-size: 2rem;
-            margin-bottom: 16px;
+            font-size: 1.8rem; margin-bottom: 16px;
             background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .graduation-message {
-            color: var(--text-secondary, #64748b);
-            margin-bottom: 24px;
-            line-height: 1.6;
-        }
+        .graduation-message { color: var(--text-secondary, #64748b); margin-bottom: 24px; line-height: 1.6; }
         .graduation-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            color: #1f2937;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            margin-bottom: 24px;
+            display: inline-flex; align-items: center; gap: 8px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #1f2937;
+            padding: 12px 24px; border-radius: 50px; font-weight: 600; margin-bottom: 24px;
         }
         .badge-icon { font-size: 1.5rem; }
-        .graduation-next {
-            color: var(--text-muted, #94a3b8);
-            font-size: 0.9rem;
-            margin-bottom: 24px;
-        }
-        .graduation-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+        .graduation-actions { display: flex; flex-direction: column; gap: 12px; }
         .grad-btn {
-            padding: 14px 28px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: transform 0.2s;
+            padding: 14px 28px; border-radius: 8px; font-weight: 600; cursor: pointer;
+            border: none; font-size: 1rem; text-decoration: none; transition: transform 0.2s;
         }
         .grad-btn:hover { transform: translateY(-2px); }
-        .grad-btn.primary {
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-        }
-        .grad-btn.secondary {
-            background: var(--bg-tertiary, #f1f5f9);
-            color: var(--text-primary, #0f172a);
-        }
-        .confetti-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            animation: confettiFall 3s ease-out forwards;
-        }
-        @keyframes confettiFall {
-            0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-        }
+        .grad-btn.primary { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; }
+        .grad-btn.secondary { background: var(--bg-tertiary, #f1f5f9); color: var(--text-primary, #0f172a); }
+        .confetti-container { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; overflow: hidden; }
+        .confetti { position: absolute; width: 10px; height: 10px; animation: confettiFall 3s ease-out forwards; }
+        @keyframes confettiFall { 0% { transform: translateY(-100%) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
     `;
     document.head.appendChild(style);
     document.body.appendChild(modal);
     
-    // Create confetti
     createConfetti();
-    
-    // Save graduation
     saveGraduation(trackId);
 }
 
@@ -711,6 +775,7 @@ function closeGraduation() {
 
 function createConfetti() {
     const container = document.getElementById('confetti');
+    if (!container) return;
     const colors = ['#6366f1', '#8b5cf6', '#fbbf24', '#10b981', '#ef4444', '#3b82f6'];
     
     for (let i = 0; i < 50; i++) {
@@ -726,60 +791,50 @@ function createConfetti() {
 
 function saveGraduation(trackId) {
     const graduations = JSON.parse(localStorage.getItem('graduations') || '{}');
-    graduations[trackId] = {
-        completed: true,
-        date: new Date().toISOString().split('T')[0]
-    };
+    graduations[trackId] = { completed: true, date: new Date().toISOString().split('T')[0] };
     localStorage.setItem('graduations', JSON.stringify(graduations));
 }
 
 // ==================== EVENT LISTENERS ====================
 function setupEventListeners() {
     // Theme toggle
-    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
     
     // Reset progress
-    document.getElementById('reset-progress').addEventListener('click', resetProgress);
+    const resetBtn = document.getElementById('reset-progress');
+    if (resetBtn) resetBtn.addEventListener('click', resetProgress);
     
-    // Navigation items
-    document.querySelectorAll('.nav-item[data-view]').forEach(item => {
-        item.addEventListener('click', () => {
-            const view = item.dataset.view;
-            if (view === 'home') {
-                showView('home');
-            } else if (tracks[view]) {
-                showTrack(view);
+    // Home nav
+    const homeNav = document.querySelector('.nav-item[data-view="home"]');
+    if (homeNav) {
+        homeNav.addEventListener('click', () => showView('home'));
+    }
+    
+    // Category tabs
+    document.querySelectorAll('.category-tab').forEach(tab => {
+        tab.addEventListener('click', () => filterByCategory(tab.dataset.category));
+    });
+    
+    // Back button on track view
+    const trackBackBtn = document.querySelector('#view-track .back-btn');
+    if (trackBackBtn) {
+        trackBackBtn.addEventListener('click', () => showView('home'));
+    }
+    
+    // Lesson prev button
+    const lessonPrev = document.getElementById('lesson-prev');
+    if (lessonPrev) {
+        lessonPrev.addEventListener('click', () => {
+            if (state.currentTopicIndex > 0) {
+                showLesson(state.currentTrack, state.currentLevel, state.currentTopicIndex - 1);
             }
         });
-    });
-    
-    // Track cards
-    document.querySelectorAll('.track-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const trackId = card.dataset.track;
-            showTrack(trackId);
-        });
-    });
-    
-    // Back buttons
-    document.querySelectorAll('.back-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const view = btn.dataset.view;
-            if (view === 'home') {
-                showView('home');
-            } else if (tracks[view]) {
-                showTrack(view);
-            }
-        });
-    });
-    
-    // Lesson navigation
-    document.getElementById('lesson-prev').addEventListener('click', () => {
-        if (state.currentTopicIndex > 0) {
-            showLesson(state.currentTrack, state.currentLevel, state.currentTopicIndex - 1);
-        }
-    });
+    }
     
     // Quiz next button
-    document.getElementById('quiz-next-btn').addEventListener('click', nextQuizQuestion);
+    const quizNext = document.getElementById('quiz-next-btn');
+    if (quizNext) {
+        quizNext.addEventListener('click', nextQuizQuestion);
+    }
 }

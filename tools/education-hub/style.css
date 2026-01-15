@@ -300,6 +300,98 @@ body {
     color: var(--text-muted);
 }
 
+/* Category Tabs */
+.category-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+}
+
+.category-tab {
+    padding: 10px 20px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-tertiary);
+    border-radius: 25px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.category-tab:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+.category-tab.active {
+    background: var(--accent-gradient);
+    border-color: transparent;
+    color: white;
+}
+
+/* Graduation Goal Banner */
+.graduation-goal {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+}
+
+.goal-icon {
+    font-size: 2rem;
+}
+
+.goal-content {
+    flex: 1;
+}
+
+.goal-content strong {
+    color: var(--success);
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.goal-content span {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+}
+
+/* Category Section Headers in Home */
+.category-section {
+    margin-bottom: 32px;
+}
+
+.category-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.category-section-header h3 {
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.category-section-header .category-icon {
+    font-size: 1.5rem;
+}
+
 /* Track Cards */
 .track-cards {
     display: grid;

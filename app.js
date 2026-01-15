@@ -85,36 +85,48 @@ function loadProgressData() {
 }
 
 function updateEducationProgress(data) {
-    // Calculate track progress
-    const tracks = ['stocks', 'taxes', 'nonprofits', 'labor'];
-    const topicCounts = {
-        stocks: 25, // 5 levels * 5 topics
-        taxes: 20,
-        nonprofits: 16,
-        labor: 17
+    // All available tracks with estimated topic counts per level (~4 topics × 5 levels = 20)
+    const allTracks = {
+        // Finance
+        stocks: 20, taxes: 20, realestate: 20, crypto: 20, credit: 20, retirement: 10,
+        // Business
+        business: 10, freelancing: 10, negotiation: 10, marketing: 10,
+        // Tech
+        ai: 10, cybersecurity: 10,
+        // Civic
+        nonprofits: 16, labor: 17, politics: 10, california: 15,
+        // Personal
+        productivity: 10
     };
     
     let totalCompleted = 0;
     let totalTopics = 0;
+    let tracksStarted = 0;
+    let tracksCompleted = 0;
     
-    tracks.forEach(track => {
+    Object.keys(allTracks).forEach(track => {
         const trackData = data[track];
-        if (trackData && trackData.completedTopics) {
+        const estimatedTotal = allTracks[track];
+        
+        if (trackData && trackData.completedTopics && trackData.completedTopics.length > 0) {
             const completed = trackData.completedTopics.length;
-            const total = topicCounts[track];
-            const percent = Math.round((completed / total) * 100);
+            tracksStarted++;
+            totalCompleted += completed;
             
-            // Update individual track progress
-            const trackEl = document.getElementById(`${track}-progress`);
-            if (trackEl) {
-                trackEl.textContent = `${percent}%`;
+            // Check if track is complete (using completed levels as indicator)
+            if (trackData.completedLevels && trackData.completedLevels.length >= 5) {
+                tracksCompleted++;
             }
             
-            totalCompleted += completed;
-            totalTopics += total;
-        } else {
-            totalTopics += topicCounts[track];
+            // Update individual track progress if element exists
+            const trackEl = document.getElementById(`${track}-progress`);
+            if (trackEl) {
+                const percent = Math.min(100, Math.round((completed / estimatedTotal) * 100));
+                trackEl.textContent = `${percent}%`;
+            }
         }
+        
+        totalTopics += estimatedTotal;
     });
     
     // Update overall education progress
@@ -125,6 +137,12 @@ function updateEducationProgress(data) {
     
     if (progressFill) progressFill.style.width = `${overallPercent}%`;
     if (progressPercent) progressPercent.textContent = `${overallPercent}%`;
+    
+    // Update tracks started/completed display if elements exist
+    const tracksStartedEl = document.getElementById('tracks-started');
+    const tracksCompletedEl = document.getElementById('tracks-completed');
+    if (tracksStartedEl) tracksStartedEl.textContent = tracksStarted;
+    if (tracksCompletedEl) tracksCompletedEl.textContent = tracksCompleted;
 }
 
 function updateGuidesProgress(data) {
@@ -268,6 +286,32 @@ function updateContinueSection() {
     const guidesProgress = JSON.parse(localStorage.getItem('guidesProgress') || '{"read":[]}');
     const budgetData = localStorage.getItem('budgetPlannerData');
     
+    // All tracks with metadata
+    const allTracks = {
+        // Finance
+        stocks: { name: 'Stock Market', icon: '📈', topics: 20 },
+        taxes: { name: 'Business Taxes', icon: '🧾', topics: 20 },
+        realestate: { name: 'Real Estate', icon: '🏠', topics: 20 },
+        crypto: { name: 'Cryptocurrency', icon: '₿', topics: 20 },
+        credit: { name: 'Credit Building', icon: '💳', topics: 20 },
+        retirement: { name: 'Retirement', icon: '🏖️', topics: 10 },
+        // Business
+        business: { name: 'Starting a Business', icon: '🚀', topics: 10 },
+        freelancing: { name: 'Freelancing', icon: '💼', topics: 10 },
+        negotiation: { name: 'Negotiation', icon: '🤝', topics: 10 },
+        marketing: { name: 'Digital Marketing', icon: '📱', topics: 10 },
+        // Tech
+        ai: { name: 'AI Tools', icon: '🤖', topics: 10 },
+        cybersecurity: { name: 'Cybersecurity', icon: '🔒', topics: 10 },
+        // Civic
+        nonprofits: { name: 'Nonprofits', icon: '❤️', topics: 16 },
+        labor: { name: 'Labor Laws', icon: '⚖️', topics: 17 },
+        politics: { name: 'Politics', icon: '🏛️', topics: 10 },
+        california: { name: 'California Law', icon: '📜', topics: 15 },
+        // Personal
+        productivity: { name: 'Productivity', icon: '🎯', topics: 10 }
+    };
+    
     // Determine what to continue
     let continueItem = null;
     
@@ -282,29 +326,14 @@ function updateContinueSection() {
     }
     // Check for in-progress education tracks
     else {
-        const tracks = ['stocks', 'taxes', 'nonprofits', 'labor'];
-        const topicCounts = { stocks: 25, taxes: 20, nonprofits: 16, labor: 17 };
-        const trackNames = {
-            stocks: 'Stock Market',
-            taxes: 'Business Taxes',
-            nonprofits: 'Nonprofits',
-            labor: 'Labor Laws'
-        };
-        const trackIcons = {
-            stocks: '📈',
-            taxes: '🧾',
-            nonprofits: '🤝',
-            labor: '⚖️'
-        };
-        
-        for (const track of tracks) {
-            const data = eduProgress[track];
+        for (const [trackId, trackInfo] of Object.entries(allTracks)) {
+            const data = eduProgress[trackId];
             if (data && data.completedTopics && data.completedTopics.length > 0) {
-                const percent = Math.round((data.completedTopics.length / topicCounts[track]) * 100);
+                const percent = Math.min(100, Math.round((data.completedTopics.length / trackInfo.topics) * 100));
                 if (percent < 100) {
                     continueItem = {
-                        icon: trackIcons[track],
-                        title: `Continue ${trackNames[track]}`,
+                        icon: trackInfo.icon,
+                        title: `Continue ${trackInfo.name}`,
                         desc: `You're ${percent}% through this track`,
                         link: 'tools/education-hub/index.html'
                     };
@@ -327,8 +356,8 @@ function updateContinueSection() {
         } else {
             continueItem = {
                 icon: '📚',
-                title: 'Start Learning',
-                desc: 'Begin your first Education Hub track',
+                title: 'Explore Learning Tracks',
+                desc: 'Choose from 17+ tracks across finance, business, tech & more',
                 link: 'tools/education-hub/index.html'
             };
         }
