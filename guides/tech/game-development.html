@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Development with Unity | Blueprint to Success</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="main-nav"><div class="nav-container"><a href="../../index.html" class="nav-logo"><span class="logo-icon">📘</span><span class="logo-text">Blueprint to Success</span></a><div class="nav-links"><a href="../../index.html" class="nav-link">Dashboard</a><a href="../index.html" class="nav-link active">Guides</a><div class="nav-dropdown"><button class="nav-link dropdown-trigger">Tools ▾</button><div class="dropdown-menu"><a href="../../tools/budget-planner/index.html">Budget Planner</a><a href="../../tools/education-hub/index.html">Education Hub</a></div></div><button id="theme-toggle" class="theme-btn">🌙</button></div><button class="mobile-menu-btn" id="mobile-menu-btn">☰</button></div></nav>
+    <main class="main-content">
+        <header class="guide-header"><div class="guide-header-content"><div class="breadcrumb"><a href="../index.html">Guides</a> <span>/</span> <a href="../index.html#tech">Tech</a> <span>/</span> <span>Game Development</span></div><h1>Game Development with Unity</h1><div class="guide-meta"><span>💻 Tech</span><span>⏱️ 15 min read</span></div></div></header>
+        <div class="guide-body">
+            <article class="guide-content">
+                <h2>Why Unity?</h2>
+                <p>Unity is the most popular game engine, used for mobile games, PC games, VR/AR, and more. It's free to start and uses C# programming.</p>
+                
+                <h2>Getting Started</h2>
+                <ol>
+                    <li>Download Unity Hub (free)</li>
+                    <li>Install Unity Editor</li>
+                    <li>Learn C# basics</li>
+                    <li>Follow Unity Learn tutorials</li>
+                </ol>
+
+                <h2>Core Concepts</h2>
+                <ul>
+                    <li><strong>GameObjects:</strong> Everything in your game is a GameObject</li>
+                    <li><strong>Components:</strong> Add functionality to GameObjects</li>
+                    <li><strong>Scripts:</strong> C# code that controls behavior</li>
+                    <li><strong>Prefabs:</strong> Reusable GameObject templates</li>
+                    <li><strong>Scenes:</strong> Different levels or screens</li>
+                </ul>
+
+                <h2>Essential Systems</h2>
+                <ul>
+                    <li><strong>Physics:</strong> Rigidbodies, colliders, triggers</li>
+                    <li><strong>Animation:</strong> Animator controller, blend trees</li>
+                    <li><strong>UI:</strong> Canvas, buttons, text</li>
+                    <li><strong>Audio:</strong> Sound effects and music</li>
+                </ul>
+
+                <h2>Game Types to Start With</h2>
+                <ul>
+                    <li>2D Platformer (like Mario)</li>
+                    <li>Top-down shooter</li>
+                    <li>Puzzle game</li>
+                    <li>Endless runner</li>
+                </ul>
+
+                <h2>Career Options</h2>
+                <ul>
+                    <li>Game Developer at a studio</li>
+                    <li>Indie game developer</li>
+                    <li>VR/AR developer</li>
+                    <li>Simulation developer</li>
+                </ul>
+
+                <h2>Monetization</h2>
+                <ul>
+                    <li>Sell games on Steam, App Store, Play Store</li>
+                    <li>Free-to-play with in-app purchases</li>
+                    <li>Ads in mobile games</li>
+                </ul>
+
+                <div class="guide-actions">
+                    <button class="guide-btn primary" id="mark-read-btn" onclick="markAsRead()">Mark as Read</button>
+                    <a href="../index.html#tech" class="guide-btn secondary">Back to Guides</a>
+                </div>
+            </article>
+        </div>
+    </main>
+    <footer class="main-footer"><div class="footer-bottom"><p>Blueprint to Success</p></div></footer>
+    <script src="../../app.js"></script>
+    <script>const guideId = 'game-development'; document.addEventListener('DOMContentLoaded', () => { if (window.blueprintApp.isGuideRead(guideId)) { document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }}); function markAsRead() { window.blueprintApp.markGuideAsRead(guideId); document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }</script>
+</body>
+</html>

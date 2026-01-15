@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Development | Blueprint to Success</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="main-nav"><div class="nav-container"><a href="../../index.html" class="nav-logo"><span class="logo-icon">📘</span><span class="logo-text">Blueprint to Success</span></a><div class="nav-links"><a href="../../index.html" class="nav-link">Dashboard</a><a href="../index.html" class="nav-link active">Guides</a><div class="nav-dropdown"><button class="nav-link dropdown-trigger">Tools ▾</button><div class="dropdown-menu"><a href="../../tools/budget-planner/index.html">Budget Planner</a><a href="../../tools/education-hub/index.html">Education Hub</a></div></div><button id="theme-toggle" class="theme-btn">🌙</button></div><button class="mobile-menu-btn" id="mobile-menu-btn">☰</button></div></nav>
+    <main class="main-content">
+        <header class="guide-header"><div class="guide-header-content"><div class="breadcrumb"><a href="../index.html">Guides</a> <span>/</span> <a href="../index.html#tech">Tech</a> <span>/</span> <span>Software Development</span></div><h1>Software Development</h1><div class="guide-meta"><span>💻 Tech</span><span>⏱️ 12 min read</span></div></div></header>
+        <div class="guide-body">
+            <article class="guide-content">
+                <h2>Introduction</h2>
+                <p>Software development is a rewarding career with strong job security, high salaries, and opportunities for creativity and problem-solving.</p>
+                
+                <h2>Career Paths</h2>
+                <ul>
+                    <li><strong>Frontend Developer:</strong> User interfaces and experiences</li>
+                    <li><strong>Backend Developer:</strong> Server logic and databases</li>
+                    <li><strong>Full Stack Developer:</strong> Both frontend and backend</li>
+                    <li><strong>DevOps Engineer:</strong> Infrastructure and deployment</li>
+                    <li><strong>Data Engineer:</strong> Data pipelines and systems</li>
+                </ul>
+
+                <h2>Essential Skills</h2>
+                <ul>
+                    <li><strong>Programming Languages:</strong> Start with one, expand later</li>
+                    <li><strong>Version Control:</strong> Git is essential</li>
+                    <li><strong>Problem Solving:</strong> Break down complex problems</li>
+                    <li><strong>Communication:</strong> Work with teams and stakeholders</li>
+                    <li><strong>Continuous Learning:</strong> Tech evolves constantly</li>
+                </ul>
+
+                <h2>Best Practices</h2>
+                <ul>
+                    <li>Write clean, readable code</li>
+                    <li>Test your code thoroughly</li>
+                    <li>Use version control for everything</li>
+                    <li>Document your work</li>
+                    <li>Code review with peers</li>
+                    <li>Follow DRY (Don't Repeat Yourself)</li>
+                </ul>
+
+                <h2>Building Your Career</h2>
+                <ol>
+                    <li>Build projects for your portfolio</li>
+                    <li>Contribute to open source</li>
+                    <li>Network at meetups and online</li>
+                    <li>Practice coding challenges (LeetCode, HackerRank)</li>
+                    <li>Keep learning new technologies</li>
+                </ol>
+
+                <h2>Salary Expectations</h2>
+                <p>Entry level: $60K-$80K. Mid-level: $90K-$130K. Senior: $130K-$200K+. Tech leads and architects can earn $200K+.</p>
+
+                <div class="guide-actions">
+                    <button class="guide-btn primary" id="mark-read-btn" onclick="markAsRead()">Mark as Read</button>
+                    <a href="../index.html#tech" class="guide-btn secondary">Back to Guides</a>
+                </div>
+            </article>
+        </div>
+    </main>
+    <footer class="main-footer"><div class="footer-bottom"><p>Blueprint to Success</p></div></footer>
+    <script src="../../app.js"></script>
+    <script>const guideId = 'software-development'; document.addEventListener('DOMContentLoaded', () => { if (window.blueprintApp.isGuideRead(guideId)) { document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }}); function markAsRead() { window.blueprintApp.markGuideAsRead(guideId); document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }</script>
+</body>
+</html>

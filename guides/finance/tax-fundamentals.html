@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Fundamentals | Blueprint to Success</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <span class="logo-icon">📘</span>
+                <span class="logo-text">Blueprint to Success</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html" class="nav-link">Dashboard</a>
+                <a href="../index.html" class="nav-link active">Guides</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">Tools ▾</button>
+                    <div class="dropdown-menu">
+                        <a href="../../tools/budget-planner/index.html">Budget Planner</a>
+                        <a href="../../tools/education-hub/index.html">Education Hub</a>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="theme-btn">🌙</button>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="guide-header">
+            <div class="guide-header-content">
+                <div class="breadcrumb">
+                    <a href="../index.html">Guides</a> <span>/</span>
+                    <a href="../index.html#finance">Finance</a> <span>/</span>
+                    <span>Tax Fundamentals</span>
+                </div>
+                <h1>Tax Fundamentals</h1>
+                <div class="guide-meta">
+                    <span>📚 Finance</span>
+                    <span>⏱️ 8 min read</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="guide-body">
+            <article class="guide-content">
+                <h2>Introduction</h2>
+                <p>Understanding taxes is crucial for financial planning and minimizing tax liability. This guide covers the basics of income tax, deductions, and credits.</p>
+
+                <h2>Understanding Taxes</h2>
+                <ul>
+                    <li><strong>Income Tax:</strong> Tax on earnings from work (wages, salaries) and investments (dividends, capital gains).</li>
+                    <li><strong>Marginal Tax Rate:</strong> The tax rate on your last dollar of income. The US uses progressive tax brackets.</li>
+                    <li><strong>Effective Tax Rate:</strong> Your total tax paid divided by total income. Usually lower than your marginal rate.</li>
+                </ul>
+
+                <h2>Deductions vs Credits</h2>
+                <ul>
+                    <li><strong>Deductions:</strong> Reduce your taxable income. A $1,000 deduction saves you $220 if you're in the 22% bracket.</li>
+                    <li><strong>Credits:</strong> Reduce your actual tax bill dollar-for-dollar. A $1,000 credit saves you $1,000.</li>
+                    <li><strong>Standard Deduction:</strong> A flat amount you can deduct without itemizing ($13,850 single, $27,700 married in 2023).</li>
+                    <li><strong>Itemized Deductions:</strong> Specific deductions like mortgage interest, state taxes, and charitable donations.</li>
+                </ul>
+
+                <h2>Common Deductions</h2>
+                <ul>
+                    <li>Mortgage interest</li>
+                    <li>State and local taxes (SALT) - capped at $10,000</li>
+                    <li>Charitable contributions</li>
+                    <li>Medical expenses (above 7.5% of AGI)</li>
+                    <li>Student loan interest (up to $2,500)</li>
+                    <li>Self-employment expenses</li>
+                </ul>
+
+                <h2>Common Credits</h2>
+                <ul>
+                    <li>Child Tax Credit</li>
+                    <li>Earned Income Tax Credit (EITC)</li>
+                    <li>Education credits (American Opportunity, Lifetime Learning)</li>
+                    <li>Retirement savings credit (Saver's Credit)</li>
+                    <li>Energy efficiency credits</li>
+                </ul>
+
+                <h2>Tax Planning Strategies</h2>
+                <ul>
+                    <li><strong>Maximize Retirement Contributions:</strong> 401(k) and IRA contributions reduce taxable income.</li>
+                    <li><strong>HSA Contributions:</strong> Triple tax advantage for healthcare expenses.</li>
+                    <li><strong>Tax-Loss Harvesting:</strong> Sell losing investments to offset gains.</li>
+                    <li><strong>Timing Income and Deductions:</strong> Shift income or deductions between years strategically.</li>
+                </ul>
+
+                <h2>Filing Taxes</h2>
+                <ul>
+                    <li><strong>Tax Software:</strong> TurboTax, H&R Block, FreeTaxUSA for DIY filing.</li>
+                    <li><strong>Tax Professional:</strong> CPA or tax preparer for complex situations.</li>
+                    <li><strong>Free File:</strong> IRS Free File for income under $73,000.</li>
+                    <li><strong>Deadline:</strong> April 15th (or next business day).</li>
+                </ul>
+
+                <hr>
+                <p><strong>Go deeper:</strong> <a href="../../tools/education-hub/index.html">Take the Business Taxes course</a> in the Education Hub!</p>
+
+                <div class="guide-actions">
+                    <button class="guide-btn primary" id="mark-read-btn" onclick="markAsRead()">Mark as Read</button>
+                    <a href="../index.html#finance" class="guide-btn secondary">Back to Guides</a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-bottom">
+            <p>Blueprint to Success - Your data is stored locally.</p>
+        </div>
+    </footer>
+
+    <script src="../../app.js"></script>
+    <script>
+        const guideId = 'tax-fundamentals';
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.blueprintApp.isGuideRead(guideId)) {
+                document.getElementById('mark-read-btn').textContent = '✓ Marked as Read';
+                document.getElementById('mark-read-btn').classList.add('marked');
+            }
+        });
+        function markAsRead() {
+            window.blueprintApp.markGuideAsRead(guideId);
+            document.getElementById('mark-read-btn').textContent = '✓ Marked as Read';
+            document.getElementById('mark-read-btn').classList.add('marked');
+        }
+    </script>
+</body>
+</html>

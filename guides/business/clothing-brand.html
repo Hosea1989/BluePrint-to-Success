@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starting a Clothing Brand | Blueprint to Success</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="main-nav"><div class="nav-container"><a href="../../index.html" class="nav-logo"><span class="logo-icon">📘</span><span class="logo-text">Blueprint to Success</span></a><div class="nav-links"><a href="../../index.html" class="nav-link">Dashboard</a><a href="../index.html" class="nav-link active">Guides</a><div class="nav-dropdown"><button class="nav-link dropdown-trigger">Tools ▾</button><div class="dropdown-menu"><a href="../../tools/budget-planner/index.html">Budget Planner</a><a href="../../tools/education-hub/index.html">Education Hub</a></div></div><button id="theme-toggle" class="theme-btn">🌙</button></div><button class="mobile-menu-btn" id="mobile-menu-btn">☰</button></div></nav>
+    <main class="main-content">
+        <header class="guide-header"><div class="guide-header-content"><div class="breadcrumb"><a href="../index.html">Guides</a> <span>/</span> <a href="../index.html#business">Business</a> <span>/</span> <span>Clothing Brand</span></div><h1>Starting a Clothing Brand</h1><div class="guide-meta"><span>🏢 Business</span><span>⏱️ 15 min read</span></div></div></header>
+        <div class="guide-body">
+            <article class="guide-content">
+                <h2>Getting Started</h2>
+                <ul>
+                    <li><strong>Find Your Niche:</strong> What makes your brand unique? Who's your target customer?</li>
+                    <li><strong>Define Your Brand:</strong> Mission, values, aesthetic, and story</li>
+                    <li><strong>Research Competition:</strong> What are others doing? How will you differentiate?</li>
+                </ul>
+                
+                <h2>Business Setup</h2>
+                <ol>
+                    <li>Choose a memorable brand name</li>
+                    <li>Register your business (LLC recommended)</li>
+                    <li>Get necessary permits and licenses</li>
+                    <li>Set up business banking</li>
+                    <li>Create your brand identity (logo, colors, fonts)</li>
+                </ol>
+
+                <h2>Production Options</h2>
+                <ul>
+                    <li><strong>Print-on-Demand:</strong> Low risk, low investment (Printful, Printify)</li>
+                    <li><strong>Wholesale Blanks:</strong> Buy blanks and customize (lower margins)</li>
+                    <li><strong>Cut and Sew:</strong> Custom manufacturing (higher investment, unique products)</li>
+                    <li><strong>Dropshipping:</strong> Source from suppliers without holding inventory</li>
+                </ul>
+
+                <h2>Design Process</h2>
+                <ul>
+                    <li>Create original designs or hire a designer</li>
+                    <li>Source quality blanks (fit and fabric matter)</li>
+                    <li>Order samples before bulk production</li>
+                    <li>Test with your target audience</li>
+                </ul>
+
+                <h2>Selling Your Products</h2>
+                <ul>
+                    <li><strong>Website:</strong> Shopify, WooCommerce, or Squarespace</li>
+                    <li><strong>Marketplaces:</strong> Etsy, Amazon Handmade</li>
+                    <li><strong>Social Commerce:</strong> Instagram Shop, TikTok Shop</li>
+                    <li><strong>Pop-ups:</strong> Local markets and events</li>
+                </ul>
+
+                <h2>Marketing Your Brand</h2>
+                <ul>
+                    <li>Build social media presence (Instagram, TikTok)</li>
+                    <li>Collaborate with influencers</li>
+                    <li>User-generated content from customers</li>
+                    <li>Email marketing for launches and drops</li>
+                    <li>Create a brand community</li>
+                </ul>
+
+                <h2>Startup Costs</h2>
+                <ul>
+                    <li>Business registration: $50-$500</li>
+                    <li>Website: $30-$300/month</li>
+                    <li>Initial inventory: $500-$5,000+</li>
+                    <li>Photography: $0-$500</li>
+                    <li>Marketing budget: Variable</li>
+                </ul>
+
+                <div class="guide-actions">
+                    <button class="guide-btn primary" id="mark-read-btn" onclick="markAsRead()">Mark as Read</button>
+                    <a href="../index.html#business" class="guide-btn secondary">Back to Guides</a>
+                </div>
+            </article>
+        </div>
+    </main>
+    <footer class="main-footer"><div class="footer-bottom"><p>Blueprint to Success</p></div></footer>
+    <script src="../../app.js"></script>
+    <script>const guideId = 'clothing-brand'; document.addEventListener('DOMContentLoaded', () => { if (window.blueprintApp.isGuideRead(guideId)) { document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }}); function markAsRead() { window.blueprintApp.markGuideAsRead(guideId); document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }</script>
+</body>
+</html>

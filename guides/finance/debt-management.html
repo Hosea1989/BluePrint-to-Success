@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debt Management | Blueprint to Success</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <span class="logo-icon">📘</span>
+                <span class="logo-text">Blueprint to Success</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html" class="nav-link">Dashboard</a>
+                <a href="../index.html" class="nav-link active">Guides</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">Tools ▾</button>
+                    <div class="dropdown-menu">
+                        <a href="../../tools/budget-planner/index.html">Budget Planner</a>
+                        <a href="../../tools/education-hub/index.html">Education Hub</a>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="theme-btn">🌙</button>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="guide-header">
+            <div class="guide-header-content">
+                <div class="breadcrumb">
+                    <a href="../index.html">Guides</a> <span>/</span>
+                    <a href="../index.html#finance">Finance</a> <span>/</span>
+                    <span>Debt Management</span>
+                </div>
+                <h1>Debt Management</h1>
+                <div class="guide-meta">
+                    <span>📚 Finance</span>
+                    <span>⏱️ 8 min read</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="guide-body">
+            <article class="guide-content">
+                <h2>Introduction</h2>
+                <p>Managing debt effectively is essential for financial health and achieving long-term goals. This guide provides strategies for reducing and eliminating debt.</p>
+
+                <h2>Types of Debt</h2>
+                <ul>
+                    <li><strong>Good Debt:</strong> Investments in your future, like student loans and mortgages. These typically have lower interest rates and can build assets or increase earning potential.</li>
+                    <li><strong>Bad Debt:</strong> High-interest debt, such as credit card balances. This type of debt costs you money without building value.</li>
+                </ul>
+
+                <h2>Debt Repayment Strategies</h2>
+                <h3>Snowball Method</h3>
+                <p>Pay off your smallest debts first while making minimum payments on larger debts. As each small debt is paid off, roll that payment into the next smallest debt.</p>
+                <ul>
+                    <li><strong>Pros:</strong> Quick wins build momentum and motivation</li>
+                    <li><strong>Cons:</strong> May pay more interest over time</li>
+                </ul>
+
+                <h3>Avalanche Method</h3>
+                <p>Focus on paying off debts with the highest interest rates first, regardless of balance size.</p>
+                <ul>
+                    <li><strong>Pros:</strong> Saves the most money on interest</li>
+                    <li><strong>Cons:</strong> May take longer to see progress</li>
+                </ul>
+
+                <h2>Consolidation and Refinancing</h2>
+                <ul>
+                    <li><strong>Debt Consolidation:</strong> Combine multiple debts into one loan with a lower interest rate. Simplifies payments and can reduce total interest.</li>
+                    <li><strong>Refinancing:</strong> Replace an existing loan with a new one at a lower interest rate. Common for mortgages and student loans.</li>
+                    <li><strong>Balance Transfer:</strong> Move high-interest credit card debt to a card with a 0% introductory APR.</li>
+                </ul>
+
+                <h2>Tips for Getting Out of Debt</h2>
+                <ol>
+                    <li>Stop adding new debt - cut up credit cards if needed</li>
+                    <li>Create a realistic budget that prioritizes debt payments</li>
+                    <li>Find ways to increase income (side hustles, overtime)</li>
+                    <li>Negotiate with creditors for lower interest rates</li>
+                    <li>Celebrate milestones to stay motivated</li>
+                </ol>
+
+                <h2>When to Seek Help</h2>
+                <ul>
+                    <li><strong>Credit Counseling:</strong> Non-profit agencies can help create a debt management plan</li>
+                    <li><strong>Debt Settlement:</strong> Negotiate to pay less than you owe (impacts credit score)</li>
+                    <li><strong>Bankruptcy:</strong> Last resort option for overwhelming debt</li>
+                </ul>
+
+                <hr>
+                <p><strong>Track your debt:</strong> <a href="../../tools/budget-planner/index.html">Use the Budget Planner</a> to monitor your debt payoff progress!</p>
+
+                <div class="guide-actions">
+                    <button class="guide-btn primary" id="mark-read-btn" onclick="markAsRead()">Mark as Read</button>
+                    <a href="../index.html#finance" class="guide-btn secondary">Back to Guides</a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-bottom">
+            <p>Blueprint to Success - Your data is stored locally.</p>
+        </div>
+    </footer>
+
+    <script src="../../app.js"></script>
+    <script>
+        const guideId = 'debt-management';
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.blueprintApp.isGuideRead(guideId)) {
+                document.getElementById('mark-read-btn').textContent = '✓ Marked as Read';
+                document.getElementById('mark-read-btn').classList.add('marked');
+            }
+        });
+        function markAsRead() {
+            window.blueprintApp.markGuideAsRead(guideId);
+            document.getElementById('mark-read-btn').textContent = '✓ Marked as Read';
+            document.getElementById('mark-read-btn').classList.add('marked');
+        }
+    </script>
+</body>
+</html>

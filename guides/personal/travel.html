@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel and Exploration | Blueprint to Success</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="main-nav"><div class="nav-container"><a href="../../index.html" class="nav-logo"><span class="logo-icon">📘</span><span class="logo-text">Blueprint to Success</span></a><div class="nav-links"><a href="../../index.html" class="nav-link">Dashboard</a><a href="../index.html" class="nav-link active">Guides</a><div class="nav-dropdown"><button class="nav-link dropdown-trigger">Tools ▾</button><div class="dropdown-menu"><a href="../../tools/budget-planner/index.html">Budget Planner</a><a href="../../tools/education-hub/index.html">Education Hub</a></div></div><button id="theme-toggle" class="theme-btn">🌙</button></div><button class="mobile-menu-btn" id="mobile-menu-btn">☰</button></div></nav>
+    <main class="main-content">
+        <header class="guide-header"><div class="guide-header-content"><div class="breadcrumb"><a href="../index.html">Guides</a> <span>/</span> <a href="../index.html#personal">Personal</a> <span>/</span> <span>Travel</span></div><h1>Travel and Exploration</h1><div class="guide-meta"><span>🌱 Personal Growth</span><span>⏱️ 10 min read</span></div></div></header>
+        <div class="guide-body">
+            <article class="guide-content">
+                <h2>Benefits of Travel</h2>
+                <ul>
+                    <li>Broadens perspective and worldview</li>
+                    <li>Builds confidence and independence</li>
+                    <li>Creates lasting memories</li>
+                    <li>Accelerates language learning</li>
+                    <li>Expands professional network</li>
+                </ul>
+                
+                <h2>Planning Your Trip</h2>
+                <ol>
+                    <li><strong>Choose Destination:</strong> Consider budget, safety, and interests</li>
+                    <li><strong>Set Budget:</strong> Include flights, accommodation, food, activities</li>
+                    <li><strong>Book Early:</strong> Better prices on flights and hotels</li>
+                    <li><strong>Research:</strong> Learn about culture, customs, and must-see spots</li>
+                    <li><strong>Documents:</strong> Check passport validity and visa requirements</li>
+                </ol>
+
+                <h2>Budget Travel Tips</h2>
+                <ul>
+                    <li><strong>Flights:</strong> Use Google Flights, set price alerts, be flexible with dates</li>
+                    <li><strong>Accommodation:</strong> Consider hostels, Airbnb, or house-sitting</li>
+                    <li><strong>Food:</strong> Eat where locals eat, cook some meals</li>
+                    <li><strong>Transportation:</strong> Use public transit, walk when possible</li>
+                    <li><strong>Credit Cards:</strong> Use no-foreign-transaction-fee cards</li>
+                </ul>
+
+                <h2>Travel Hacking</h2>
+                <ul>
+                    <li>Sign up bonuses on travel credit cards</li>
+                    <li>Accumulate airline and hotel points</li>
+                    <li>Book during sales and off-peak seasons</li>
+                    <li>Use rewards for free flights and hotels</li>
+                </ul>
+
+                <h2>Cultural Immersion</h2>
+                <ul>
+                    <li>Learn basic phrases in the local language</li>
+                    <li>Try local food and customs</li>
+                    <li>Connect with locals through tours or apps</li>
+                    <li>Respect local traditions and dress codes</li>
+                </ul>
+
+                <h2>Safety Tips</h2>
+                <ul>
+                    <li>Register with your embassy when traveling abroad</li>
+                    <li>Keep copies of important documents</li>
+                    <li>Get travel insurance</li>
+                    <li>Stay aware of your surroundings</li>
+                </ul>
+
+                <div class="guide-actions">
+                    <button class="guide-btn primary" id="mark-read-btn" onclick="markAsRead()">Mark as Read</button>
+                    <a href="../index.html#personal" class="guide-btn secondary">Back to Guides</a>
+                </div>
+            </article>
+        </div>
+    </main>
+    <footer class="main-footer"><div class="footer-bottom"><p>Blueprint to Success</p></div></footer>
+    <script src="../../app.js"></script>
+    <script>const guideId = 'travel'; document.addEventListener('DOMContentLoaded', () => { if (window.blueprintApp.isGuideRead(guideId)) { document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }}); function markAsRead() { window.blueprintApp.markGuideAsRead(guideId); document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }</script>
+</body>
+</html>

@@ -5,8 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financial Education Hub | Blueprint to Success</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .site-nav { position: fixed; top: 0; left: 0; right: 0; height: 50px; background: var(--bg-primary, #fff); border-bottom: 1px solid var(--border-color, #e2e8f0); z-index: 1001; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+        .site-nav .nav-brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; color: inherit; }
+        .site-nav .nav-links { display: flex; gap: 4px; }
+        .site-nav .nav-links a { padding: 8px 12px; border-radius: 6px; text-decoration: none; color: var(--text-secondary, #64748b); font-size: 0.9rem; transition: all 0.2s; }
+        .site-nav .nav-links a:hover, .site-nav .nav-links a.active { background: var(--accent-primary, #6366f1); color: white; }
+        .app-container { padding-top: 50px; }
+        [data-theme="dark"] .site-nav { background: #1e293b; border-color: #334155; }
+    </style>
 </head>
 <body>
+    <!-- Site Navigation -->
+    <nav class="site-nav">
+        <a href="../../index.html" class="nav-brand">📘 Blueprint to Success</a>
+        <div class="nav-links">
+            <a href="../../index.html">Dashboard</a>
+            <a href="../../guides/index.html">Guides</a>
+            <a href="../budget-planner/index.html">Budget</a>
+            <a href="index.html" class="active">Learn</a>
+        </div>
+    </nav>
+
     <div class="app-container">
         <!-- Sidebar Navigation -->
         <nav class="sidebar">

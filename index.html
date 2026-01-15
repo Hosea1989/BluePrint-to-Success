@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blueprint to Success</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">📘</span>
+                <span class="logo-text">Blueprint to Success</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Dashboard</a>
+                <a href="guides/index.html" class="nav-link">Guides</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">Tools ▾</button>
+                    <div class="dropdown-menu">
+                        <a href="tools/budget-planner/index.html">Budget Planner</a>
+                        <a href="tools/education-hub/index.html">Education Hub</a>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="theme-btn">🌙</button>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html" class="mobile-link active">Dashboard</a>
+        <a href="guides/index.html" class="mobile-link">Guides</a>
+        <a href="tools/budget-planner/index.html" class="mobile-link">Budget Planner</a>
+        <a href="tools/education-hub/index.html" class="mobile-link">Education Hub</a>
+    </div>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome to <span class="gradient-text">Blueprint to Success</span></h1>
+                <p class="hero-subtitle">Your personal roadmap to financial literacy, technical skills, and personal growth.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="total-guides">30+</span>
+                        <span class="stat-label">Guides</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Learning Tracks</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Interactive Tools</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Overview -->
+        <section class="section">
+            <h2 class="section-title">Your Progress</h2>
+            <div class="progress-grid">
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <span class="progress-icon">📚</span>
+                        <h3>Education Hub</h3>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="education-progress" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-percent" id="education-percent">0%</span>
+                    </div>
+                    <div class="progress-details" id="education-details">
+                        <div class="track-progress">
+                            <span>📈 Stocks</span>
+                            <span id="stocks-progress">0%</span>
+                        </div>
+                        <div class="track-progress">
+                            <span>🧾 Taxes</span>
+                            <span id="taxes-progress">0%</span>
+                        </div>
+                        <div class="track-progress">
+                            <span>🤝 Nonprofits</span>
+                            <span id="nonprofits-progress">0%</span>
+                        </div>
+                        <div class="track-progress">
+                            <span>⚖️ Labor Laws</span>
+                            <span id="labor-progress">0%</span>
+                        </div>
+                    </div>
+                    <a href="tools/education-hub/index.html" class="progress-action">Continue Learning →</a>
+                </div>
+
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <span class="progress-icon">📖</span>
+                        <h3>Guides Read</h3>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="guides-progress" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-percent" id="guides-percent">0%</span>
+                    </div>
+                    <div class="progress-details">
+                        <div class="track-progress">
+                            <span>💰 Finance</span>
+                            <span id="finance-guides-progress">0/11</span>
+                        </div>
+                        <div class="track-progress">
+                            <span>💻 Tech</span>
+                            <span id="tech-guides-progress">0/12</span>
+                        </div>
+                        <div class="track-progress">
+                            <span>🌱 Personal</span>
+                            <span id="personal-guides-progress">0/3</span>
+                        </div>
+                        <div class="track-progress">
+                            <span>🏢 Business</span>
+                            <span id="business-guides-progress">0/5</span>
+                        </div>
+                    </div>
+                    <a href="guides/index.html" class="progress-action">Browse Guides →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Access Tools -->
+        <section class="section">
+            <h2 class="section-title">Tools</h2>
+            <div class="tools-grid">
+                <a href="tools/budget-planner/index.html" class="tool-card">
+                    <div class="tool-icon">💰</div>
+                    <div class="tool-info">
+                        <h3>Budget Planner</h3>
+                        <p>Track income, expenses, debts, and savings goals. Audit your subscriptions and plan for upcoming expenses.</p>
+                    </div>
+                    <div class="tool-stats" id="budget-stats">
+                        <span class="tool-stat">
+                            <span class="stat-value" id="budget-income">--</span>
+                            <span class="stat-name">Income</span>
+                        </span>
+                        <span class="tool-stat">
+                            <span class="stat-value" id="budget-remaining">--</span>
+                            <span class="stat-name">Remaining</span>
+                        </span>
+                    </div>
+                    <span class="tool-action">Open Tool →</span>
+                </a>
+
+                <a href="tools/education-hub/index.html" class="tool-card">
+                    <div class="tool-icon">📚</div>
+                    <div class="tool-info">
+                        <h3>Education Hub</h3>
+                        <p>Interactive courses on stocks, taxes, nonprofits, and labor laws. Learn from beginner to pro with quizzes.</p>
+                    </div>
+                    <div class="tool-stats">
+                        <span class="tool-stat">
+                            <span class="stat-value">4</span>
+                            <span class="stat-name">Tracks</span>
+                        </span>
+                        <span class="tool-stat">
+                            <span class="stat-value">20</span>
+                            <span class="stat-name">Levels</span>
+                        </span>
+                    </div>
+                    <span class="tool-action">Start Learning →</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Guide Categories -->
+        <section class="section">
+            <h2 class="section-title">Guide Library</h2>
+            <div class="categories-grid">
+                <a href="guides/index.html#finance" class="category-card finance">
+                    <div class="category-icon">💰</div>
+                    <h3>Finance</h3>
+                    <p>Credit scores, budgeting, investing, debt management, taxes, and more.</p>
+                    <span class="category-count">11 guides</span>
+                </a>
+
+                <a href="guides/index.html#tech" class="category-card tech">
+                    <div class="category-icon">💻</div>
+                    <h3>Tech Skills</h3>
+                    <p>Web development, Python, JavaScript, app development, and programming fundamentals.</p>
+                    <span class="category-count">12 guides</span>
+                </a>
+
+                <a href="guides/index.html#personal" class="category-card personal">
+                    <div class="category-icon">🌱</div>
+                    <h3>Personal Growth</h3>
+                    <p>Self-care, language learning, travel, and personal development.</p>
+                    <span class="category-count">3 guides</span>
+                </a>
+
+                <a href="guides/index.html#business" class="category-card business">
+                    <div class="category-icon">🏢</div>
+                    <h3>Business</h3>
+                    <p>Entrepreneurship, forming an LLC, digital marketing, and social media growth.</p>
+                    <span class="category-count">5 guides</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Recent/Featured Guides -->
+        <section class="section">
+            <h2 class="section-title">Featured Guides</h2>
+            <div class="featured-grid">
+                <a href="guides/finance/credit-scores.html" class="featured-card">
+                    <span class="featured-category">Finance</span>
+                    <h3>Understanding Credit Scores</h3>
+                    <p>Learn how credit works, how to build it, and a 5-month rebuild plan.</p>
+                </a>
+                <a href="guides/tech/web-development.html" class="featured-card">
+                    <span class="featured-category">Tech</span>
+                    <h3>Web Development</h3>
+                    <p>Complete roadmap for beginners to learn HTML, CSS, JavaScript, and more.</p>
+                </a>
+                <a href="guides/finance/investing-basics.html" class="featured-card">
+                    <span class="featured-category">Finance</span>
+                    <h3>Investing Basics</h3>
+                    <p>Start your investing journey with fundamental concepts and strategies.</p>
+                </a>
+                <a href="guides/personal/self-care.html" class="featured-card">
+                    <span class="featured-category">Personal</span>
+                    <h3>Self Care for Black Men</h3>
+                    <p>Practical advice for mental, physical, and emotional well-being.</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-icon">📘</span>
+                <span>Blueprint to Success</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Tools</h4>
+                    <a href="tools/budget-planner/index.html">Budget Planner</a>
+                    <a href="tools/education-hub/index.html">Education Hub</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Guides</h4>
+                    <a href="guides/index.html#finance">Finance</a>
+                    <a href="guides/index.html#tech">Tech Skills</a>
+                    <a href="guides/index.html#personal">Personal Growth</a>
+                    <a href="guides/index.html#business">Business</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Your data is stored locally in your browser. Progress syncs per device.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

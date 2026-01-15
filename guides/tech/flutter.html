@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flutter Programming | Blueprint to Success</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="main-nav"><div class="nav-container"><a href="../../index.html" class="nav-logo"><span class="logo-icon">📘</span><span class="logo-text">Blueprint to Success</span></a><div class="nav-links"><a href="../../index.html" class="nav-link">Dashboard</a><a href="../index.html" class="nav-link active">Guides</a><div class="nav-dropdown"><button class="nav-link dropdown-trigger">Tools ▾</button><div class="dropdown-menu"><a href="../../tools/budget-planner/index.html">Budget Planner</a><a href="../../tools/education-hub/index.html">Education Hub</a></div></div><button id="theme-toggle" class="theme-btn">🌙</button></div><button class="mobile-menu-btn" id="mobile-menu-btn">☰</button></div></nav>
+    <main class="main-content">
+        <header class="guide-header"><div class="guide-header-content"><div class="breadcrumb"><a href="../index.html">Guides</a> <span>/</span> <a href="../index.html#tech">Tech</a> <span>/</span> <span>Flutter</span></div><h1>Flutter Programming</h1><div class="guide-meta"><span>💻 Tech</span><span>⏱️ 12 min read</span></div></div></header>
+        <div class="guide-body">
+            <article class="guide-content">
+                <h2>Introduction</h2>
+                <p>Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.</p>
+                
+                <h2>Why Flutter?</h2>
+                <ul>
+                    <li><strong>Cross-Platform:</strong> One codebase for iOS, Android, Web, Desktop</li>
+                    <li><strong>Hot Reload:</strong> See changes instantly during development</li>
+                    <li><strong>Beautiful UI:</strong> Customizable widgets and smooth animations</li>
+                    <li><strong>Growing Demand:</strong> Rapidly increasing job market</li>
+                </ul>
+
+                <h2>Dart Language</h2>
+                <p>Flutter uses Dart, a language optimized for building UIs. Key features:</p>
+                <ul>
+                    <li>Object-oriented with classes</li>
+                    <li>Strong typing with type inference</li>
+                    <li>Async/await for asynchronous programming</li>
+                    <li>Null safety built-in</li>
+                </ul>
+
+                <h2>Core Concepts</h2>
+                <ul>
+                    <li><strong>Widgets:</strong> Everything is a widget - buttons, text, layouts</li>
+                    <li><strong>State Management:</strong> Provider, Riverpod, Bloc patterns</li>
+                    <li><strong>Layouts:</strong> Row, Column, Stack, Container</li>
+                    <li><strong>Navigation:</strong> Routes and Navigator</li>
+                </ul>
+
+                <h2>Getting Started</h2>
+                <ol>
+                    <li>Install Flutter SDK</li>
+                    <li>Set up VS Code or Android Studio</li>
+                    <li>Run flutter create my_app</li>
+                    <li>Start building with widgets</li>
+                </ol>
+
+                <h2>Career Outlook</h2>
+                <p>Flutter Developer salaries: $70K-$140K. Great for startups wanting to build for multiple platforms quickly.</p>
+
+                <div class="guide-actions">
+                    <button class="guide-btn primary" id="mark-read-btn" onclick="markAsRead()">Mark as Read</button>
+                    <a href="../index.html#tech" class="guide-btn secondary">Back to Guides</a>
+                </div>
+            </article>
+        </div>
+    </main>
+    <footer class="main-footer"><div class="footer-bottom"><p>Blueprint to Success</p></div></footer>
+    <script src="../../app.js"></script>
+    <script>const guideId = 'flutter'; document.addEventListener('DOMContentLoaded', () => { if (window.blueprintApp.isGuideRead(guideId)) { document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }}); function markAsRead() { window.blueprintApp.markGuideAsRead(guideId); document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }</script>
+</body>
+</html>

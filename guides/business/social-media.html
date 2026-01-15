@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Growth | Blueprint to Success</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="main-nav"><div class="nav-container"><a href="../../index.html" class="nav-logo"><span class="logo-icon">📘</span><span class="logo-text">Blueprint to Success</span></a><div class="nav-links"><a href="../../index.html" class="nav-link">Dashboard</a><a href="../index.html" class="nav-link active">Guides</a><div class="nav-dropdown"><button class="nav-link dropdown-trigger">Tools ▾</button><div class="dropdown-menu"><a href="../../tools/budget-planner/index.html">Budget Planner</a><a href="../../tools/education-hub/index.html">Education Hub</a></div></div><button id="theme-toggle" class="theme-btn">🌙</button></div><button class="mobile-menu-btn" id="mobile-menu-btn">☰</button></div></nav>
+    <main class="main-content">
+        <header class="guide-header"><div class="guide-header-content"><div class="breadcrumb"><a href="../index.html">Guides</a> <span>/</span> <a href="../index.html#business">Business</a> <span>/</span> <span>Social Media</span></div><h1>Social Media Growth</h1><div class="guide-meta"><span>🏢 Business</span><span>⏱️ 12 min read</span></div></div></header>
+        <div class="guide-body">
+            <article class="guide-content">
+                <h2>Why Social Media Matters</h2>
+                <ul>
+                    <li>Build brand awareness</li>
+                    <li>Connect directly with customers</li>
+                    <li>Drive traffic to your business</li>
+                    <li>Establish authority in your niche</li>
+                    <li>Generate leads and sales</li>
+                </ul>
+                
+                <h2>Choosing Platforms</h2>
+                <ul>
+                    <li><strong>Instagram:</strong> Visual products, lifestyle brands, younger audience</li>
+                    <li><strong>TikTok:</strong> Short-form video, viral potential, Gen Z</li>
+                    <li><strong>LinkedIn:</strong> B2B, professional services, thought leadership</li>
+                    <li><strong>Twitter/X:</strong> News, tech, real-time engagement</li>
+                    <li><strong>YouTube:</strong> Long-form video, tutorials, evergreen content</li>
+                </ul>
+
+                <h2>Content Strategy</h2>
+                <ul>
+                    <li><strong>Value First:</strong> Educate, entertain, or inspire before selling</li>
+                    <li><strong>Consistency:</strong> Post regularly on a schedule</li>
+                    <li><strong>Authenticity:</strong> Be genuine, show personality</li>
+                    <li><strong>Engagement:</strong> Respond to comments, DMs, and mentions</li>
+                </ul>
+
+                <h2>Growth Tactics</h2>
+                <ul>
+                    <li>Post when your audience is most active</li>
+                    <li>Use relevant hashtags strategically</li>
+                    <li>Collaborate with others in your niche</li>
+                    <li>Create shareable content</li>
+                    <li>Run giveaways and contests</li>
+                    <li>Cross-promote across platforms</li>
+                </ul>
+
+                <h2>Content Ideas</h2>
+                <ul>
+                    <li>Behind-the-scenes</li>
+                    <li>How-to tutorials</li>
+                    <li>User-generated content</li>
+                    <li>Industry news and commentary</li>
+                    <li>Q&A and polls</li>
+                    <li>Success stories and case studies</li>
+                </ul>
+
+                <h2>Metrics to Track</h2>
+                <ul>
+                    <li>Follower growth rate</li>
+                    <li>Engagement rate (likes, comments, shares)</li>
+                    <li>Reach and impressions</li>
+                    <li>Click-through rate</li>
+                    <li>Conversions from social</li>
+                </ul>
+
+                <div class="guide-actions">
+                    <button class="guide-btn primary" id="mark-read-btn" onclick="markAsRead()">Mark as Read</button>
+                    <a href="../index.html#business" class="guide-btn secondary">Back to Guides</a>
+                </div>
+            </article>
+        </div>
+    </main>
+    <footer class="main-footer"><div class="footer-bottom"><p>Blueprint to Success</p></div></footer>
+    <script src="../../app.js"></script>
+    <script>const guideId = 'social-media'; document.addEventListener('DOMContentLoaded', () => { if (window.blueprintApp.isGuideRead(guideId)) { document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }}); function markAsRead() { window.blueprintApp.markGuideAsRead(guideId); document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }</script>
+</body>
+</html>

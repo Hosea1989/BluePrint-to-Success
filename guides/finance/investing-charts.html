@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investing and Chart Reading | Blueprint to Success</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo"><span class="logo-icon">📘</span><span class="logo-text">Blueprint to Success</span></a>
+            <div class="nav-links">
+                <a href="../../index.html" class="nav-link">Dashboard</a>
+                <a href="../index.html" class="nav-link active">Guides</a>
+                <div class="nav-dropdown"><button class="nav-link dropdown-trigger">Tools ▾</button><div class="dropdown-menu"><a href="../../tools/budget-planner/index.html">Budget Planner</a><a href="../../tools/education-hub/index.html">Education Hub</a></div></div>
+                <button id="theme-toggle" class="theme-btn">🌙</button>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+    <main class="main-content">
+        <header class="guide-header">
+            <div class="guide-header-content">
+                <div class="breadcrumb"><a href="../index.html">Guides</a> <span>/</span> <a href="../index.html#finance">Finance</a> <span>/</span> <span>Investing and Chart Reading</span></div>
+                <h1>Investing and Chart Reading</h1>
+                <div class="guide-meta"><span>📚 Finance</span><span>⏱️ 12 min read</span></div>
+            </div>
+        </header>
+        <div class="guide-body">
+            <article class="guide-content">
+                <h2>Introduction</h2>
+                <p>Understanding how to read financial charts is essential for making informed investment decisions. This guide covers basic chart reading techniques and investment concepts.</p>
+                
+                <h2>Types of Charts</h2>
+                <ul>
+                    <li><strong>Line Charts:</strong> Simple view of price movement over time</li>
+                    <li><strong>Bar Charts:</strong> Show open, high, low, and close prices</li>
+                    <li><strong>Candlestick Charts:</strong> Visual representation of price action with colored bodies</li>
+                </ul>
+
+                <h2>Key Chart Patterns</h2>
+                <ul>
+                    <li><strong>Support and Resistance:</strong> Price levels where buying or selling pressure emerges</li>
+                    <li><strong>Trends:</strong> Uptrend (higher highs), Downtrend (lower lows), Sideways</li>
+                    <li><strong>Moving Averages:</strong> Smooth out price data to identify trends</li>
+                </ul>
+
+                <h2>Technical Indicators</h2>
+                <ul>
+                    <li><strong>RSI (Relative Strength Index):</strong> Measures momentum, overbought/oversold conditions</li>
+                    <li><strong>MACD:</strong> Trend-following momentum indicator</li>
+                    <li><strong>Volume:</strong> Confirms price movements</li>
+                </ul>
+
+                <h2>Fundamental vs Technical Analysis</h2>
+                <ul>
+                    <li><strong>Fundamental:</strong> Analyzes company financials, earnings, and value</li>
+                    <li><strong>Technical:</strong> Studies price patterns and market psychology</li>
+                    <li><strong>Best Approach:</strong> Use both for comprehensive analysis</li>
+                </ul>
+
+                <hr>
+                <p><strong>Deep dive:</strong> <a href="../../tools/education-hub/index.html">Take the full Stock Market course</a> for comprehensive chart reading education!</p>
+
+                <div class="guide-actions">
+                    <button class="guide-btn primary" id="mark-read-btn" onclick="markAsRead()">Mark as Read</button>
+                    <a href="../index.html#finance" class="guide-btn secondary">Back to Guides</a>
+                </div>
+            </article>
+        </div>
+    </main>
+    <footer class="main-footer"><div class="footer-bottom"><p>Blueprint to Success</p></div></footer>
+    <script src="../../app.js"></script>
+    <script>
+        const guideId = 'investing-charts';
+        document.addEventListener('DOMContentLoaded', () => { if (window.blueprintApp.isGuideRead(guideId)) { document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }});
+        function markAsRead() { window.blueprintApp.markGuideAsRead(guideId); document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }
+    </script>
+</body>
+</html>

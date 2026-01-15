@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Care for Black Men | Blueprint to Success</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="main-nav"><div class="nav-container"><a href="../../index.html" class="nav-logo"><span class="logo-icon">📘</span><span class="logo-text">Blueprint to Success</span></a><div class="nav-links"><a href="../../index.html" class="nav-link">Dashboard</a><a href="../index.html" class="nav-link active">Guides</a><div class="nav-dropdown"><button class="nav-link dropdown-trigger">Tools ▾</button><div class="dropdown-menu"><a href="../../tools/budget-planner/index.html">Budget Planner</a><a href="../../tools/education-hub/index.html">Education Hub</a></div></div><button id="theme-toggle" class="theme-btn">🌙</button></div><button class="mobile-menu-btn" id="mobile-menu-btn">☰</button></div></nav>
+    <main class="main-content">
+        <header class="guide-header"><div class="guide-header-content"><div class="breadcrumb"><a href="../index.html">Guides</a> <span>/</span> <a href="../index.html#personal">Personal</a> <span>/</span> <span>Self Care</span></div><h1>Self Care for Black Men</h1><div class="guide-meta"><span>🌱 Personal Growth</span><span>⏱️ 10 min read</span></div></div></header>
+        <div class="guide-body">
+            <article class="guide-content">
+                <h2>Introduction</h2>
+                <p>Self-care isn't selfish—it's essential. Taking care of your mental, physical, and emotional health is the foundation for success in every other area of life.</p>
+                
+                <h2>Mental Health</h2>
+                <ul>
+                    <li><strong>Break the Stigma:</strong> Seeking help is a sign of strength, not weakness</li>
+                    <li><strong>Therapy:</strong> Consider speaking with a therapist. Many offer virtual sessions</li>
+                    <li><strong>Journaling:</strong> Process thoughts and emotions through writing</li>
+                    <li><strong>Meditation:</strong> Start with 5 minutes daily using apps like Headspace or Calm</li>
+                    <li><strong>Community:</strong> Connect with others who understand your experiences</li>
+                </ul>
+
+                <h2>Physical Health</h2>
+                <ul>
+                    <li><strong>Exercise:</strong> Aim for 30 minutes of movement most days</li>
+                    <li><strong>Sleep:</strong> 7-9 hours is essential for mental clarity</li>
+                    <li><strong>Nutrition:</strong> Eat whole foods, limit processed foods</li>
+                    <li><strong>Regular Checkups:</strong> Don't skip health screenings</li>
+                    <li><strong>Hydration:</strong> Drink plenty of water daily</li>
+                </ul>
+
+                <h2>Emotional Well-being</h2>
+                <ul>
+                    <li><strong>Set Boundaries:</strong> It's okay to say no</li>
+                    <li><strong>Express Emotions:</strong> Find healthy outlets for feelings</li>
+                    <li><strong>Seek Support:</strong> Build a network of trusted people</li>
+                    <li><strong>Practice Gratitude:</strong> Focus on what's going well</li>
+                </ul>
+
+                <h2>Building Healthy Habits</h2>
+                <ol>
+                    <li><strong>Morning Routine:</strong> Start the day with intention</li>
+                    <li><strong>Digital Detox:</strong> Take breaks from social media</li>
+                    <li><strong>Hobbies:</strong> Make time for activities you enjoy</li>
+                    <li><strong>Rest:</strong> Schedule downtime without guilt</li>
+                </ol>
+
+                <h2>Resources</h2>
+                <ul>
+                    <li>Therapy for Black Men - Online directory</li>
+                    <li>Brother, You're on My Mind - Mental health campaign</li>
+                    <li>The Nap Ministry - Rest as resistance</li>
+                </ul>
+
+                <div class="guide-actions">
+                    <button class="guide-btn primary" id="mark-read-btn" onclick="markAsRead()">Mark as Read</button>
+                    <a href="../index.html#personal" class="guide-btn secondary">Back to Guides</a>
+                </div>
+            </article>
+        </div>
+    </main>
+    <footer class="main-footer"><div class="footer-bottom"><p>Blueprint to Success</p></div></footer>
+    <script src="../../app.js"></script>
+    <script>const guideId = 'self-care'; document.addEventListener('DOMContentLoaded', () => { if (window.blueprintApp.isGuideRead(guideId)) { document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }}); function markAsRead() { window.blueprintApp.markGuideAsRead(guideId); document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }</script>
+</body>
+</html>

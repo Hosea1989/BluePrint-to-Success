@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behavioral Finance | Blueprint to Success</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="main-nav"><div class="nav-container"><a href="../../index.html" class="nav-logo"><span class="logo-icon">📘</span><span class="logo-text">Blueprint to Success</span></a><div class="nav-links"><a href="../../index.html" class="nav-link">Dashboard</a><a href="../index.html" class="nav-link active">Guides</a><div class="nav-dropdown"><button class="nav-link dropdown-trigger">Tools ▾</button><div class="dropdown-menu"><a href="../../tools/budget-planner/index.html">Budget Planner</a><a href="../../tools/education-hub/index.html">Education Hub</a></div></div><button id="theme-toggle" class="theme-btn">🌙</button></div><button class="mobile-menu-btn" id="mobile-menu-btn">☰</button></div></nav>
+    <main class="main-content">
+        <header class="guide-header"><div class="guide-header-content"><div class="breadcrumb"><a href="../index.html">Guides</a> <span>/</span> <a href="../index.html#finance">Finance</a> <span>/</span> <span>Behavioral Finance</span></div><h1>Behavioral Finance</h1><div class="guide-meta"><span>📚 Finance</span><span>⏱️ 10 min read</span></div></div></header>
+        <div class="guide-body">
+            <article class="guide-content">
+                <h2>Introduction</h2>
+                <p>Behavioral finance studies how psychology affects financial decisions. Understanding your biases helps you make better choices.</p>
+                
+                <h2>Common Biases</h2>
+                <ul>
+                    <li><strong>Loss Aversion:</strong> Losses feel twice as painful as gains feel good. Can lead to holding losing investments too long.</li>
+                    <li><strong>Confirmation Bias:</strong> Seeking information that confirms what you already believe.</li>
+                    <li><strong>Herd Mentality:</strong> Following the crowd, buying high and selling low.</li>
+                    <li><strong>Overconfidence:</strong> Thinking you can beat the market consistently.</li>
+                    <li><strong>Anchoring:</strong> Fixating on a specific price point (like what you paid).</li>
+                    <li><strong>Recency Bias:</strong> Overweighting recent events in decision-making.</li>
+                </ul>
+
+                <h2>Emotional Traps</h2>
+                <ul>
+                    <li><strong>FOMO:</strong> Fear of missing out drives buying at peaks</li>
+                    <li><strong>Panic Selling:</strong> Fear during downturns locks in losses</li>
+                    <li><strong>Euphoria:</strong> Excessive optimism leads to ignoring risks</li>
+                </ul>
+
+                <h2>Strategies to Combat Bias</h2>
+                <ul>
+                    <li>Create an investment plan and stick to it</li>
+                    <li>Automate investments to remove emotion</li>
+                    <li>Diversify to reduce single-stock attachment</li>
+                    <li>Review decisions with a cooling-off period</li>
+                    <li>Keep a decision journal to learn from mistakes</li>
+                </ul>
+
+                <div class="guide-actions">
+                    <button class="guide-btn primary" id="mark-read-btn" onclick="markAsRead()">Mark as Read</button>
+                    <a href="../index.html#finance" class="guide-btn secondary">Back to Guides</a>
+                </div>
+            </article>
+        </div>
+    </main>
+    <footer class="main-footer"><div class="footer-bottom"><p>Blueprint to Success</p></div></footer>
+    <script src="../../app.js"></script>
+    <script>const guideId = 'behavioral-finance'; document.addEventListener('DOMContentLoaded', () => { if (window.blueprintApp.isGuideRead(guideId)) { document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }}); function markAsRead() { window.blueprintApp.markGuideAsRead(guideId); document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }</script>
+</body>
+</html>

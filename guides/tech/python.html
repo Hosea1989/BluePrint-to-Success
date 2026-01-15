@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming | Blueprint to Success</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="main-nav"><div class="nav-container"><a href="../../index.html" class="nav-logo"><span class="logo-icon">📘</span><span class="logo-text">Blueprint to Success</span></a><div class="nav-links"><a href="../../index.html" class="nav-link">Dashboard</a><a href="../index.html" class="nav-link active">Guides</a><div class="nav-dropdown"><button class="nav-link dropdown-trigger">Tools ▾</button><div class="dropdown-menu"><a href="../../tools/budget-planner/index.html">Budget Planner</a><a href="../../tools/education-hub/index.html">Education Hub</a></div></div><button id="theme-toggle" class="theme-btn">🌙</button></div><button class="mobile-menu-btn" id="mobile-menu-btn">☰</button></div></nav>
+    <main class="main-content">
+        <header class="guide-header"><div class="guide-header-content"><div class="breadcrumb"><a href="../index.html">Guides</a> <span>/</span> <a href="../index.html#tech">Tech</a> <span>/</span> <span>Python</span></div><h1>Python Programming</h1><div class="guide-meta"><span>💻 Tech</span><span>⏱️ 15 min read</span></div></div></header>
+        <div class="guide-body">
+            <article class="guide-content">
+                <h2>Why Python?</h2>
+                <p>Python is one of the most versatile and beginner-friendly programming languages. It's used in web development, data science, AI/ML, automation, and more.</p>
+                
+                <h2>Core Concepts</h2>
+                <ul>
+                    <li><strong>Variables:</strong> Dynamic typing, no need to declare types</li>
+                    <li><strong>Data Types:</strong> strings, integers, floats, lists, dictionaries, tuples</li>
+                    <li><strong>Functions:</strong> def keyword, parameters, return values</li>
+                    <li><strong>Control Flow:</strong> if/elif/else, for loops, while loops</li>
+                    <li><strong>Indentation:</strong> Python uses whitespace for code blocks</li>
+                </ul>
+
+                <h2>Key Libraries</h2>
+                <ul>
+                    <li><strong>NumPy:</strong> Numerical computing with arrays</li>
+                    <li><strong>Pandas:</strong> Data manipulation and analysis</li>
+                    <li><strong>Matplotlib:</strong> Data visualization</li>
+                    <li><strong>Requests:</strong> HTTP requests and APIs</li>
+                    <li><strong>Flask/Django:</strong> Web frameworks</li>
+                </ul>
+
+                <h2>Python Use Cases</h2>
+                <ul>
+                    <li><strong>Data Science:</strong> Analysis, visualization, machine learning</li>
+                    <li><strong>Web Development:</strong> Django, Flask backends</li>
+                    <li><strong>Automation:</strong> Scripts to automate repetitive tasks</li>
+                    <li><strong>AI/ML:</strong> TensorFlow, PyTorch, scikit-learn</li>
+                </ul>
+
+                <h2>Learning Path</h2>
+                <ol>
+                    <li><strong>Week 1-2:</strong> Basics - syntax, variables, control flow</li>
+                    <li><strong>Week 3-4:</strong> Functions, modules, file handling</li>
+                    <li><strong>Week 5-6:</strong> OOP - classes, inheritance</li>
+                    <li><strong>Week 7-8:</strong> Choose a specialization and build projects</li>
+                </ol>
+
+                <h2>Free Resources</h2>
+                <ul>
+                    <li>Python.org official tutorial</li>
+                    <li>Automate the Boring Stuff (free online book)</li>
+                    <li>Real Python tutorials</li>
+                    <li>Codecademy Python course</li>
+                </ul>
+
+                <div class="guide-actions">
+                    <button class="guide-btn primary" id="mark-read-btn" onclick="markAsRead()">Mark as Read</button>
+                    <a href="../index.html#tech" class="guide-btn secondary">Back to Guides</a>
+                </div>
+            </article>
+        </div>
+    </main>
+    <footer class="main-footer"><div class="footer-bottom"><p>Blueprint to Success</p></div></footer>
+    <script src="../../app.js"></script>
+    <script>const guideId = 'python'; document.addEventListener('DOMContentLoaded', () => { if (window.blueprintApp.isGuideRead(guideId)) { document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }}); function markAsRead() { window.blueprintApp.markGuideAsRead(guideId); document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }</script>
+</body>
+</html>

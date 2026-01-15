@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science | Blueprint to Success</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <nav class="main-nav"><div class="nav-container"><a href="../../index.html" class="nav-logo"><span class="logo-icon">📘</span><span class="logo-text">Blueprint to Success</span></a><div class="nav-links"><a href="../../index.html" class="nav-link">Dashboard</a><a href="../index.html" class="nav-link active">Guides</a><div class="nav-dropdown"><button class="nav-link dropdown-trigger">Tools ▾</button><div class="dropdown-menu"><a href="../../tools/budget-planner/index.html">Budget Planner</a><a href="../../tools/education-hub/index.html">Education Hub</a></div></div><button id="theme-toggle" class="theme-btn">🌙</button></div><button class="mobile-menu-btn" id="mobile-menu-btn">☰</button></div></nav>
+    <main class="main-content">
+        <header class="guide-header"><div class="guide-header-content"><div class="breadcrumb"><a href="../index.html">Guides</a> <span>/</span> <a href="../index.html#tech">Tech</a> <span>/</span> <span>Data Science</span></div><h1>Data Science</h1><div class="guide-meta"><span>💻 Tech</span><span>⏱️ 12 min read</span></div></div></header>
+        <div class="guide-body">
+            <article class="guide-content">
+                <h2>What is Data Science?</h2>
+                <p>Data science combines statistics, programming, and domain expertise to extract insights from data and drive business decisions.</p>
+                
+                <h2>Core Skills</h2>
+                <ul>
+                    <li><strong>Python/R:</strong> Primary programming languages</li>
+                    <li><strong>Statistics:</strong> Probability, hypothesis testing, regression</li>
+                    <li><strong>Machine Learning:</strong> Algorithms and model building</li>
+                    <li><strong>SQL:</strong> Database querying</li>
+                    <li><strong>Data Visualization:</strong> Communicating insights</li>
+                </ul>
+
+                <h2>Essential Tools</h2>
+                <ul>
+                    <li><strong>Pandas:</strong> Data manipulation in Python</li>
+                    <li><strong>NumPy:</strong> Numerical computing</li>
+                    <li><strong>Scikit-learn:</strong> Machine learning library</li>
+                    <li><strong>Matplotlib/Seaborn:</strong> Visualization</li>
+                    <li><strong>Jupyter Notebooks:</strong> Interactive development</li>
+                </ul>
+
+                <h2>Career Paths</h2>
+                <ul>
+                    <li><strong>Data Analyst:</strong> $55K-$90K - Entry point, focus on analysis</li>
+                    <li><strong>Data Scientist:</strong> $90K-$150K - ML models and predictions</li>
+                    <li><strong>ML Engineer:</strong> $100K-$180K - Production ML systems</li>
+                    <li><strong>Data Engineer:</strong> $90K-$160K - Data infrastructure</li>
+                </ul>
+
+                <h2>Learning Path</h2>
+                <ol>
+                    <li>Learn Python basics</li>
+                    <li>Study statistics fundamentals</li>
+                    <li>Master Pandas and data manipulation</li>
+                    <li>Learn machine learning concepts</li>
+                    <li>Build projects with real datasets</li>
+                </ol>
+
+                <h2>Free Resources</h2>
+                <ul>
+                    <li>Kaggle - Datasets and competitions</li>
+                    <li>Google Data Analytics Certificate</li>
+                    <li>Fast.ai - Practical deep learning</li>
+                </ul>
+
+                <div class="guide-actions">
+                    <button class="guide-btn primary" id="mark-read-btn" onclick="markAsRead()">Mark as Read</button>
+                    <a href="../index.html#tech" class="guide-btn secondary">Back to Guides</a>
+                </div>
+            </article>
+        </div>
+    </main>
+    <footer class="main-footer"><div class="footer-bottom"><p>Blueprint to Success</p></div></footer>
+    <script src="../../app.js"></script>
+    <script>const guideId = 'data-science'; document.addEventListener('DOMContentLoaded', () => { if (window.blueprintApp.isGuideRead(guideId)) { document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }}); function markAsRead() { window.blueprintApp.markGuideAsRead(guideId); document.getElementById('mark-read-btn').textContent = '✓ Marked as Read'; document.getElementById('mark-read-btn').classList.add('marked'); }</script>
+</body>
+</html>
