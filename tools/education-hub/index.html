@@ -54,71 +54,8 @@
         }
         .app-container { padding-top: 60px; }
         
-        /* Education Hub Hero */
-        .edu-hero {
-            background: var(--accent-gradient);
-            padding: 40px 24px;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        .edu-hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: pulse 4s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-        .edu-hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        .edu-hero h1 {
-            font-size: 2rem;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-        }
-        .edu-hero p {
-            font-size: 1.05rem;
-            opacity: 0.9;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .edu-hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            margin-top: 20px;
-        }
-        .edu-hero-stat {
-            text-align: center;
-        }
-        .edu-hero-stat .stat-num {
-            display: block;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-        .edu-hero-stat .stat-label {
-            font-size: 0.85rem;
-            opacity: 0.8;
-        }
-        
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .edu-hero h1 { font-size: 1.5rem; }
-            .edu-hero-stats { gap: 20px; }
-            .edu-hero-stat .stat-num { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -139,28 +76,6 @@
     </nav>
 
     <div class="app-container">
-        <!-- Education Hub Hero -->
-        <section class="edu-hero" id="edu-hero">
-            <div class="edu-hero-content">
-                <h1>🎓 Education Hub</h1>
-                <p>Master new skills from beginner to pro with interactive lessons, quizzes, and final exams.</p>
-                <div class="edu-hero-stats">
-                    <div class="edu-hero-stat">
-                        <span class="stat-num">17</span>
-                        <span class="stat-label">Tracks</span>
-                    </div>
-                    <div class="edu-hero-stat">
-                        <span class="stat-num">85+</span>
-                        <span class="stat-label">Lessons</span>
-                    </div>
-                    <div class="edu-hero-stat">
-                        <span class="stat-num" id="hero-progress">0%</span>
-                        <span class="stat-label">Complete</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Sidebar Navigation -->
         <nav class="sidebar">
             <div class="sidebar-header">

@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderTrackCards();
     setupEventListeners();
     updateAllProgress();
-    updateHeroProgress();
     showView('home');
     checkGettingStarted();
 });
@@ -421,12 +420,6 @@ function showView(viewId) {
         item.classList.toggle('active', item.dataset.view === viewId);
     });
     
-    // Show/hide hero based on view
-    const hero = document.getElementById('edu-hero');
-    if (hero) {
-        hero.style.display = viewId === 'home' ? 'block' : 'none';
-    }
-
     state.currentView = viewId;
     window.scrollTo(0, 0);
 }
