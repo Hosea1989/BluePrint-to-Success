@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();
     loadProgressData();
     loadBudgetData();
+    updateContinueSection();
+    updateRoadmapPreview();
 });
 
 // ==================== THEME ====================
@@ -254,6 +256,164 @@ function isGuideRead(guideId) {
 function isGuideBookmarked(guideId) {
     const progress = JSON.parse(localStorage.getItem('guidesProgress') || '{"read":[],"bookmarked":[]}');
     return progress.bookmarked.includes(guideId);
+}
+
+// ==================== CONTINUE SECTION ====================
+function updateContinueSection() {
+    const section = document.getElementById('continue-section');
+    if (!section) return;
+    
+    const eduProgress = JSON.parse(localStorage.getItem('educationHubProgress') || '{}');
+    const guidesProgress = JSON.parse(localStorage.getItem('guidesProgress') || '{"read":[]}');
+    const budgetData = localStorage.getItem('budgetPlannerData');
+    
+    // Determine what to continue
+    let continueItem = null;
+    
+    // Check if budget planner needs setup
+    if (!budgetData) {
+        continueItem = {
+            icon: '💰',
+            title: 'Set Up Your Budget',
+            desc: 'Start by tracking your income and expenses',
+            link: 'tools/budget-planner/index.html'
+        };
+    }
+    // Check for in-progress education tracks
+    else {
+        const tracks = ['stocks', 'taxes', 'nonprofits', 'labor'];
+        const topicCounts = { stocks: 25, taxes: 20, nonprofits: 16, labor: 17 };
+        const trackNames = {
+            stocks: 'Stock Market',
+            taxes: 'Business Taxes',
+            nonprofits: 'Nonprofits',
+            labor: 'Labor Laws'
+        };
+        const trackIcons = {
+            stocks: '📈',
+            taxes: '🧾',
+            nonprofits: '🤝',
+            labor: '⚖️'
+        };
+        
+        for (const track of tracks) {
+            const data = eduProgress[track];
+            if (data && data.completedTopics && data.completedTopics.length > 0) {
+                const percent = Math.round((data.completedTopics.length / topicCounts[track]) * 100);
+                if (percent < 100) {
+                    continueItem = {
+                        icon: trackIcons[track],
+                        title: `Continue ${trackNames[track]}`,
+                        desc: `You're ${percent}% through this track`,
+                        link: 'tools/education-hub/index.html'
+                    };
+                    break;
+                }
+            }
+        }
+    }
+    
+    // If no in-progress track, suggest starting one
+    if (!continueItem) {
+        // Check if credit guide is read
+        if (!guidesProgress.read.includes('credit-scores')) {
+            continueItem = {
+                icon: '💳',
+                title: 'Start with Credit Basics',
+                desc: 'Understanding credit is the foundation of financial literacy',
+                link: 'guides/finance/credit-scores.html'
+            };
+        } else {
+            continueItem = {
+                icon: '📚',
+                title: 'Start Learning',
+                desc: 'Begin your first Education Hub track',
+                link: 'tools/education-hub/index.html'
+            };
+        }
+    }
+    
+    // Update UI
+    if (continueItem) {
+        section.style.display = 'block';
+        document.getElementById('continue-icon').textContent = continueItem.icon;
+        document.getElementById('continue-title').textContent = continueItem.title;
+        document.getElementById('continue-desc').textContent = continueItem.desc;
+        document.getElementById('continue-btn').href = continueItem.link;
+    }
+}
+
+// ==================== ROADMAP PREVIEW ====================
+function updateRoadmapPreview() {
+    const eduProgress = JSON.parse(localStorage.getItem('educationHubProgress') || '{}');
+    const guidesProgress = JSON.parse(localStorage.getItem('guidesProgress') || '{"read":[]}');
+    const budgetData = localStorage.getItem('budgetPlannerData');
+    
+    // Phase 1: Foundation
+    const phase1Items = [
+        guidesProgress.read.includes('credit-scores'),
+        guidesProgress.read.includes('budgeting'),
+        !!budgetData,
+        guidesProgress.read.includes('debt-management')
+    ];
+    const phase1Done = phase1Items.filter(Boolean).length;
+    const phase1Percent = Math.round((phase1Done / 4) * 100);
+    
+    const phase1El = document.getElementById('phase-mini-1');
+    const phase1Progress = document.getElementById('phase1-mini-progress');
+    if (phase1Progress) phase1Progress.textContent = `${phase1Percent}%`;
+    if (phase1El) {
+        if (phase1Percent === 100) phase1El.classList.add('completed');
+        else if (phase1Percent > 0) phase1El.classList.add('active');
+    }
+    
+    // Phase 2: Learning
+    const topicCounts = { stocks: 25, taxes: 20, nonprofits: 16, labor: 17 };
+    const stocksComplete = eduProgress.stocks?.completedTopics?.length === topicCounts.stocks;
+    const taxesComplete = eduProgress.taxes?.completedTopics?.length === topicCounts.taxes;
+    const techRead = ['web-development', 'python', 'javascript'].some(g => guidesProgress.read.includes(g));
+    const bizRead = ['entrepreneurship', 'forming-llc'].some(g => guidesProgress.read.includes(g));
+    
+    const phase2Items = [stocksComplete, taxesComplete, techRead, bizRead];
+    const phase2Done = phase2Items.filter(Boolean).length;
+    const phase2Percent = Math.round((phase2Done / 4) * 100);
+    
+    const phase2El = document.getElementById('phase-mini-2');
+    const phase2Progress = document.getElementById('phase2-mini-progress');
+    if (phase2Progress) phase2Progress.textContent = `${phase2Percent}%`;
+    if (phase2El) {
+        if (phase1Percent < 100) {
+            // Phase 2 locked
+        } else if (phase2Percent === 100) {
+            phase2El.classList.add('completed');
+        } else if (phase2Percent > 0) {
+            phase2El.classList.add('active');
+        }
+    }
+    
+    // Phase 3: Action
+    const actionProgress = JSON.parse(localStorage.getItem('actionProgress') || '{}');
+    const phase3Items = [
+        actionProgress.firstInvestment,
+        actionProgress.startedBusiness,
+        actionProgress.achievedGoals,
+        actionProgress.graduated
+    ];
+    const phase3Done = phase3Items.filter(Boolean).length;
+    const phase3Percent = Math.round((phase3Done / 4) * 100);
+    
+    const phase3El = document.getElementById('phase-mini-3');
+    const phase3Progress = document.getElementById('phase3-mini-progress');
+    if (phase3Progress) phase3Progress.textContent = `${phase3Percent}%`;
+    if (phase3El) {
+        if (phase2Percent < 100) {
+            // Phase 3 locked
+        } else if (phase3Percent === 100) {
+            phase3El.classList.add('completed');
+        } else if (phase3Percent > 0) {
+            phase3El.classList.add('active');
+        }
+    }
 }
 
 // Export for use in guide pages

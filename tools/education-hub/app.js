@@ -476,6 +476,15 @@ function showQuizResults() {
         const track = tracks[trackId];
         const nextLevel = track.levels.find(l => l.id === levelId + 1);
         
+        // Check if track is now complete
+        const trackComplete = state.progress[trackId].completedLevels.length === track.levels.length;
+        
+        if (trackComplete) {
+            // Show graduation celebration
+            showGraduationCelebration(trackId);
+            return;
+        }
+        
         if (nextLevel) {
             continueBtn.style.display = 'block';
             continueBtn.onclick = () => {
@@ -502,6 +511,209 @@ function showQuizResults() {
     // Show results modal
     document.querySelector('.quiz-container').style.display = 'none';
     document.getElementById('quiz-results').classList.remove('hidden');
+}
+
+// ==================== GRADUATION CELEBRATION ====================
+function showGraduationCelebration(trackId) {
+    const track = tracks[trackId];
+    const graduationMessages = {
+        stocks: {
+            title: "You're Ready to Invest!",
+            message: "You've completed the Stock Market track. You now have the knowledge to open a brokerage account and make your first informed investment.",
+            next: "Continue to Business Taxes to understand tax implications of your investments.",
+            nextLink: "taxes"
+        },
+        taxes: {
+            title: "Tax Strategist!",
+            message: "You've mastered Business Taxes. You're now confident to handle tax planning for your business or side hustle.",
+            next: "Ready to start a business? Check out the LLC and Entrepreneurship guides.",
+            nextLink: null
+        },
+        nonprofits: {
+            title: "Nonprofit Expert!",
+            message: "You've completed the Nonprofits track. You're prepared to start or meaningfully contribute to a 501(c)(3) organization.",
+            next: "Learn about Labor Laws to understand employment regulations.",
+            nextLink: "labor"
+        },
+        labor: {
+            title: "Know Your Rights!",
+            message: "You've completed the Labor Laws track. You now know your workplace rights and can advocate for yourself confidently.",
+            next: "Ready to be your own boss? Explore the Entrepreneurship guides.",
+            nextLink: null
+        }
+    };
+    
+    const grad = graduationMessages[trackId];
+    
+    // Create celebration modal
+    const modal = document.createElement('div');
+    modal.className = 'graduation-modal';
+    modal.innerHTML = `
+        <div class="graduation-content">
+            <div class="confetti-container" id="confetti"></div>
+            <div class="graduation-icon">🎓</div>
+            <h1>${grad.title}</h1>
+            <p class="graduation-message">${grad.message}</p>
+            <div class="graduation-badge">
+                <span class="badge-icon">${track.title === 'Stock Market' ? '📈' : track.title === 'Business Taxes' ? '🧾' : track.title === 'Nonprofits' ? '🤝' : '⚖️'}</span>
+                <span class="badge-text">${track.title} Graduate</span>
+            </div>
+            <p class="graduation-next">${grad.next}</p>
+            <div class="graduation-actions">
+                ${grad.nextLink ? `<button class="grad-btn primary" onclick="closeGraduation(); showTrack('${grad.nextLink}')">Continue Learning</button>` : ''}
+                <button class="grad-btn ${grad.nextLink ? 'secondary' : 'primary'}" onclick="closeGraduation(); showView('home')">Back to Home</button>
+                <a href="../../roadmap.html" class="grad-btn secondary">View Roadmap</a>
+            </div>
+        </div>
+    `;
+    
+    // Add modal styles
+    const style = document.createElement('style');
+    style.textContent = `
+        .graduation-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+        .graduation-content {
+            background: var(--bg-secondary, #fff);
+            border-radius: 24px;
+            padding: 48px;
+            text-align: center;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.5s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .graduation-icon {
+            font-size: 5rem;
+            margin-bottom: 16px;
+            animation: bounce 1s ease infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .graduation-content h1 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .graduation-message {
+            color: var(--text-secondary, #64748b);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        .graduation-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #1f2937;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .badge-icon { font-size: 1.5rem; }
+        .graduation-next {
+            color: var(--text-muted, #94a3b8);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        .graduation-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .grad-btn {
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .grad-btn:hover { transform: translateY(-2px); }
+        .grad-btn.primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+        }
+        .grad-btn.secondary {
+            background: var(--bg-tertiary, #f1f5f9);
+            color: var(--text-primary, #0f172a);
+        }
+        .confetti-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confettiFall 3s ease-out forwards;
+        }
+        @keyframes confettiFall {
+            0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
+    document.body.appendChild(modal);
+    
+    // Create confetti
+    createConfetti();
+    
+    // Save graduation
+    saveGraduation(trackId);
+}
+
+function closeGraduation() {
+    const modal = document.querySelector('.graduation-modal');
+    if (modal) modal.remove();
+}
+
+function createConfetti() {
+    const container = document.getElementById('confetti');
+    const colors = ['#6366f1', '#8b5cf6', '#fbbf24', '#10b981', '#ef4444', '#3b82f6'];
+    
+    for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 2 + 's';
+        confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+        container.appendChild(confetti);
+    }
+}
+
+function saveGraduation(trackId) {
+    const graduations = JSON.parse(localStorage.getItem('graduations') || '{}');
+    graduations[trackId] = {
+        completed: true,
+        date: new Date().toISOString().split('T')[0]
+    };
+    localStorage.setItem('graduations', JSON.stringify(graduations));
 }
 
 // ==================== EVENT LISTENERS ====================

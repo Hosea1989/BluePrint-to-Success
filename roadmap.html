@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Journey | Blueprint to Success</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .roadmap-hero {
+            background: var(--accent-gradient);
+            padding: 60px 24px;
+            text-align: center;
+            color: white;
+        }
+        .roadmap-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+        .roadmap-hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .journey-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+        
+        /* Phase Timeline */
+        .phases-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .phases-timeline::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: var(--border-color);
+            z-index: 0;
+        }
+        
+        .phase-card {
+            flex: 1;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        .phase-card.active {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+        }
+        .phase-card.completed {
+            border-color: var(--success);
+        }
+        .phase-card.locked {
+            opacity: 0.6;
+        }
+        
+        .phase-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .phase-card.completed .phase-number {
+            background: var(--success);
+            color: white;
+        }
+        .phase-card.active .phase-number {
+            background: var(--accent-gradient);
+            color: white;
+        }
+        
+        .phase-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .phase-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+        .phase-items {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .phase-items li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .phase-items li:last-child {
+            border-bottom: none;
+        }
+        .phase-items li.done {
+            color: var(--success);
+        }
+        .phase-items li.done::before {
+            content: '✓';
+        }
+        .phase-items li:not(.done)::before {
+            content: '○';
+        }
+        
+        .phase-progress {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+        .phase-progress-bar {
+            height: 8px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        .phase-progress-fill {
+            height: 100%;
+            background: var(--accent-gradient);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        .phase-progress-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        /* Learning Tracks Section */
+        .tracks-section {
+            margin-top: 60px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .section-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+        .section-header p {
+            color: var(--text-secondary);
+        }
+        
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        
+        .track-journey-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .track-journey-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--border-color);
+        }
+        .track-journey-card.stocks::before { background: #10b981; }
+        .track-journey-card.taxes::before { background: #f59e0b; }
+        .track-journey-card.nonprofits::before { background: #6366f1; }
+        .track-journey-card.labor::before { background: #ef4444; }
+        
+        .track-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .track-icon {
+            font-size: 2rem;
+        }
+        .track-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .track-goal {
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            margin-bottom: 16px;
+        }
+        .track-goal-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .track-goal-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .track-progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .track-progress-info span {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .track-progress-bar {
+            height: 10px;
+            background: var(--bg-tertiary);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+        .track-progress-fill {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+        .track-journey-card.stocks .track-progress-fill { background: #10b981; }
+        .track-journey-card.taxes .track-progress-fill { background: #f59e0b; }
+        .track-journey-card.nonprofits .track-progress-fill { background: #6366f1; }
+        .track-journey-card.labor .track-progress-fill { background: #ef4444; }
+        
+        .track-status {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .track-status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .track-status-badge.not-started {
+            background: var(--bg-tertiary);
+            color: var(--text-muted);
+        }
+        .track-status-badge.in-progress {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent-primary);
+        }
+        .track-status-badge.completed {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+        .track-action {
+            padding: 8px 16px;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        .track-action:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Suggested Path */
+        .next-path {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+            display: none;
+        }
+        .next-path.show {
+            display: block;
+        }
+        .next-path-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .next-path-link {
+            color: var(--accent-primary);
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .next-path-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Achievements Section */
+        .achievements-section {
+            margin-top: 60px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+        }
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+        .achievement-card {
+            text-align: center;
+            padding: 20px;
+            border-radius: var(--radius-md);
+            background: var(--bg-tertiary);
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+        .achievement-card.unlocked {
+            opacity: 1;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+        }
+        .achievement-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+        .achievement-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .achievement-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .phases-timeline {
+                flex-direction: column;
+            }
+            .phases-timeline::before {
+                display: none;
+            }
+            .roadmap-hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">📘</span>
+                <span class="logo-text">Blueprint to Success</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Dashboard</a>
+                <a href="roadmap.html" class="nav-link active">Roadmap</a>
+                <a href="guides/index.html" class="nav-link">Guides</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">Tools ▾</button>
+                    <div class="dropdown-menu">
+                        <a href="tools/budget-planner/index.html">Budget Planner</a>
+                        <a href="tools/education-hub/index.html">Education Hub</a>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="theme-btn">🌙</button>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html" class="mobile-link">Dashboard</a>
+        <a href="roadmap.html" class="mobile-link active">Roadmap</a>
+        <a href="guides/index.html" class="mobile-link">Guides</a>
+        <a href="tools/budget-planner/index.html" class="mobile-link">Budget Planner</a>
+        <a href="tools/education-hub/index.html" class="mobile-link">Education Hub</a>
+    </div>
+
+    <main class="main-content">
+        <!-- Hero -->
+        <section class="roadmap-hero">
+            <h1>Your Journey to Success</h1>
+            <p>Follow the path from foundation to action. Track your progress and reach your goals.</p>
+        </section>
+
+        <div class="journey-container">
+            <!-- Phase Timeline -->
+            <div class="phases-timeline">
+                <div class="phase-card" id="phase-1">
+                    <div class="phase-number">1</div>
+                    <h3 class="phase-title">Foundation</h3>
+                    <p class="phase-desc">Build your financial base</p>
+                    <ul class="phase-items">
+                        <li id="phase1-credit">Read Credit Guide</li>
+                        <li id="phase1-budget-guide">Read Budgeting Guide</li>
+                        <li id="phase1-budget-tool">Set Up Budget Planner</li>
+                        <li id="phase1-debt">Read Debt Management</li>
+                    </ul>
+                    <div class="phase-progress">
+                        <div class="phase-progress-bar">
+                            <div class="phase-progress-fill" id="phase1-progress" style="width: 0%"></div>
+                        </div>
+                        <span class="phase-progress-text" id="phase1-text">0% Complete</span>
+                    </div>
+                </div>
+
+                <div class="phase-card" id="phase-2">
+                    <div class="phase-number">2</div>
+                    <h3 class="phase-title">Learning</h3>
+                    <p class="phase-desc">Develop skills & knowledge</p>
+                    <ul class="phase-items">
+                        <li id="phase2-stocks">Complete Stock Market Track</li>
+                        <li id="phase2-taxes">Complete Business Taxes Track</li>
+                        <li id="phase2-tech">Read Tech Guides</li>
+                        <li id="phase2-business">Read Business Guides</li>
+                    </ul>
+                    <div class="phase-progress">
+                        <div class="phase-progress-bar">
+                            <div class="phase-progress-fill" id="phase2-progress" style="width: 0%"></div>
+                        </div>
+                        <span class="phase-progress-text" id="phase2-text">0% Complete</span>
+                    </div>
+                </div>
+
+                <div class="phase-card" id="phase-3">
+                    <div class="phase-number">3</div>
+                    <h3 class="phase-title">Action</h3>
+                    <p class="phase-desc">Apply what you've learned</p>
+                    <ul class="phase-items">
+                        <li id="phase3-invest">Make First Investment</li>
+                        <li id="phase3-business">Start Your Business</li>
+                        <li id="phase3-goals">Achieve Savings Goals</li>
+                        <li id="phase3-graduate">Graduate Blueprint!</li>
+                    </ul>
+                    <div class="phase-progress">
+                        <div class="phase-progress-bar">
+                            <div class="phase-progress-fill" id="phase3-progress" style="width: 0%"></div>
+                        </div>
+                        <span class="phase-progress-text" id="phase3-text">0% Complete</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Tracks -->
+            <section class="tracks-section">
+                <div class="section-header">
+                    <h2>Learning Tracks</h2>
+                    <p>Complete each track to unlock your potential</p>
+                </div>
+
+                <div class="tracks-grid">
+                    <div class="track-journey-card stocks">
+                        <div class="track-header">
+                            <span class="track-icon">📈</span>
+                            <span class="track-title">Stock Market</span>
+                        </div>
+                        <div class="track-goal">
+                            <div class="track-goal-label">Graduation Goal</div>
+                            <div class="track-goal-text">Ready to open a brokerage account and make your first investment</div>
+                        </div>
+                        <div class="track-progress-info">
+                            <span>Progress</span>
+                            <span id="stocks-percent">0%</span>
+                        </div>
+                        <div class="track-progress-bar">
+                            <div class="track-progress-fill" id="stocks-bar" style="width: 0%"></div>
+                        </div>
+                        <div class="track-status">
+                            <span class="track-status-badge not-started" id="stocks-status">Not Started</span>
+                            <a href="tools/education-hub/index.html" class="track-action">Start Learning</a>
+                        </div>
+                        <div class="next-path" id="stocks-next">
+                            <div class="next-path-label">Suggested Next:</div>
+                            <a href="tools/education-hub/index.html" class="next-path-link">Business Taxes → Learn tax implications of investing</a>
+                        </div>
+                    </div>
+
+                    <div class="track-journey-card taxes">
+                        <div class="track-header">
+                            <span class="track-icon">🧾</span>
+                            <span class="track-title">Business Taxes</span>
+                        </div>
+                        <div class="track-goal">
+                            <div class="track-goal-label">Graduation Goal</div>
+                            <div class="track-goal-text">Confident to handle tax planning for your business</div>
+                        </div>
+                        <div class="track-progress-info">
+                            <span>Progress</span>
+                            <span id="taxes-percent">0%</span>
+                        </div>
+                        <div class="track-progress-bar">
+                            <div class="track-progress-fill" id="taxes-bar" style="width: 0%"></div>
+                        </div>
+                        <div class="track-status">
+                            <span class="track-status-badge not-started" id="taxes-status">Not Started</span>
+                            <a href="tools/education-hub/index.html" class="track-action">Start Learning</a>
+                        </div>
+                        <div class="next-path" id="taxes-next">
+                            <div class="next-path-label">Suggested Next:</div>
+                            <a href="guides/business/forming-llc.html" class="next-path-link">Forming an LLC → Put your knowledge into action</a>
+                        </div>
+                    </div>
+
+                    <div class="track-journey-card nonprofits">
+                        <div class="track-header">
+                            <span class="track-icon">🤝</span>
+                            <span class="track-title">Nonprofits</span>
+                        </div>
+                        <div class="track-goal">
+                            <div class="track-goal-label">Graduation Goal</div>
+                            <div class="track-goal-text">Prepared to start or contribute to a 501(c)(3)</div>
+                        </div>
+                        <div class="track-progress-info">
+                            <span>Progress</span>
+                            <span id="nonprofits-percent">0%</span>
+                        </div>
+                        <div class="track-progress-bar">
+                            <div class="track-progress-fill" id="nonprofits-bar" style="width: 0%"></div>
+                        </div>
+                        <div class="track-status">
+                            <span class="track-status-badge not-started" id="nonprofits-status">Not Started</span>
+                            <a href="tools/education-hub/index.html" class="track-action">Start Learning</a>
+                        </div>
+                        <div class="next-path" id="nonprofits-next">
+                            <div class="next-path-label">Suggested Next:</div>
+                            <a href="tools/education-hub/index.html" class="next-path-link">Labor Laws → Understand employment regulations</a>
+                        </div>
+                    </div>
+
+                    <div class="track-journey-card labor">
+                        <div class="track-header">
+                            <span class="track-icon">⚖️</span>
+                            <span class="track-title">Labor Laws</span>
+                        </div>
+                        <div class="track-goal">
+                            <div class="track-goal-label">Graduation Goal</div>
+                            <div class="track-goal-text">Know your rights and advocate for yourself at work</div>
+                        </div>
+                        <div class="track-progress-info">
+                            <span>Progress</span>
+                            <span id="labor-percent">0%</span>
+                        </div>
+                        <div class="track-progress-bar">
+                            <div class="track-progress-fill" id="labor-bar" style="width: 0%"></div>
+                        </div>
+                        <div class="track-status">
+                            <span class="track-status-badge not-started" id="labor-status">Not Started</span>
+                            <a href="tools/education-hub/index.html" class="track-action">Start Learning</a>
+                        </div>
+                        <div class="next-path" id="labor-next">
+                            <div class="next-path-label">Suggested Next:</div>
+                            <a href="guides/business/entrepreneurship.html" class="next-path-link">Entrepreneurship → Start your own venture</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements -->
+            <section class="achievements-section">
+                <div class="section-header">
+                    <h2>Achievements</h2>
+                    <p>Unlock badges as you progress through your journey</p>
+                </div>
+                <div class="achievements-grid">
+                    <div class="achievement-card" id="ach-foundation">
+                        <div class="achievement-icon">🏗️</div>
+                        <div class="achievement-title">Foundation Builder</div>
+                        <div class="achievement-desc">Complete Phase 1</div>
+                    </div>
+                    <div class="achievement-card" id="ach-investor">
+                        <div class="achievement-icon">📈</div>
+                        <div class="achievement-title">Informed Investor</div>
+                        <div class="achievement-desc">Complete Stock Market track</div>
+                    </div>
+                    <div class="achievement-card" id="ach-tax-pro">
+                        <div class="achievement-icon">🧾</div>
+                        <div class="achievement-title">Tax Strategist</div>
+                        <div class="achievement-desc">Complete Business Taxes track</div>
+                    </div>
+                    <div class="achievement-card" id="ach-entrepreneur">
+                        <div class="achievement-icon">🚀</div>
+                        <div class="achievement-title">Entrepreneur Ready</div>
+                        <div class="achievement-desc">Complete all business content</div>
+                    </div>
+                    <div class="achievement-card" id="ach-graduate">
+                        <div class="achievement-icon">🎓</div>
+                        <div class="achievement-title">Blueprint Graduate</div>
+                        <div class="achievement-desc">Complete all phases</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-icon">📘</span>
+                <span>Blueprint to Success</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Your progress is saved locally. Keep learning!</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // Roadmap-specific logic
+        document.addEventListener('DOMContentLoaded', () => {
+            updateRoadmapProgress();
+        });
+
+        function updateRoadmapProgress() {
+            // Load education progress
+            const eduProgress = JSON.parse(localStorage.getItem('educationHubProgress') || '{}');
+            const guidesProgress = JSON.parse(localStorage.getItem('guidesProgress') || '{"read":[]}');
+            const budgetData = localStorage.getItem('budgetPlannerData');
+            
+            // Track progress calculation
+            const tracks = ['stocks', 'taxes', 'nonprofits', 'labor'];
+            const topicCounts = { stocks: 25, taxes: 20, nonprofits: 16, labor: 17 };
+            
+            tracks.forEach(track => {
+                const trackData = eduProgress[track];
+                let percent = 0;
+                let status = 'Not Started';
+                let statusClass = 'not-started';
+                
+                if (trackData && trackData.completedTopics) {
+                    const completed = trackData.completedTopics.length;
+                    percent = Math.round((completed / topicCounts[track]) * 100);
+                    
+                    if (percent === 100) {
+                        status = 'Completed!';
+                        statusClass = 'completed';
+                        document.getElementById(`${track}-next`).classList.add('show');
+                        
+                        // Unlock achievement
+                        if (track === 'stocks') document.getElementById('ach-investor').classList.add('unlocked');
+                        if (track === 'taxes') document.getElementById('ach-tax-pro').classList.add('unlocked');
+                    } else if (percent > 0) {
+                        status = 'In Progress';
+                        statusClass = 'in-progress';
+                    }
+                }
+                
+                document.getElementById(`${track}-percent`).textContent = `${percent}%`;
+                document.getElementById(`${track}-bar`).style.width = `${percent}%`;
+                
+                const statusEl = document.getElementById(`${track}-status`);
+                statusEl.textContent = status;
+                statusEl.className = `track-status-badge ${statusClass}`;
+            });
+            
+            // Phase 1 progress
+            const phase1Items = [
+                { id: 'phase1-credit', check: guidesProgress.read.includes('credit-scores') },
+                { id: 'phase1-budget-guide', check: guidesProgress.read.includes('budgeting') },
+                { id: 'phase1-budget-tool', check: !!budgetData },
+                { id: 'phase1-debt', check: guidesProgress.read.includes('debt-management') }
+            ];
+            
+            let phase1Done = 0;
+            phase1Items.forEach(item => {
+                if (item.check) {
+                    document.getElementById(item.id).classList.add('done');
+                    phase1Done++;
+                }
+            });
+            
+            const phase1Percent = Math.round((phase1Done / 4) * 100);
+            document.getElementById('phase1-progress').style.width = `${phase1Percent}%`;
+            document.getElementById('phase1-text').textContent = `${phase1Percent}% Complete`;
+            
+            if (phase1Percent === 100) {
+                document.getElementById('phase-1').classList.add('completed');
+                document.getElementById('ach-foundation').classList.add('unlocked');
+            } else if (phase1Percent > 0) {
+                document.getElementById('phase-1').classList.add('active');
+            }
+            
+            // Phase 2 progress
+            const stocksComplete = eduProgress.stocks?.completedTopics?.length === topicCounts.stocks;
+            const taxesComplete = eduProgress.taxes?.completedTopics?.length === topicCounts.taxes;
+            const techRead = ['web-development', 'python', 'javascript'].some(g => guidesProgress.read.includes(g));
+            const bizRead = ['entrepreneurship', 'forming-llc'].some(g => guidesProgress.read.includes(g));
+            
+            const phase2Items = [
+                { id: 'phase2-stocks', check: stocksComplete },
+                { id: 'phase2-taxes', check: taxesComplete },
+                { id: 'phase2-tech', check: techRead },
+                { id: 'phase2-business', check: bizRead }
+            ];
+            
+            let phase2Done = 0;
+            phase2Items.forEach(item => {
+                if (item.check) {
+                    document.getElementById(item.id).classList.add('done');
+                    phase2Done++;
+                }
+            });
+            
+            const phase2Percent = Math.round((phase2Done / 4) * 100);
+            document.getElementById('phase2-progress').style.width = `${phase2Percent}%`;
+            document.getElementById('phase2-text').textContent = `${phase2Percent}% Complete`;
+            
+            if (phase1Percent < 100) {
+                document.getElementById('phase-2').classList.add('locked');
+            } else if (phase2Percent === 100) {
+                document.getElementById('phase-2').classList.add('completed');
+            } else if (phase2Percent > 0) {
+                document.getElementById('phase-2').classList.add('active');
+            }
+            
+            // Phase 3 - action items (manual tracking via localStorage)
+            const actionProgress = JSON.parse(localStorage.getItem('actionProgress') || '{}');
+            const phase3Items = [
+                { id: 'phase3-invest', check: actionProgress.firstInvestment },
+                { id: 'phase3-business', check: actionProgress.startedBusiness },
+                { id: 'phase3-goals', check: actionProgress.achievedGoals },
+                { id: 'phase3-graduate', check: actionProgress.graduated }
+            ];
+            
+            let phase3Done = 0;
+            phase3Items.forEach(item => {
+                if (item.check) {
+                    document.getElementById(item.id).classList.add('done');
+                    phase3Done++;
+                }
+            });
+            
+            const phase3Percent = Math.round((phase3Done / 4) * 100);
+            document.getElementById('phase3-progress').style.width = `${phase3Percent}%`;
+            document.getElementById('phase3-text').textContent = `${phase3Percent}% Complete`;
+            
+            if (phase2Percent < 100) {
+                document.getElementById('phase-3').classList.add('locked');
+            } else if (phase3Percent === 100) {
+                document.getElementById('phase-3').classList.add('completed');
+                document.getElementById('ach-graduate').classList.add('unlocked');
+            } else if (phase3Percent > 0) {
+                document.getElementById('phase-3').classList.add('active');
+            }
+            
+            // Check entrepreneur achievement
+            if (stocksComplete && taxesComplete && bizRead) {
+                document.getElementById('ach-entrepreneur').classList.add('unlocked');
+            }
+        }
+    </script>
+</body>
+</html>

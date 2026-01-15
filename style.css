@@ -944,6 +944,217 @@ a {
     }
 }
 
+/* ==================== Continue Section ==================== */
+.continue-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--accent-gradient);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    color: white;
+}
+
+.continue-icon {
+    font-size: 3rem;
+}
+
+.continue-info {
+    flex: 1;
+}
+
+.continue-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+.continue-info p {
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+.continue-btn {
+    padding: 12px 24px;
+    background: white;
+    color: var(--accent-primary);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.continue-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ==================== Roadmap Preview ==================== */
+.roadmap-preview {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+}
+
+.roadmap-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.roadmap-header .section-title {
+    margin-bottom: 0;
+}
+
+.view-roadmap-link {
+    color: var(--accent-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.view-roadmap-link:hover {
+    text-decoration: underline;
+}
+
+.phases-mini {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}
+
+.phase-mini {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    background: var(--bg-tertiary);
+    min-width: 120px;
+    transition: all 0.3s ease;
+}
+
+.phase-mini.active {
+    background: var(--accent-gradient);
+    color: white;
+    transform: scale(1.05);
+}
+
+.phase-mini.completed {
+    background: var(--success);
+    color: white;
+}
+
+.phase-mini-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.phase-mini.active .phase-mini-num,
+.phase-mini.completed .phase-mini-num {
+    background: rgba(255,255,255,0.2);
+}
+
+.phase-mini-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.phase-mini-progress {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.phase-connector {
+    width: 40px;
+    height: 3px;
+    background: var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .continue-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .phases-mini {
+        flex-direction: column;
+    }
+    
+    .phase-connector {
+        width: 3px;
+        height: 20px;
+    }
+    
+    .roadmap-header {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+}
+
+/* ==================== Up Next Section ==================== */
+.up-next-section {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-color);
+}
+
+.up-next-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.up-next-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+}
+
+.up-next-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.up-next-card:hover {
+    background: var(--accent-gradient);
+    color: white;
+    transform: translateX(4px);
+}
+
+.up-next-icon {
+    font-size: 1.8rem;
+}
+
+.up-next-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.up-next-info strong {
+    font-size: 0.95rem;
+}
+
+.up-next-info span {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
 /* ==================== Animations ==================== */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }

@@ -1,44 +1,87 @@
 # Blueprint to Success
 
-Welcome to the "Blueprint to Success" repository, a comprehensive guide designed to help you excel in various fields. Each document provides detailed insights, strategies, and project ideas to enhance your skills and knowledge.
+Your personal roadmap to financial literacy, technical skills, and personal growth.
 
-## Contents
+## Live Site
 
-### 1. [Web Development](Blueprint%20to%20Success/Web_Development.md)
-- **Purpose**: This guide is for beginners and aspiring freelancers looking to enter the web development field. It includes a learning roadmap, project ideas, pricing strategies, and marketing tips to help you build a successful career in web development.
+**[View the Blueprint to Success Hub](https://hosea1989.github.io/BluePrint-to-Success/)**
 
-### 2. [Investing and Chart Reading](Blueprint%20to%20Success/Investing_and_Chart_Reading.md)
-- **Purpose**: A beginner-friendly guide to investing and understanding financial charts. It covers basic investment concepts, chart reading techniques, and skills to develop for successful investing.
+## Features
 
-### 3. [Self Care for Black Men](Blueprint%20to%20Success/Self_Care_for_Black_Men.md)
-- **Purpose**: This document focuses on the importance of self-care for Black men, offering practical advice and strategies to improve mental, physical, and emotional well-being.
+### Interactive Tools
+- **Budget Planner** - Track income, expenses, debts, and savings goals
+- **Education Hub** - Interactive courses with quizzes on stocks, taxes, nonprofits, and labor laws
 
-### 4. [App Development](Blueprint%20to%20Success/App_Development.md)
-- **Purpose**: A comprehensive guide to building competitive mobile applications. It includes steps for planning, development, marketing, and project ideas to explore different aspects of app development.
+### Visual Roadmap
+- Journey-style progress tracking through 3 phases: Foundation → Learning → Action
+- Clear graduation outcomes for each learning path
+- Achievement system for completed tracks
 
-### 5. [Social Media Growth](Blueprint%20to%20Success/Social_Media_Growth.md)
-- **Purpose**: This guide provides strategies for growing your presence on social media platforms. It covers content creation, audience engagement, and analytics to help you build a strong online brand.
+### 31+ Guides
+Organized into 4 categories:
 
-### 6. [Software Development](Blueprint%20to%20Success/Software_Development.md)
-- **Purpose**: A detailed guide for aspiring software developers. It includes career paths, learning plans, project ideas, and resources to help you succeed in the software development industry.
+| Category | Topics | Goal |
+|----------|--------|------|
+| **Finance** | Credit, Budgeting, Investing, Taxes, Retirement | Financially literate and in control |
+| **Tech** | Web Dev, Python, JavaScript, Mobile Apps | Developer ready - build projects |
+| **Personal** | Self-Care, Language Learning, Travel | Balanced living and growth |
+| **Business** | Entrepreneurship, LLC, Marketing | Launch your business with confidence |
 
-### 7. [Credit Scores Guide](Credit_Scores_Guide.md)
-- **Purpose**: A comprehensive guide to understanding and managing credit scores. It includes information on how credit scores are calculated, tips for building and fixing credit, a 5-month credit rebuild plan, and a glossary of key terms.
+## Learning Path Outcomes
 
-## How to Use This Repository
+When you complete each Education Hub track:
 
-Each document is designed to be a standalone guide, providing you with the necessary tools and knowledge to succeed in your chosen field. While exploring these resources, it's recommended to focus on one path or skill at a time to maintain clarity and effectiveness in your learning journey. This approach helps you stay focused and achieve mastery in your chosen area before moving on to the next.
+- **Stock Market** → Ready to open a brokerage account and make your first investment
+- **Business Taxes** → Confident to handle tax planning for your business
+- **Nonprofits** → Prepared to start or contribute to a 501(c)(3)
+- **Labor Laws** → Know your rights and can advocate for yourself at work
 
-Feel free to explore the documents that align with your interests and career goals.
+## Tech Stack
+
+- Pure HTML, CSS, JavaScript (no frameworks)
+- localStorage for progress persistence
+- GitHub Pages hosting
+- Responsive design for mobile
+
+## Local Development
+
+Simply open `index.html` in a browser, or use a local server:
+
+```bash
+# Using Python
+python -m http.server 8000
+
+# Using Node
+npx serve
+```
+
+## File Structure
+
+```
+BluePrint-to-Success/
+├── index.html          # Main dashboard
+├── roadmap.html        # Visual journey page
+├── style.css           # Shared styles
+├── app.js              # Dashboard logic
+├── guides/             # 31 HTML guide pages
+│   ├── finance/
+│   ├── tech/
+│   ├── personal/
+│   └── business/
+├── tools/
+│   ├── budget-planner/
+│   └── education-hub/
+└── archive/            # Original markdown guides
+```
 
 ## Contributing
 
-We welcome contributions to improve and expand these guides. If you have suggestions or additional content to add, please feel free to submit a pull request.
+Contributions welcome! Feel free to submit pull requests to improve guides or add new features.
 
 ## License
 
-This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+MIT License - See [LICENSE](LICENSE) file for details.
 
 ---
 
-Thank you for exploring the "Blueprint to Success" repository. We hope these guides help you achieve your personal and professional goals!
+Built with purpose. Your data stays local. Your progress is yours.
