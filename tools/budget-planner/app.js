@@ -6,7 +6,22 @@ document.addEventListener('DOMContentLoaded', () => {
     loadData();
     setupEventListeners();
     calculateAll();
+    checkGettingStarted();
 });
+
+// ==================== GETTING STARTED GUIDE ====================
+function checkGettingStarted() {
+    const guide = document.getElementById('budget-getting-started');
+    if (!guide) return;
+    
+    // Hide if already dismissed or if user has saved data before
+    const dismissed = localStorage.getItem('budgetIntroDismissed');
+    const hasData = localStorage.getItem('budgetPlannerData');
+    
+    if (dismissed || hasData) {
+        guide.style.display = 'none';
+    }
+}
 
 // ==================== THEME ====================
 function initTheme() {

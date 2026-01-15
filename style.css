@@ -1164,3 +1164,411 @@ a {
 .section {
     animation: fadeIn 0.5s ease;
 }
+
+/* ==================== ADHD-Friendly Intro Section ==================== */
+.intro-section {
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+.intro-card {
+    background: var(--bg-secondary);
+    border: 2px solid var(--accent-primary);
+    border-radius: var(--radius-xl);
+    padding: 32px;
+    box-shadow: var(--shadow-md);
+}
+
+.intro-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.intro-badge {
+    background: var(--accent-gradient);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.intro-dismiss {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: var(--bg-tertiary);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+}
+
+.intro-dismiss:hover {
+    background: var(--danger);
+    color: white;
+}
+
+.intro-card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+
+.intro-card > p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    line-height: 1.7;
+}
+
+.how-it-works {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.how-it-works h3 {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.step-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--bg-secondary);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.step-number {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background: var(--accent-gradient);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.step-content strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.step-content p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.start-here {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.start-here h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.start-here > p {
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.start-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.start-btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.start-btn.primary {
+    background: var(--accent-gradient);
+    color: white;
+}
+
+.start-btn.secondary {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.start-btn:hover {
+    transform: translateX(8px);
+    box-shadow: var(--shadow-md);
+}
+
+.start-btn.primary:hover {
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+}
+
+.start-icon {
+    font-size: 2rem;
+}
+
+.start-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.start-text strong {
+    font-size: 1rem;
+}
+
+.start-text small {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+/* ==================== Page Context Headers ==================== */
+.page-context {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.page-context-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.page-context-content h2 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    color: var(--accent-primary);
+}
+
+.page-context-content p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* ==================== Help Tooltips ==================== */
+.help-tip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: var(--bg-tertiary);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    cursor: help;
+    position: relative;
+    margin-left: 6px;
+}
+
+.help-tip::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 100;
+    max-width: 250px;
+    white-space: normal;
+    text-align: center;
+}
+
+.help-tip:hover::after {
+    opacity: 1;
+    visibility: visible;
+    bottom: calc(100% + 8px);
+}
+
+/* ==================== Getting Started Banner ==================== */
+.getting-started-banner {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 20px 24px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.getting-started-banner.collapsed {
+    padding: 12px 24px;
+}
+
+.banner-icon {
+    font-size: 2.5rem;
+}
+
+.banner-content {
+    flex: 1;
+}
+
+.banner-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.banner-content p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.banner-steps {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.banner-step {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.2);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.banner-step-num {
+    width: 20px;
+    height: 20px;
+    background: white;
+    color: #059669;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.banner-dismiss {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.2s ease;
+}
+
+.banner-dismiss:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* ==================== Quick Actions Bar ==================== */
+.quick-actions {
+    display: flex;
+    gap: 12px;
+    padding: 16px 24px;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    overflow-x: auto;
+}
+
+.quick-action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: var(--text-secondary);
+}
+
+.quick-action:hover {
+    background: var(--accent-gradient);
+    color: white;
+}
+
+.quick-action-icon {
+    font-size: 1.1rem;
+}
+
+/* ==================== Responsive for ADHD components ==================== */
+@media (max-width: 768px) {
+    .intro-card {
+        padding: 20px;
+    }
+    
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .start-btn {
+        padding: 14px 16px;
+    }
+    
+    .start-icon {
+        font-size: 1.5rem;
+    }
+    
+    .page-context {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .getting-started-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .banner-steps {
+        justify-content: center;
+    }
+}

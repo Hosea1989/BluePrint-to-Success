@@ -48,6 +48,28 @@
         </header>
 
         <div class="library-content">
+            <!-- What is this page? -->
+            <div class="page-context" style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px 24px; margin-bottom: 32px; display: flex; align-items: flex-start; gap: 16px;">
+                <span style="font-size: 2rem;">📖</span>
+                <div style="flex: 1;">
+                    <h2 style="font-size: 1.1rem; margin-bottom: 4px; color: var(--accent-primary);">What are these guides?</h2>
+                    <p style="font-size: 0.95rem; color: var(--text-secondary); margin: 0 0 12px 0;">These are <strong>reference articles</strong> you can read at your own pace. Each guide covers a topic in depth. When you finish reading one, click "Mark as Read" at the bottom to track your progress.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.85rem;">
+                        <span style="background: var(--success-bg); color: var(--success); padding: 4px 12px; border-radius: 20px;">✓ Read = You've finished this guide</span>
+                        <span style="background: var(--bg-tertiary); color: var(--text-muted); padding: 4px 12px; border-radius: 20px;">Not Read = Haven't finished yet</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suggested starting point -->
+            <div style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 16px 20px; border-radius: 12px; margin-bottom: 32px; display: flex; align-items: center; gap: 16px;" id="guide-suggestion">
+                <span style="font-size: 2rem;">🎯</span>
+                <div style="flex: 1;">
+                    <h3 style="font-size: 1rem; margin-bottom: 2px;">Not sure where to start?</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.9; margin: 0;">Start with <a href="finance/credit-scores.html" style="color: white; text-decoration: underline; font-weight: 600;">Understanding Credit Scores</a> — it's the foundation for everything else in finance.</p>
+                </div>
+            </div>
+
             <!-- Finance Section -->
             <section class="category-section" id="finance">
                 <div class="category-header">
@@ -381,6 +403,12 @@
                     }
                 }
             });
+            
+            // Hide suggestion if credit guide already read
+            const suggestion = document.getElementById('guide-suggestion');
+            if (suggestion && progress.read.includes('credit-scores')) {
+                suggestion.style.display = 'none';
+            }
         });
     </script>
 </body>

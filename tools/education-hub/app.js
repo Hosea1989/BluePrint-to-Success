@@ -26,7 +26,24 @@ document.addEventListener('DOMContentLoaded', () => {
     renderAllTracks();
     updateAllProgress();
     showView('home');
+    checkGettingStarted();
 });
+
+// ==================== GETTING STARTED GUIDE ====================
+function checkGettingStarted() {
+    const guide = document.getElementById('edu-getting-started');
+    if (!guide) return;
+    
+    // Hide if already dismissed or if user has progress
+    const dismissed = localStorage.getItem('eduHubIntroDismissed');
+    const hasProgress = Object.keys(state.progress).some(track => 
+        state.progress[track]?.completedTopics?.length > 0
+    );
+    
+    if (dismissed || hasProgress) {
+        guide.style.display = 'none';
+    }
+}
 
 // ==================== THEME ====================
 function initTheme() {

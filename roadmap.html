@@ -412,6 +412,29 @@
         </section>
 
         <div class="journey-container">
+            <!-- What is this page? -->
+            <div class="page-context" style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px 24px; margin-bottom: 32px; display: flex; align-items: flex-start; gap: 16px;">
+                <span style="font-size: 2rem;">🗺️</span>
+                <div>
+                    <h2 style="font-size: 1.1rem; margin-bottom: 4px; color: var(--accent-primary);">What is this page?</h2>
+                    <p style="font-size: 0.95rem; color: var(--text-secondary); margin: 0;">This is your <strong>visual roadmap</strong> showing the 3 phases of your journey. Each phase has tasks to complete. As you read guides, complete quizzes, and use tools — your progress updates here automatically. <strong>Work through Phase 1 first</strong>, then move to Phase 2, then Phase 3.</p>
+                </div>
+            </div>
+
+            <!-- Quick guide to reading this page -->
+            <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1)); border-radius: 12px; padding: 16px 20px; margin-bottom: 32px; border: 1px solid rgba(99, 102, 241, 0.3);">
+                <h3 style="font-size: 1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                    <span>👀</span> How to read this page
+                </h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.9rem; color: var(--text-secondary);">
+                    <span style="display: flex; align-items: center; gap: 6px;"><span style="color: var(--success);">✓</span> = Done</span>
+                    <span style="display: flex; align-items: center; gap: 6px;"><span>○</span> = Not done yet</span>
+                    <span style="display: flex; align-items: center; gap: 6px;"><span style="background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Purple border</span> = Currently working on</span>
+                    <span style="display: flex; align-items: center; gap: 6px;"><span style="color: var(--success);">Green border</span> = Completed</span>
+                    <span style="display: flex; align-items: center; gap: 6px;"><span style="opacity: 0.5;">Faded</span> = Locked (finish previous phase first)</span>
+                </div>
+            </div>
+
             <!-- Phase Timeline -->
             <div class="phases-timeline">
                 <div class="phase-card" id="phase-1">

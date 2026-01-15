@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadBudgetData();
     updateContinueSection();
     updateRoadmapPreview();
+    setupIntroSection();
 });
 
 // ==================== THEME ====================
@@ -413,6 +414,35 @@ function updateRoadmapPreview() {
         } else if (phase3Percent > 0) {
             phase3El.classList.add('active');
         }
+    }
+}
+
+// ==================== INTRO SECTION ====================
+function setupIntroSection() {
+    const introSection = document.getElementById('intro-section');
+    const dismissBtn = document.getElementById('dismiss-intro');
+    
+    if (!introSection) return;
+    
+    // Check if user has dismissed the intro before
+    const introDismissed = localStorage.getItem('blueprintIntroDismissed');
+    
+    // Also check if user has any progress - if so, hide intro
+    const eduProgress = localStorage.getItem('educationHubProgress');
+    const budgetData = localStorage.getItem('budgetPlannerData');
+    const guidesProgress = JSON.parse(localStorage.getItem('guidesProgress') || '{"read":[]}');
+    const hasProgress = eduProgress || budgetData || (guidesProgress.read && guidesProgress.read.length > 0);
+    
+    if (introDismissed || hasProgress) {
+        introSection.style.display = 'none';
+    }
+    
+    // Setup dismiss button
+    if (dismissBtn) {
+        dismissBtn.addEventListener('click', () => {
+            localStorage.setItem('blueprintIntroDismissed', 'true');
+            introSection.style.display = 'none';
+        });
     }
 }
 
