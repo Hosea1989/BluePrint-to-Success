@@ -274,41 +274,75 @@ function renderSidebar() {
     });
 }
 
-// ==================== TRACK CARDS RENDERING ====================
+// ==================== TRACK CARDS RENDERING (DROPDOWN VERSION) ====================
 function renderTrackCards() {
-    const container = document.getElementById('track-cards-container');
+    const container = document.getElementById('category-dropdowns-container');
     if (!container) return;
-    
-    const category = state.currentCategory;
+
     let html = '';
     
+    // Get saved expanded state or default to first category expanded
+    const expandedCategories = JSON.parse(localStorage.getItem('eduHubExpandedCategories') || '["finance"]');
+    
+    // Category descriptions
+    const categoryDescs = {
+        finance: 'Build wealth, manage money, and invest wisely',
+        business: 'Start and grow your own business or career',
+        tech: 'Master modern technology and digital skills',
+        civic: 'Know your rights and understand how systems work',
+        personal: 'Optimize your productivity and personal growth'
+    };
+
     Object.keys(trackCategories).forEach(catId => {
         const cat = trackCategories[catId];
         const catTracks = cat.tracks.filter(tid => tracks[tid]);
-        
+
         if (catTracks.length === 0) return;
-        if (category !== 'all' && category !== catId) return;
         
-        // Category header
-        if (category === 'all') {
-            html += `
-                <div class="category-section-header" style="grid-column: 1 / -1; margin-top: ${html ? '32px' : '0'};">
-                    <span class="category-icon">${cat.icon}</span>
-                    <h3>${cat.name}</h3>
+        // Calculate category progress
+        let totalProgress = 0;
+        catTracks.forEach(tid => {
+            totalProgress += getTrackProgress(tid);
+        });
+        const categoryProgress = Math.round(totalProgress / catTracks.length);
+        
+        const isExpanded = expandedCategories.includes(catId);
+
+        html += `
+            <div class="category-dropdown ${isExpanded ? 'expanded' : ''}" data-category="${catId}">
+                <div class="category-dropdown-header">
+                    <div class="category-header-left">
+                        <span class="category-header-icon">${cat.icon}</span>
+                        <div class="category-header-info">
+                            <h3>${cat.name}</h3>
+                            <p>${categoryDescs[catId] || ''}</p>
+                        </div>
+                    </div>
+                    <div class="category-header-right">
+                        <span class="category-track-count">${catTracks.length} tracks</span>
+                        <div class="category-progress-mini">
+                            <div class="mini-bar">
+                                <div class="mini-fill" style="width: ${categoryProgress}%"></div>
+                            </div>
+                            <span>${categoryProgress}%</span>
+                        </div>
+                        <span class="category-dropdown-arrow">▼</span>
+                    </div>
                 </div>
-            `;
-        }
-        
+                <div class="category-dropdown-content">
+                    <div class="category-tracks-grid">
+        `;
+
         // Track cards for this category
         catTracks.forEach(trackId => {
             const track = tracks[trackId];
             const progress = getTrackProgress(trackId);
             const levelCount = track.levels ? track.levels.length : 0;
-            
+
             let progressLabel = 'Not Started';
             if (progress === 100) progressLabel = 'Completed! 🎉';
             else if (progress > 0) progressLabel = progress + '% Complete';
-            
+
             html += `
                 <div class="track-card" data-track="${trackId}">
                     <div class="track-icon">${track.icon}</div>
@@ -330,11 +364,36 @@ function renderTrackCards() {
                 </div>
             `;
         });
+
+        html += `
+                    </div>
+                </div>
+            </div>
+        `;
     });
-    
+
     container.innerHTML = html;
-    
-    // Re-attach event listeners
+
+    // Add click listeners for dropdown headers
+    container.querySelectorAll('.category-dropdown-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const dropdown = header.closest('.category-dropdown');
+            const catId = dropdown.dataset.category;
+            dropdown.classList.toggle('expanded');
+            
+            // Save expanded state
+            const expanded = JSON.parse(localStorage.getItem('eduHubExpandedCategories') || '[]');
+            if (dropdown.classList.contains('expanded')) {
+                if (!expanded.includes(catId)) expanded.push(catId);
+            } else {
+                const idx = expanded.indexOf(catId);
+                if (idx > -1) expanded.splice(idx, 1);
+            }
+            localStorage.setItem('eduHubExpandedCategories', JSON.stringify(expanded));
+        });
+    });
+
+    // Re-attach event listeners for track cards
     container.querySelectorAll('.track-card').forEach(card => {
         card.addEventListener('click', () => {
             const trackId = card.dataset.track;
@@ -344,13 +403,8 @@ function renderTrackCards() {
 }
 
 function filterByCategory(category) {
+    // Legacy function - kept for compatibility but not used with new dropdown UI
     state.currentCategory = category;
-    
-    // Update active tab
-    document.querySelectorAll('.category-tab').forEach(tab => {
-        tab.classList.toggle('active', tab.dataset.category === category);
-    });
-    
     renderTrackCards();
 }
 

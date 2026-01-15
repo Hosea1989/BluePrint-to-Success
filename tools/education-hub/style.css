@@ -301,38 +301,139 @@ body {
 }
 
 /* Category Tabs */
-.category-tabs {
+/* Category Dropdown Sections */
+.category-dropdowns {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 24px;
-    padding: 16px;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.category-dropdown {
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.category-dropdown.expanded {
+    box-shadow: var(--shadow-md);
+}
+
+.category-dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    user-select: none;
+}
+
+.category-dropdown-header:hover {
+    background: var(--bg-tertiary);
+}
+
+.category-header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.category-header-icon {
+    font-size: 1.8rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+}
+
+.category-header-info h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.category-header-info p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.category-header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.category-track-count {
+    background: var(--bg-tertiary);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.category-progress-mini {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.category-progress-mini .mini-bar {
+    width: 60px;
+    height: 6px;
+    background: var(--bg-tertiary);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.category-progress-mini .mini-fill {
+    height: 100%;
+    background: var(--accent-gradient);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.category-dropdown-arrow {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    transition: transform 0.3s ease;
+}
+
+.category-dropdown.expanded .category-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.category-dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.category-dropdown.expanded .category-dropdown-content {
+    max-height: 2000px;
+}
+
+.category-tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    padding: 0 24px 24px;
+}
+
+/* Legacy tab styles - keep for backwards compatibility */
+.category-tabs {
+    display: none;
 }
 
 .category-tab {
-    padding: 10px 20px;
-    border: 1px solid var(--border-color);
-    background: var(--bg-tertiary);
-    border-radius: 25px;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.category-tab:hover {
-    border-color: var(--accent-primary);
-    color: var(--accent-primary);
-}
-
-.category-tab.active {
-    background: var(--accent-gradient);
-    border-color: transparent;
-    color: white;
+    display: none;
 }
 
 /* Graduation Goal Banner */
