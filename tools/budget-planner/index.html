@@ -11,6 +11,7 @@
         .site-nav .nav-links { display: flex; gap: 4px; }
         .site-nav .nav-links a { padding: 8px 12px; border-radius: 6px; text-decoration: none; color: var(--text-secondary, #64748b); font-size: 0.9rem; transition: all 0.2s; }
         .site-nav .nav-links a:hover, .site-nav .nav-links a.active { background: var(--accent-color, #6366f1); color: white; }
+        .site-nav .nav-links a.highlight { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; font-weight: 600; }
         body { padding-top: 50px; }
         [data-theme="dark"] .site-nav { background: #1e293b; border-color: #334155; }
     </style>
@@ -22,9 +23,9 @@
         <div class="nav-links">
             <a href="../../index.html">Dashboard</a>
             <a href="../../roadmap.html">Roadmap</a>
+            <a href="../education-hub/index.html" class="highlight">🎓 Learn</a>
             <a href="../../guides/index.html">Guides</a>
             <a href="index.html" class="active">Budget</a>
-            <a href="../education-hub/index.html">Learn</a>
         </div>
     </nav>
 

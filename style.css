@@ -131,6 +131,23 @@ a {
     background: var(--bg-tertiary);
 }
 
+.nav-link.highlight {
+    background: var(--accent-gradient);
+    color: white !important;
+    font-weight: 600;
+}
+
+.nav-link.highlight:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.mobile-link.highlight {
+    background: var(--accent-gradient);
+    color: white !important;
+    font-weight: 600;
+}
+
 .nav-dropdown {
     position: relative;
 }
