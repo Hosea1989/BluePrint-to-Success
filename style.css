@@ -296,13 +296,6 @@ a {
     background-clip: text;
 }
 
-.gradient-text {
-    background: linear-gradient(135deg, #fff, #e0e7ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
 .hero-subtitle {
     font-size: 1.15rem;
     color: var(--text-secondary);
