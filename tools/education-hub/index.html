@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Education Hub | Blueprint to Success</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../auth/style.css">
+    <!-- Supabase JS (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         /* Main Navigation - matches site style */
         .main-nav {
@@ -72,6 +75,14 @@
             <a href="index.html" class="active">🎓 Learn</a>
             <a href="../../guides/index.html">Guides</a>
             <a href="../budget-planner/index.html">Budget</a>
+            <div class="auth-nav-container">
+                <button id="auth-nav-btn"><span>Sign In</span></button>
+                <div id="auth-dropdown">
+                    <button class="dropdown-item" data-action="profile">👤 Profile</button>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item danger" data-action="logout">🚪 Sign Out</button>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -401,6 +412,9 @@
     <script src="data/career.js"></script>
     <script src="data/health.js"></script>
     <script src="data/housing.js"></script>
+    <!-- Auth -->
+    <script src="../../js/supabase.js"></script>
+    <script src="../../js/auth.js"></script>
     <!-- Main App -->
     <script src="app.js"></script>
 </body>

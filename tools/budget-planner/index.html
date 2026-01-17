@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Planner | Blueprint to Success</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../auth/style.css">
+    <!-- Supabase JS (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         .site-nav { position: fixed; top: 0; left: 0; right: 0; height: 50px; background: var(--bg-color, #fff); border-bottom: 1px solid var(--border-color, #e2e8f0); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
         .site-nav .nav-brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; color: inherit; }
-        .site-nav .nav-links { display: flex; gap: 4px; }
+        .site-nav .nav-links { display: flex; gap: 4px; align-items: center; }
         .site-nav .nav-links a { padding: 8px 12px; border-radius: 6px; text-decoration: none; color: var(--text-secondary, #64748b); font-size: 0.9rem; transition: all 0.2s; }
         .site-nav .nav-links a:hover, .site-nav .nav-links a.active { background: var(--accent-color, #6366f1); color: white; }
         .site-nav .nav-links a.highlight { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; font-weight: 600; }
@@ -26,6 +29,14 @@
             <a href="../education-hub/index.html" class="highlight">🎓 Learn</a>
             <a href="../../guides/index.html">Guides</a>
             <a href="index.html" class="active">Budget</a>
+            <div class="auth-nav-container">
+                <button id="auth-nav-btn"><span>Sign In</span></button>
+                <div id="auth-dropdown">
+                    <button class="dropdown-item" data-action="profile">👤 Profile</button>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item danger" data-action="logout">🚪 Sign Out</button>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -555,6 +566,8 @@
         </footer>
     </div>
 
+    <script src="../../js/supabase.js"></script>
+    <script src="../../js/auth.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

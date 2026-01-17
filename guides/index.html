@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guide Library | Blueprint to Success</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../auth/style.css">
+    <!-- Supabase JS (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -21,6 +24,14 @@
                 <a href="index.html" class="nav-link active">Guides</a>
                 <a href="../tools/budget-planner/index.html" class="nav-link">Budget</a>
                 <button id="theme-toggle" class="theme-btn">🌙</button>
+                <div class="auth-nav-container">
+                    <button id="auth-nav-btn"><span>Sign In</span></button>
+                    <div id="auth-dropdown">
+                        <button class="dropdown-item" data-action="profile">👤 Profile</button>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item danger" data-action="logout">🚪 Sign Out</button>
+                    </div>
+                </div>
             </div>
             <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
         </div>
@@ -33,6 +44,7 @@
         <a href="../tools/education-hub/index.html" class="mobile-link highlight">🎓 Learn</a>
         <a href="index.html" class="mobile-link active">Guides</a>
         <a href="../tools/budget-planner/index.html" class="mobile-link">Budget</a>
+        <a href="../auth/login.html" class="mobile-link" id="mobile-auth-link">Sign In</a>
     </div>
 
     <main class="main-content">
@@ -406,5 +418,7 @@
             }
         });
     </script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 </html>
