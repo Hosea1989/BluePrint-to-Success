@@ -339,6 +339,67 @@
                 </div>
             </section>
 
+            <!-- Emergency Fund Section -->
+            <section class="card emergency-section">
+                <h2>🛡️ Emergency Fund</h2>
+                <p class="hint">Your financial safety net. Aim for 3-6 months of essential expenses.</p>
+                <div class="emergency-fund-tracker">
+                    <div class="ef-inputs">
+                        <div class="ef-field">
+                            <label>Monthly Essential Expenses</label>
+                            <div class="input-wrapper">
+                                <span class="currency">$</span>
+                                <input type="number" id="ef-monthly-expenses" placeholder="0" min="0" step="0.01">
+                            </div>
+                            <span class="ef-hint">Rent, utilities, food, transport, insurance</span>
+                        </div>
+                        <div class="ef-field">
+                            <label>Target Months</label>
+                            <select id="ef-target-months">
+                                <option value="3">3 months (minimum)</option>
+                                <option value="6" selected>6 months (recommended)</option>
+                                <option value="9">9 months (single income)</option>
+                                <option value="12">12 months (high security)</option>
+                            </select>
+                        </div>
+                        <div class="ef-field">
+                            <label>Current Emergency Fund</label>
+                            <div class="input-wrapper">
+                                <span class="currency">$</span>
+                                <input type="number" id="ef-current" placeholder="0" min="0" step="0.01">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ef-progress-section">
+                        <div class="ef-target-display">
+                            <span class="ef-label">Target:</span>
+                            <span class="ef-target-amount" id="ef-target-amount">$0</span>
+                        </div>
+                        <div class="ef-progress-bar">
+                            <div class="ef-progress-fill" id="ef-progress-fill"></div>
+                        </div>
+                        <div class="ef-stats">
+                            <div class="ef-stat">
+                                <span class="ef-stat-value" id="ef-percent">0%</span>
+                                <span class="ef-stat-label">Funded</span>
+                            </div>
+                            <div class="ef-stat">
+                                <span class="ef-stat-value" id="ef-remaining">$0</span>
+                                <span class="ef-stat-label">Still Needed</span>
+                            </div>
+                            <div class="ef-stat">
+                                <span class="ef-stat-value" id="ef-months-covered">0</span>
+                                <span class="ef-stat-label">Months Covered</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ef-recommendation" id="ef-recommendation">
+                        <span class="ef-rec-icon">💡</span>
+                        <span class="ef-rec-text">Enter your monthly expenses to see your emergency fund target.</span>
+                    </div>
+                </div>
+            </section>
+
             <!-- Savings Goals Section -->
             <section class="card goals-section">
                 <h2>🎯 Savings Goals</h2>

@@ -6,26 +6,37 @@ const trackCategories = {
     finance: {
         name: 'Finance',
         icon: '💰',
+        description: 'Build wealth and financial security',
         tracks: ['stocks', 'realestate', 'crypto', 'credit', 'retirement', 'taxes']
     },
     business: {
         name: 'Business',
         icon: '💼',
+        description: 'Start and grow your ventures',
         tracks: ['business', 'freelancing', 'negotiation', 'marketing']
     },
     tech: {
         name: 'Tech',
         icon: '💻',
+        description: 'Master modern technology',
         tracks: ['ai', 'cybersecurity']
     },
     civic: {
         name: 'Civic & Rights',
         icon: '⚖️',
+        description: 'Know your rights and the system',
         tracks: ['politics', 'california', 'labor', 'nonprofits']
     },
+    lifeskills: {
+        name: 'Life Skills',
+        icon: '🛡️',
+        description: 'Essential skills for thriving in life',
+        tracks: ['emergency', 'career', 'health', 'housing']
+    },
     personal: {
-        name: 'Personal',
+        name: 'Personal Growth',
         icon: '🌱',
+        description: 'Develop yourself continuously',
         tracks: ['productivity']
     }
 };
@@ -59,6 +70,12 @@ function initializeTracks() {
     if (typeof californiaData !== 'undefined') tracks.california = { ...californiaData, category: 'civic' };
     if (typeof laborData !== 'undefined') tracks.labor = { ...laborData, category: 'civic' };
     if (typeof nonprofitsData !== 'undefined') tracks.nonprofits = { ...nonprofitsData, category: 'civic' };
+    
+    // Life Skills
+    if (typeof emergencyData !== 'undefined') tracks.emergency = { ...emergencyData, category: 'lifeskills' };
+    if (typeof careerData !== 'undefined') tracks.career = { ...careerData, category: 'lifeskills' };
+    if (typeof healthData !== 'undefined') tracks.health = { ...healthData, category: 'lifeskills' };
+    if (typeof housingData !== 'undefined') tracks.housing = { ...housingData, category: 'lifeskills' };
     
     // Personal
     if (typeof productivityData !== 'undefined') tracks.productivity = { ...productivityData, category: 'personal' };
@@ -437,6 +454,17 @@ function showTrack(trackId) {
     document.getElementById('track-view-title').textContent = `${track.icon} ${track.title}`;
     document.getElementById('track-view-subtitle').textContent = track.description;
 
+    // Update "Why This Matters" section
+    const whySection = document.getElementById('why-this-matters');
+    if (whySection) {
+        if (track.whyItMatters) {
+            whySection.style.display = 'block';
+            whySection.querySelector('.why-text').textContent = track.whyItMatters;
+        } else {
+            whySection.style.display = 'none';
+        }
+    }
+
     // Update progress
     const progress = getTrackProgress(trackId);
     document.getElementById('track-progress-bar').style.width = progress + '%';
@@ -452,7 +480,7 @@ function showTrack(trackId) {
 
     // Render levels
     renderTrackLevels(trackId);
-    
+
     // Update final exam banner
     updateFinalExamBanner(trackId);
 

@@ -95,6 +95,8 @@ function updateEducationProgress(data) {
         ai: 10, cybersecurity: 10,
         // Civic
         nonprofits: 16, labor: 17, politics: 10, california: 15,
+        // Life Skills
+        emergency: 24, career: 20, health: 16, housing: 16,
         // Personal
         productivity: 10
     };

@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadData();
     setupEventListeners();
     calculateAll();
+    updateEmergencyFund();
     checkGettingStarted();
 });
 
@@ -55,7 +56,12 @@ function saveData() {
         variableExpenses: getExpenseList('variable-expenses'),
         debts: getDebtList(),
         goals: getGoalsList(),
-        strategy: document.querySelector('.strategy-btn.active')?.dataset.strategy || 'avalanche'
+        strategy: document.querySelector('.strategy-btn.active')?.dataset.strategy || 'avalanche',
+        emergencyFund: {
+            monthlyExpenses: getValue('ef-monthly-expenses'),
+            targetMonths: document.getElementById('ef-target-months')?.value || '6',
+            current: getValue('ef-current')
+        }
     };
     
     localStorage.setItem('budgetPlannerData', JSON.stringify(data));
@@ -89,6 +95,15 @@ function loadData() {
             document.querySelectorAll('.strategy-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.strategy === data.strategy);
             });
+        }
+        
+        // Load emergency fund
+        if (data.emergencyFund) {
+            setValue('ef-monthly-expenses', data.emergencyFund.monthlyExpenses);
+            if (document.getElementById('ef-target-months')) {
+                document.getElementById('ef-target-months').value = data.emergencyFund.targetMonths || '6';
+            }
+            setValue('ef-current', data.emergencyFund.current);
         }
     } catch (e) {
         console.error('Error loading data:', e);
@@ -531,6 +546,46 @@ function updateGoalProgress() {
     });
 }
 
+// ==================== EMERGENCY FUND ====================
+function updateEmergencyFund() {
+    const monthlyExpenses = getValue('ef-monthly-expenses');
+    const targetMonths = parseInt(document.getElementById('ef-target-months')?.value) || 6;
+    const currentSaved = getValue('ef-current');
+    
+    const targetAmount = monthlyExpenses * targetMonths;
+    const remaining = Math.max(0, targetAmount - currentSaved);
+    const percentage = targetAmount > 0 ? Math.min(100, (currentSaved / targetAmount) * 100) : 0;
+    const monthsCovered = monthlyExpenses > 0 ? (currentSaved / monthlyExpenses).toFixed(1) : 0;
+    
+    // Update display
+    document.getElementById('ef-target-amount').textContent = formatCurrency(targetAmount);
+    document.getElementById('ef-progress-fill').style.width = percentage + '%';
+    document.getElementById('ef-percent').textContent = Math.round(percentage) + '%';
+    document.getElementById('ef-remaining').textContent = formatCurrency(remaining);
+    document.getElementById('ef-months-covered').textContent = monthsCovered;
+    
+    // Update recommendation
+    const recDiv = document.getElementById('ef-recommendation');
+    const recText = recDiv.querySelector('.ef-rec-text');
+    
+    recDiv.classList.remove('success', 'warning');
+    
+    if (monthlyExpenses === 0) {
+        recText.textContent = 'Enter your monthly essential expenses to see your emergency fund target.';
+    } else if (percentage >= 100) {
+        recDiv.classList.add('success');
+        recText.textContent = `Excellent! Your emergency fund is fully funded with ${monthsCovered} months of expenses. Consider investing additional savings for growth.`;
+    } else if (percentage >= 50) {
+        recText.textContent = `Good progress! You have ${monthsCovered} months covered. Keep building to reach your ${targetMonths}-month target of ${formatCurrency(targetAmount)}.`;
+    } else if (percentage > 0) {
+        recDiv.classList.add('warning');
+        recText.textContent = `You're on your way with ${monthsCovered} months saved. Aim to save ${formatCurrency(remaining)} more to reach your ${targetMonths}-month safety net.`;
+    } else {
+        recDiv.classList.add('warning');
+        recText.textContent = `Start building your emergency fund today. Your target is ${formatCurrency(targetAmount)} (${targetMonths} months of expenses). Even $25/week adds up to $1,300/year.`;
+    }
+}
+
 // ==================== EVENT LISTENERS ====================
 function setupEventListeners() {
     // Theme toggle
@@ -570,6 +625,11 @@ function setupEventListeners() {
             calculateAll();
         });
     });
+    
+    // Emergency fund inputs
+    document.getElementById('ef-monthly-expenses')?.addEventListener('input', updateEmergencyFund);
+    document.getElementById('ef-target-months')?.addEventListener('change', updateEmergencyFund);
+    document.getElementById('ef-current')?.addEventListener('input', updateEmergencyFund);
     
     // Footer actions
     document.getElementById('save-data').addEventListener('click', saveData);

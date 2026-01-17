@@ -437,6 +437,39 @@ body {
     display: none;
 }
 
+/* Why This Matters Section */
+.why-this-matters {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-left: 4px solid var(--accent-primary);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+}
+
+.why-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.why-content h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.why-text {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
 /* Graduation Goal Banner */
 .graduation-goal {
     display: flex;

@@ -256,22 +256,44 @@ a {
 
 /* ==================== Hero Section ==================== */
 .hero {
-    background: var(--accent-gradient);
+    background: var(--bg-secondary);
     padding: 80px 24px;
     text-align: center;
-    color: white;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
-.hero h1 {
-    font-size: 2.8rem;
-    font-weight: 800;
+.mission-statement {
+    margin-bottom: 40px;
+}
+
+.mission-label {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-primary);
     margin-bottom: 16px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
     line-height: 1.2;
+    color: var(--text-primary);
+}
+
+.gradient-text {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .gradient-text {
@@ -282,15 +304,82 @@ a {
 }
 
 .hero-subtitle {
-    font-size: 1.2rem;
-    opacity: 0.9;
-    margin-bottom: 32px;
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
 }
 
 .hero-stats {
     display: flex;
     justify-content: center;
     gap: 48px;
+    margin-bottom: 40px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent-primary);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-cta {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: var(--accent-gradient);
+    color: white;
+    font-weight: 600;
+    font-size: 1.05rem;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-md);
+}
+
+.cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: transparent;
+    color: var(--accent-primary);
+    font-weight: 600;
+    font-size: 1.05rem;
+    border: 2px solid var(--accent-primary);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.cta-secondary:hover {
+    background: rgba(99, 102, 241, 0.1);
 }
 
 .stat-item {
