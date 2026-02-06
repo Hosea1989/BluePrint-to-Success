@@ -7,37 +7,43 @@ const trackCategories = {
         name: 'Finance',
         icon: '💰',
         description: 'Build wealth and financial security',
-        tracks: ['stocks', 'realestate', 'crypto', 'credit', 'retirement', 'taxes']
+        tracks: ['stocks', 'realestate', 'crypto', 'credit', 'retirement', 'taxes', 'personalfinance', 'debt', 'banking', 'insurance', 'studentloans', 'estateplanning', 'investing', 'behavioralfinance', 'financialanalysis', 'fintech']
     },
     business: {
         name: 'Business',
         icon: '💼',
         description: 'Start and grow your ventures',
-        tracks: ['business', 'freelancing', 'negotiation', 'marketing']
+        tracks: ['business', 'freelancing', 'negotiation', 'marketing', 'nonprofits', 'clothingbrand', 'socialmedia']
     },
     tech: {
         name: 'Tech',
         icon: '💻',
         description: 'Master modern technology',
-        tracks: ['ai', 'cybersecurity']
+        tracks: ['ai', 'cybersecurity', 'python', 'javascript', 'webdev', 'htmlcss', 'java', 'csharp', 'swift', 'appdev', 'datascience', 'flutter', 'gamedev', 'softwaredev']
     },
     civic: {
         name: 'Civic & Rights',
         icon: '⚖️',
         description: 'Know your rights and the system',
-        tracks: ['politics', 'california', 'labor', 'nonprofits']
+        tracks: ['politics', 'california', 'labor', 'workplacerights', 'contracts', 'consumerrights', 'benefits']
     },
     lifeskills: {
         name: 'Life Skills',
         icon: '🛡️',
         description: 'Essential skills for thriving in life',
-        tracks: ['emergency', 'career', 'health', 'housing']
+        tracks: ['emergency', 'career', 'health', 'housing', 'transportation', 'familyplanning', 'travel']
     },
     personal: {
         name: 'Personal Growth',
         icon: '🌱',
         description: 'Develop yourself continuously',
-        tracks: ['productivity']
+        tracks: ['productivity', 'communication', 'emotionaliq', 'selfcare', 'languagelearning']
+    },
+    digital: {
+        name: 'Digital',
+        icon: '🌐',
+        description: 'Navigate the digital world safely',
+        tracks: ['digitalliteracy']
     }
 };
 
@@ -54,31 +60,69 @@ function initializeTracks() {
     if (typeof creditData !== 'undefined') tracks.credit = { ...creditData, category: 'finance' };
     if (typeof retirementData !== 'undefined') tracks.retirement = { ...retirementData, category: 'finance' };
     if (typeof taxesData !== 'undefined') tracks.taxes = { ...taxesData, category: 'finance' };
+    if (typeof personalfinanceData !== 'undefined') tracks.personalfinance = { ...personalfinanceData, category: 'finance' };
+    if (typeof debtData !== 'undefined') tracks.debt = { ...debtData, category: 'finance' };
+    if (typeof bankingData !== 'undefined') tracks.banking = { ...bankingData, category: 'finance' };
+    if (typeof insuranceData !== 'undefined') tracks.insurance = { ...insuranceData, category: 'finance' };
+    if (typeof studentloansData !== 'undefined') tracks.studentloans = { ...studentloansData, category: 'finance' };
+    if (typeof estateplanningData !== 'undefined') tracks.estateplanning = { ...estateplanningData, category: 'finance' };
+    if (typeof investingData !== 'undefined') tracks.investing = { ...investingData, category: 'finance' };
+    if (typeof behavioralfinanceData !== 'undefined') tracks.behavioralfinance = { ...behavioralfinanceData, category: 'finance' };
+    if (typeof financialanalysisData !== 'undefined') tracks.financialanalysis = { ...financialanalysisData, category: 'finance' };
+    if (typeof fintechData !== 'undefined') tracks.fintech = { ...fintechData, category: 'finance' };
     
     // Business
     if (typeof businessData !== 'undefined') tracks.business = { ...businessData, category: 'business' };
     if (typeof freelancingData !== 'undefined') tracks.freelancing = { ...freelancingData, category: 'business' };
     if (typeof negotiationData !== 'undefined') tracks.negotiation = { ...negotiationData, category: 'business' };
     if (typeof marketingData !== 'undefined') tracks.marketing = { ...marketingData, category: 'business' };
+    if (typeof nonprofitsData !== 'undefined') tracks.nonprofits = { ...nonprofitsData, category: 'business' };
+    if (typeof clothingbrandData !== 'undefined') tracks.clothingbrand = { ...clothingbrandData, category: 'business' };
+    if (typeof socialmediaData !== 'undefined') tracks.socialmedia = { ...socialmediaData, category: 'business' };
     
     // Tech
     if (typeof aiData !== 'undefined') tracks.ai = { ...aiData, category: 'tech' };
     if (typeof cybersecurityData !== 'undefined') tracks.cybersecurity = { ...cybersecurityData, category: 'tech' };
+    if (typeof pythonData !== 'undefined') tracks.python = { ...pythonData, category: 'tech' };
+    if (typeof javascriptData !== 'undefined') tracks.javascript = { ...javascriptData, category: 'tech' };
+    if (typeof webdevData !== 'undefined') tracks.webdev = { ...webdevData, category: 'tech' };
+    if (typeof htmlcssData !== 'undefined') tracks.htmlcss = { ...htmlcssData, category: 'tech' };
+    if (typeof javaData !== 'undefined') tracks.java = { ...javaData, category: 'tech' };
+    if (typeof csharpData !== 'undefined') tracks.csharp = { ...csharpData, category: 'tech' };
+    if (typeof swiftData !== 'undefined') tracks.swift = { ...swiftData, category: 'tech' };
+    if (typeof appdevData !== 'undefined') tracks.appdev = { ...appdevData, category: 'tech' };
+    if (typeof datascienceData !== 'undefined') tracks.datascience = { ...datascienceData, category: 'tech' };
+    if (typeof flutterData !== 'undefined') tracks.flutter = { ...flutterData, category: 'tech' };
+    if (typeof gamedevData !== 'undefined') tracks.gamedev = { ...gamedevData, category: 'tech' };
+    if (typeof softwaredevData !== 'undefined') tracks.softwaredev = { ...softwaredevData, category: 'tech' };
     
     // Civic & Rights
     if (typeof politicsData !== 'undefined') tracks.politics = { ...politicsData, category: 'civic' };
     if (typeof californiaData !== 'undefined') tracks.california = { ...californiaData, category: 'civic' };
     if (typeof laborData !== 'undefined') tracks.labor = { ...laborData, category: 'civic' };
-    if (typeof nonprofitsData !== 'undefined') tracks.nonprofits = { ...nonprofitsData, category: 'civic' };
+    if (typeof workplacerightsData !== 'undefined') tracks.workplacerights = { ...workplacerightsData, category: 'civic' };
+    if (typeof contractsData !== 'undefined') tracks.contracts = { ...contractsData, category: 'civic' };
+    if (typeof consumerrightsData !== 'undefined') tracks.consumerrights = { ...consumerrightsData, category: 'civic' };
+    if (typeof benefitsData !== 'undefined') tracks.benefits = { ...benefitsData, category: 'civic' };
     
     // Life Skills
     if (typeof emergencyData !== 'undefined') tracks.emergency = { ...emergencyData, category: 'lifeskills' };
     if (typeof careerData !== 'undefined') tracks.career = { ...careerData, category: 'lifeskills' };
     if (typeof healthData !== 'undefined') tracks.health = { ...healthData, category: 'lifeskills' };
     if (typeof housingData !== 'undefined') tracks.housing = { ...housingData, category: 'lifeskills' };
+    if (typeof transportationData !== 'undefined') tracks.transportation = { ...transportationData, category: 'lifeskills' };
+    if (typeof familyplanningData !== 'undefined') tracks.familyplanning = { ...familyplanningData, category: 'lifeskills' };
+    if (typeof travelData !== 'undefined') tracks.travel = { ...travelData, category: 'lifeskills' };
     
     // Personal
     if (typeof productivityData !== 'undefined') tracks.productivity = { ...productivityData, category: 'personal' };
+    if (typeof communicationData !== 'undefined') tracks.communication = { ...communicationData, category: 'personal' };
+    if (typeof emotionaliqData !== 'undefined') tracks.emotionaliq = { ...emotionaliqData, category: 'personal' };
+    if (typeof selfcareData !== 'undefined') tracks.selfcare = { ...selfcareData, category: 'personal' };
+    if (typeof languagelearningData !== 'undefined') tracks.languagelearning = { ...languagelearningData, category: 'personal' };
+    
+    // Digital
+    if (typeof digitalliteracyData !== 'undefined') tracks.digitalliteracy = { ...digitalliteracyData, category: 'digital' };
 }
 
 let state = {
@@ -97,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadProgress();
     initTheme();
     renderSidebar();
+    initSidebarToggle();
     renderTrackCards();
     setupEventListeners();
     updateAllProgress();
@@ -121,22 +166,25 @@ function checkGettingStarted() {
 
 // ==================== THEME ====================
 function initTheme() {
-    const savedTheme = localStorage.getItem('educationHubTheme') || 'light';
+    const savedTheme = localStorage.getItem('blueprintTheme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeButton(savedTheme);
+    updateThemeButtons(savedTheme);
 }
 
 function toggleTheme() {
     const current = document.documentElement.getAttribute('data-theme');
     const newTheme = current === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('educationHubTheme', newTheme);
-    updateThemeButton(newTheme);
+    localStorage.setItem('blueprintTheme', newTheme);
+    updateThemeButtons(newTheme);
+    showThemeToast(newTheme);
 }
 
-function updateThemeButton(theme) {
-    const btn = document.getElementById('theme-toggle');
-    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+function updateThemeButtons(theme) {
+    // Update ALL theme toggle buttons (nav + sidebar)
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    });
 }
 
 // ==================== PROGRESS MANAGEMENT ====================
@@ -255,6 +303,9 @@ function renderSidebar() {
     const container = document.getElementById('sidebar-tracks');
     if (!container) return;
     
+    // Get saved expanded categories from sidebar (separate from home page dropdowns)
+    const expandedSidebarCats = JSON.parse(localStorage.getItem('eduSidebarExpandedCats') || '[]');
+    
     let html = '';
     
     Object.keys(trackCategories).forEach(catId => {
@@ -263,7 +314,17 @@ function renderSidebar() {
         
         if (catTracks.length === 0) return;
         
-        html += `<h3 class="nav-title">${cat.icon} ${cat.name}</h3>`;
+        const isExpanded = expandedSidebarCats.includes(catId);
+        
+        html += `
+            <div class="sidebar-category ${isExpanded ? 'expanded' : ''}" data-sidebar-cat="${catId}">
+                <button class="sidebar-category-header">
+                    <span class="sidebar-cat-icon">${cat.icon}</span>
+                    <span class="sidebar-cat-name">${cat.name}</span>
+                    <span class="sidebar-cat-arrow">▸</span>
+                </button>
+                <div class="sidebar-category-tracks">
+        `;
         
         catTracks.forEach(trackId => {
             const track = tracks[trackId];
@@ -276,11 +337,35 @@ function renderSidebar() {
                 </button>
             `;
         });
+        
+        html += `
+                </div>
+            </div>
+        `;
     });
     
     container.innerHTML = html;
     
-    // Re-attach event listeners
+    // Attach category dropdown toggle listeners
+    container.querySelectorAll('.sidebar-category-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const catDiv = header.closest('.sidebar-category');
+            const catId = catDiv.dataset.sidebarCat;
+            catDiv.classList.toggle('expanded');
+            
+            // Persist state
+            const expanded = JSON.parse(localStorage.getItem('eduSidebarExpandedCats') || '[]');
+            if (catDiv.classList.contains('expanded')) {
+                if (!expanded.includes(catId)) expanded.push(catId);
+            } else {
+                const idx = expanded.indexOf(catId);
+                if (idx > -1) expanded.splice(idx, 1);
+            }
+            localStorage.setItem('eduSidebarExpandedCats', JSON.stringify(expanded));
+        });
+    });
+    
+    // Attach track click listeners
     container.querySelectorAll('.nav-item[data-view]').forEach(item => {
         item.addEventListener('click', () => {
             const view = item.dataset.view;
@@ -291,7 +376,57 @@ function renderSidebar() {
     });
 }
 
+// ==================== SIDEBAR COLLAPSE / EXPAND ====================
+function initSidebarToggle() {
+    const sidebar = document.getElementById('edu-sidebar');
+    const collapseBtn = document.getElementById('sidebar-collapse-btn');
+    const toggleBtn = document.getElementById('sidebar-toggle');
+    
+    if (!sidebar) return;
+    
+    // Restore saved state
+    const isCollapsed = localStorage.getItem('eduSidebarCollapsed') === 'true';
+    if (isCollapsed) {
+        sidebar.classList.add('collapsed');
+        document.querySelector('.app-container')?.classList.add('sidebar-collapsed');
+    }
+    
+    if (collapseBtn) {
+        collapseBtn.addEventListener('click', () => {
+            sidebar.classList.add('collapsed');
+            document.querySelector('.app-container')?.classList.add('sidebar-collapsed');
+            localStorage.setItem('eduSidebarCollapsed', 'true');
+        });
+    }
+    
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.remove('collapsed');
+            document.querySelector('.app-container')?.classList.remove('sidebar-collapsed');
+            localStorage.setItem('eduSidebarCollapsed', 'false');
+        });
+    }
+}
+
 // ==================== TRACK CARDS RENDERING (DROPDOWN VERSION) ====================
+
+// Tracks that unlock dashboard widgets (mapped from app.js widgetDefs)
+const widgetTrackMap = {
+    'stocks': 'Finance Snapshot', 'taxes': 'Finance Snapshot', 'realestate': 'Finance Snapshot',
+    'crypto': 'Finance Snapshot', 'credit': 'Finance Snapshot', 'retirement': 'Finance Snapshot',
+    'personalfinance': 'Finance Snapshot', 'debt': 'Debt Freedom', 'banking': 'Debt Freedom',
+    'insurance': 'Finance Snapshot', 'studentloans': 'Debt Freedom',
+    'estateplanning': 'Finance Snapshot', 'investing': 'Investment Growth',
+    'business': 'Career Builder', 'freelancing': 'Career Builder',
+    'negotiation': 'Career Builder', 'marketing': 'Career Builder', 'nonprofits': 'Career Builder',
+    'politics': 'Know Your Rights', 'california': 'Know Your Rights', 'labor': 'Know Your Rights',
+    'workplacerights': 'Know Your Rights', 'contracts': 'Know Your Rights',
+    'consumerrights': 'Know Your Rights', 'benefits': 'Know Your Rights',
+    'emergency': 'Life Skills', 'career': 'Life Skills', 'health': 'Life Skills',
+    'housing': 'Life Skills', 'transportation': 'Life Skills', 'familyplanning': 'Life Skills',
+    'ai': 'Tech Byte', 'cybersecurity': 'Tech Byte', 'digitalliteracy': 'Tech Byte'
+};
+
 function renderTrackCards() {
     const container = document.getElementById('category-dropdowns-container');
     if (!container) return;
@@ -307,7 +442,9 @@ function renderTrackCards() {
         business: 'Start and grow your own business or career',
         tech: 'Master modern technology and digital skills',
         civic: 'Know your rights and understand how systems work',
-        personal: 'Optimize your productivity and personal growth'
+        lifeskills: 'Essential skills for thriving in everyday life',
+        personal: 'Optimize your productivity and personal growth',
+        digital: 'Navigate the digital world safely and smartly'
     };
 
     Object.keys(trackCategories).forEach(catId => {
@@ -360,8 +497,22 @@ function renderTrackCards() {
             if (progress === 100) progressLabel = 'Completed! 🎉';
             else if (progress > 0) progressLabel = progress + '% Complete';
 
+            const widgetName = widgetTrackMap[trackId];
+            
+            // Difficulty badge
+            const difficulty = track.difficulty || 'beginner';
+            const difficultyLabels = {
+                'beginner': { label: 'Beginner', class: 'difficulty-beginner' },
+                'intermediate': { label: 'Intermediate', class: 'difficulty-intermediate' },
+                'advanced': { label: 'Advanced', class: 'difficulty-advanced' }
+            };
+            const diffInfo = difficultyLabels[difficulty] || difficultyLabels['beginner'];
+            const difficultyBadge = `<span class="track-difficulty-badge ${diffInfo.class}" title="Difficulty: ${diffInfo.label}">${diffInfo.label}</span>`;
+
             html += `
                 <div class="track-card" data-track="${trackId}">
+                    ${widgetName ? `<span class="track-widget-badge" title="Unlocks the '${widgetName}' widget on your dashboard">🧩 Unlocks Widget</span>` : ''}
+                    ${difficultyBadge}
                     <div class="track-icon">${track.icon}</div>
                     <div class="track-info">
                         <h2>${track.title}</h2>
@@ -478,11 +629,23 @@ function showTrack(trackId) {
         goalText.textContent = 'Complete all levels to master this topic';
     }
 
+    // Render learning objectives
+    renderTrackObjectives(track);
+
+    // Render prerequisites
+    renderPrerequisites(track);
+
     // Render levels
     renderTrackLevels(trackId);
 
     // Update final exam banner
     updateFinalExamBanner(trackId);
+
+    // Render related tracks
+    renderRelatedTracks(track);
+
+    // Render resources
+    renderTrackResources(track);
 
     showView('track');
 }
@@ -519,7 +682,160 @@ function showLesson(trackId, levelId, topicIndex = 0) {
         };
     }
     
+    // Show key takeaways if on last topic
+    if (topicIndex === level.topics.length - 1 && level.keyTakeaways && level.keyTakeaways.length > 0) {
+        renderKeyTakeaways(level.keyTakeaways);
+    } else {
+        const takeawaysContainer = document.getElementById('key-takeaways-container');
+        if (takeawaysContainer) takeawaysContainer.style.display = 'none';
+    }
+    
     showView('lesson');
+}
+
+// ==================== NEW RENDERING FUNCTIONS ====================
+function renderTrackObjectives(track) {
+    const container = document.getElementById('track-objectives-container');
+    if (!container) return;
+    
+    if (track.learningObjectives && track.learningObjectives.length > 0) {
+        container.style.display = 'block';
+        container.innerHTML = `
+            <h3>What You'll Learn</h3>
+            <ul class="objectives-list">
+                ${track.learningObjectives.map(obj => `<li>${obj}</li>`).join('')}
+            </ul>
+        `;
+    } else {
+        container.style.display = 'none';
+    }
+}
+
+function renderPrerequisites(track) {
+    const container = document.getElementById('prerequisites-container');
+    if (!container) return;
+    
+    if (track.prerequisites && track.prerequisites.length > 0) {
+        container.style.display = 'block';
+        const prereqTracks = track.prerequisites
+            .map(id => tracks[id])
+            .filter(t => t)
+            .map(t => `<a href="#" class="prereq-link" data-track="${t.id}">${t.icon} ${t.title}</a>`)
+            .join(', ');
+        
+        container.innerHTML = `
+            <div class="prerequisites-notice">
+                <span class="prereq-icon">📋</span>
+                <div class="prereq-content">
+                    <strong>Recommended first:</strong>
+                    <div class="prereq-links">${prereqTracks}</div>
+                </div>
+            </div>
+        `;
+        
+        // Add click handlers for prerequisite links
+        container.querySelectorAll('.prereq-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showTrack(link.dataset.track);
+            });
+        });
+    } else {
+        container.style.display = 'none';
+    }
+}
+
+function renderKeyTakeaways(takeaways) {
+    const container = document.getElementById('key-takeaways-container');
+    if (!container) return;
+    
+    if (takeaways && takeaways.length > 0) {
+        container.style.display = 'block';
+        container.innerHTML = `
+            <div class="key-takeaways-card">
+                <h3>📝 Key Takeaways</h3>
+                <p class="takeaways-intro">Before taking the quiz, make sure you understand:</p>
+                <ul class="takeaways-list">
+                    ${takeaways.map(takeaway => `<li>${takeaway}</li>`).join('')}
+                </ul>
+            </div>
+        `;
+    } else {
+        container.style.display = 'none';
+    }
+}
+
+function renderRelatedTracks(track) {
+    const container = document.getElementById('related-tracks-container');
+    if (!container) return;
+    
+    if (track.relatedTracks && track.relatedTracks.length > 0) {
+        container.style.display = 'block';
+        const relatedTracks = track.relatedTracks
+            .map(id => tracks[id])
+            .filter(t => t)
+            .slice(0, 3); // Limit to 3
+        
+        if (relatedTracks.length > 0) {
+            container.innerHTML = `
+                <h3>Continue Learning</h3>
+                <p class="related-intro">These tracks complement what you just learned:</p>
+                <div class="related-tracks-grid">
+                    ${relatedTracks.map(t => {
+                        const progress = getTrackProgress(t.id);
+                        return `
+                            <div class="related-track-card" data-track="${t.id}">
+                                <div class="related-track-icon">${t.icon}</div>
+                                <h4>${t.title}</h4>
+                                <p>${t.description}</p>
+                                <div class="related-track-progress">
+                                    <div class="progress-bar small">
+                                        <div class="progress-fill" style="width: ${progress}%"></div>
+                                    </div>
+                                    <span>${progress}%</span>
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+            
+            // Add click handlers
+            container.querySelectorAll('.related-track-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    showTrack(card.dataset.track);
+                });
+            });
+        } else {
+            container.style.display = 'none';
+        }
+    } else {
+        container.style.display = 'none';
+    }
+}
+
+function renderTrackResources(track) {
+    const container = document.getElementById('track-resources-container');
+    if (!container) return;
+    
+    if (track.resources && track.resources.length > 0) {
+        container.style.display = 'block';
+        container.innerHTML = `
+            <h3>Further Reading</h3>
+            <p class="resources-intro">Official sources and trusted resources for deeper learning:</p>
+            <ul class="resources-list">
+                ${track.resources.map(resource => {
+                    if (typeof resource === 'string') {
+                        return `<li><a href="${resource}" target="_blank" rel="noopener noreferrer">${resource}</a></li>`;
+                    } else {
+                        return `<li><a href="${resource.url}" target="_blank" rel="noopener noreferrer">${resource.title}</a></li>`;
+                    }
+                }).join('')}
+            </ul>
+        `;
+    } else {
+        container.style.display = 'none';
+    }
 }
 
 // ==================== TRACK LEVELS RENDERING ====================
@@ -543,15 +859,33 @@ function renderTrackLevels(trackId) {
         const levelCard = document.createElement('div');
         levelCard.className = `level-card${isCompleted ? ' completed' : ''}${isCurrent ? ' current' : ''}${!isUnlocked ? ' locked' : ''}`;
         
-        const statusText = isCompleted ? 'Completed' : (isUnlocked ? 'Start' : 'Locked');
+        // Count completed topics in this level
+        const doneInLevel = level.topics.filter(t => {
+            const key = level.id + '-' + t.id;
+            return state.progress[trackId]?.completedTopics?.includes(key);
+        }).length;
+        const totalInLevel = level.topics.length;
+        const hasStarted = doneInLevel > 0 && !isCompleted;
+        
+        const statusText = isCompleted ? 'Completed' : (isUnlocked ? `${doneInLevel}/${totalInLevel}` : 'Locked');
         const statusClass = isCompleted ? 'completed' : (isUnlocked ? 'available' : 'locked');
+        
+        // Level learning objectives
+        const levelObjectives = level.learningObjectives && level.learningObjectives.length > 0
+            ? `<div class="level-objectives">
+                <strong>Learning Objectives:</strong>
+                <ul class="level-objectives-list">
+                    ${level.learningObjectives.map(obj => `<li>${obj}</li>`).join('')}
+                </ul>
+              </div>`
+            : '';
         
         levelCard.innerHTML = `
             <div class="level-header">
                 <div class="level-number">${isCompleted ? '✓' : level.id}</div>
                 <div class="level-info">
                     <h3>${level.title}</h3>
-                    <p>${level.subtitle}</p>
+                    <p>${level.subtitle}${hasStarted ? ' <span class="level-topic-progress">' + doneInLevel + ' of ' + totalInLevel + ' lessons done</span>' : ''}</p>
                 </div>
                 <div class="level-status">
                     <span class="status-badge ${statusClass}">${statusText}</span>
@@ -559,18 +893,45 @@ function renderTrackLevels(trackId) {
                 </div>
             </div>
             <div class="level-content">
+                ${levelObjectives}
                 <ul class="topics-list">
                     ${level.topics.map((topic, idx) => {
                         const topicKey = `${level.id}-${topic.id}`;
                         const isTopicDone = state.progress[trackId]?.completedTopics?.includes(topicKey) || false;
+                        
+                        // Sequential unlock: topic is available if previous topic is done (or it's the first)
+                        let isTopicUnlocked = false;
+                        if (!isUnlocked) {
+                            isTopicUnlocked = false; // level itself is locked
+                        } else if (isCompleted) {
+                            isTopicUnlocked = true; // level completed, all topics reviewable
+                        } else if (idx === 0) {
+                            isTopicUnlocked = true; // first topic always available
+                        } else {
+                            const prevTopicKey = level.id + '-' + level.topics[idx - 1].id;
+                            isTopicUnlocked = state.progress[trackId]?.completedTopics?.includes(prevTopicKey) || false;
+                        }
+                        
+                        // "Up Next" = first topic that isn't completed and is unlocked
+                        const isUpNext = isTopicUnlocked && !isTopicDone && !level.topics.slice(0, idx).some((t, i) => {
+                            const k = level.id + '-' + t.id;
+                            return !(state.progress[trackId]?.completedTopics?.includes(k));
+                        });
+                        
+                        const topicClasses = ['topic-item'];
+                        if (isTopicDone) topicClasses.push('completed');
+                        if (!isTopicUnlocked) topicClasses.push('locked');
+                        if (isUpNext) topicClasses.push('up-next');
+                        
                         return `
-                            <li class="topic-item${isTopicDone ? ' completed' : ''}" 
+                            <li class="${topicClasses.join(' ')}" 
                                 data-track="${trackId}" 
                                 data-level="${level.id}" 
-                                data-topic-index="${idx}"
-                                ${!isUnlocked ? 'style="pointer-events: none; opacity: 0.5;"' : ''}>
-                                <span class="topic-icon">📖</span>
+                                data-topic-index="${idx}">
+                                <span class="topic-step">${isTopicDone ? '✓' : (idx + 1)}</span>
                                 <span class="topic-title">${topic.title}</span>
+                                ${isUpNext ? '<span class="topic-badge-next">Start Here →</span>' : ''}
+                                ${!isTopicUnlocked && !isTopicDone ? '<span class="topic-lock-icon">🔒</span>' : ''}
                             </li>
                         `;
                     }).join('')}
@@ -581,7 +942,7 @@ function renderTrackLevels(trackId) {
                             data-action="start-level"
                             data-track="${trackId}"
                             data-level="${level.id}">
-                        ${isCompleted ? 'Review Level' : 'Start Level'}
+                        ${isCompleted ? 'Review Level' : (state.progress[trackId]?.completedTopics?.some(k => k.startsWith(level.id + '-')) ? 'Continue Level →' : 'Start Level →')}
                     </button>
                     ${isUnlocked && !isCompleted ? `
                         <button class="level-btn secondary"
@@ -599,11 +960,16 @@ function renderTrackLevels(trackId) {
             levelCard.classList.toggle('expanded');
         });
         
+        // Auto-expand the current level (first unlocked, uncompleted) so user sees where to go
+        if (isCurrent) {
+            levelCard.classList.add('expanded');
+        }
+        
         container.appendChild(levelCard);
     });
     
-    // Setup topic click handlers
-    container.querySelectorAll('.topic-item').forEach(item => {
+    // Setup topic click handlers (only for unlocked topics)
+    container.querySelectorAll('.topic-item:not(.locked)').forEach(item => {
         item.addEventListener('click', () => {
             const trackId = item.dataset.track;
             const levelId = parseInt(item.dataset.level);
@@ -612,13 +978,25 @@ function renderTrackLevels(trackId) {
         });
     });
     
-    // Setup level action buttons
+    // Setup level action buttons — jump to first uncompleted topic
     container.querySelectorAll('[data-action="start-level"]').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const trackId = btn.dataset.track;
-            const levelId = parseInt(btn.dataset.level);
-            showLesson(trackId, levelId, 0);
+            const tId = btn.dataset.track;
+            const lId = parseInt(btn.dataset.level);
+            const track = tracks[tId];
+            const level = track.levels.find(l => l.id === lId);
+            let startIdx = 0;
+            if (level && level.topics) {
+                for (let i = 0; i < level.topics.length; i++) {
+                    const key = lId + '-' + level.topics[i].id;
+                    if (!(state.progress[tId]?.completedTopics?.includes(key))) {
+                        startIdx = i;
+                        break;
+                    }
+                }
+            }
+            showLesson(tId, lId, startIdx);
         });
     });
     
@@ -633,19 +1011,58 @@ function renderTrackLevels(trackId) {
 }
 
 // ==================== QUIZ SYSTEM ====================
+function getQuizQuestions(level, trackId) {
+    let questions = [];
+    
+    // Format 1: level.quiz is an array of question objects
+    if (level.quiz && Array.isArray(level.quiz)) {
+        questions = [...level.quiz];
+    }
+    // Format 2: level.quiz is an object with a questions array
+    else if (level.quiz && level.quiz.questions && Array.isArray(level.quiz.questions)) {
+        questions = [...level.quiz.questions];
+    }
+    // Format 3: quiz is per-topic (single question on each topic)
+    else if (level.topics) {
+        level.topics.forEach(topic => {
+            if (topic.quiz) {
+                if (topic.quiz.question) {
+                    questions.push(topic.quiz);
+                } else if (Array.isArray(topic.quiz)) {
+                    questions.push(...topic.quiz);
+                } else if (topic.quiz.questions && Array.isArray(topic.quiz.questions)) {
+                    questions.push(...topic.quiz.questions);
+                }
+            }
+        });
+    }
+    
+    // Merge with supplementary quiz bank if available
+    if (typeof quizBank !== 'undefined' && trackId && quizBank[trackId] && quizBank[trackId][level.id]) {
+        questions = questions.concat(quizBank[trackId][level.id]);
+    }
+    
+    return questions;
+}
+
 function startQuiz(trackId, levelId) {
     const track = tracks[trackId];
     const level = track.levels.find(l => l.id === levelId);
     
-    if (!level.quiz || level.quiz.length === 0) {
+    const allQuestions = getQuizQuestions(level, trackId);
+    if (allQuestions.length === 0) {
         alert('No quiz available for this level yet.');
         return;
     }
     
+    // Shuffle and pick up to 10 questions
+    const shuffled = [...allQuestions].sort(() => Math.random() - 0.5);
+    const selected = shuffled.slice(0, 10);
+    
     state.quizState = {
         trackId,
         levelId,
-        questions: [...level.quiz],
+        questions: selected,
         currentQuestion: 0,
         score: 0,
         answered: false
@@ -654,7 +1071,7 @@ function startQuiz(trackId, levelId) {
     document.getElementById('quiz-title').textContent = `Level ${levelId} Quiz`;
     document.getElementById('quiz-subtitle').textContent = `${level.title} - ${track.title}`;
     document.getElementById('quiz-back-btn').onclick = () => showTrack(trackId);
-    document.getElementById('quiz-total-questions').textContent = level.quiz.length;
+    document.getElementById('quiz-total-questions').textContent = selected.length;
     
     document.getElementById('quiz-results').classList.add('hidden');
     document.querySelector('.quiz-container').style.display = 'block';
@@ -713,7 +1130,7 @@ function selectAnswer(selectedIndex) {
     feedback.classList.add('show', isCorrect ? 'correct' : 'incorrect');
     feedback.innerHTML = `
         <strong>${isCorrect ? '✓ Correct!' : '✗ Incorrect'}</strong>
-        <p>${q.explanation}</p>
+        ${q.explanation ? '<p>' + q.explanation + '</p>' : ''}
     `;
     
     document.getElementById('quiz-next-btn').disabled = false;
@@ -779,6 +1196,45 @@ function showQuizResults() {
     
     reviewBtn.onclick = () => showLesson(trackId, levelId, 0);
     
+    // Show applyIt prompt if passed and level has applyIt
+    const applyItContainer = document.getElementById('apply-it-container');
+    if (applyItContainer) {
+        const track = tracks[trackId];
+        const level = track.levels.find(l => l.id === levelId);
+        if (passed && level && level.applyIt) {
+            applyItContainer.style.display = 'block';
+            const applyItText = Array.isArray(level.applyIt) ? level.applyIt.join(' ') : level.applyIt;
+            applyItContainer.innerHTML = `
+                <div class="apply-it-card">
+                    <h3>🚀 Now Try This</h3>
+                    <p>${applyItText}</p>
+                </div>
+            `;
+        } else {
+            applyItContainer.style.display = 'none';
+        }
+    }
+    
+    // Show key takeaways if failed
+    const takeawaysContainer = document.getElementById('quiz-takeaways-container');
+    if (takeawaysContainer) {
+        const track = tracks[trackId];
+        const level = track.levels.find(l => l.id === levelId);
+        if (!passed && level && level.keyTakeaways && level.keyTakeaways.length > 0) {
+            takeawaysContainer.style.display = 'block';
+            takeawaysContainer.innerHTML = `
+                <div class="quiz-takeaways-card">
+                    <h3>📝 Review These Key Points</h3>
+                    <ul class="takeaways-list">
+                        ${level.keyTakeaways.map(takeaway => `<li>${takeaway}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        } else {
+            takeawaysContainer.style.display = 'none';
+        }
+    }
+    
     document.querySelector('.quiz-container').style.display = 'none';
     document.getElementById('quiz-results').classList.remove('hidden');
 }
@@ -799,6 +1255,19 @@ function showGraduationCelebration(trackId) {
                 <span class="badge-icon">${track.icon}</span>
                 <span class="badge-text">${track.title} Graduate</span>
             </div>
+            ${track.relatedTracks && track.relatedTracks.length > 0 ? `
+                <div class="graduation-related">
+                    <p><strong>Continue your learning journey:</strong></p>
+                    <div class="graduation-related-tracks">
+                        ${track.relatedTracks
+                            .map(id => tracks[id])
+                            .filter(t => t)
+                            .slice(0, 3)
+                            .map(t => `<button class="grad-related-btn" onclick="closeGraduation(); showTrack('${t.id}')">${t.icon} ${t.title}</button>`)
+                            .join('')}
+                    </div>
+                </div>
+            ` : ''}
             <div class="graduation-actions">
                 <button class="grad-btn primary" onclick="closeGraduation(); showView('home')">Explore More Tracks</button>
                 <a href="../../roadmap.html" class="grad-btn secondary">View Roadmap</a>
@@ -882,9 +1351,10 @@ function saveGraduation(trackId) {
 
 // ==================== EVENT LISTENERS ====================
 function setupEventListeners() {
-    // Theme toggle
-    const themeBtn = document.getElementById('theme-toggle');
-    if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+    // Theme toggle — attach to ALL theme buttons (nav bar + sidebar)
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.addEventListener('click', toggleTheme);
+    });
     
     // Reset progress
     const resetBtn = document.getElementById('reset-progress');
@@ -1026,9 +1496,10 @@ function startFinalExam() {
     // Gather questions from all levels
     finalExamState.questions = [];
     track.levels.forEach(level => {
-        if (level.quiz && level.quiz.length > 0) {
+        const levelQs = getQuizQuestions(level, trackId);
+        if (levelQs.length > 0) {
             // Take 1-2 random questions from each level
-            const shuffled = [...level.quiz].sort(() => Math.random() - 0.5);
+            const shuffled = [...levelQs].sort(() => Math.random() - 0.5);
             finalExamState.questions.push(...shuffled.slice(0, 2));
         }
     });
@@ -1182,4 +1653,29 @@ function updateHeroProgress() {
     
     const percent = totalTopics > 0 ? Math.round((completedTopics / totalTopics) * 100) : 0;
     heroProgress.textContent = `${percent}%`;
+}
+
+// ==================== TOAST ====================
+function showThemeToast(theme) {
+    let container = document.getElementById('toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.className = 'toast-container';
+        container.id = 'toast-container';
+        document.body.appendChild(container);
+    }
+    const toast = document.createElement('div');
+    toast.className = 'toast info';
+    toast.style.position = 'relative';
+    toast.innerHTML = `
+        <span class="toast-icon">${theme === 'dark' ? '🌙' : '☀️'}</span>
+        <div class="toast-body">
+            <div class="toast-title">${theme === 'dark' ? 'Dark mode' : 'Light mode'}</div>
+            <div class="toast-message">${theme === 'dark' ? 'Easy on the eyes.' : 'Bright and clear.'}</div>
+        </div>
+        <button class="toast-close" onclick="this.parentElement.classList.add('toast-exit'); setTimeout(() => this.parentElement.remove(), 300)">✕</button>
+        <div class="toast-progress" style="animation-duration: 2000ms"></div>
+    `;
+    container.appendChild(toast);
+    setTimeout(() => { if (toast.parentElement) { toast.classList.add('toast-exit'); setTimeout(() => toast.remove(), 300); } }, 2000);
 }

@@ -1,39 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 /* CSS Variables for Theming */
 :root {
-    --bg-primary: #f5f7fa;
+    --bg-primary: #fafafa;
     --bg-secondary: #ffffff;
     --bg-card: #ffffff;
-    --text-primary: #1a1a2e;
-    --text-secondary: #4a4a68;
-    --text-muted: #8888a0;
-    --border-color: #e1e5eb;
-    --accent-primary: #6366f1;
-    --accent-secondary: #8b5cf6;
-    --success: #10b981;
-    --warning: #f59e0b;
-    --danger: #ef4444;
-    --needs-color: #3b82f6;
-    --wants-color: #8b5cf6;
-    --savings-color: #10b981;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-    --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+    --text-primary: #18181b;
+    --text-secondary: #52525b;
+    --text-muted: #a1a1aa;
+    --border-color: #e4e4e7;
+    --accent-primary: #4f46e5;
+    --accent-secondary: #7c3aed;
+    --accent-gradient: linear-gradient(135deg, #4f46e5, #7c3aed);
+    --success: #059669;
+    --warning: #d97706;
+    --danger: #dc2626;
+    --needs-color: #2563eb;
+    --wants-color: #7c3aed;
+    --savings-color: #059669;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 1px 4px rgba(0,0,0,0.06);
+    --shadow-md: 0 2px 8px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+    --shadow-lg: 0 4px 12px rgba(0,0,0,0.05), 0 16px 48px rgba(0,0,0,0.08);
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 16px;
 }
 
 [data-theme="dark"] {
-    --bg-primary: #0f0f1a;
-    --bg-secondary: #1a1a2e;
-    --bg-card: #16162a;
-    --text-primary: #f0f0f5;
-    --text-secondary: #b0b0c0;
-    --text-muted: #6a6a80;
-    --border-color: #2a2a40;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
-    --shadow-lg: 0 10px 40px rgba(0,0,0,0.5);
+    --bg-primary: #09090b;
+    --bg-secondary: #18181b;
+    --bg-card: #18181b;
+    --text-primary: #fafafa;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
+    --border-color: #27272a;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+    --shadow-md: 0 2px 8px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.3);
+    --shadow-lg: 0 4px 12px rgba(0,0,0,0.3), 0 16px 48px rgba(0,0,0,0.4);
 }
 
 /* Reset & Base */
@@ -44,7 +47,7 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
@@ -67,10 +70,8 @@ header {
 header h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
     margin-bottom: 8px;
 }
 

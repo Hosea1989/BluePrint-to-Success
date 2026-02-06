@@ -4,48 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Planner | Blueprint to Success</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%236366f1'/><stop offset='100%25' style='stop-color:%238b5cf6'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23g)'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='white' font-family='system-ui' font-weight='bold'>B</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../../auth/style.css">
     <!-- Supabase JS (CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        .site-nav { position: fixed; top: 0; left: 0; right: 0; height: 50px; background: var(--bg-color, #fff); border-bottom: 1px solid var(--border-color, #e2e8f0); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
-        .site-nav .nav-brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; color: inherit; }
-        .site-nav .nav-links { display: flex; gap: 4px; align-items: center; }
-        .site-nav .nav-links a { padding: 8px 12px; border-radius: 6px; text-decoration: none; color: var(--text-secondary, #64748b); font-size: 0.9rem; transition: all 0.2s; }
-        .site-nav .nav-links a:hover, .site-nav .nav-links a.active { background: var(--accent-color, #6366f1); color: white; }
-        .site-nav .nav-links a.highlight { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; font-weight: 600; }
-        body { padding-top: 50px; }
-        [data-theme="dark"] .site-nav { background: #1e293b; border-color: #334155; }
+        body { padding-top: var(--nav-height, 70px); }
     </style>
 </head>
 <body>
-    <!-- Site Navigation -->
-    <nav class="site-nav">
-        <a href="../../index.html" class="nav-brand">📘 Blueprint to Success</a>
-        <div class="nav-links">
-            <a href="../../index.html">Dashboard</a>
-            <a href="../../roadmap.html">Roadmap</a>
-            <a href="../education-hub/index.html" class="highlight">🎓 Learn</a>
-            <a href="../../guides/index.html">Guides</a>
-            <a href="index.html" class="active">Budget</a>
-            <div class="auth-nav-container">
-                <button id="auth-nav-btn"><span>Sign In</span></button>
-                <div id="auth-dropdown">
-                    <button class="dropdown-item" data-action="profile">👤 Profile</button>
-                    <div class="dropdown-divider"></div>
-                    <button class="dropdown-item danger" data-action="logout">🚪 Sign Out</button>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <span class="logo-icon">📘</span>
+                <span class="logo-text">Blueprint to Success</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html" class="nav-link">Dashboard</a>
+                <a href="../../roadmap.html" class="nav-link">Roadmap</a>
+                <a href="../education-hub/index.html" class="nav-link highlight">🎓 Learn</a>
+
+                <div class="toolbox-nav-container">
+                    <button class="toolbox-btn">🧰 Toolbox <span class="toolbox-arrow">▾</span></button>
+                    <div class="toolbox-dropdown">
+                        <a href="index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">💰</span>
+                            <div class="toolbox-item-info">
+                                <strong>Budget Planner</strong>
+                                <small>Track income, expenses & savings</small>
+                            </div>
+                        </a>
+                        <a href="../compound-calculator/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">💹</span>
+                            <div class="toolbox-item-info">
+                                <strong>Compound Interest Calculator</strong>
+                                <small>See how your money grows over time</small>
+                            </div>
+                        </a>
+                        <a href="../debt-payoff/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">🎯</span>
+                            <div class="toolbox-item-info">
+                                <strong>Debt Payoff Calculator</strong>
+                                <small>Plan your path to debt freedom</small>
+                            </div>
+                        </a>
+                        <a href="../net-worth/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">📊</span>
+                            <div class="toolbox-item-info">
+                                <strong>Net Worth Tracker</strong>
+                                <small>Track assets & liabilities</small>
+                            </div>
+                        </a>
+                        <a href="../goal-tracker/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">🎯</span>
+                            <div class="toolbox-item-info">
+                                <strong>Goal Tracker</strong>
+                                <small>Set goals & track milestones</small>
+                            </div>
+                        </a>
+                        <a href="../resume-builder/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">📄</span>
+                            <div class="toolbox-item-info">
+                                <strong>Resume Builder</strong>
+                                <small>Build a professional resume</small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="theme-btn">🌙</button>
+                <div class="auth-nav-container">
+                    <button id="auth-nav-btn"><span>Sign In</span></button>
+                    <div id="auth-dropdown">
+                        <button class="dropdown-item" data-action="profile">👤 Profile</button>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item danger" data-action="logout">🚪 Sign Out</button>
+                    </div>
                 </div>
             </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="../../index.html" class="mobile-link">Dashboard</a>
+        <a href="../../roadmap.html" class="mobile-link">Roadmap</a>
+        <a href="../education-hub/index.html" class="mobile-link highlight">🎓 Learn</a>
+
+        <div class="mobile-toolbox-section">
+            <span class="mobile-toolbox-label">🧰 Toolbox</span>
+            <a href="index.html" class="mobile-link">💰 Budget Planner</a>
+            <a href="../compound-calculator/index.html" class="mobile-link">💹 Compound Calculator</a>
+            <a href="../debt-payoff/index.html" class="mobile-link">🎯 Debt Payoff</a>
+            <a href="../net-worth/index.html" class="mobile-link">📊 Net Worth Tracker</a>
+            <a href="../goal-tracker/index.html" class="mobile-link">🎯 Goal Tracker</a>
+            <a href="../resume-builder/index.html" class="mobile-link">📄 Resume Builder</a>
+        </div>
+        <a href="../../auth/login.html" class="mobile-link" id="mobile-auth-link">Sign In</a>
+    </div>
 
     <div class="container">
         <!-- Header -->
         <header>
             <h1>💰 Budget Planner</h1>
             <p class="subtitle">Blueprint to Success - 2026 Financial Dashboard</p>
-            <button id="theme-toggle" class="theme-btn" title="Toggle dark/light mode">🌙</button>
         </header>
 
         <!-- Getting Started Guide -->
@@ -555,7 +623,7 @@
         <footer>
             <div class="footer-links">
                 <a href="../education-hub/index.html" class="education-link">📚 Education Hub</a>
-                <a href="../../guides/index.html" class="education-link" style="background: linear-gradient(135deg, #10b981, #059669);">📖 Browse Guides</a>
+
             </div>
             <div class="footer-actions">
                 <button class="action-btn save-btn" id="save-data">💾 Save Data</button>
@@ -565,6 +633,22 @@
             <p class="footer-note">Data is saved locally in your browser | <a href="../../index.html" style="color: var(--accent-color);">Back to Dashboard</a></p>
         </footer>
     </div>
+
+    <!-- Mobile Bottom Tab Bar -->
+    <nav class="mobile-tab-bar" id="mobile-tab-bar">
+        <a href="../../index.html" class="tab-item">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">Home</span>
+        </a>
+        <a href="../education-hub/index.html" class="tab-item">
+            <span class="tab-icon">🎓</span>
+            <span class="tab-label">Learn</span>
+        </a>
+        <a href="../../roadmap.html" class="tab-item">
+            <span class="tab-icon">🗺️</span>
+            <span class="tab-label">Roadmap</span>
+        </a>
+    </nav>
 
     <script src="../../js/supabase.js"></script>
     <script src="../../js/auth.js"></script>

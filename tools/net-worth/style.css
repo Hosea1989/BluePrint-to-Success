@@ -1,0 +1,313 @@
+/* Net Worth Tracker Styles */
+
+.tool-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 20px 100px;
+}
+
+.tool-header { margin-bottom: 28px; }
+
+.tool-header-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.tool-icon-large { font-size: 2.5rem; }
+
+.tool-header h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.tool-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-top: 4px;
+}
+
+/* Net Worth Summary */
+.nw-summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nw-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 16px 24px;
+    text-align: center;
+    flex: 1;
+    min-width: 140px;
+}
+
+.nw-card.minus-card,
+.nw-card.equals-card {
+    flex: 0;
+    min-width: auto;
+    padding: 8px;
+    background: transparent;
+    border: none;
+}
+
+.nw-minus,
+.nw-equals {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-muted);
+}
+
+.nw-card.assets-card {
+    border-color: rgba(5, 150, 105, 0.3);
+}
+
+.nw-card.liabilities-card {
+    border-color: rgba(220, 38, 38, 0.3);
+}
+
+.nw-card.networth-card {
+    background: linear-gradient(135deg, var(--accent-primary), #7c3aed);
+    border: none;
+    color: white;
+}
+
+.nw-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+    margin-bottom: 4px;
+}
+
+.nw-value {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.assets-card .nw-value { color: #059669; }
+.liabilities-card .nw-value { color: #dc2626; }
+
+/* Chart */
+.chart-section {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 28px;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.chart-header h3 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.snapshot-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: var(--accent-primary);
+    background: rgba(79, 70, 229, 0.08);
+    border: 1px solid rgba(79, 70, 229, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.snapshot-btn:hover {
+    background: rgba(79, 70, 229, 0.15);
+}
+
+.chart-wrapper {
+    position: relative;
+    width: 100%;
+    height: 220px;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Columns Layout */
+.columns-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.column-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.column-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.column-header h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.assets-header { border-bottom-color: #059669; }
+.liabilities-header { border-bottom-color: #dc2626; }
+
+.add-item-btn {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: var(--accent-primary);
+    background: rgba(79, 70, 229, 0.08);
+    border: 1px solid rgba(79, 70, 229, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.add-item-btn:hover {
+    background: rgba(79, 70, 229, 0.15);
+}
+
+/* Category Group */
+.category-group {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.category-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+/* Items */
+.items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nw-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    transition: background 0.15s;
+}
+
+.nw-item:hover {
+    background: var(--bg-primary);
+}
+
+.nw-item-name {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: var(--text-primary);
+    outline: none;
+    padding: 2px 0;
+    min-width: 0;
+}
+
+.nw-item-value {
+    width: 100px;
+    text-align: right;
+    border: none;
+    background: transparent;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: var(--text-primary);
+    outline: none;
+    padding: 2px 0;
+}
+
+.nw-item-name:focus,
+.nw-item-value:focus {
+    border-bottom: 1px solid var(--accent-primary);
+}
+
+.nw-item-remove {
+    background: none;
+    border: none;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.nw-item:hover .nw-item-remove {
+    opacity: 1;
+}
+
+.nw-item-remove:hover {
+    color: #dc2626;
+}
+
+.add-inline-btn {
+    margin-top: 6px;
+    background: none;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px 0;
+    transition: color 0.2s;
+}
+
+.add-inline-btn:hover {
+    color: var(--accent-primary);
+}
+
+/* No data */
+.no-snapshots {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    padding: 40px 20px;
+}
+
+@media (max-width: 700px) {
+    .nw-summary { flex-direction: column; }
+    .nw-card { width: 100%; }
+    .nw-card.minus-card,
+    .nw-card.equals-card { display: none; }
+    .columns-layout { grid-template-columns: 1fr; }
+    .tool-header-content { flex-direction: column; text-align: center; }
+    .tool-header h1 { font-size: 1.4rem; }
+}

@@ -4,6 +4,20 @@ const laborData = {
     title: 'Labor Laws',
     icon: '⚖️',
     description: 'Know your rights as an employee and understand employment law fundamentals.',
+    difficulty: 'beginner',
+    prerequisites: [],
+    learningObjectives: [
+        'Understand your rights as an employee',
+        'Know minimum wage, overtime, and break laws',
+        'Recognize workplace discrimination and harassment',
+        'Navigate workers\' compensation and unemployment',
+        'Protect yourself from employer violations'
+    ],
+    relatedTracks: ['workplacerights', 'career', 'california'],
+    resources: [
+        { title: 'US Department of Labor', url: 'https://www.dol.gov/' },
+        { title: 'California Labor Commissioner', url: 'https://www.dir.ca.gov/dlse/dlse.html' }
+    ],
     levels: [
         {
             id: 1,

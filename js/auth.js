@@ -156,11 +156,6 @@ const AuthManager = {
             await window.SupabaseAuth.saveUserData('budget_data', JSON.parse(budgetData));
         }
         
-        // Sync guides progress
-        const guidesProgress = localStorage.getItem('guidesProgress');
-        if (guidesProgress) {
-            await window.SupabaseAuth.saveUserData('guides_progress', JSON.parse(guidesProgress));
-        }
     },
     
     async loadCloudData() {
@@ -178,11 +173,6 @@ const AuthManager = {
             localStorage.setItem('budgetPlannerData', JSON.stringify(budgetResult.data));
         }
         
-        // Load guides progress
-        const guidesResult = await window.SupabaseAuth.loadUserData('guides_progress');
-        if (guidesResult.data && !guidesResult.localStorage) {
-            localStorage.setItem('guidesProgress', JSON.stringify(guidesResult.data));
-        }
     },
     
     // =============================================================================
@@ -284,13 +274,36 @@ const AuthManager = {
         
         if (path.includes('/tools/')) {
             return `../../auth/${page}`;
-        } else if (path.includes('/guides/')) {
-            return `../auth/${page}`;
         } else {
             return `auth/${page}`;
         }
     }
 };
+
+// =============================================================================
+// TOOLBOX DROPDOWN
+// =============================================================================
+
+function initToolboxDropdown() {
+    const container = document.querySelector('.toolbox-nav-container');
+    const btn = container?.querySelector('.toolbox-btn');
+    if (!container || !btn) return;
+
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        container.classList.toggle('open');
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', () => {
+        container.classList.remove('open');
+    });
+
+    // Prevent dropdown clicks from closing it
+    container.querySelector('.toolbox-dropdown')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+}
 
 // =============================================================================
 // INITIALIZE ON LOAD
@@ -299,6 +312,7 @@ const AuthManager = {
 document.addEventListener('DOMContentLoaded', () => {
     AuthManager.init();
     AuthManager.setupNavDropdown();
+    initToolboxDropdown();
 });
 
 // Export for global access

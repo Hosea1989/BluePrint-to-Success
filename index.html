@@ -3,7 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blueprint to Success</title>
+    <title>Blueprint to Success — Master the Knowledge That Changes Your Life</title>
+    <meta name="description" content="Financial literacy, career skills, legal rights, and health fundamentals. The essential knowledge schools don't teach — organized into clear paths for your success.">
+    <meta name="theme-color" content="#4f46e5">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Blueprint to Success">
+    <meta property="og:description" content="Master financial literacy, career skills, and life fundamentals. 60+ learning tracks, 100+ lessons, and powerful tools.">
+    <meta property="og:image" content="https://blueprint-to-success.app/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%234f46e5'/><stop offset='100%25' style='stop-color:%237c3aed'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23g)'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='white' font-family='system-ui' font-weight='bold'>B</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="auth/style.css">
     <!-- Supabase JS (CDN) -->
@@ -21,8 +39,58 @@
                 <a href="index.html" class="nav-link active">Dashboard</a>
                 <a href="roadmap.html" class="nav-link">Roadmap</a>
                 <a href="tools/education-hub/index.html" class="nav-link highlight">🎓 Learn</a>
-                <a href="guides/index.html" class="nav-link">Guides</a>
-                <a href="tools/budget-planner/index.html" class="nav-link">Budget</a>
+                <div class="toolbox-nav-container">
+                    <button class="toolbox-btn">🧰 Toolbox <span class="toolbox-arrow">▾</span></button>
+                    <div class="toolbox-dropdown">
+                        <a href="tools/budget-planner/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">💰</span>
+                            <div class="toolbox-item-info">
+                                <strong>Budget Planner</strong>
+                                <small>Track income, expenses & savings</small>
+                            </div>
+                        </a>
+                        <a href="tools/compound-calculator/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">💹</span>
+                            <div class="toolbox-item-info">
+                                <strong>Compound Interest Calculator</strong>
+                                <small>See how your money grows over time</small>
+                            </div>
+                        </a>
+                        <a href="tools/debt-payoff/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">🎯</span>
+                            <div class="toolbox-item-info">
+                                <strong>Debt Payoff Calculator</strong>
+                                <small>Plan your path to debt freedom</small>
+                            </div>
+                        </a>
+                        <a href="tools/net-worth/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">📊</span>
+                            <div class="toolbox-item-info">
+                                <strong>Net Worth Tracker</strong>
+                                <small>Track assets & liabilities</small>
+                            </div>
+                        </a>
+                        <a href="tools/goal-tracker/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">🎯</span>
+                            <div class="toolbox-item-info">
+                                <strong>Goal Tracker</strong>
+                                <small>Set goals & track milestones</small>
+                            </div>
+                        </a>
+                        <a href="tools/resume-builder/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">📄</span>
+                            <div class="toolbox-item-info">
+                                <strong>Resume Builder</strong>
+                                <small>Build a professional resume</small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" id="global-search" placeholder="Search tracks, tools..." autocomplete="off">
+                    <div class="search-results" id="search-results"></div>
+                </div>
                 <button id="theme-toggle" class="theme-btn">🌙</button>
                 <div class="auth-nav-container">
                     <button id="auth-nav-btn"><span>Sign In</span></button>
@@ -42,34 +110,25 @@
         <a href="index.html" class="mobile-link active">Dashboard</a>
         <a href="roadmap.html" class="mobile-link">Roadmap</a>
         <a href="tools/education-hub/index.html" class="mobile-link highlight">🎓 Learn</a>
-        <a href="guides/index.html" class="mobile-link">Guides</a>
-        <a href="tools/budget-planner/index.html" class="mobile-link">Budget</a>
+        <div class="mobile-toolbox-section">
+            <span class="mobile-toolbox-label">🧰 Toolbox</span>
+            <a href="tools/budget-planner/index.html" class="mobile-link">💰 Budget Planner</a>
+            <a href="tools/compound-calculator/index.html" class="mobile-link">💹 Compound Calculator</a>
+            <a href="tools/debt-payoff/index.html" class="mobile-link">🎯 Debt Payoff</a>
+            <a href="tools/net-worth/index.html" class="mobile-link">📊 Net Worth Tracker</a>
+            <a href="tools/goal-tracker/index.html" class="mobile-link">🎯 Goal Tracker</a>
+            <a href="tools/resume-builder/index.html" class="mobile-link">📄 Resume Builder</a>
+        </div>
         <a href="auth/login.html" class="mobile-link" id="mobile-auth-link">Sign In</a>
     </div>
 
     <main class="main-content">
         <!-- Hero Section -->
-        <section class="hero">
+        <section class="hero hero-compact">
             <div class="hero-content">
-                <div class="mission-statement">
-                    <span class="mission-label">Our Mission</span>
-                    <h1>Master the knowledge that <span class="gradient-text">changes your life</span></h1>
-                    <p class="hero-subtitle">Financial literacy. Career skills. Legal rights. Health fundamentals. The essential knowledge schools don't teach—organized into clear paths so you can take control of your future.</p>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">21</span>
-                        <span class="stat-label">Learning Tracks</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">100+</span>
-                        <span class="stat-label">Lessons</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" id="total-guides">30+</span>
-                        <span class="stat-label">Guides</span>
-                    </div>
-                </div>
+                <span class="mission-label">Our Mission</span>
+                <h1>Master the knowledge that <span class="gradient-text">changes your life</span></h1>
+                <p class="hero-subtitle">Financial literacy. Career skills. Legal rights. Health fundamentals. The essential knowledge schools don't teach — organized into clear paths so you can take control of your future.</p>
                 <div class="hero-cta">
                     <a href="tools/education-hub/index.html" class="cta-primary">Start Learning →</a>
                     <a href="roadmap.html" class="cta-secondary">View Your Roadmap</a>
@@ -78,7 +137,7 @@
         </section>
 
         <!-- What Is This? (First-time visitors) -->
-        <section class="section intro-section" id="intro-section">
+        <section class="section intro-section reveal" id="intro-section">
             <div class="intro-card">
                 <div class="intro-header">
                     <span class="intro-badge">👋 New here?</span>
@@ -88,27 +147,27 @@
                 <p>This is your <strong>personal learning hub</strong> to help you get your finances together, learn new skills, and take action on your goals. Everything saves automatically to your browser — no account needed.</p>
                 
                 <div class="how-it-works">
-                    <h3>How It Works (3 simple steps)</h3>
+                    <h3>How It Works</h3>
                     <div class="steps-grid">
                         <div class="step-card">
                             <div class="step-number">1</div>
                             <div class="step-content">
                                 <strong>Set Up Your Budget</strong>
-                                <p>Enter your income, expenses, and debts. Takes about 5 minutes.</p>
+                                <p>Enter your income, expenses, and debts.</p>
                             </div>
                         </div>
                         <div class="step-card">
                             <div class="step-number">2</div>
                             <div class="step-content">
                                 <strong>Learn Something New</strong>
-                                <p>Pick a topic (stocks, taxes, etc.) and go through bite-sized lessons with quizzes.</p>
+                                <p>Pick a topic and go through bite-sized lessons.</p>
                             </div>
                         </div>
                         <div class="step-card">
                             <div class="step-number">3</div>
                             <div class="step-content">
                                 <strong>Track Your Progress</strong>
-                                <p>Check your Roadmap to see what you've completed and what's next.</p>
+                                <p>Check your Roadmap to see what's next.</p>
                             </div>
                         </div>
                     </div>
@@ -125,11 +184,11 @@
                                 <small>Best first step — see where your money goes</small>
                             </span>
                         </a>
-                        <a href="guides/finance/credit-scores.html" class="start-btn secondary">
-                            <span class="start-icon">📖</span>
+                        <a href="tools/education-hub/index.html" class="start-btn secondary">
+                            <span class="start-icon">💳</span>
                             <span class="start-text">
-                                <strong>Read the Credit Guide</strong>
-                                <small>Quick read — understand how credit works</small>
+                                <strong>Learn Credit Building</strong>
+                                <small>Interactive lessons on how credit works</small>
                             </span>
                         </a>
                         <a href="tools/education-hub/index.html" class="start-btn secondary">
@@ -144,250 +203,133 @@
             </div>
         </section>
 
-        <!-- Continue Where You Left Off -->
-        <section class="section" id="continue-section" style="display: none;">
-            <h2 class="section-title">Continue Where You Left Off</h2>
-            <div class="continue-card" id="continue-card">
-                <div class="continue-icon" id="continue-icon">📚</div>
-                <div class="continue-info">
-                    <h3 id="continue-title">Loading...</h3>
-                    <p id="continue-desc">Your next step awaits</p>
-                </div>
-                <a href="#" class="continue-btn" id="continue-btn">Continue</a>
-            </div>
-        </section>
-
-        <!-- Roadmap Preview -->
-        <section class="section">
-            <div class="roadmap-preview">
-                <div class="roadmap-header">
-                    <h2 class="section-title">Your Journey</h2>
-                    <a href="roadmap.html" class="view-roadmap-link">View Full Roadmap →</a>
-                </div>
-                <div class="phases-mini">
-                    <div class="phase-mini" id="phase-mini-1">
-                        <div class="phase-mini-num">1</div>
-                        <div class="phase-mini-label">Foundation</div>
-                        <div class="phase-mini-progress" id="phase1-mini-progress">0%</div>
+        <!-- Dashboard -->
+        <div class="dashboard">
+            <!-- Streak Banner (shown dynamically) -->
+            <div class="dashboard-streak" id="streak-section" style="display: none;">
+                <div class="streak-banner" id="streak-banner">
+                    <span class="streak-fire">🔥</span>
+                    <div class="streak-info">
+                        <div class="streak-count" id="streak-count">0 Day Streak!</div>
+                        <div class="streak-message" id="streak-message">Keep learning to build your streak</div>
                     </div>
-                    <div class="phase-connector"></div>
-                    <div class="phase-mini" id="phase-mini-2">
-                        <div class="phase-mini-num">2</div>
-                        <div class="phase-mini-label">Learning</div>
-                        <div class="phase-mini-progress" id="phase2-mini-progress">0%</div>
-                    </div>
-                    <div class="phase-connector"></div>
-                    <div class="phase-mini" id="phase-mini-3">
-                        <div class="phase-mini-num">3</div>
-                        <div class="phase-mini-label">Action</div>
-                        <div class="phase-mini-progress" id="phase3-mini-progress">0%</div>
-                    </div>
+                    <div class="streak-days" id="streak-days"></div>
                 </div>
             </div>
-        </section>
 
-        <!-- Progress Overview -->
-        <section class="section">
-            <h2 class="section-title">Your Progress</h2>
-            <div class="progress-grid">
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <span class="progress-icon">📚</span>
-                        <h3>Education Hub</h3>
+            <!-- Continue Where You Left Off -->
+            <div class="dashboard-continue" id="continue-section" style="display: none;">
+                <div class="continue-card" id="continue-card">
+                    <div class="continue-icon" id="continue-icon">📚</div>
+                    <div class="continue-info">
+                        <h3 id="continue-title">Loading...</h3>
+                        <p id="continue-desc">Your next step awaits</p>
                     </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="education-progress" style="width: 0%"></div>
-                        </div>
-                        <span class="progress-percent" id="education-percent">0%</span>
-                    </div>
-                    <div class="progress-details" id="education-details">
-                        <div class="track-progress">
-                            <span>📈 Stocks</span>
-                            <span id="stocks-progress">0%</span>
-                        </div>
-                        <div class="track-progress">
-                            <span>🧾 Taxes</span>
-                            <span id="taxes-progress">0%</span>
-                        </div>
-                        <div class="track-progress">
-                            <span>🤝 Nonprofits</span>
-                            <span id="nonprofits-progress">0%</span>
-                        </div>
-                        <div class="track-progress">
-                            <span>⚖️ Labor Laws</span>
-                            <span id="labor-progress">0%</span>
-                        </div>
-                    </div>
-                    <a href="tools/education-hub/index.html" class="progress-action">Continue Learning →</a>
-                </div>
-
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <span class="progress-icon">📖</span>
-                        <h3>Guides Read</h3>
-                    </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="guides-progress" style="width: 0%"></div>
-                        </div>
-                        <span class="progress-percent" id="guides-percent">0%</span>
-                    </div>
-                    <div class="progress-details">
-                        <div class="track-progress">
-                            <span>💰 Finance</span>
-                            <span id="finance-guides-progress">0/11</span>
-                        </div>
-                        <div class="track-progress">
-                            <span>💻 Tech</span>
-                            <span id="tech-guides-progress">0/12</span>
-                        </div>
-                        <div class="track-progress">
-                            <span>🌱 Personal</span>
-                            <span id="personal-guides-progress">0/3</span>
-                        </div>
-                        <div class="track-progress">
-                            <span>🏢 Business</span>
-                            <span id="business-guides-progress">0/5</span>
-                        </div>
-                    </div>
-                    <a href="guides/index.html" class="progress-action">Browse Guides →</a>
+                    <a href="#" class="continue-btn" id="continue-btn">Continue</a>
                 </div>
             </div>
-        </section>
 
-        <!-- Quick Access Tools -->
-        <section class="section">
-            <h2 class="section-title">Tools</h2>
-            <div class="tools-grid">
-                <a href="tools/budget-planner/index.html" class="tool-card">
-                    <div class="tool-icon">💰</div>
-                    <div class="tool-info">
-                        <h3>Budget Planner</h3>
-                        <p>Track income, expenses, debts, and savings goals. Audit your subscriptions and plan for upcoming expenses.</p>
-                    </div>
-                    <div class="tool-stats" id="budget-stats">
-                        <span class="tool-stat">
-                            <span class="stat-value" id="budget-income">--</span>
-                            <span class="stat-name">Income</span>
-                        </span>
-                        <span class="tool-stat">
-                            <span class="stat-value" id="budget-remaining">--</span>
-                            <span class="stat-name">Remaining</span>
-                        </span>
-                    </div>
-                    <span class="tool-action">Open Tool →</span>
-                </a>
-
-                <a href="tools/education-hub/index.html" class="tool-card featured">
-                    <div class="tool-icon">🎓</div>
-                    <div class="tool-info">
-                        <h3>Education Hub</h3>
-                        <p>Master finance, business, tech, and more. Interactive lessons with quizzes and final exams.</p>
-                    </div>
-                    <div class="tool-stats">
-                        <span class="tool-stat">
-                            <span class="stat-value">17</span>
-                            <span class="stat-name">Tracks</span>
-                        </span>
-                        <span class="tool-stat">
-                            <span class="stat-value">85+</span>
-                            <span class="stat-name">Lessons</span>
-                        </span>
-                    </div>
-                    <span class="tool-action">Start Learning →</span>
-                </a>
+            <!-- Dynamic Widgets (unlocked by learning) -->
+            <div class="widgets-section" id="widgets-section" style="display: none;">
+                <div class="widgets-header">
+                    <h3 class="dashboard-card-title">Your Tools</h3>
+                    <button class="manage-widgets-btn" id="manage-widgets-btn" title="Manage widgets">Manage</button>
+                </div>
+                <div class="widgets-grid" id="widgets-grid">
+                    <!-- Widgets injected by JS -->
+                </div>
             </div>
-        </section>
 
-        <!-- Guide Categories -->
-        <section class="section">
-            <h2 class="section-title">Guide Library</h2>
-            <div class="categories-grid">
-                <a href="guides/index.html#finance" class="category-card finance">
-                    <div class="category-icon">💰</div>
-                    <h3>Finance</h3>
-                    <p>Credit scores, budgeting, investing, debt management, taxes, and more.</p>
-                    <span class="category-count">11 guides</span>
-                </a>
-
-                <a href="guides/index.html#tech" class="category-card tech">
-                    <div class="category-icon">💻</div>
-                    <h3>Tech Skills</h3>
-                    <p>Web development, Python, JavaScript, app development, and programming fundamentals.</p>
-                    <span class="category-count">12 guides</span>
-                </a>
-
-                <a href="guides/index.html#personal" class="category-card personal">
-                    <div class="category-icon">🌱</div>
-                    <h3>Personal Growth</h3>
-                    <p>Self-care, language learning, travel, and personal development.</p>
-                    <span class="category-count">3 guides</span>
-                </a>
-
-                <a href="guides/index.html#business" class="category-card business">
-                    <div class="category-icon">🏢</div>
-                    <h3>Business</h3>
-                    <p>Entrepreneurship, forming an LLC, digital marketing, and social media growth.</p>
-                    <span class="category-count">5 guides</span>
-                </a>
+            <!-- Widget Manager Modal -->
+            <div class="widget-manager-overlay" id="widget-manager-overlay" style="display: none;">
+                <div class="widget-manager-modal">
+                    <div class="widget-manager-header">
+                        <h3>Manage Widgets</h3>
+                        <button class="widget-manager-close" id="widget-manager-close">✕</button>
+                    </div>
+                    <p class="widget-manager-desc">Toggle widgets on your dashboard. New widgets unlock as you complete lessons.</p>
+                    <div class="widget-manager-list" id="widget-manager-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
             </div>
-        </section>
 
-        <!-- Recent/Featured Guides -->
-        <section class="section">
-            <h2 class="section-title">Featured Guides</h2>
-            <div class="featured-grid">
-                <a href="guides/finance/credit-scores.html" class="featured-card">
-                    <span class="featured-category">Finance</span>
-                    <h3>Understanding Credit Scores</h3>
-                    <p>Learn how credit works, how to build it, and a 5-month rebuild plan.</p>
-                </a>
-                <a href="guides/tech/web-development.html" class="featured-card">
-                    <span class="featured-category">Tech</span>
-                    <h3>Web Development</h3>
-                    <p>Complete roadmap for beginners to learn HTML, CSS, JavaScript, and more.</p>
-                </a>
-                <a href="guides/finance/investing-basics.html" class="featured-card">
-                    <span class="featured-category">Finance</span>
-                    <h3>Investing Basics</h3>
-                    <p>Start your investing journey with fundamental concepts and strategies.</p>
-                </a>
-                <a href="guides/personal/self-care.html" class="featured-card">
-                    <span class="featured-category">Personal</span>
-                    <h3>Self Care for Black Men</h3>
-                    <p>Practical advice for mental, physical, and emotional well-being.</p>
-                </a>
+            <!-- Two-column: Roadmap + Progress -->
+            <div class="dashboard-columns">
+                <div class="dashboard-col-main">
+                    <div class="roadmap-preview" id="roadmap-preview-container">
+                        <div class="roadmap-header">
+                            <h3 class="dashboard-card-title">Your Journey</h3>
+                            <a href="roadmap.html" class="view-roadmap-link">Full Roadmap →</a>
+                        </div>
+                        <div class="phases-mini" id="phases-mini-container">
+                            <!-- Dynamically rendered based on selected pathway -->
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-col-side">
+                    <div class="progress-card">
+                        <div class="progress-header">
+                            <span class="progress-icon">📚</span>
+                            <h3>Education Hub</h3>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="education-progress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-percent" id="education-percent">0%</span>
+                        </div>
+                        <p class="progress-summary" id="education-summary">No tracks started yet</p>
+                        <a href="tools/education-hub/index.html" class="progress-action">Continue Learning →</a>
+                    </div>
+                    <div class="progress-card">
+                        <div class="progress-header">
+                            <span class="progress-icon">🧰</span>
+                            <h3>Tools</h3>
+                        </div>
+                        <p class="progress-summary">Budget, track goals, build your resume, and more.</p>
+                        <a href="tools/budget-planner/index.html" class="progress-action">Open Budget Planner →</a>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="main-footer">
-        <div class="footer-content">
+    <footer class="main-footer main-footer-compact">
+        <div class="footer-compact-inner">
             <div class="footer-brand">
                 <span class="logo-icon">📘</span>
                 <span>Blueprint to Success</span>
             </div>
-            <div class="footer-links">
-                <div class="footer-column">
-                    <h4>Tools</h4>
-                    <a href="tools/budget-planner/index.html">Budget Planner</a>
-                    <a href="tools/education-hub/index.html">Education Hub</a>
-                </div>
-                <div class="footer-column">
-                    <h4>Guides</h4>
-                    <a href="guides/index.html#finance">Finance</a>
-                    <a href="guides/index.html#tech">Tech Skills</a>
-                    <a href="guides/index.html#personal">Personal Growth</a>
-                    <a href="guides/index.html#business">Business</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>Your data is stored locally in your browser. Progress syncs per device.</p>
+            <nav class="footer-nav">
+                <a href="tools/education-hub/index.html">Education Hub</a>
+                <a href="roadmap.html">Roadmap</a>
+                <a href="tools/budget-planner/index.html">Budget Planner</a>
+            </nav>
+            <p class="footer-note">Your data is stored locally in your browser. Progress syncs per device.</p>
         </div>
     </footer>
+
+    <!-- Mobile Bottom Tab Bar -->
+    <nav class="mobile-tab-bar" id="mobile-tab-bar">
+        <a href="index.html" class="tab-item active">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">Home</span>
+        </a>
+        <a href="tools/education-hub/index.html" class="tab-item">
+            <span class="tab-icon">🎓</span>
+            <span class="tab-label">Learn</span>
+        </a>
+        <a href="tools/budget-planner/index.html" class="tab-item">
+            <span class="tab-icon">🧰</span>
+            <span class="tab-label">Tools</span>
+        </a>
+        <a href="roadmap.html" class="tab-item">
+            <span class="tab-icon">🗺️</span>
+            <span class="tab-label">Roadmap</span>
+        </a>
+    </nav>
 
     <script src="js/supabase.js"></script>
     <script src="js/auth.js"></script>

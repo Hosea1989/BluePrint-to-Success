@@ -5,6 +5,20 @@ const cryptoData = {
     icon: '₿',
     description: 'Understand blockchain, Bitcoin, and how to safely navigate the crypto world.',
     graduationGoal: 'Understand crypto enough to make informed investment decisions',
+    difficulty: 'intermediate',
+    prerequisites: ['personalfinance', 'investing'],
+    learningObjectives: [
+        'Understand blockchain technology and how it works',
+        'Evaluate different cryptocurrencies and their use cases',
+        'Safely buy, store, and trade cryptocurrency',
+        'Assess the risks and volatility of crypto investments',
+        'Use crypto as part of a diversified portfolio'
+    ],
+    relatedTracks: ['investing', 'stocks', 'fintech'],
+    resources: [
+        { title: 'Coinbase Learn', url: 'https://www.coinbase.com/learn' },
+        { title: 'Bitcoin.org', url: 'https://bitcoin.org/en/' }
+    ],
     levels: [
         {
             id: 1,

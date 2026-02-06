@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder | Blueprint to Success</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%234f46e5'/><stop offset='100%25' style='stop-color:%237c3aed'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23g)'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='white' font-family='system-ui' font-weight='bold'>B</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../auth/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>body { padding-top: var(--nav-height, 70px); }</style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <span class="logo-icon">📘</span>
+                <span class="logo-text">Blueprint to Success</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html" class="nav-link">Dashboard</a>
+                <a href="../../roadmap.html" class="nav-link">Roadmap</a>
+                <a href="../education-hub/index.html" class="nav-link highlight">🎓 Learn</a>
+
+                <div class="toolbox-nav-container">
+                    <button class="toolbox-btn">🧰 Toolbox <span class="toolbox-arrow">▾</span></button>
+                    <div class="toolbox-dropdown">
+                        <a href="../budget-planner/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">💰</span>
+                            <div class="toolbox-item-info">
+                                <strong>Budget Planner</strong>
+                                <small>Track income, expenses & savings</small>
+                            </div>
+                        </a>
+                        <a href="../compound-calculator/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">💹</span>
+                            <div class="toolbox-item-info">
+                                <strong>Compound Interest Calculator</strong>
+                                <small>See how your money grows over time</small>
+                            </div>
+                        </a>
+                        <a href="../debt-payoff/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">🎯</span>
+                            <div class="toolbox-item-info">
+                                <strong>Debt Payoff Calculator</strong>
+                                <small>Plan your path to debt freedom</small>
+                            </div>
+                        </a>
+                        <a href="../net-worth/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">📊</span>
+                            <div class="toolbox-item-info">
+                                <strong>Net Worth Tracker</strong>
+                                <small>Track assets & liabilities</small>
+                            </div>
+                        </a>
+                        <a href="../goal-tracker/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">🎯</span>
+                            <div class="toolbox-item-info">
+                                <strong>Goal Tracker</strong>
+                                <small>Set goals & track milestones</small>
+                            </div>
+                        </a>
+                        <a href="index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">📄</span>
+                            <div class="toolbox-item-info">
+                                <strong>Resume Builder</strong>
+                                <small>Build a professional resume</small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="theme-btn">🌙</button>
+                <div class="auth-nav-container">
+                    <button id="auth-nav-btn"><span>Sign In</span></button>
+                    <div id="auth-dropdown">
+                        <button class="dropdown-item" data-action="profile">👤 Profile</button>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item danger" data-action="logout">🚪 Sign Out</button>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="../../index.html" class="mobile-link">Dashboard</a>
+        <a href="../../roadmap.html" class="mobile-link">Roadmap</a>
+        <a href="../education-hub/index.html" class="mobile-link highlight">🎓 Learn</a>
+
+        <div class="mobile-toolbox-section">
+            <span class="mobile-toolbox-label">🧰 Toolbox</span>
+            <a href="../budget-planner/index.html" class="mobile-link">💰 Budget Planner</a>
+            <a href="../compound-calculator/index.html" class="mobile-link">💹 Compound Calculator</a>
+            <a href="../debt-payoff/index.html" class="mobile-link">🎯 Debt Payoff</a>
+            <a href="../net-worth/index.html" class="mobile-link">📊 Net Worth Tracker</a>
+            <a href="../goal-tracker/index.html" class="mobile-link">🎯 Goal Tracker</a>
+            <a href="index.html" class="mobile-link">📄 Resume Builder</a>
+        </div>
+        <a href="../../auth/login.html" class="mobile-link" id="mobile-auth-link">Sign In</a>
+    </div>
+
+    <div class="tool-container">
+        <header class="tool-header">
+            <div class="tool-header-content">
+                <span class="tool-icon-large">📄</span>
+                <div>
+                    <h1>Resume Builder</h1>
+                    <p class="tool-subtitle">Build a professional resume — fill in your info and preview it live</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="builder-layout">
+            <!-- Editor Side -->
+            <div class="editor-panel">
+                <!-- Personal Info -->
+                <section class="editor-section">
+                    <h2 class="section-title">Personal Information</h2>
+                    <div class="field-row">
+                        <div class="field">
+                            <label>Full Name</label>
+                            <input type="text" id="fullName" placeholder="John Doe">
+                        </div>
+                    </div>
+                    <div class="field-row two-col">
+                        <div class="field">
+                            <label>Email</label>
+                            <input type="email" id="email" placeholder="john@example.com">
+                        </div>
+                        <div class="field">
+                            <label>Phone</label>
+                            <input type="tel" id="phone" placeholder="(555) 123-4567">
+                        </div>
+                    </div>
+                    <div class="field-row two-col">
+                        <div class="field">
+                            <label>Location</label>
+                            <input type="text" id="location" placeholder="City, State">
+                        </div>
+                        <div class="field">
+                            <label>LinkedIn / Website</label>
+                            <input type="text" id="website" placeholder="linkedin.com/in/johndoe">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Summary -->
+                <section class="editor-section">
+                    <h2 class="section-title">Professional Summary</h2>
+                    <textarea id="summary" rows="3" placeholder="A brief 2-3 sentence summary of your professional background and career goals..."></textarea>
+                </section>
+
+                <!-- Experience -->
+                <section class="editor-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Work Experience</h2>
+                        <button class="add-btn" id="add-experience">+ Add</button>
+                    </div>
+                    <div id="experience-list"></div>
+                </section>
+
+                <!-- Education -->
+                <section class="editor-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Education</h2>
+                        <button class="add-btn" id="add-education">+ Add</button>
+                    </div>
+                    <div id="education-list"></div>
+                </section>
+
+                <!-- Skills -->
+                <section class="editor-section">
+                    <h2 class="section-title">Skills</h2>
+                    <input type="text" id="skills" placeholder="Separate skills with commas: Excel, Communication, Project Management...">
+                </section>
+
+                <div class="editor-actions">
+                    <button class="action-btn primary" id="print-btn">🖨️ Print / Save PDF</button>
+                    <button class="action-btn secondary" id="clear-btn">🗑️ Clear All</button>
+                </div>
+            </div>
+
+            <!-- Preview Side -->
+            <div class="preview-panel">
+                <div class="preview-label">Live Preview</div>
+                <div class="resume-preview" id="resume-preview">
+                    <div class="resume-header-section">
+                        <h1 class="resume-name" id="preview-name">Your Name</h1>
+                        <div class="resume-contact" id="preview-contact"></div>
+                    </div>
+                    <div id="preview-summary" class="resume-section" style="display:none;">
+                        <h2>Summary</h2>
+                        <p></p>
+                    </div>
+                    <div id="preview-experience" class="resume-section" style="display:none;">
+                        <h2>Experience</h2>
+                    </div>
+                    <div id="preview-education" class="resume-section" style="display:none;">
+                        <h2>Education</h2>
+                    </div>
+                    <div id="preview-skills" class="resume-section" style="display:none;">
+                        <h2>Skills</h2>
+                        <div class="skills-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="mobile-tab-bar" id="mobile-tab-bar">
+        <a href="../../index.html" class="tab-item">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">Home</span>
+        </a>
+        <a href="../education-hub/index.html" class="tab-item">
+            <span class="tab-icon">🎓</span>
+            <span class="tab-label">Learn</span>
+        </a>
+        <a href="../../roadmap.html" class="tab-item">
+            <span class="tab-icon">🗺️</span>
+            <span class="tab-label">Roadmap</span>
+        </a>
+    </nav>
+
+    <script src="../../js/supabase.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

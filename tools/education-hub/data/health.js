@@ -6,6 +6,20 @@ const healthData = {
     description: 'Master the fundamentals of physical and mental health. Your health is the foundation everything else is built on.',
     whyItMatters: 'Without health, nothing else matters. Medical bills are the #1 cause of bankruptcy. Energy levels affect every area of your life. This track gives you the knowledge to take control.',
     graduationGoal: 'Build sustainable habits for physical and mental wellness',
+    difficulty: 'beginner',
+    prerequisites: [],
+    learningObjectives: [
+        'Build sustainable exercise and nutrition habits',
+        'Manage stress and mental health effectively',
+        'Navigate healthcare and insurance',
+        'Prevent chronic diseases through lifestyle',
+        'Optimize energy and performance'
+    ],
+    relatedTracks: ['selfcare', 'emotionaliq', 'insurance'],
+    resources: [
+        { title: 'CDC Health Information', url: 'https://www.cdc.gov/healthyyouth/' },
+        { title: 'Mental Health America', url: 'https://www.mhanational.org/' }
+    ],
     levels: [
         {
             id: 1,
@@ -33,6 +47,38 @@ const healthData = {
                         </ul>
                         <div class="highlight">
                             <strong>Key Insight:</strong> Small consistent habits beat extreme interventions. 1% better each day = 37x better in a year.
+                        </div>
+                    `
+                },
+                {
+                    id: 'hydration',
+                    title: 'Hydration: The Overlooked Foundation',
+                    content: `
+                        <h2>Hydration: The Overlooked Foundation</h2>
+                        <h3>Why Water Matters</h3>
+                        <ul>
+                            <li>Your body is 60% water</li>
+                            <li>Even 2% dehydration impairs cognitive function</li>
+                            <li>Dehydration mimics hunger (you eat when you should drink)</li>
+                            <li>Most headaches are dehydration</li>
+                        </ul>
+                        <h3>How Much to Drink</h3>
+                        <ul>
+                            <li><strong>Minimum:</strong> Half your body weight in ounces</li>
+                            <li><strong>Example:</strong> 180 lbs → 90 oz (about 11 cups)</li>
+                            <li>More if you exercise, drink coffee, or live in hot climate</li>
+                            <li>Check your urine: pale yellow = hydrated</li>
+                        </ul>
+                        <h3>Hydration Tips</h3>
+                        <ul>
+                            <li>Start your day with 16 oz of water before coffee</li>
+                            <li>Carry a water bottle everywhere</li>
+                            <li>Set hourly reminders if needed</li>
+                            <li>Add lemon or fruit for flavor</li>
+                            <li>Eat water-rich foods (cucumbers, watermelon, oranges)</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Simple Test:</strong> If you're tired, have a headache, or feel hungry between meals—drink water first. Wait 20 minutes. Often that's all you needed.
                         </div>
                     `
                 },
@@ -82,6 +128,12 @@ const healthData = {
                         options: ['70-75°F', '65-68°F', '60-62°F', '75-80°F'],
                         correct: 1,
                         explanation: '65-68°F is optimal for sleep—your body temperature needs to drop for quality rest.'
+                    },
+                    {
+                        question: 'How many hours of sleep do adults need?',
+                        options: ['4-5 hours', '5-6 hours', '7-9 hours', '10-12 hours'],
+                        correct: 2,
+                        explanation: 'Adults need 7-9 hours of quality sleep. Consistently getting less impairs memory, immune function, and emotional regulation.'
                     }
                 ]
             }
@@ -151,6 +203,38 @@ const healthData = {
                             <li><strong>Healthy fats:</strong> Olive oil, peanut butter</li>
                         </ul>
                     `
+                },
+                {
+                    id: 'reading-labels',
+                    title: 'Reading Food Labels',
+                    content: `
+                        <h2>Reading Food Labels</h2>
+                        <h3>What to Look At First</h3>
+                        <ul>
+                            <li><strong>Serving size:</strong> Everything is based on this (often misleading)</li>
+                            <li><strong>Calories:</strong> Context matters — 200 cal of nuts ≠ 200 cal of candy</li>
+                            <li><strong>Protein:</strong> Aim for higher protein per serving</li>
+                            <li><strong>Added sugars:</strong> Keep under 25g/day (women) or 36g/day (men)</li>
+                            <li><strong>Sodium:</strong> Under 2,300mg/day total</li>
+                        </ul>
+                        <h3>Ingredients List</h3>
+                        <ul>
+                            <li>Listed by weight — first ingredient = most of the product</li>
+                            <li>If sugar is in the first 3 ingredients, think twice</li>
+                            <li>Fewer ingredients usually = less processed</li>
+                            <li>If you can't pronounce it, research it</li>
+                        </ul>
+                        <h3>Marketing Tricks</h3>
+                        <ul>
+                            <li><strong>"Natural"</strong> — means nothing legally</li>
+                            <li><strong>"Low fat"</strong> — often high in sugar to compensate</li>
+                            <li><strong>"Sugar-free"</strong> — may have artificial sweeteners</li>
+                            <li><strong>"Multigrain"</strong> — not the same as whole grain</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Simple Rule:</strong> Shop the perimeter of the grocery store (produce, meat, dairy). Most processed foods are in the middle aisles.
+                        </div>
+                    `
                 }
             ],
             quiz: {
@@ -203,6 +287,41 @@ const healthData = {
                         </ul>
                         <div class="highlight">
                             <strong>Best Exercise:</strong> The one you'll actually do consistently. Walking is underrated—10K steps daily transforms health.
+                        </div>
+                    `
+                },
+                {
+                    id: 'home-workouts',
+                    title: 'No-Equipment Home Workouts',
+                    content: `
+                        <h2>No-Equipment Home Workouts</h2>
+                        <h3>No Gym? No Problem</h3>
+                        <p>You can build real strength and fitness with zero equipment, zero cost, and zero commute.</p>
+                        <h3>Bodyweight Exercises by Muscle Group</h3>
+                        <ul>
+                            <li><strong>Chest/Arms:</strong> Push-ups, dips (on chair), diamond push-ups</li>
+                            <li><strong>Back:</strong> Superman holds, doorframe rows</li>
+                            <li><strong>Legs:</strong> Squats, lunges, wall sits, calf raises</li>
+                            <li><strong>Core:</strong> Planks, dead bugs, mountain climbers</li>
+                            <li><strong>Full body:</strong> Burpees, jumping jacks, bear crawls</li>
+                        </ul>
+                        <h3>Beginner 20-Minute Routine</h3>
+                        <ol>
+                            <li>Warm-up: 2 min jumping jacks</li>
+                            <li>Push-ups: 3 sets of 8-12</li>
+                            <li>Bodyweight squats: 3 sets of 15</li>
+                            <li>Plank: 3 sets of 30 seconds</li>
+                            <li>Lunges: 3 sets of 10 each leg</li>
+                            <li>Cool-down: 3 min stretching</li>
+                        </ol>
+                        <h3>Free Resources</h3>
+                        <ul>
+                            <li>YouTube: FitnessBlender, THENX, Blogilates</li>
+                            <li>Apps: Nike Training Club (free), FitOn</li>
+                            <li>r/bodyweightfitness recommended routine</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Truth:</strong> You don't need a gym to get in shape. Consistency with bodyweight exercises will transform your health.
                         </div>
                     `
                 },
@@ -340,6 +459,141 @@ const healthData = {
                         options: ['Only in emergencies', 'When symptoms persist 2+ weeks and affect daily life', 'Never, you can handle it alone', 'Only if others tell you to'],
                         correct: 1,
                         explanation: 'Seek help when symptoms persist more than 2 weeks, affect work/relationships, or you feel like you need support.'
+                    }
+                ]
+            }
+        },
+        {
+            id: 5,
+            title: 'Navigating Healthcare',
+            subtitle: 'Understanding the system and protecting your health',
+            topics: [
+                {
+                    id: 'healthcare-system',
+                    title: 'Understanding the Healthcare System',
+                    content: `
+                        <h2>Understanding the Healthcare System</h2>
+                        <h3>Types of Healthcare Providers</h3>
+                        <ul>
+                            <li><strong>Primary Care (PCP):</strong> Your main doctor for checkups and referrals</li>
+                            <li><strong>Specialists:</strong> Focused on specific areas (dermatology, cardiology)</li>
+                            <li><strong>Urgent Care:</strong> For non-emergency issues outside business hours</li>
+                            <li><strong>ER:</strong> True emergencies only (chest pain, severe injury, breathing issues)</li>
+                            <li><strong>Telehealth:</strong> Virtual visits — often cheaper and faster</li>
+                        </ul>
+                        <h3>When to Go Where</h3>
+                        <ul>
+                            <li><strong>PCP:</strong> Annual checkups, ongoing health concerns, prescriptions</li>
+                            <li><strong>Urgent Care:</strong> Sprains, minor cuts, flu symptoms, UTIs ($50-200)</li>
+                            <li><strong>ER:</strong> Chest pain, severe bleeding, stroke symptoms, broken bones ($1,000-5,000+)</li>
+                            <li><strong>Telehealth:</strong> Colds, rashes, mental health, medication refills ($0-75)</li>
+                        </ul>
+                        <h3>Preventive Care (Usually Free)</h3>
+                        <ul>
+                            <li>Annual physical exam</li>
+                            <li>Blood pressure and cholesterol screening</li>
+                            <li>Diabetes screening</li>
+                            <li>Cancer screenings (by age)</li>
+                            <li>Vaccinations</li>
+                            <li>Mental health screening</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Pro Tip:</strong> Most insurance plans cover preventive care at 100% (no cost to you). Use these benefits — catching problems early saves lives and money.
+                        </div>
+                    `
+                },
+                {
+                    id: 'health-insurance-basics',
+                    title: 'Health Insurance Essentials',
+                    content: `
+                        <h2>Health Insurance Essentials</h2>
+                        <h3>Key Terms</h3>
+                        <ul>
+                            <li><strong>Premium:</strong> Monthly cost (what you pay to HAVE insurance)</li>
+                            <li><strong>Deductible:</strong> What you pay before insurance kicks in</li>
+                            <li><strong>Copay:</strong> Fixed amount per visit ($20-50 typical)</li>
+                            <li><strong>Coinsurance:</strong> Your % after deductible (usually 20-30%)</li>
+                            <li><strong>Out-of-Pocket Max:</strong> Most you'll pay in a year — then insurance covers 100%</li>
+                        </ul>
+                        <h3>Plan Types</h3>
+                        <ul>
+                            <li><strong>HMO:</strong> Must use network doctors, need PCP referrals, lower cost</li>
+                            <li><strong>PPO:</strong> More flexibility to see specialists, higher cost</li>
+                            <li><strong>HDHP:</strong> High deductible but can use HSA (tax savings)</li>
+                        </ul>
+                        <h3>How to Choose</h3>
+                        <ul>
+                            <li>Healthy and rarely see doctors? → HDHP with HSA</li>
+                            <li>Regular medications or conditions? → PPO or HMO</li>
+                            <li>Want lowest monthly cost? → HDHP</li>
+                            <li>Want predictable costs? → HMO with copays</li>
+                        </ul>
+                        <h3>If You Don't Have Insurance</h3>
+                        <ul>
+                            <li>HealthCare.gov marketplace (may qualify for subsidies)</li>
+                            <li>Medicaid (income-based, free or very low cost)</li>
+                            <li>Community health centers (sliding scale fees)</li>
+                            <li>Covered California (state marketplace)</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Critical:</strong> Medical bills are the #1 cause of bankruptcy. Health insurance isn't optional — it's financial protection.
+                        </div>
+                    `
+                },
+                {
+                    id: 'managing-medical-costs',
+                    title: 'Managing Medical Costs',
+                    content: `
+                        <h2>Managing Medical Costs</h2>
+                        <h3>Before Treatment</h3>
+                        <ul>
+                            <li>Ask: "Is this covered by my insurance?"</li>
+                            <li>Request cost estimates in advance</li>
+                            <li>Compare prices (same procedure varies 5-10x between providers)</li>
+                            <li>Use GoodRx for prescription discounts</li>
+                            <li>Ask for generic medications (same drug, fraction of cost)</li>
+                        </ul>
+                        <h3>After Treatment</h3>
+                        <ul>
+                            <li>Review itemized bills carefully for errors</li>
+                            <li>Compare bill to your EOB (Explanation of Benefits)</li>
+                            <li>Call billing department to negotiate</li>
+                            <li>Ask about payment plans (often 0% interest)</li>
+                            <li>Apply for financial assistance if needed</li>
+                        </ul>
+                        <h3>Cost-Saving Strategies</h3>
+                        <ul>
+                            <li><strong>Use HSA/FSA:</strong> Pay with pre-tax dollars (30% savings)</li>
+                            <li><strong>Telehealth first:</strong> $0-75 vs $150+ in-office</li>
+                            <li><strong>Preventive care:</strong> Usually 100% covered — use it!</li>
+                            <li><strong>In-network only:</strong> Out-of-network costs can be 2-5x more</li>
+                            <li><strong>Negotiate cash pay:</strong> Uninsured? Ask for cash discount (30-50% off)</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Always Ask:</strong> "Is there a less expensive alternative?" and "Do you offer a cash-pay discount?" These two questions can save thousands.
+                        </div>
+                    `
+                }
+            ],
+            quiz: {
+                questions: [
+                    {
+                        question: 'When should you go to the ER vs. urgent care?',
+                        options: ['ER for everything', 'ER for true emergencies (chest pain, severe injury); urgent care for non-emergency issues', 'Urgent care for everything', 'It doesn\'t matter'],
+                        correct: 1,
+                        explanation: 'The ER is for life-threatening emergencies. Urgent care handles non-emergency issues at a fraction of the cost ($50-200 vs $1,000-5,000+).'
+                    },
+                    {
+                        question: 'What is an "out-of-pocket maximum"?',
+                        options: ['The minimum you must pay', 'The most you\'ll pay in a year — then insurance covers 100%', 'Your monthly premium', 'The amount your employer pays'],
+                        correct: 1,
+                        explanation: 'The out-of-pocket maximum is your safety net — once you hit this amount in a year, insurance covers everything at 100%.'
+                    },
+                    {
+                        question: 'What is the easiest way to save money on prescriptions?',
+                        options: ['Skip medications', 'Ask for generic versions and use GoodRx', 'Order from overseas', 'Only take half the dose'],
+                        correct: 1,
+                        explanation: 'Generic medications have the same active ingredients as brand-name drugs at a fraction of the cost. GoodRx can save 50-80% at the pharmacy.'
                     }
                 ]
             }

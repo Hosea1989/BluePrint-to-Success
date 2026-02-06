@@ -5,6 +5,20 @@ const politicsData = {
     icon: '🏛️',
     description: 'Understand how government works and how to effectively participate.',
     graduationGoal: 'Understand how power works and how to participate',
+    difficulty: 'beginner',
+    prerequisites: [],
+    learningObjectives: [
+        'Understand how the US government system works',
+        'Know how laws are made and how to influence them',
+        'Participate effectively in elections and civic engagement',
+        'Understand political parties and their roles',
+        'Advocate for issues you care about'
+    ],
+    relatedTracks: ['california', 'labor'],
+    resources: [
+        { title: 'USA.gov', url: 'https://www.usa.gov/' },
+        { title: 'Vote.gov', url: 'https://www.vote.gov/' }
+    ],
     levels: [
         {
             id: 1,

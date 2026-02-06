@@ -6,6 +6,20 @@ const careerData = {
     description: 'Master job searching, interviewing, personal branding, and career advancement. Your career is your biggest financial asset.',
     whyItMatters: 'Your career earnings will likely total $1-3 million over your lifetime. Small improvements in how you manage your career—negotiating, positioning, advancing—can mean hundreds of thousands of dollars in difference.',
     graduationGoal: 'Confidently navigate job searches, interviews, and career advancement',
+    difficulty: 'beginner',
+    prerequisites: [],
+    learningObjectives: [
+        'Build a compelling resume and LinkedIn profile',
+        'Master job searching and networking strategies',
+        'Ace interviews and negotiate job offers',
+        'Advance your career strategically',
+        'Build a personal brand that opens doors'
+    ],
+    relatedTracks: ['negotiation', 'communication', 'productivity'],
+    resources: [
+        { title: 'LinkedIn Learning', url: 'https://www.linkedin.com/learning/' },
+        { title: 'Glassdoor Career Resources', url: 'https://www.glassdoor.com/blog/career/' }
+    ],
     levels: [
         {
             id: 1,

@@ -5,6 +5,20 @@ const freelancingData = {
     icon: '💼',
     description: 'Start earning extra income with your skills while keeping your day job.',
     graduationGoal: 'Earning consistent side income from your skills',
+    difficulty: 'beginner',
+    prerequisites: [],
+    learningObjectives: [
+        'Identify marketable skills and find freelance opportunities',
+        'Set your rates and negotiate contracts',
+        'Manage freelance finances and taxes',
+        'Build a client base and maintain relationships',
+        'Scale from side hustle to full-time business'
+    ],
+    relatedTracks: ['business', 'negotiation', 'taxes', 'career'],
+    resources: [
+        { title: 'Upwork - Freelancer Resources', url: 'https://www.upwork.com/resources' },
+        { title: 'Freelancers Union', url: 'https://www.freelancersunion.org/' }
+    ],
     levels: [
         {
             id: 1,

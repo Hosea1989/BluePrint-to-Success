@@ -5,6 +5,20 @@ const businessData = {
     icon: '🏢',
     description: 'Learn how to legally form, fund, and launch your own business.',
     graduationGoal: 'Ready to legally form and launch your business',
+    difficulty: 'intermediate',
+    prerequisites: ['personalfinance'],
+    learningObjectives: [
+        'Choose the right business structure (LLC, corporation, sole proprietorship)',
+        'Register your business legally',
+        'Secure funding and manage business finances',
+        'Create a business plan and launch strategy',
+        'Navigate legal requirements and compliance'
+    ],
+    relatedTracks: ['freelancing', 'marketing', 'taxes', 'negotiation'],
+    resources: [
+        { title: 'SBA - Starting a Business', url: 'https://www.sba.gov/business-guide/launch-your-business' },
+        { title: 'IRS - Business Structures', url: 'https://www.irs.gov/businesses/small-businesses-self-employed/business-structures' }
+    ],
     levels: [
         {
             id: 1,
@@ -46,6 +60,45 @@ const businessData = {
                         </ul>
                         <div class="highlight">
                             <strong>Recommendation:</strong> Most people should start with an LLC. It protects your personal assets and is simple to set up.
+                        </div>
+                    `
+                },
+                {
+                    id: 'business-idea-types',
+                    title: 'Types of Businesses You Can Start',
+                    content: `
+                        <h2>Types of Businesses You Can Start</h2>
+                        <h3>Service Businesses (Lowest Startup Cost)</h3>
+                        <ul>
+                            <li>Consulting, coaching, freelancing</li>
+                            <li>Cleaning, landscaping, handyman</li>
+                            <li>Tutoring, personal training</li>
+                            <li><strong>Startup cost:</strong> $0-500</li>
+                        </ul>
+                        <h3>Product Businesses</h3>
+                        <ul>
+                            <li>E-commerce (Shopify, Etsy)</li>
+                            <li>Print-on-demand (no inventory)</li>
+                            <li>Dropshipping</li>
+                            <li>Physical products (higher capital needed)</li>
+                            <li><strong>Startup cost:</strong> $500-10,000</li>
+                        </ul>
+                        <h3>Digital Businesses</h3>
+                        <ul>
+                            <li>Online courses and digital products</li>
+                            <li>Software/apps (SaaS)</li>
+                            <li>Content creation (YouTube, podcasting)</li>
+                            <li>Affiliate marketing</li>
+                            <li><strong>Startup cost:</strong> $0-2,000</li>
+                        </ul>
+                        <h3>Franchise & Existing Businesses</h3>
+                        <ul>
+                            <li>Buy an existing business (proven model)</li>
+                            <li>Franchise (brand recognition + systems)</li>
+                            <li><strong>Startup cost:</strong> $10,000-500,000+</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Best First Business:</strong> Service-based. Low risk, fast cash flow, builds skills. You can always scale into products later.
                         </div>
                     `
                 },
@@ -148,6 +201,37 @@ const businessData = {
                     `
                 },
                 {
+                    id: 'market-research',
+                    title: 'Basic Market Research',
+                    content: `
+                        <h2>Basic Market Research</h2>
+                        <h3>Know Your Market</h3>
+                        <ul>
+                            <li><strong>TAM:</strong> Total Addressable Market (everyone who COULD buy)</li>
+                            <li><strong>SAM:</strong> Serviceable Available Market (who you CAN reach)</li>
+                            <li><strong>SOM:</strong> Serviceable Obtainable Market (realistic first target)</li>
+                        </ul>
+                        <h3>Free Research Methods</h3>
+                        <ul>
+                            <li><strong>Google Trends:</strong> Is demand growing or shrinking?</li>
+                            <li><strong>Reddit/Forums:</strong> What are people complaining about?</li>
+                            <li><strong>Amazon reviews:</strong> Read competitor product reviews (complaints = opportunities)</li>
+                            <li><strong>Facebook groups:</strong> Join groups in your target market</li>
+                            <li><strong>Competitor websites:</strong> What do they offer? What's missing?</li>
+                        </ul>
+                        <h3>Competitive Analysis</h3>
+                        <ul>
+                            <li>Who are the top 3-5 competitors?</li>
+                            <li>What do they charge?</li>
+                            <li>What do customers love/hate about them?</li>
+                            <li>What gap can you fill?</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Competition is Good:</strong> If no one else is doing it, there might be no market. Competitors validate demand. Your job is to be different, not first.
+                        </div>
+                    `
+                },
+                {
                     id: 'business-plan-basics',
                     title: 'Creating a Simple Business Plan',
                     content: `
@@ -238,6 +322,42 @@ const businessData = {
                         </div>
                         <div class="highlight">
                             <strong>Best Path:</strong> Start as a side project, validate, get paying customers, then quit your job when revenue can replace your salary.
+                        </div>
+                    `
+                },
+                {
+                    id: 'business-finances',
+                    title: 'Business Finance Basics',
+                    content: `
+                        <h2>Business Finance Basics</h2>
+                        <h3>Revenue vs. Profit</h3>
+                        <ul>
+                            <li><strong>Revenue:</strong> Total money coming in (top line)</li>
+                            <li><strong>Expenses:</strong> What it costs to run</li>
+                            <li><strong>Profit:</strong> Revenue - Expenses (bottom line)</li>
+                            <li>Revenue is vanity, profit is sanity</li>
+                        </ul>
+                        <h3>Key Financial Statements</h3>
+                        <ul>
+                            <li><strong>Profit & Loss (P&L):</strong> Revenue and expenses over time</li>
+                            <li><strong>Balance Sheet:</strong> What you own vs. what you owe</li>
+                            <li><strong>Cash Flow Statement:</strong> Money moving in and out</li>
+                        </ul>
+                        <h3>Cash Flow Is King</h3>
+                        <ul>
+                            <li>Profitable businesses fail due to cash flow problems</li>
+                            <li>Invoice promptly and follow up on payments</li>
+                            <li>Keep 3-6 months expenses as business reserve</li>
+                            <li>Watch for seasonal patterns</li>
+                        </ul>
+                        <h3>Pricing Your Product/Service</h3>
+                        <ul>
+                            <li>Cost-plus: Calculate all costs + desired profit margin</li>
+                            <li>Market-based: Match or undercut competitors</li>
+                            <li>Value-based: Price based on value to customer</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Rule #1:</strong> Know your numbers. Review your P&L monthly. Businesses that track finances closely survive; those that don't, fail.
                         </div>
                     `
                 },

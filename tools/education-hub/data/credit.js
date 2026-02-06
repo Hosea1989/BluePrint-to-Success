@@ -5,11 +5,39 @@ const creditData = {
     icon: '💳',
     description: 'Master your credit score and use credit strategically to build wealth.',
     graduationGoal: 'Confidently build and optimize your credit score',
+    difficulty: 'beginner',
+    prerequisites: ['personalfinance'],
+    learningObjectives: [
+        'Understand how credit scores work and why they matter',
+        'Identify the 5 factors that determine your credit score',
+        'Build credit from scratch or repair damaged credit',
+        'Use credit strategically to maximize your score',
+        'Avoid common credit mistakes that hurt your score'
+    ],
+    relatedTracks: ['personalfinance', 'debt', 'banking', 'investing'],
+    resources: [
+        { title: 'AnnualCreditReport.com', url: 'https://www.annualcreditreport.com/' },
+        { title: 'Consumer Financial Protection Bureau - Credit', url: 'https://www.consumerfinance.gov/consumer-tools/credit-reports-and-scores/' },
+        { title: 'FICO Score Education', url: 'https://www.myfico.com/credit-education' }
+    ],
     levels: [
         {
             id: 1,
             title: 'Credit Score Fundamentals',
             subtitle: 'Understanding how credit scores work',
+            learningObjectives: [
+                'Define what a credit score is and why it matters',
+                'Distinguish between FICO and VantageScore',
+                'Identify the 5 factors that determine your credit score',
+                'Understand credit score ranges and what they mean'
+            ],
+            keyTakeaways: [
+                'Credit scores range from 300-850',
+                'FICO scores are used by 90% of lenders',
+                'Payment history is the most important factor (35%)',
+                'A 100-point difference can cost thousands in interest'
+            ],
+            applyIt: 'Check your credit score for free on Credit Karma or Experian. Review your credit report from AnnualCreditReport.com and identify any errors or areas for improvement.',
             topics: [
                 {
                     id: 'what-is-credit-score',
@@ -182,6 +210,19 @@ const creditData = {
             id: 2,
             title: 'Credit Reports',
             subtitle: 'Reading and fixing your credit report',
+            learningObjectives: [
+                'Read and understand your credit report',
+                'Identify errors and inaccuracies on your report',
+                'Dispute errors effectively with credit bureaus',
+                'Monitor your credit report regularly'
+            ],
+            keyTakeaways: [
+                'You can get free credit reports from all 3 bureaus annually',
+                'Errors on your report can hurt your score',
+                'Disputing errors is free and can improve your score',
+                'Regular monitoring helps catch identity theft early'
+            ],
+            applyIt: 'Pull your free credit report from AnnualCreditReport.com. Review each section carefully. If you find any errors, write a dispute letter to the credit bureau. Document everything.',
             topics: [
                 {
                     id: 'reading-report',
@@ -358,6 +399,19 @@ const creditData = {
             id: 3,
             title: 'Credit Card Strategy',
             subtitle: 'Using credit cards wisely',
+            learningObjectives: [
+                'Choose the right credit card for your needs',
+                'Use credit cards to build credit without debt',
+                'Understand credit card fees and how to avoid them',
+                'Maximize rewards while maintaining good credit'
+            ],
+            keyTakeaways: [
+                'Pay your balance in full every month to avoid interest',
+                'Keep credit utilization below 30%',
+                'Never miss a payment - it hurts your score for years',
+                'Credit cards are tools - use them strategically'
+            ],
+            applyIt: 'Review your current credit cards. Calculate your credit utilization ratio. If it\'s above 30%, create a plan to pay it down. Consider setting up autopay to never miss a payment.',
             topics: [
                 {
                     id: 'credit-card-basics',
@@ -537,6 +591,19 @@ const creditData = {
             id: 4,
             title: 'Building Credit',
             subtitle: 'Strategies to build and improve your credit',
+            learningObjectives: [
+                'Build credit from scratch if you have no credit history',
+                'Improve a low credit score systematically',
+                'Use secured cards and credit builder loans effectively',
+                'Avoid credit repair scams and do it yourself'
+            ],
+            keyTakeaways: [
+                'Building credit takes time - be patient and consistent',
+                'Secured credit cards are great for starting credit',
+                'Authorized user status can help build credit',
+                'There\'s no quick fix - avoid credit repair scams'
+            ],
+            applyIt: 'If you have no credit, apply for a secured credit card. Use it for small purchases and pay in full each month. Track your score monthly to see progress.',
             topics: [
                 {
                     id: 'starting-from-zero',
@@ -725,6 +792,19 @@ const creditData = {
             id: 5,
             title: 'Advanced Credit',
             subtitle: 'Mastering credit and business credit',
+            learningObjectives: [
+                'Optimize your credit score for major purchases',
+                'Understand business credit and how to build it',
+                'Use credit strategically for wealth building',
+                'Navigate credit during life changes (divorce, bankruptcy)'
+            ],
+            keyTakeaways: [
+                'A 740+ score gets you the best rates',
+                'Business credit is separate from personal credit',
+                'Credit can be a wealth-building tool when used wisely',
+                'Life events can impact credit - plan ahead'
+            ],
+            applyIt: 'If you\'re planning a major purchase (home, car), check your credit score 6 months ahead. Take steps to optimize it. Research what score you need for the best rates.',
             topics: [
                 {
                     id: 'credit-optimization',

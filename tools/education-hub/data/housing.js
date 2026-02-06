@@ -6,6 +6,20 @@ const housingData = {
     description: 'Navigate renting, buying, mortgages, and home maintenance. Housing is your biggest expense—master it.',
     whyItMatters: 'Housing typically takes 25-35% of your income. Making smart decisions here—whether renting or buying—can save or cost you hundreds of thousands of dollars over your lifetime.',
     graduationGoal: 'Make confident housing decisions and maintain your home',
+    difficulty: 'beginner',
+    prerequisites: ['personalfinance', 'credit'],
+    learningObjectives: [
+        'Decide whether to rent or buy',
+        'Navigate the home buying process',
+        'Understand mortgages and financing',
+        'Maintain and protect your home',
+        'Maximize your housing investment'
+    ],
+    relatedTracks: ['personalfinance', 'realestate', 'credit', 'california'],
+    resources: [
+        { title: 'HUD Housing Resources', url: 'https://www.hud.gov/' },
+        { title: 'Consumer Financial Protection Bureau - Mortgages', url: 'https://www.consumerfinance.gov/owning-a-home/' }
+    ],
     levels: [
         {
             id: 1,
@@ -40,6 +54,39 @@ const housingData = {
                             <li>Employment verification</li>
                             <li>Background check</li>
                         </ul>
+                    `
+                },
+                {
+                    id: 'apartment-hunting',
+                    title: 'Smart Apartment Hunting',
+                    content: `
+                        <h2>Smart Apartment Hunting</h2>
+                        <h3>Before You Search</h3>
+                        <ul>
+                            <li>Know your max budget (30% of gross income)</li>
+                            <li>Check your credit score (know what you're working with)</li>
+                            <li>Gather documents: pay stubs, ID, bank statements, references</li>
+                            <li>Save for move-in costs: first month + deposit + moving expenses</li>
+                        </ul>
+                        <h3>What to Look For</h3>
+                        <ul>
+                            <li><strong>Location:</strong> Commute time, safety, walkability, grocery access</li>
+                            <li><strong>True cost:</strong> Rent + utilities + parking + renters insurance</li>
+                            <li><strong>Condition:</strong> Water pressure, outlets, appliances, storage</li>
+                            <li><strong>Noise:</strong> Visit at different times of day</li>
+                            <li><strong>Cell service:</strong> Test inside the unit</li>
+                        </ul>
+                        <h3>Red Flags</h3>
+                        <ul>
+                            <li>Landlord won't let you see the actual unit</li>
+                            <li>Pressure to sign immediately</li>
+                            <li>Cash-only payments with no receipts</li>
+                            <li>Asking for deposit before you see the place</li>
+                            <li>Listings that seem too good to be true</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Pro Tip:</strong> Take photos/videos of EVERYTHING during your walkthrough and at move-in. This protects your security deposit when you leave.
+                        </div>
                     `
                 },
                 {
@@ -364,6 +411,152 @@ const housingData = {
                         options: ['Painting', 'Electrical work', 'Filter replacement', 'Caulking'],
                         correct: 1,
                         explanation: 'Always hire professionals for electrical work—it requires permits, is a safety hazard, and DIY can void insurance.'
+                    }
+                ]
+            }
+        },
+        {
+            id: 5,
+            title: 'Housing Strategy',
+            subtitle: 'Advanced decisions for your housing future',
+            topics: [
+                {
+                    id: 'rent-vs-buy-deep',
+                    title: 'Rent vs. Buy: The Real Math',
+                    content: `
+                        <h2>Rent vs. Buy: The Real Math</h2>
+                        <h3>The Myth</h3>
+                        <p>"Renting is throwing money away." This oversimplification has cost people fortunes.</p>
+                        <h3>True Cost of Homeownership</h3>
+                        <ul>
+                            <li><strong>Mortgage payment</strong> (principal + interest)</li>
+                            <li><strong>Property taxes</strong> (1-2% of home value/year)</li>
+                            <li><strong>Insurance</strong> ($1,000-3,000/year)</li>
+                            <li><strong>Maintenance</strong> (1-2% of home value/year)</li>
+                            <li><strong>HOA fees</strong> ($200-600/month if applicable)</li>
+                            <li><strong>Opportunity cost</strong> of down payment (that money could invest)</li>
+                            <li><strong>Closing costs</strong> (2-5% when buying, 6-10% when selling)</li>
+                        </ul>
+                        <h3>When Buying Makes Sense</h3>
+                        <ul>
+                            <li>You'll stay 5+ years (break even on transaction costs)</li>
+                            <li>You have 10-20% down payment saved</li>
+                            <li>Your total housing cost < 28% of gross income</li>
+                            <li>You have 6-month emergency fund AFTER down payment</li>
+                            <li>Local market favors buyers (price-to-rent ratio)</li>
+                        </ul>
+                        <h3>When Renting Wins</h3>
+                        <ul>
+                            <li>You might move within 3-5 years</li>
+                            <li>You're in a very expensive market (SF, NYC, LA)</li>
+                            <li>You'd rather invest the difference</li>
+                            <li>You value flexibility and mobility</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Use the NYT Calculator:</strong> Search "NYT rent vs buy calculator" — it accounts for all real costs and shows your break-even point.
+                        </div>
+                    `
+                },
+                {
+                    id: 'housing-hacks',
+                    title: 'Housing Hacks: Reducing Your Biggest Expense',
+                    content: `
+                        <h2>Housing Hacks</h2>
+                        <h3>House Hacking</h3>
+                        <ul>
+                            <li>Buy a duplex/triplex, live in one unit, rent the others</li>
+                            <li>Rent out spare bedrooms (Roommates or Airbnb)</li>
+                            <li>ADU (Accessory Dwelling Unit) for rental income</li>
+                            <li>Can eliminate or reduce your housing payment entirely</li>
+                        </ul>
+                        <h3>Negotiation Strategies</h3>
+                        <ul>
+                            <li><strong>Renting:</strong> Offer longer lease for lower rent, pay 2 months upfront</li>
+                            <li><strong>Buying:</strong> Get pre-approved, ask for closing cost credits</li>
+                            <li><strong>Renewal:</strong> Research comps, negotiate before renewal date</li>
+                        </ul>
+                        <h3>Save on Utilities</h3>
+                        <ul>
+                            <li>Smart thermostat (saves 10-15% on heating/cooling)</li>
+                            <li>LED bulbs throughout</li>
+                            <li>Weatherstrip doors and windows</li>
+                            <li>Wash clothes in cold water</li>
+                            <li>Unplug phantom loads</li>
+                        </ul>
+                        <h3>When to Move</h3>
+                        <ul>
+                            <li>Housing exceeds 35% of income consistently</li>
+                            <li>Long commute costing more than rent savings</li>
+                            <li>Neighborhood no longer meets your needs</li>
+                            <li>Better opportunities in another area</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>The Goal:</strong> Housing is your biggest expense. Every dollar saved here has massive impact. Always be optimizing.
+                        </div>
+                    `
+                },
+                {
+                    id: 'housing-rights',
+                    title: 'Know Your Housing Rights',
+                    content: `
+                        <h2>Know Your Housing Rights</h2>
+                        <h3>Federal Fair Housing Act</h3>
+                        <p>Landlords CANNOT discriminate based on:</p>
+                        <ul>
+                            <li>Race, color, national origin</li>
+                            <li>Religion</li>
+                            <li>Sex (including gender identity and sexual orientation)</li>
+                            <li>Familial status (having kids)</li>
+                            <li>Disability</li>
+                        </ul>
+                        <h3>Tenant Rights (Most States)</h3>
+                        <ul>
+                            <li><strong>Habitability:</strong> Landlord must maintain safe, livable conditions</li>
+                            <li><strong>Notice before entry:</strong> 24-48 hours typically required</li>
+                            <li><strong>Security deposit limits:</strong> Usually 1-2 months rent max</li>
+                            <li><strong>Retaliation protection:</strong> Can't evict you for complaining</li>
+                            <li><strong>Repair and deduct:</strong> In some states, fix issues and deduct from rent</li>
+                        </ul>
+                        <h3>California Specific</h3>
+                        <ul>
+                            <li>AB 1482: Statewide rent cap (5% + CPI or 10%, whichever is less)</li>
+                            <li>Just-cause eviction protections after 12 months</li>
+                            <li>Security deposit: Max 1 month rent (as of 2024)</li>
+                            <li>21 days to return deposit after move-out</li>
+                        </ul>
+                        <h3>If Your Rights Are Violated</h3>
+                        <ol>
+                            <li>Document everything in writing</li>
+                            <li>Send written notice to landlord (certified mail)</li>
+                            <li>Contact local tenant rights organization</li>
+                            <li>File complaint with HUD or state agency</li>
+                            <li>Consult a tenant rights attorney (often free consultation)</li>
+                        </ol>
+                        <div class="highlight">
+                            <strong>Power:</strong> Knowing your rights changes the dynamic. Most landlord violations happen because tenants don't know their protections.
+                        </div>
+                    `
+                }
+            ],
+            quiz: {
+                questions: [
+                    {
+                        question: 'How long should you plan to stay to make buying a home worthwhile?',
+                        options: ['1-2 years', '3-4 years', '5+ years', 'It doesn\'t matter'],
+                        correct: 2,
+                        explanation: 'Due to closing costs (2-5% buying, 6-10% selling), you typically need to stay 5+ years to break even on the transaction costs of buying vs. renting.'
+                    },
+                    {
+                        question: 'What is house hacking?',
+                        options: ['Breaking into houses', 'Buying a multi-unit property, living in one unit, renting the others', 'Renovating cheaply', 'Renting without a lease'],
+                        correct: 1,
+                        explanation: 'House hacking means buying a duplex/triplex, living in one unit and renting the others. The rental income can cover most or all of your housing costs.'
+                    },
+                    {
+                        question: 'Under California law (AB 1482), what is the maximum annual rent increase?',
+                        options: ['Any amount', '5% + CPI or 10%, whichever is less', '3%', '15%'],
+                        correct: 1,
+                        explanation: 'AB 1482 caps rent increases at 5% plus local CPI (inflation) or 10%, whichever is lower, for most rental units in California.'
                     }
                 ]
             }

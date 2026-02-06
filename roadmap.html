@@ -4,24 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Journey | Blueprint to Success</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%236366f1'/><stop offset='100%25' style='stop-color:%238b5cf6'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23g)'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='white' font-family='system-ui' font-weight='bold'>B</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="auth/style.css">
-    <!-- Supabase JS (CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
+        /* ==================== HERO ==================== */
         .roadmap-hero {
             background: var(--accent-gradient);
             padding: 60px 24px;
             text-align: center;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .roadmap-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.08) 0%, transparent 50%);
         }
         .roadmap-hero h1 {
             font-size: 2.5rem;
             margin-bottom: 12px;
+            position: relative;
         }
         .roadmap-hero p {
             font-size: 1.1rem;
             opacity: 0.9;
+            position: relative;
         }
         
         .journey-container {
@@ -30,350 +45,643 @@
             padding: 48px 24px;
         }
         
-        /* Phase Timeline */
-        .phases-timeline {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 20px;
-            margin-bottom: 60px;
-            position: relative;
+        /* ==================== PATHWAY SELECTOR ==================== */
+        .selector-intro {
+            text-align: center;
+            margin-bottom: 40px;
         }
-        .phases-timeline::before {
-            content: '';
-            position: absolute;
-            top: 60px;
-            left: 10%;
-            right: 10%;
-            height: 4px;
-            background: var(--border-color);
-            z-index: 0;
+        .selector-intro h2 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
         }
-        
-        .phase-card {
-            flex: 1;
+        .selector-intro p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pathways-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .pathway-card {
             background: var(--bg-secondary);
             border: 2px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
+            border-radius: 16px;
+            padding: 28px;
+            cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .phase-card.active {
+        .pathway-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--border-color);
+            transition: background 0.3s ease;
+        }
+        .pathway-card:hover {
             border-color: var(--accent-primary);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(79, 70, 229, 0.15);
         }
-        .phase-card.completed {
-            border-color: var(--success);
+        .pathway-card:hover::before {
+            background: var(--accent-gradient);
         }
-        .phase-card.locked {
-            opacity: 0.6;
+
+        .pathway-card-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            display: block;
         }
-        
-        .phase-number {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        .pathway-card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+        .pathway-card-tagline {
+            font-size: 0.9rem;
+            color: var(--accent-primary);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        .pathway-card-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        .pathway-card-stats {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .pathway-stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .pathway-stat strong {
+            color: var(--text-primary);
+        }
+        .pathway-card-btn {
+            width: 100%;
+            padding: 12px;
             background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+        .pathway-card:hover .pathway-card-btn {
+            background: var(--accent-gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .pathway-card-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Explore All card special styling */
+        .pathway-card.explore-card {
+            border-style: dashed;
+            background: var(--bg-tertiary);
+        }
+        .pathway-card.explore-card:hover {
+            border-style: solid;
+        }
+
+        /* ==================== PATHWAY DASHBOARD ==================== */
+        .pathway-header {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+        .pathway-header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .pathway-header-icon {
+            font-size: 2.5rem;
+        }
+        .pathway-header-info h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .pathway-header-info p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        .pathway-header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .pathway-overall-progress {
+            text-align: center;
+        }
+        .pathway-progress-ring {
+            position: relative;
+            width: 64px;
+            height: 64px;
+        }
+        .pathway-progress-ring svg {
+            transform: rotate(-90deg);
+        }
+        .pathway-progress-ring .ring-bg {
+            fill: none;
+            stroke: var(--bg-tertiary);
+            stroke-width: 6;
+        }
+        .pathway-progress-ring .ring-fill {
+            fill: none;
+            stroke: url(#progressGradient);
+            stroke-width: 6;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.8s ease;
+        }
+        .pathway-progress-percent {
+            position: absolute;
+            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 16px;
-            font-size: 1.5rem;
             font-weight: 700;
+            font-size: 0.9rem;
         }
-        .phase-card.completed .phase-number {
-            background: var(--success);
-            color: white;
+        .pathway-progress-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 4px;
         }
-        .phase-card.active .phase-number {
+
+        .switch-path-btn {
+            padding: 10px 20px;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+        .switch-path-btn:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        /* ==================== PHASE TIMELINE (VERTICAL) ==================== */
+        .phases-timeline-vertical {
+            position: relative;
+            padding-left: 40px;
+        }
+        .phases-timeline-vertical::before {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 40px;
+            bottom: 40px;
+            width: 3px;
+            background: var(--border-color);
+            border-radius: 2px;
+        }
+
+        .phase-block {
+            position: relative;
+            margin-bottom: 32px;
+        }
+        .phase-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .phase-marker {
+            position: absolute;
+            left: -40px;
+            top: 24px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            border: 3px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-muted);
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        .phase-block.active .phase-marker {
             background: var(--accent-gradient);
+            border-color: var(--accent-primary);
+            color: white;
+            box-shadow: 0 0 0 6px rgba(79, 70, 229, 0.2);
+        }
+        .phase-block.completed .phase-marker {
+            background: var(--success);
+            border-color: var(--success);
             color: white;
         }
-        
+        .phase-block.locked .phase-marker {
+            opacity: 0.5;
+        }
+
+        .phase-content {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px 28px;
+            transition: all 0.3s ease;
+        }
+        .phase-block.active .phase-content {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+        }
+        .phase-block.completed .phase-content {
+            border-color: var(--success);
+        }
+        .phase-block.locked .phase-content {
+            opacity: 0.5;
+        }
+
+        .phase-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
         .phase-title {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
         .phase-desc {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 16px;
+            font-size: 0.9rem;
         }
+        .phase-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .phase-badge.active-badge {
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--accent-primary);
+        }
+        .phase-badge.completed-badge {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+        .phase-badge.locked-badge {
+            background: var(--bg-tertiary);
+            color: var(--text-muted);
+        }
+
         .phase-items {
-            text-align: left;
             list-style: none;
             padding: 0;
-            margin: 0;
+            margin: 0 0 16px 0;
         }
         .phase-items li {
-            padding: 8px 0;
+            padding: 10px 0;
             border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             font-size: 0.9rem;
             color: var(--text-secondary);
+            transition: color 0.2s ease;
         }
         .phase-items li:last-child {
             border-bottom: none;
         }
+        .phase-items li .item-check {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.7rem;
+            transition: all 0.2s ease;
+        }
         .phase-items li.done {
-            color: var(--success);
+            color: var(--text-primary);
         }
-        .phase-items li.done::before {
-            content: '✓';
+        .phase-items li.done .item-check {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
         }
-        .phase-items li:not(.done)::before {
-            content: '○';
+        .phase-items li .item-label {
+            flex: 1;
         }
-        
-        .phase-progress {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid var(--border-color);
+        .phase-items li .item-type {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background: var(--bg-tertiary);
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
+        .phase-items li .item-link {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .phase-items li .item-link:hover {
+            text-decoration: underline;
+        }
+
         .phase-progress-bar {
             height: 8px;
             background: var(--bg-tertiary);
             border-radius: 4px;
             overflow: hidden;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .phase-progress-fill {
             height: 100%;
-            background: var(--accent-gradient);
             border-radius: 4px;
-            transition: width 0.5s ease;
+            transition: width 0.6s ease;
+            background: var(--accent-gradient);
+        }
+        .phase-block.completed .phase-progress-fill {
+            background: var(--success);
         }
         .phase-progress-text {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-        
-        /* Learning Tracks Section */
-        .tracks-section {
-            margin-top: 60px;
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-        .section-header h2 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-        }
-        .section-header p {
-            color: var(--text-secondary);
-        }
-        
-        .tracks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-        
-        .track-journey-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            position: relative;
-            overflow: hidden;
-        }
-        .track-journey-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--border-color);
-        }
-        .track-journey-card.stocks::before { background: #10b981; }
-        .track-journey-card.taxes::before { background: #f59e0b; }
-        .track-journey-card.nonprofits::before { background: #6366f1; }
-        .track-journey-card.labor::before { background: #ef4444; }
-        
-        .track-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-        .track-icon {
-            font-size: 2rem;
-        }
-        .track-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-        
-        .track-goal {
-            background: var(--bg-tertiary);
-            border-radius: var(--radius-sm);
-            padding: 12px;
-            margin-bottom: 16px;
-        }
-        .track-goal-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-        }
-        .track-goal-text {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-        
-        .track-progress-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-        .track-progress-info span {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-        .track-progress-bar {
-            height: 10px;
-            background: var(--bg-tertiary);
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 16px;
-        }
-        .track-progress-fill {
-            height: 100%;
-            border-radius: 5px;
-            transition: width 0.5s ease;
-        }
-        .track-journey-card.stocks .track-progress-fill { background: #10b981; }
-        .track-journey-card.taxes .track-progress-fill { background: #f59e0b; }
-        .track-journey-card.nonprofits .track-progress-fill { background: #6366f1; }
-        .track-journey-card.labor .track-progress-fill { background: #ef4444; }
-        
-        .track-status {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .track-status-badge {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        .track-status-badge.not-started {
-            background: var(--bg-tertiary);
-            color: var(--text-muted);
-        }
-        .track-status-badge.in-progress {
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--accent-primary);
-        }
-        .track-status-badge.completed {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-        }
-        .track-action {
-            padding: 8px 16px;
-            background: var(--accent-gradient);
-            color: white;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-        }
-        .track-action:hover {
-            transform: translateY(-2px);
-        }
-        
-        /* Suggested Path */
-        .next-path {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid var(--border-color);
-            display: none;
-        }
-        .next-path.show {
-            display: block;
-        }
-        .next-path-label {
             font-size: 0.8rem;
             color: var(--text-muted);
-            margin-bottom: 4px;
-        }
-        .next-path-link {
-            color: var(--accent-primary);
-            font-weight: 500;
-            text-decoration: none;
-        }
-        .next-path-link:hover {
-            text-decoration: underline;
         }
         
-        /* Achievements Section */
+        /* ==================== ACHIEVEMENTS ==================== */
         .achievements-section {
-            margin-top: 60px;
+            margin-top: 48px;
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
+            border-radius: 16px;
             padding: 32px;
+        }
+        .achievements-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .achievements-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+        .achievements-header p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
         }
         .achievements-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
         }
         .achievement-card {
             text-align: center;
-            padding: 20px;
-            border-radius: var(--radius-md);
+            padding: 20px 12px;
+            border-radius: 12px;
             background: var(--bg-tertiary);
-            opacity: 0.5;
+            opacity: 0.4;
             transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
         .achievement-card.unlocked {
             opacity: 1;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(139, 92, 246, 0.08));
+            border-color: rgba(79, 70, 229, 0.3);
         }
         .achievement-icon {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
         }
         .achievement-title {
             font-weight: 600;
+            font-size: 0.9rem;
             margin-bottom: 4px;
         }
         .achievement-desc {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
-        
-        /* Responsive */
+
+        /* ==================== EXPLORE ALL ==================== */
+        .explore-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+        .explore-header h2 {
+            font-size: 1.5rem;
+        }
+        .explore-stats {
+            display: flex;
+            gap: 24px;
+        }
+        .explore-stat {
+            text-align: center;
+        }
+        .explore-stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .explore-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .explore-category {
+            margin-bottom: 36px;
+        }
+        .explore-category-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .explore-category-icon {
+            font-size: 1.5rem;
+        }
+        .explore-category-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .explore-category-count {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-left: auto;
+        }
+
+        .explore-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .explore-item-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .explore-item-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+        .explore-item-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .explore-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .explore-item-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+        }
+        .explore-item-type {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .explore-item-status {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+        }
+        .explore-item-status.done {
+            background: var(--success);
+            color: white;
+        }
+        .explore-item-status.not-done {
+            border: 2px solid var(--border-color);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
         @media (max-width: 768px) {
-            .phases-timeline {
+            .roadmap-hero h1 { font-size: 1.8rem; }
+            .pathways-grid { grid-template-columns: 1fr; }
+            .pathway-header {
                 flex-direction: column;
+                text-align: center;
             }
-            .phases-timeline::before {
-                display: none;
+            .pathway-header-left {
+                flex-direction: column;
+            text-align: center;
             }
-            .roadmap-hero h1 {
-                font-size: 1.8rem;
+            .pathway-header-right {
+                width: 100%;
+                justify-content: center;
+            }
+            .phases-timeline-vertical {
+                padding-left: 32px;
+            }
+            .phases-timeline-vertical::before {
+                left: 14px;
+            }
+            .phase-marker {
+                left: -32px;
+                width: 32px;
+                height: 32px;
+            font-size: 0.85rem;
+            }
+            .phase-content {
+                padding: 16px 18px;
+            }
+            .phase-top {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .explore-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .explore-items-grid {
+                grid-template-columns: 1fr;
+            }
+            .achievements-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             }
         }
     </style>
 </head>
 <body>
+    <!-- SVG Gradient Definition for Progress Ring -->
+    <svg style="position:absolute;width:0;height:0">
+        <defs>
+            <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#4f46e5"/>
+                <stop offset="100%" style="stop-color:#7c3aed"/>
+            </linearGradient>
+        </defs>
+    </svg>
+
     <!-- Navigation -->
     <nav class="main-nav">
         <div class="nav-container">
@@ -385,8 +693,53 @@
                 <a href="index.html" class="nav-link">Dashboard</a>
                 <a href="roadmap.html" class="nav-link active">Roadmap</a>
                 <a href="tools/education-hub/index.html" class="nav-link highlight">🎓 Learn</a>
-                <a href="guides/index.html" class="nav-link">Guides</a>
-                <a href="tools/budget-planner/index.html" class="nav-link">Budget</a>
+                <div class="toolbox-nav-container">
+                    <button class="toolbox-btn">🧰 Toolbox <span class="toolbox-arrow">▾</span></button>
+                    <div class="toolbox-dropdown">
+                        <a href="tools/budget-planner/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">💰</span>
+                            <div class="toolbox-item-info">
+                                <strong>Budget Planner</strong>
+                                <small>Track income, expenses & savings</small>
+                            </div>
+                        </a>
+                        <a href="tools/compound-calculator/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">💹</span>
+                            <div class="toolbox-item-info">
+                                <strong>Compound Interest Calculator</strong>
+                                <small>See how your money grows over time</small>
+                            </div>
+                        </a>
+                        <a href="tools/debt-payoff/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">🎯</span>
+                            <div class="toolbox-item-info">
+                                <strong>Debt Payoff Calculator</strong>
+                                <small>Plan your path to debt freedom</small>
+                            </div>
+                        </a>
+                        <a href="tools/net-worth/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">📊</span>
+                            <div class="toolbox-item-info">
+                                <strong>Net Worth Tracker</strong>
+                                <small>Track assets & liabilities</small>
+                            </div>
+                        </a>
+                        <a href="tools/goal-tracker/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">🎯</span>
+                            <div class="toolbox-item-info">
+                                <strong>Goal Tracker</strong>
+                                <small>Set goals & track milestones</small>
+                            </div>
+                        </a>
+                        <a href="tools/resume-builder/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">📄</span>
+                            <div class="toolbox-item-info">
+                                <strong>Resume Builder</strong>
+                                <small>Build a professional resume</small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
                 <button id="theme-toggle" class="theme-btn">🌙</button>
                 <div class="auth-nav-container">
                     <button id="auth-nav-btn"><span>Sign In</span></button>
@@ -406,247 +759,101 @@
         <a href="index.html" class="mobile-link">Dashboard</a>
         <a href="roadmap.html" class="mobile-link active">Roadmap</a>
         <a href="tools/education-hub/index.html" class="mobile-link highlight">🎓 Learn</a>
-        <a href="guides/index.html" class="mobile-link">Guides</a>
-        <a href="tools/budget-planner/index.html" class="mobile-link">Budget</a>
+        <div class="mobile-toolbox-section">
+            <span class="mobile-toolbox-label">🧰 Toolbox</span>
+            <a href="tools/budget-planner/index.html" class="mobile-link">💰 Budget Planner</a>
+            <a href="tools/compound-calculator/index.html" class="mobile-link">💹 Compound Calculator</a>
+            <a href="tools/debt-payoff/index.html" class="mobile-link">🎯 Debt Payoff</a>
+            <a href="tools/net-worth/index.html" class="mobile-link">📊 Net Worth Tracker</a>
+            <a href="tools/goal-tracker/index.html" class="mobile-link">🎯 Goal Tracker</a>
+            <a href="tools/resume-builder/index.html" class="mobile-link">📄 Resume Builder</a>
+        </div>
         <a href="auth/login.html" class="mobile-link" id="mobile-auth-link">Sign In</a>
     </div>
 
     <main class="main-content">
         <!-- Hero -->
         <section class="roadmap-hero">
-            <h1>Your Journey to Success</h1>
-            <p>Follow the path from foundation to action. Track your progress and reach your goals.</p>
+            <h1 id="hero-title">Choose Your Path</h1>
+            <p id="hero-subtitle">Every journey starts with a single step. Pick the path that speaks to who you want to become.</p>
         </section>
 
         <div class="journey-container">
-            <!-- What is this page? -->
-            <div class="page-context" style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px 24px; margin-bottom: 32px; display: flex; align-items: flex-start; gap: 16px;">
-                <span style="font-size: 2rem;">🗺️</span>
-                <div>
-                    <h2 style="font-size: 1.1rem; margin-bottom: 4px; color: var(--accent-primary);">What is this page?</h2>
-                    <p style="font-size: 0.95rem; color: var(--text-secondary); margin: 0;">This is your <strong>visual roadmap</strong> showing the 3 phases of your journey. Each phase has tasks to complete. As you read guides, complete quizzes, and use tools — your progress updates here automatically. <strong>Work through Phase 1 first</strong>, then move to Phase 2, then Phase 3.</p>
+
+            <!-- ==================== PATHWAY SELECTOR ==================== -->
+            <div id="pathway-selector">
+                <div class="selector-intro">
+                    <h2>Who Do You Want to Become?</h2>
+                    <p>Each path is a curated journey of tracks and tools designed to get you there. You can always switch or explore everything.</p>
+                </div>
+                <div class="pathways-grid" id="pathways-grid">
+                    <!-- Dynamically rendered -->
+                    </div>
+                </div>
+
+            <!-- ==================== PATHWAY DASHBOARD ==================== -->
+            <div id="pathway-dashboard" style="display:none">
+                <!-- Header -->
+                <div class="pathway-header">
+                    <div class="pathway-header-left">
+                        <span class="pathway-header-icon" id="dash-icon"></span>
+                        <div class="pathway-header-info">
+                            <h2 id="dash-title"></h2>
+                            <p id="dash-tagline"></p>
+                        </div>
+                    </div>
+                    <div class="pathway-header-right">
+                        <div class="pathway-overall-progress">
+                            <div class="pathway-progress-ring">
+                                <svg width="64" height="64" viewBox="0 0 64 64">
+                                    <circle class="ring-bg" cx="32" cy="32" r="26"/>
+                                    <circle class="ring-fill" id="progress-ring" cx="32" cy="32" r="26"
+                                        stroke-dasharray="163.36" stroke-dashoffset="163.36"/>
+                                </svg>
+                                <span class="pathway-progress-percent" id="dash-percent">0%</span>
+                </div>
+                            <div class="pathway-progress-label">Overall</div>
+                        </div>
+                        <button class="switch-path-btn" onclick="showSelector()">Switch Path</button>
                 </div>
             </div>
 
-            <!-- Quick guide to reading this page -->
-            <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1)); border-radius: 12px; padding: 16px 20px; margin-bottom: 32px; border: 1px solid rgba(99, 102, 241, 0.3);">
-                <h3 style="font-size: 1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-                    <span>👀</span> How to read this page
-                </h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.9rem; color: var(--text-secondary);">
-                    <span style="display: flex; align-items: center; gap: 6px;"><span style="color: var(--success);">✓</span> = Done</span>
-                    <span style="display: flex; align-items: center; gap: 6px;"><span>○</span> = Not done yet</span>
-                    <span style="display: flex; align-items: center; gap: 6px;"><span style="background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Purple border</span> = Currently working on</span>
-                    <span style="display: flex; align-items: center; gap: 6px;"><span style="color: var(--success);">Green border</span> = Completed</span>
-                    <span style="display: flex; align-items: center; gap: 6px;"><span style="opacity: 0.5;">Faded</span> = Locked (finish previous phase first)</span>
-                </div>
-            </div>
-
-            <!-- Phase Timeline -->
-            <div class="phases-timeline">
-                <div class="phase-card" id="phase-1">
-                    <div class="phase-number">1</div>
-                    <h3 class="phase-title">Foundation</h3>
-                    <p class="phase-desc">Build your financial base</p>
-                    <ul class="phase-items">
-                        <li id="phase1-credit">Read Credit Guide</li>
-                        <li id="phase1-budget-guide">Read Budgeting Guide</li>
-                        <li id="phase1-budget-tool">Set Up Budget Planner</li>
-                        <li id="phase1-debt">Read Debt Management</li>
-                    </ul>
-                    <div class="phase-progress">
-                        <div class="phase-progress-bar">
-                            <div class="phase-progress-fill" id="phase1-progress" style="width: 0%"></div>
-                        </div>
-                        <span class="phase-progress-text" id="phase1-text">0% Complete</span>
-                    </div>
+                <!-- Phases -->
+                <div id="phases-container" class="phases-timeline-vertical">
+                    <!-- Dynamically rendered -->
                 </div>
 
-                <div class="phase-card" id="phase-2">
-                    <div class="phase-number">2</div>
-                    <h3 class="phase-title">Learning</h3>
-                    <p class="phase-desc">Develop skills & knowledge</p>
-                    <ul class="phase-items">
-                        <li id="phase2-stocks">Complete Stock Market Track</li>
-                        <li id="phase2-taxes">Complete Business Taxes Track</li>
-                        <li id="phase2-tech">Read Tech Guides</li>
-                        <li id="phase2-business">Read Business Guides</li>
-                    </ul>
-                    <div class="phase-progress">
-                        <div class="phase-progress-bar">
-                            <div class="phase-progress-fill" id="phase2-progress" style="width: 0%"></div>
+                <!-- Achievements -->
+                <div class="achievements-section" id="achievements-section">
+                    <div class="achievements-header">
+                        <h2>Achievements</h2>
+                        <p>Unlock badges as you progress through your journey</p>
                         </div>
-                        <span class="phase-progress-text" id="phase2-text">0% Complete</span>
-                    </div>
-                </div>
-
-                <div class="phase-card" id="phase-3">
-                    <div class="phase-number">3</div>
-                    <h3 class="phase-title">Action</h3>
-                    <p class="phase-desc">Apply what you've learned</p>
-                    <ul class="phase-items">
-                        <li id="phase3-invest">Make First Investment</li>
-                        <li id="phase3-business">Start Your Business</li>
-                        <li id="phase3-goals">Achieve Savings Goals</li>
-                        <li id="phase3-graduate">Graduate Blueprint!</li>
-                    </ul>
-                    <div class="phase-progress">
-                        <div class="phase-progress-bar">
-                            <div class="phase-progress-fill" id="phase3-progress" style="width: 0%"></div>
+                    <div class="achievements-grid" id="achievements-grid">
+                        <!-- Dynamically rendered -->
                         </div>
-                        <span class="phase-progress-text" id="phase3-text">0% Complete</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Learning Tracks -->
-            <section class="tracks-section">
-                <div class="section-header">
-                    <h2>Learning Tracks</h2>
-                    <p>Complete each track to unlock your potential</p>
-                </div>
-
-                <div class="tracks-grid">
-                    <div class="track-journey-card stocks">
-                        <div class="track-header">
-                            <span class="track-icon">📈</span>
-                            <span class="track-title">Stock Market</span>
-                        </div>
-                        <div class="track-goal">
-                            <div class="track-goal-label">Graduation Goal</div>
-                            <div class="track-goal-text">Ready to open a brokerage account and make your first investment</div>
-                        </div>
-                        <div class="track-progress-info">
-                            <span>Progress</span>
-                            <span id="stocks-percent">0%</span>
-                        </div>
-                        <div class="track-progress-bar">
-                            <div class="track-progress-fill" id="stocks-bar" style="width: 0%"></div>
-                        </div>
-                        <div class="track-status">
-                            <span class="track-status-badge not-started" id="stocks-status">Not Started</span>
-                            <a href="tools/education-hub/index.html" class="track-action">Start Learning</a>
-                        </div>
-                        <div class="next-path" id="stocks-next">
-                            <div class="next-path-label">Suggested Next:</div>
-                            <a href="tools/education-hub/index.html" class="next-path-link">Business Taxes → Learn tax implications of investing</a>
                         </div>
                     </div>
 
-                    <div class="track-journey-card taxes">
-                        <div class="track-header">
-                            <span class="track-icon">🧾</span>
-                            <span class="track-title">Business Taxes</span>
+            <!-- ==================== EXPLORE ALL ==================== -->
+            <div id="explore-all" style="display:none">
+                <div class="explore-header">
+                    <div>
+                        <h2>Explore All Content</h2>
+                        <p style="color:var(--text-secondary); margin-top:4px;">Everything Blueprint to Success has to offer</p>
                         </div>
-                        <div class="track-goal">
-                            <div class="track-goal-label">Graduation Goal</div>
-                            <div class="track-goal-text">Confident to handle tax planning for your business</div>
+                    <div class="explore-stats" id="explore-stats">
+                        <!-- Dynamically rendered -->
                         </div>
-                        <div class="track-progress-info">
-                            <span>Progress</span>
-                            <span id="taxes-percent">0%</span>
                         </div>
-                        <div class="track-progress-bar">
-                            <div class="track-progress-fill" id="taxes-bar" style="width: 0%"></div>
+                <div style="margin-bottom:24px;">
+                    <button class="switch-path-btn" onclick="showSelector()">← Choose a Path</button>
                         </div>
-                        <div class="track-status">
-                            <span class="track-status-badge not-started" id="taxes-status">Not Started</span>
-                            <a href="tools/education-hub/index.html" class="track-action">Start Learning</a>
-                        </div>
-                        <div class="next-path" id="taxes-next">
-                            <div class="next-path-label">Suggested Next:</div>
-                            <a href="guides/business/forming-llc.html" class="next-path-link">Forming an LLC → Put your knowledge into action</a>
+                <div id="explore-content">
+                    <!-- Dynamically rendered -->
                         </div>
                     </div>
 
-                    <div class="track-journey-card nonprofits">
-                        <div class="track-header">
-                            <span class="track-icon">🤝</span>
-                            <span class="track-title">Nonprofits</span>
-                        </div>
-                        <div class="track-goal">
-                            <div class="track-goal-label">Graduation Goal</div>
-                            <div class="track-goal-text">Prepared to start or contribute to a 501(c)(3)</div>
-                        </div>
-                        <div class="track-progress-info">
-                            <span>Progress</span>
-                            <span id="nonprofits-percent">0%</span>
-                        </div>
-                        <div class="track-progress-bar">
-                            <div class="track-progress-fill" id="nonprofits-bar" style="width: 0%"></div>
-                        </div>
-                        <div class="track-status">
-                            <span class="track-status-badge not-started" id="nonprofits-status">Not Started</span>
-                            <a href="tools/education-hub/index.html" class="track-action">Start Learning</a>
-                        </div>
-                        <div class="next-path" id="nonprofits-next">
-                            <div class="next-path-label">Suggested Next:</div>
-                            <a href="tools/education-hub/index.html" class="next-path-link">Labor Laws → Understand employment regulations</a>
-                        </div>
-                    </div>
-
-                    <div class="track-journey-card labor">
-                        <div class="track-header">
-                            <span class="track-icon">⚖️</span>
-                            <span class="track-title">Labor Laws</span>
-                        </div>
-                        <div class="track-goal">
-                            <div class="track-goal-label">Graduation Goal</div>
-                            <div class="track-goal-text">Know your rights and advocate for yourself at work</div>
-                        </div>
-                        <div class="track-progress-info">
-                            <span>Progress</span>
-                            <span id="labor-percent">0%</span>
-                        </div>
-                        <div class="track-progress-bar">
-                            <div class="track-progress-fill" id="labor-bar" style="width: 0%"></div>
-                        </div>
-                        <div class="track-status">
-                            <span class="track-status-badge not-started" id="labor-status">Not Started</span>
-                            <a href="tools/education-hub/index.html" class="track-action">Start Learning</a>
-                        </div>
-                        <div class="next-path" id="labor-next">
-                            <div class="next-path-label">Suggested Next:</div>
-                            <a href="guides/business/entrepreneurship.html" class="next-path-link">Entrepreneurship → Start your own venture</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Achievements -->
-            <section class="achievements-section">
-                <div class="section-header">
-                    <h2>Achievements</h2>
-                    <p>Unlock badges as you progress through your journey</p>
-                </div>
-                <div class="achievements-grid">
-                    <div class="achievement-card" id="ach-foundation">
-                        <div class="achievement-icon">🏗️</div>
-                        <div class="achievement-title">Foundation Builder</div>
-                        <div class="achievement-desc">Complete Phase 1</div>
-                    </div>
-                    <div class="achievement-card" id="ach-investor">
-                        <div class="achievement-icon">📈</div>
-                        <div class="achievement-title">Informed Investor</div>
-                        <div class="achievement-desc">Complete Stock Market track</div>
-                    </div>
-                    <div class="achievement-card" id="ach-tax-pro">
-                        <div class="achievement-icon">🧾</div>
-                        <div class="achievement-title">Tax Strategist</div>
-                        <div class="achievement-desc">Complete Business Taxes track</div>
-                    </div>
-                    <div class="achievement-card" id="ach-entrepreneur">
-                        <div class="achievement-icon">🚀</div>
-                        <div class="achievement-title">Entrepreneur Ready</div>
-                        <div class="achievement-desc">Complete all business content</div>
-                    </div>
-                    <div class="achievement-card" id="ach-graduate">
-                        <div class="achievement-icon">🎓</div>
-                        <div class="achievement-title">Blueprint Graduate</div>
-                        <div class="achievement-desc">Complete all phases</div>
-                    </div>
-                </div>
-            </section>
         </div>
     </main>
 
@@ -665,148 +872,880 @@
 
     <script src="app.js"></script>
     <script>
-        // Roadmap-specific logic
-        document.addEventListener('DOMContentLoaded', () => {
-            updateRoadmapProgress();
+    // ==================== DATA ====================
+
+    const trackMeta = {
+        stocks:          { name: 'Stock Market',          icon: '📈', topics: 25, url: 'tools/education-hub/index.html' },
+        realestate:      { name: 'Real Estate',           icon: '🏠', topics: 20, url: 'tools/education-hub/index.html' },
+        crypto:          { name: 'Cryptocurrency',        icon: '🪙', topics: 20, url: 'tools/education-hub/index.html' },
+        credit:          { name: 'Credit Mastery',        icon: '💳', topics: 20, url: 'tools/education-hub/index.html' },
+        retirement:      { name: 'Retirement Planning',   icon: '🏖️', topics: 11, url: 'tools/education-hub/index.html' },
+        taxes:           { name: 'Business Taxes',        icon: '🧾', topics: 23, url: 'tools/education-hub/index.html' },
+        personalfinance: { name: 'Personal Finance',      icon: '💰', topics: 16, url: 'tools/education-hub/index.html' },
+        debt:            { name: 'Debt Management',       icon: '💸', topics: 15, url: 'tools/education-hub/index.html' },
+        banking:         { name: 'Banking',               icon: '🏦', topics: 7,  url: 'tools/education-hub/index.html' },
+        insurance:       { name: 'Insurance',             icon: '🛡️', topics: 12, url: 'tools/education-hub/index.html' },
+        studentloans:    { name: 'Student Loans',         icon: '🎓', topics: 10, url: 'tools/education-hub/index.html' },
+        estateplanning:  { name: 'Estate Planning',       icon: '📋', topics: 7,  url: 'tools/education-hub/index.html' },
+        business:        { name: 'Business Fundamentals', icon: '💼', topics: 13, url: 'tools/education-hub/index.html' },
+        freelancing:     { name: 'Freelancing',           icon: '🖥️', topics: 10, url: 'tools/education-hub/index.html' },
+        negotiation:     { name: 'Negotiation',           icon: '🤝', topics: 13, url: 'tools/education-hub/index.html' },
+        marketing:       { name: 'Marketing',             icon: '📣', topics: 32, url: 'tools/education-hub/index.html' },
+        ai:              { name: 'AI & Machine Learning', icon: '🤖', topics: 15, url: 'tools/education-hub/index.html' },
+        cybersecurity:   { name: 'Cybersecurity',         icon: '🔒', topics: 14, url: 'tools/education-hub/index.html' },
+        politics:        { name: 'Political Literacy',    icon: '🏛️', topics: 10, url: 'tools/education-hub/index.html' },
+        california:      { name: 'California Rights',     icon: '🐻', topics: 15, url: 'tools/education-hub/index.html' },
+        labor:           { name: 'Labor Laws',            icon: '⚖️', topics: 17, url: 'tools/education-hub/index.html' },
+        nonprofits:      { name: 'Nonprofits',            icon: '🤲', topics: 16, url: 'tools/education-hub/index.html' },
+        emergency:       { name: 'Emergency Preparedness',icon: '🚨', topics: 23, url: 'tools/education-hub/index.html' },
+        career:          { name: 'Career Development',    icon: '📈', topics: 17, url: 'tools/education-hub/index.html' },
+        health:          { name: 'Health & Wellness',     icon: '❤️', topics: 14, url: 'tools/education-hub/index.html' },
+        housing:         { name: 'Housing',               icon: '🏡', topics: 12, url: 'tools/education-hub/index.html' },
+        productivity:    { name: 'Productivity',          icon: '⏱️', topics: 14, url: 'tools/education-hub/index.html' },
+        communication:   { name: 'Communication',         icon: '💬', topics: 11, url: 'tools/education-hub/index.html' },
+        investing:       { name: 'Investing Fundamentals', icon: '📈', topics: 15, url: 'tools/education-hub/index.html' },
+        behavioralfinance:{ name: 'Behavioral Finance',   icon: '🧠', topics: 16, url: 'tools/education-hub/index.html' },
+        financialanalysis:{ name: 'Financial Analysis',   icon: '📊', topics: 14, url: 'tools/education-hub/index.html' },
+        fintech:         { name: 'Financial Technology',   icon: '📱', topics: 15, url: 'tools/education-hub/index.html' },
+        clothingbrand:   { name: 'Clothing Brand',        icon: '👕', topics: 15, url: 'tools/education-hub/index.html' },
+        socialmedia:     { name: 'Social Media Growth',   icon: '📱', topics: 15, url: 'tools/education-hub/index.html' },
+        python:          { name: 'Python',                icon: '🐍', topics: 15, url: 'tools/education-hub/index.html' },
+        javascript:      { name: 'JavaScript',            icon: '⚡', topics: 15, url: 'tools/education-hub/index.html' },
+        webdev:          { name: 'Web Development',       icon: '🌐', topics: 15, url: 'tools/education-hub/index.html' },
+        htmlcss:         { name: 'HTML & CSS',            icon: '🎨', topics: 15, url: 'tools/education-hub/index.html' },
+        java:            { name: 'Java',                  icon: '☕', topics: 15, url: 'tools/education-hub/index.html' },
+        csharp:          { name: 'C#',                    icon: '🎯', topics: 15, url: 'tools/education-hub/index.html' },
+        swift:           { name: 'Swift',                 icon: '🍎', topics: 15, url: 'tools/education-hub/index.html' },
+        appdev:          { name: 'App Development',       icon: '📲', topics: 15, url: 'tools/education-hub/index.html' },
+        datascience:     { name: 'Data Science',          icon: '📊', topics: 15, url: 'tools/education-hub/index.html' },
+        flutter:         { name: 'Flutter',               icon: '🦋', topics: 15, url: 'tools/education-hub/index.html' },
+        gamedev:         { name: 'Game Development',      icon: '🎮', topics: 15, url: 'tools/education-hub/index.html' },
+        softwaredev:     { name: 'Software Development',  icon: '💻', topics: 15, url: 'tools/education-hub/index.html' },
+        selfcare:        { name: 'Self-Care',             icon: '🧘', topics: 15, url: 'tools/education-hub/index.html' },
+        languagelearning:{ name: 'Language Learning',     icon: '🌍', topics: 15, url: 'tools/education-hub/index.html' },
+        travel:          { name: 'Travel & Exploration',  icon: '✈️', topics: 15, url: 'tools/education-hub/index.html' },
+        workplacerights: { name: 'Workplace Rights',      icon: '⚖️', topics: 12, url: 'tools/education-hub/index.html' },
+        contracts:       { name: 'Contracts',             icon: '📜', topics: 10, url: 'tools/education-hub/index.html' },
+        consumerrights:  { name: 'Consumer Rights',       icon: '🛒', topics: 10, url: 'tools/education-hub/index.html' },
+        benefits:        { name: 'Benefits',              icon: '🏥', topics: 10, url: 'tools/education-hub/index.html' },
+        transportation:  { name: 'Transportation',        icon: '🚗', topics: 10, url: 'tools/education-hub/index.html' },
+        familyplanning:  { name: 'Family Planning',       icon: '👨‍👩‍👧', topics: 10, url: 'tools/education-hub/index.html' },
+        emotionaliq:     { name: 'Emotional Intelligence',icon: '🧠', topics: 12, url: 'tools/education-hub/index.html' },
+        digitalliteracy: { name: 'Digital Literacy',      icon: '🌐', topics: 10, url: 'tools/education-hub/index.html' }
+    };
+
+    // ==================== PATHWAY DEFINITIONS ====================
+
+    const pathways = {
+        entrepreneur: {
+            id: 'entrepreneur',
+            title: 'Aspiring Entrepreneur',
+            icon: '🚀',
+            tagline: 'For dreamers ready to build something of their own',
+            description: 'Build the knowledge to launch your venture — from business fundamentals and marketing to taxes, negotiation, and forming your LLC.',
+            badge: 'Popular',
+            phases: [
+                {
+                    title: 'Financial Foundation',
+                    description: 'Get your personal finances in order before investing in a business',
+                    items: [
+                        { type: 'track', id: 'credit', label: 'Complete Credit Mastery Track' },
+                        { type: 'track', id: 'personalfinance', label: 'Complete Personal Finance Track' },
+                        { type: 'tool', id: 'budget', label: 'Set Up Your Budget Planner' }
+                    ]
+                },
+                {
+                    title: 'Business Essentials',
+                    description: 'Learn the core skills every business owner needs',
+                    items: [
+                        { type: 'track', id: 'business', label: 'Complete Business Fundamentals Track' },
+                        { type: 'track', id: 'taxes', label: 'Complete Business Taxes Track' },
+                        { type: 'track', id: 'socialmedia', label: 'Complete Social Media Growth Track' }
+                    ]
+                },
+                {
+                    title: 'Marketing & Growth',
+                    description: 'Learn to reach customers and grow your brand',
+                    items: [
+                        { type: 'track', id: 'marketing', label: 'Complete Marketing Track' },
+                        { type: 'track', id: 'negotiation', label: 'Complete Negotiation Track' },
+                        { type: 'track', id: 'clothingbrand', label: 'Complete Clothing Brand Track' }
+                    ]
+                },
+                {
+                    title: 'Scale & Sustain',
+                    description: 'Build long-term business success and financial independence',
+                    items: [
+                        { type: 'track', id: 'freelancing', label: 'Complete Freelancing Track' },
+                        { type: 'track', id: 'communication', label: 'Complete Communication Track' },
+                        { type: 'track', id: 'financialanalysis', label: 'Complete Financial Analysis Track' },
+                        { type: 'track', id: 'productivity', label: 'Complete Productivity Track' }
+                    ]
+                }
+            ],
+            achievements: [
+                { icon: '📋', title: 'Business Plan Ready', desc: 'Complete Phase 1' },
+                { icon: '📄', title: 'LLC Filed', desc: 'Complete Phase 2' },
+                { icon: '📣', title: 'Marketing Pro', desc: 'Complete Phase 3' },
+                { icon: '🚀', title: 'Launched', desc: 'Complete all phases' }
+            ]
+        },
+
+        tech: {
+            id: 'tech',
+            title: 'Tech Career Builder',
+            icon: '💻',
+            tagline: 'For anyone who wants to break into the tech industry',
+            description: 'Go from zero to job-ready with a structured path through programming languages, frameworks, AI, cybersecurity, and professional development.',
+            badge: 'Popular',
+            phases: [
+                {
+                    title: 'Web Fundamentals',
+                    description: 'Learn the building blocks of every website and app',
+                    items: [
+                        { type: 'track', id: 'htmlcss', label: 'Complete HTML & CSS Track' },
+                        { type: 'track', id: 'javascript', label: 'Complete JavaScript Track' },
+                        { type: 'track', id: 'python', label: 'Complete Python Track' },
+                        { type: 'track', id: 'webdev', label: 'Complete Web Development Track' }
+                    ]
+                },
+                {
+                    title: 'Deepen Your Skills',
+                    description: 'Build real projects and explore specializations',
+                    items: [
+                        { type: 'track', id: 'softwaredev', label: 'Complete Software Development Track' },
+                        { type: 'track', id: 'appdev', label: 'Complete App Development Track' },
+                        { type: 'track', id: 'datascience', label: 'Complete Data Science Track' },
+                        { type: 'track', id: 'ai', label: 'Complete AI & Machine Learning Track' }
+                    ]
+                },
+                {
+                    title: 'Professional Growth',
+                    description: 'Build the soft skills and security knowledge top employers want',
+                    items: [
+                        { type: 'track', id: 'cybersecurity', label: 'Complete Cybersecurity Track' },
+                        { type: 'track', id: 'career', label: 'Complete Career Development Track' },
+                        { type: 'track', id: 'productivity', label: 'Complete Productivity Track' },
+                        { type: 'track', id: 'communication', label: 'Complete Communication Track' }
+                    ]
+                },
+                {
+                    title: 'Specialize & Launch',
+                    description: 'Pick your specialty and prepare for the job market',
+                    items: [
+                        { type: 'track', id: 'java', label: 'Complete Java Track' },
+                        { type: 'track', id: 'swift', label: 'Complete Swift Track' },
+                        { type: 'track', id: 'flutter', label: 'Complete Flutter Track' },
+                        { type: 'track', id: 'gamedev', label: 'Complete Game Development Track' },
+                        { type: 'track', id: 'negotiation', label: 'Complete Negotiation Track (for salary talks)' }
+                    ]
+                }
+            ],
+            achievements: [
+                { icon: '🌐', title: 'Web Ready', desc: 'Complete Phase 1' },
+                { icon: '🤖', title: 'AI Explorer', desc: 'Complete Phase 2' },
+                { icon: '🔒', title: 'Security Savvy', desc: 'Complete Phase 3' },
+                { icon: '💻', title: 'Tech Career Ready', desc: 'Complete all phases' }
+            ]
+        },
+
+        finance: {
+            id: 'finance',
+            title: 'Financial Freedom',
+            icon: '💰',
+            tagline: 'For people who want their money working for them',
+            description: 'Master every aspect of money — from credit and budgeting to stocks, real estate, crypto, and long-term wealth building.',
+            badge: '',
+            phases: [
+                {
+                    title: 'Money Basics',
+                    description: 'Understand how money works and build your financial foundation',
+                    items: [
+                        { type: 'track', id: 'credit', label: 'Complete Credit Mastery Track' },
+                        { type: 'track', id: 'personalfinance', label: 'Complete Personal Finance Track' },
+                        { type: 'track', id: 'banking', label: 'Complete Banking Track' },
+                        { type: 'tool', id: 'budget', label: 'Set Up Your Budget Planner' }
+                    ]
+                },
+                {
+                    title: 'Eliminate Debt',
+                    description: 'Get out of debt and protect your income',
+                    items: [
+                        { type: 'track', id: 'debt', label: 'Complete Debt Management Track' },
+                        { type: 'track', id: 'studentloans', label: 'Complete Student Loans Track' },
+                        { type: 'track', id: 'taxes', label: 'Complete Business Taxes Track' }
+                    ]
+                },
+                {
+                    title: 'Build Wealth',
+                    description: 'Start investing and growing your money',
+                    items: [
+                        { type: 'track', id: 'stocks', label: 'Complete Stock Market Track' },
+                        { type: 'track', id: 'investing', label: 'Complete Investing Fundamentals Track' },
+                        { type: 'track', id: 'realestate', label: 'Complete Real Estate Track' },
+                        { type: 'track', id: 'retirement', label: 'Complete Retirement Planning Track' }
+                    ]
+                },
+                {
+                    title: 'Advanced Wealth',
+                    description: 'Diversify, protect, and plan your financial legacy',
+                    items: [
+                        { type: 'track', id: 'crypto', label: 'Complete Cryptocurrency Track' },
+                        { type: 'track', id: 'insurance', label: 'Complete Insurance Track' },
+                        { type: 'track', id: 'estateplanning', label: 'Complete Estate Planning Track' },
+                        { type: 'track', id: 'financialanalysis', label: 'Complete Financial Analysis Track' },
+                        { type: 'track', id: 'behavioralfinance', label: 'Complete Behavioral Finance Track' }
+                    ]
+                }
+            ],
+            achievements: [
+                { icon: '💳', title: 'Credit Master', desc: 'Complete Phase 1' },
+                { icon: '💸', title: 'Debt Free Path', desc: 'Complete Phase 2' },
+                { icon: '📈', title: 'Investor', desc: 'Complete Phase 3' },
+                { icon: '💰', title: 'Financially Free', desc: 'Complete all phases' }
+            ]
+        },
+
+        brandbuilder: {
+            id: 'brandbuilder',
+            title: 'Brand Builder & Creator',
+            icon: '🎨',
+            tagline: 'For creatives who want to turn their passion into income',
+            description: 'Build your personal brand, grow your audience, and monetize your creativity — from social media strategy to launching a clothing line or freelance business.',
+            badge: '',
+            phases: [
+                {
+                    title: 'Find Your Voice',
+                    description: 'Develop your communication skills and understand the landscape',
+                    items: [
+                        { type: 'track', id: 'communication', label: 'Complete Communication Track' },
+                        { type: 'track', id: 'productivity', label: 'Complete Productivity Track' },
+                        { type: 'track', id: 'socialmedia', label: 'Complete Social Media Growth Track' }
+                    ]
+                },
+                {
+                    title: 'Build Your Brand',
+                    description: 'Create your brand identity and start reaching people',
+                    items: [
+                        { type: 'track', id: 'marketing', label: 'Complete Marketing Track' },
+                        { type: 'track', id: 'clothingbrand', label: 'Complete Clothing Brand Track' },
+                        { type: 'track', id: 'freelancing', label: 'Complete Freelancing Track' }
+                    ]
+                },
+                {
+                    title: 'The Business Side',
+                    description: 'Handle the money, taxes, and legal side of being a creator',
+                    items: [
+                        { type: 'track', id: 'business', label: 'Complete Business Fundamentals Track' },
+                        { type: 'track', id: 'taxes', label: 'Complete Business Taxes Track' },
+                        { type: 'track', id: 'personalfinance', label: 'Complete Personal Finance Track' }
+                    ]
+                },
+                {
+                    title: 'Scale Up',
+                    description: 'Grow your business and negotiate your worth',
+                    items: [
+                        { type: 'track', id: 'negotiation', label: 'Complete Negotiation Track' },
+                        { type: 'track', id: 'financialanalysis', label: 'Complete Financial Analysis Track' },
+                        { type: 'tool', id: 'budget', label: 'Set Up Your Budget Planner' }
+                    ]
+                }
+            ],
+            achievements: [
+                { icon: '💬', title: 'Voice Found', desc: 'Complete Phase 1' },
+                { icon: '🎨', title: 'Brand Launched', desc: 'Complete Phase 2' },
+                { icon: '💼', title: 'Business Savvy', desc: 'Complete Phase 3' },
+                { icon: '🌟', title: 'Creator Mogul', desc: 'Complete all phases' }
+            ]
+        },
+
+        civic: {
+            id: 'civic',
+            title: 'Community Leader',
+            icon: '⚖️',
+            tagline: 'For people who want to make a real difference',
+            description: 'Understand the political system, know your rights, learn labor laws, and build the skills to lead a nonprofit or community organization.',
+            badge: '',
+            phases: [
+                {
+                    title: 'Know the System',
+                    description: 'Understand how government, laws, and rights work',
+                    items: [
+                        { type: 'track', id: 'politics', label: 'Complete Political Literacy Track' },
+                        { type: 'track', id: 'california', label: 'Complete California Rights Track' },
+                        { type: 'track', id: 'labor', label: 'Complete Labor Laws Track' }
+                    ]
+                },
+                {
+                    title: 'Community Building',
+                    description: 'Learn to organize, communicate, and serve your community',
+                    items: [
+                        { type: 'track', id: 'nonprofits', label: 'Complete Nonprofits Track' },
+                        { type: 'track', id: 'communication', label: 'Complete Communication Track' },
+                        { type: 'track', id: 'selfcare', label: 'Complete Self-Care Track' }
+                    ]
+                },
+                {
+                    title: 'Financial Independence',
+                    description: 'Secure your own finances so you can serve others from a position of strength',
+                    items: [
+                        { type: 'track', id: 'personalfinance', label: 'Complete Personal Finance Track' },
+                        { type: 'track', id: 'career', label: 'Complete Career Development Track' },
+                        { type: 'tool', id: 'budget', label: 'Set Up Your Budget Planner' }
+                    ]
+                },
+                {
+                    title: 'Lead & Impact',
+                    description: 'Put it all together and make your mark',
+                    items: [
+                        { type: 'track', id: 'negotiation', label: 'Complete Negotiation Track' },
+                        { type: 'track', id: 'marketing', label: 'Complete Marketing Track' },
+                        { type: 'track', id: 'business', label: 'Complete Business Fundamentals Track' }
+                    ]
+                }
+            ],
+            achievements: [
+                { icon: '🏛️', title: 'Civically Literate', desc: 'Complete Phase 1' },
+                { icon: '🤲', title: 'Community Organizer', desc: 'Complete Phase 2' },
+                { icon: '💪', title: 'Self-Sufficient', desc: 'Complete Phase 3' },
+                { icon: '⚖️', title: 'Community Leader', desc: 'Complete all phases' }
+            ]
+        },
+
+        lifeready: {
+            id: 'lifeready',
+            title: 'Life Ready',
+            icon: '🛡️',
+            tagline: 'For anyone building a strong foundation for adult life',
+            description: 'Master the essential life skills no one taught you in school — credit, banking, insurance, housing, health, emergency prep, and more.',
+            badge: 'Great Start',
+            phases: [
+                {
+                    title: 'Money Basics',
+                    description: 'Learn how money, credit, and banking actually work',
+                    items: [
+                        { type: 'track', id: 'credit', label: 'Complete Credit Mastery Track' },
+                        { type: 'track', id: 'banking', label: 'Complete Banking Track' },
+                        { type: 'track', id: 'personalfinance', label: 'Complete Personal Finance Track' },
+                        { type: 'tool', id: 'budget', label: 'Set Up Your Budget Planner' }
+                    ]
+                },
+                {
+                    title: 'Protection & Safety',
+                    description: 'Protect yourself from debt, emergencies, and financial surprises',
+                    items: [
+                        { type: 'track', id: 'insurance', label: 'Complete Insurance Track' },
+                        { type: 'track', id: 'debt', label: 'Complete Debt Management Track' },
+                        { type: 'track', id: 'studentloans', label: 'Complete Student Loans Track' },
+                        { type: 'track', id: 'emergency', label: 'Complete Emergency Preparedness Track' }
+                    ]
+                },
+                {
+                    title: 'Independent Living',
+                    description: 'Navigate housing, health, career, and taxes on your own',
+                    items: [
+                        { type: 'track', id: 'housing', label: 'Complete Housing Track' },
+                        { type: 'track', id: 'health', label: 'Complete Health & Wellness Track' },
+                        { type: 'track', id: 'career', label: 'Complete Career Development Track' },
+                        { type: 'track', id: 'taxes', label: 'Complete Business Taxes Track' }
+                    ]
+                },
+                {
+                    title: 'Thriving',
+                    description: 'Level up your personal growth and plan for the future',
+                    items: [
+                        { type: 'track', id: 'productivity', label: 'Complete Productivity Track' },
+                        { type: 'track', id: 'communication', label: 'Complete Communication Track' },
+                        { type: 'track', id: 'selfcare', label: 'Complete Self-Care Track' },
+                        { type: 'track', id: 'retirement', label: 'Complete Retirement Planning Track' }
+                    ]
+                }
+            ],
+            achievements: [
+                { icon: '💰', title: 'Money Literate', desc: 'Complete Phase 1' },
+                { icon: '🛡️', title: 'Protected', desc: 'Complete Phase 2' },
+                { icon: '🏡', title: 'Independent', desc: 'Complete Phase 3' },
+                { icon: '🌟', title: 'Life Ready', desc: 'Complete all phases' }
+            ]
+        },
+
+        career: {
+            id: 'career',
+            title: 'Career Climber',
+            icon: '👔',
+            tagline: 'For professionals ready to level up',
+            description: 'Advance your career with business acumen, negotiation skills, financial literacy, leadership communication, and modern tech awareness.',
+            badge: '',
+            phases: [
+                {
+                    title: 'Professional Foundation',
+                    description: 'Build the core skills every professional needs',
+                    items: [
+                        { type: 'track', id: 'career', label: 'Complete Career Development Track' },
+                        { type: 'track', id: 'communication', label: 'Complete Communication Track' },
+                        { type: 'track', id: 'productivity', label: 'Complete Productivity Track' },
+                        { type: 'track', id: 'selfcare', label: 'Complete Self-Care Track' }
+                    ]
+                },
+                {
+                    title: 'Business Acumen',
+                    description: 'Understand business strategy, negotiation, and how companies work',
+                    items: [
+                        { type: 'track', id: 'business', label: 'Complete Business Fundamentals Track' },
+                        { type: 'track', id: 'negotiation', label: 'Complete Negotiation Track' },
+                        { type: 'track', id: 'financialanalysis', label: 'Complete Financial Analysis Track' }
+                    ]
+                },
+                {
+                    title: 'Financial Literacy',
+                    description: 'Manage your money wisely as your income grows',
+                    items: [
+                        { type: 'track', id: 'personalfinance', label: 'Complete Personal Finance Track' },
+                        { type: 'track', id: 'taxes', label: 'Complete Business Taxes Track' },
+                        { type: 'track', id: 'investing', label: 'Complete Investing Fundamentals Track' },
+                        { type: 'tool', id: 'budget', label: 'Set Up Your Budget Planner' }
+                    ]
+                },
+                {
+                    title: 'Leadership & Tech',
+                    description: 'Stay ahead with modern tech skills and marketing knowledge',
+                    items: [
+                        { type: 'track', id: 'marketing', label: 'Complete Marketing Track' },
+                        { type: 'track', id: 'ai', label: 'Complete AI & Machine Learning Track' },
+                        { type: 'track', id: 'labor', label: 'Complete Labor Laws Track (know your rights)' }
+                    ]
+                }
+            ],
+            achievements: [
+                { icon: '📋', title: 'Professional', desc: 'Complete Phase 1' },
+                { icon: '💼', title: 'Business Minded', desc: 'Complete Phase 2' },
+                { icon: '💰', title: 'Financially Sharp', desc: 'Complete Phase 3' },
+                { icon: '👔', title: 'Career Leader', desc: 'Complete all phases' }
+            ]
+        }
+    };
+
+    // Explore All categories
+    const exploreCategories = [
+        {
+            name: 'Finance', icon: '💰',
+            tracks: ['stocks', 'realestate', 'crypto', 'credit', 'retirement', 'taxes', 'personalfinance', 'debt', 'banking', 'insurance', 'studentloans', 'estateplanning', 'investing', 'behavioralfinance', 'financialanalysis', 'fintech']
+        },
+        {
+            name: 'Business', icon: '💼',
+            tracks: ['business', 'freelancing', 'negotiation', 'marketing', 'nonprofits', 'clothingbrand', 'socialmedia']
+        },
+        {
+            name: 'Tech', icon: '💻',
+            tracks: ['ai', 'cybersecurity', 'python', 'javascript', 'webdev', 'htmlcss', 'java', 'csharp', 'swift', 'appdev', 'datascience', 'flutter', 'gamedev', 'softwaredev']
+        },
+        {
+            name: 'Civic & Rights', icon: '⚖️',
+            tracks: ['politics', 'california', 'labor', 'workplacerights', 'contracts', 'consumerrights', 'benefits']
+        },
+        {
+            name: 'Life Skills', icon: '🛡️',
+            tracks: ['emergency', 'career', 'health', 'housing', 'transportation', 'familyplanning', 'travel']
+        },
+        {
+            name: 'Personal Growth', icon: '🌱',
+            tracks: ['productivity', 'communication', 'emotionaliq', 'selfcare', 'languagelearning']
+        },
+        {
+            name: 'Digital', icon: '🌐',
+            tracks: ['digitalliteracy']
+        }
+    ];
+
+
+    // ==================== PROGRESS HELPERS ====================
+
+    function getProgress() {
+        return {
+            edu: JSON.parse(localStorage.getItem('educationHubProgress') || '{}'),
+            budget: !!localStorage.getItem('budgetPlannerData')
+        };
+    }
+
+    function isItemComplete(item, progress) {
+        if (item.type === 'track') {
+            const t = progress.edu[item.id];
+            if (!t || !t.completedTopics) return false;
+            return t.completedTopics.length >= (trackMeta[item.id]?.topics || 999);
+        }
+        if (item.type === 'tool' && item.id === 'budget') {
+            return progress.budget;
+        }
+        return false;
+    }
+
+    function getTrackPercent(trackId, progress) {
+        const t = progress.edu[trackId];
+        if (!t || !t.completedTopics) return 0;
+        const total = trackMeta[trackId]?.topics || 1;
+        return Math.min(100, Math.round((t.completedTopics.length / total) * 100));
+    }
+
+    function getItemUrl(item) {
+        if (item.type === 'track') return trackMeta[item.id]?.url || '#';
+        if (item.type === 'tool' && item.id === 'budget') return 'tools/budget-planner/index.html';
+        return '#';
+    }
+
+    function getItemTypeLabel(item) {
+        if (item.type === 'track') return 'Track';
+        if (item.type === 'tool') return 'Tool';
+        return '';
+    }
+
+    // ==================== RENDERING ====================
+
+    function renderSelector() {
+        const grid = document.getElementById('pathways-grid');
+        let html = '';
+
+        Object.values(pathways).forEach(pw => {
+            let trackCount = 0, toolCount = 0;
+            pw.phases.forEach(phase => {
+                phase.items.forEach(item => {
+                    if (item.type === 'track') trackCount++;
+                    if (item.type === 'tool') toolCount++;
+                });
+            });
+
+            html += `
+                <div class="pathway-card" onclick="selectPathway('${pw.id}')">
+                    ${pw.badge ? `<div class="pathway-card-badge">${pw.badge}</div>` : ''}
+                    <span class="pathway-card-icon">${pw.icon}</span>
+                    <div class="pathway-card-title">${pw.title}</div>
+                    <div class="pathway-card-tagline">${pw.tagline}</div>
+                    <div class="pathway-card-desc">${pw.description}</div>
+                    <div class="pathway-card-stats">
+                        <div class="pathway-stat"><strong>${trackCount}</strong> tracks</div>
+                        <div class="pathway-stat"><strong>${pw.phases.length}</strong> phases</div>
+                    </div>
+                    <button class="pathway-card-btn">Choose This Path</button>
+                </div>
+            `;
         });
 
-        function updateRoadmapProgress() {
-            // Load education progress
-            const eduProgress = JSON.parse(localStorage.getItem('educationHubProgress') || '{}');
-            const guidesProgress = JSON.parse(localStorage.getItem('guidesProgress') || '{"read":[]}');
-            const budgetData = localStorage.getItem('budgetPlannerData');
-            
-            // Track progress calculation
-            const tracks = ['stocks', 'taxes', 'nonprofits', 'labor'];
-            const topicCounts = { stocks: 25, taxes: 20, nonprofits: 16, labor: 17 };
-            
-            tracks.forEach(track => {
-                const trackData = eduProgress[track];
-                let percent = 0;
-                let status = 'Not Started';
-                let statusClass = 'not-started';
-                
-                if (trackData && trackData.completedTopics) {
-                    const completed = trackData.completedTopics.length;
-                    percent = Math.round((completed / topicCounts[track]) * 100);
-                    
-                    if (percent === 100) {
-                        status = 'Completed!';
-                        statusClass = 'completed';
-                        document.getElementById(`${track}-next`).classList.add('show');
-                        
-                        // Unlock achievement
-                        if (track === 'stocks') document.getElementById('ach-investor').classList.add('unlocked');
-                        if (track === 'taxes') document.getElementById('ach-tax-pro').classList.add('unlocked');
-                    } else if (percent > 0) {
-                        status = 'In Progress';
-                        statusClass = 'in-progress';
-                    }
-                }
-                
-                document.getElementById(`${track}-percent`).textContent = `${percent}%`;
-                document.getElementById(`${track}-bar`).style.width = `${percent}%`;
-                
-                const statusEl = document.getElementById(`${track}-status`);
-                statusEl.textContent = status;
-                statusEl.className = `track-status-badge ${statusClass}`;
+        // Explore All card
+        html += `
+            <div class="pathway-card explore-card" onclick="showExploreAll()">
+                <span class="pathway-card-icon">🔍</span>
+                <div class="pathway-card-title">Explore All Content</div>
+                <div class="pathway-card-tagline">Not sure yet? Browse everything we offer</div>
+                <div class="pathway-card-desc">See all education tracks and tools in one place. Track your progress across the entire platform.</div>
+                <div class="pathway-card-stats">
+                    <div class="pathway-stat"><strong>54</strong> tracks</div>
+                    <div class="pathway-stat"><strong>7</strong> categories</div>
+                </div>
+                <button class="pathway-card-btn">Explore Everything</button>
+            </div>
+        `;
+
+        grid.innerHTML = html;
+    }
+
+    function renderDashboard(pathwayId) {
+        const pw = pathways[pathwayId];
+        if (!pw) return;
+
+        const progress = getProgress();
+
+        // Header
+        document.getElementById('dash-icon').textContent = pw.icon;
+        document.getElementById('dash-title').textContent = pw.title;
+        document.getElementById('dash-tagline').textContent = pw.tagline;
+
+        // Calculate overall progress
+        let totalItems = 0, doneItems = 0;
+        pw.phases.forEach(phase => {
+            phase.items.forEach(item => {
+                totalItems++;
+                if (isItemComplete(item, progress)) doneItems++;
             });
-            
-            // Phase 1 progress
-            const phase1Items = [
-                { id: 'phase1-credit', check: guidesProgress.read.includes('credit-scores') },
-                { id: 'phase1-budget-guide', check: guidesProgress.read.includes('budgeting') },
-                { id: 'phase1-budget-tool', check: !!budgetData },
-                { id: 'phase1-debt', check: guidesProgress.read.includes('debt-management') }
-            ];
-            
-            let phase1Done = 0;
-            phase1Items.forEach(item => {
-                if (item.check) {
-                    document.getElementById(item.id).classList.add('done');
-                    phase1Done++;
-                }
+        });
+        const overallPercent = totalItems > 0 ? Math.round((doneItems / totalItems) * 100) : 0;
+
+        document.getElementById('dash-percent').textContent = `${overallPercent}%`;
+        const circumference = 2 * Math.PI * 26; // r=26
+        const offset = circumference - (overallPercent / 100) * circumference;
+        document.getElementById('progress-ring').style.strokeDashoffset = offset;
+
+        // Phases
+        const container = document.getElementById('phases-container');
+        let phasesHtml = '';
+        let prevPhaseComplete = true;
+
+        pw.phases.forEach((phase, idx) => {
+            let phaseDone = 0;
+            const phaseTotal = phase.items.length;
+
+            let itemsHtml = '';
+            phase.items.forEach(item => {
+                const done = isItemComplete(item, progress);
+                if (done) phaseDone++;
+                const url = getItemUrl(item);
+                const typeLabel = getItemTypeLabel(item);
+
+                itemsHtml += `
+                    <li class="${done ? 'done' : ''}">
+                        <span class="item-check">${done ? '✓' : ''}</span>
+                        <span class="item-label">${item.label}</span>
+                        <span class="item-type">${typeLabel}</span>
+                        <a href="${url}" class="item-link">${done ? 'Review' : 'Start'} →</a>
+                    </li>
+                `;
             });
-            
-            const phase1Percent = Math.round((phase1Done / 4) * 100);
-            document.getElementById('phase1-progress').style.width = `${phase1Percent}%`;
-            document.getElementById('phase1-text').textContent = `${phase1Percent}% Complete`;
-            
-            if (phase1Percent === 100) {
-                document.getElementById('phase-1').classList.add('completed');
-                document.getElementById('ach-foundation').classList.add('unlocked');
-            } else if (phase1Percent > 0) {
-                document.getElementById('phase-1').classList.add('active');
+
+            const phasePercent = Math.round((phaseDone / phaseTotal) * 100);
+            const isComplete = phasePercent === 100;
+            const isActive = !isComplete && prevPhaseComplete;
+            const isLocked = !prevPhaseComplete;
+
+            let stateClass = '';
+            let badgeHtml = '';
+            if (isComplete) {
+                stateClass = 'completed';
+                badgeHtml = '<span class="phase-badge completed-badge">✓ Complete</span>';
+            } else if (isActive) {
+                stateClass = 'active';
+                badgeHtml = '<span class="phase-badge active-badge">In Progress</span>';
+            } else if (isLocked) {
+                stateClass = 'locked';
+                badgeHtml = '<span class="phase-badge locked-badge">🔒 Locked</span>';
             }
-            
-            // Phase 2 progress
-            const stocksComplete = eduProgress.stocks?.completedTopics?.length === topicCounts.stocks;
-            const taxesComplete = eduProgress.taxes?.completedTopics?.length === topicCounts.taxes;
-            const techRead = ['web-development', 'python', 'javascript'].some(g => guidesProgress.read.includes(g));
-            const bizRead = ['entrepreneurship', 'forming-llc'].some(g => guidesProgress.read.includes(g));
-            
-            const phase2Items = [
-                { id: 'phase2-stocks', check: stocksComplete },
-                { id: 'phase2-taxes', check: taxesComplete },
-                { id: 'phase2-tech', check: techRead },
-                { id: 'phase2-business', check: bizRead }
-            ];
-            
-            let phase2Done = 0;
-            phase2Items.forEach(item => {
-                if (item.check) {
-                    document.getElementById(item.id).classList.add('done');
-                    phase2Done++;
+
+            phasesHtml += `
+                <div class="phase-block ${stateClass}">
+                    <div class="phase-marker">${isComplete ? '✓' : idx + 1}</div>
+                    <div class="phase-content">
+                        <div class="phase-top">
+                            <div>
+                                <div class="phase-title">Phase ${idx + 1}: ${phase.title}</div>
+                                <div class="phase-desc">${phase.description}</div>
+                            </div>
+                            ${badgeHtml}
+                        </div>
+                        <ul class="phase-items">
+                            ${itemsHtml}
+                        </ul>
+                        <div class="phase-progress-bar">
+                            <div class="phase-progress-fill" style="width: ${phasePercent}%"></div>
+                        </div>
+                        <div class="phase-progress-text">${phaseDone} of ${phaseTotal} complete — ${phasePercent}%</div>
+                    </div>
+                </div>
+            `;
+
+            if (isComplete) prevPhaseComplete = true;
+            else prevPhaseComplete = false;
+        });
+
+        container.innerHTML = phasesHtml;
+
+        // Achievements
+        const achGrid = document.getElementById('achievements-grid');
+        let achHtml = '';
+        let prevComplete = true;
+
+        pw.achievements.forEach((ach, idx) => {
+            // Phase-based: achievement unlocked if phase idx is complete
+            let unlocked = false;
+            if (idx < pw.phases.length) {
+                const phase = pw.phases[idx];
+                const allDone = phase.items.every(item => isItemComplete(item, progress));
+                // For the last achievement, ALL phases must be done
+                if (idx === pw.achievements.length - 1) {
+                    unlocked = pw.phases.every(phase => phase.items.every(item => isItemComplete(item, progress)));
+                } else {
+                    unlocked = allDone;
                 }
-            });
-            
-            const phase2Percent = Math.round((phase2Done / 4) * 100);
-            document.getElementById('phase2-progress').style.width = `${phase2Percent}%`;
-            document.getElementById('phase2-text').textContent = `${phase2Percent}% Complete`;
-            
-            if (phase1Percent < 100) {
-                document.getElementById('phase-2').classList.add('locked');
-            } else if (phase2Percent === 100) {
-                document.getElementById('phase-2').classList.add('completed');
-            } else if (phase2Percent > 0) {
-                document.getElementById('phase-2').classList.add('active');
             }
-            
-            // Phase 3 - action items (manual tracking via localStorage)
-            const actionProgress = JSON.parse(localStorage.getItem('actionProgress') || '{}');
-            const phase3Items = [
-                { id: 'phase3-invest', check: actionProgress.firstInvestment },
-                { id: 'phase3-business', check: actionProgress.startedBusiness },
-                { id: 'phase3-goals', check: actionProgress.achievedGoals },
-                { id: 'phase3-graduate', check: actionProgress.graduated }
-            ];
-            
-            let phase3Done = 0;
-            phase3Items.forEach(item => {
-                if (item.check) {
-                    document.getElementById(item.id).classList.add('done');
-                    phase3Done++;
+
+            achHtml += `
+                <div class="achievement-card ${unlocked ? 'unlocked' : ''}">
+                    <div class="achievement-icon">${ach.icon}</div>
+                    <div class="achievement-title">${ach.title}</div>
+                    <div class="achievement-desc">${ach.desc}</div>
+                </div>
+            `;
+        });
+
+        // Add cross-pathway achievements
+        const crossAchievements = [
+            {
+                icon: '🏃', title: 'First Step',
+                desc: 'Complete any item',
+                check: () => doneItems > 0
+            },
+            {
+                icon: '📚', title: 'Knowledge Seeker',
+                desc: 'Start 10+ tracks',
+                check: () => {
+                    let count = 0;
+                    Object.keys(trackMeta).forEach(tid => {
+                        const t = progress.edu[tid];
+                        if (t && t.completedTopics && t.completedTopics.length > 0) count++;
+                    });
+                    return count >= 10;
                 }
+            },
+            {
+                icon: '🏆', title: 'Track Master',
+                desc: 'Complete 5+ tracks',
+                check: () => {
+                    let count = 0;
+                    Object.keys(trackMeta).forEach(tid => {
+                        const t = progress.edu[tid];
+                        if (t && t.completedTopics && t.completedTopics.length >= trackMeta[tid].topics) count++;
+                    });
+                    return count >= 5;
+                }
+            },
+            {
+                icon: '🎓', title: 'Blueprint Graduate',
+                desc: 'Complete your entire pathway',
+                check: () => overallPercent === 100
+            }
+        ];
+
+        crossAchievements.forEach(ach => {
+            const unlocked = ach.check();
+            achHtml += `
+                <div class="achievement-card ${unlocked ? 'unlocked' : ''}">
+                    <div class="achievement-icon">${ach.icon}</div>
+                    <div class="achievement-title">${ach.title}</div>
+                    <div class="achievement-desc">${ach.desc}</div>
+                </div>
+            `;
+        });
+
+        achGrid.innerHTML = achHtml;
+    }
+
+    function renderExploreAll() {
+        const progress = getProgress();
+
+        // Stats
+        let tracksComplete = 0;
+        Object.keys(trackMeta).forEach(tid => {
+            if (getTrackPercent(tid, progress) === 100) tracksComplete++;
+        });
+
+        const totalTracks = Object.keys(trackMeta).length;
+
+        document.getElementById('explore-stats').innerHTML = `
+            <div class="explore-stat">
+                <div class="explore-stat-value">${tracksComplete}</div>
+                <div class="explore-stat-label">Tracks Done</div>
+            </div>
+            <div class="explore-stat">
+                <div class="explore-stat-value">${totalTracks}</div>
+                <div class="explore-stat-label">Total Tracks</div>
+            </div>
+            <div class="explore-stat">
+                <div class="explore-stat-value">${totalTracks > 0 ? Math.round((tracksComplete / totalTracks) * 100) : 0}%</div>
+                <div class="explore-stat-label">Overall</div>
+            </div>
+        `;
+
+        // Content
+        let html = '';
+        exploreCategories.forEach(cat => {
+            const totalItems = cat.tracks.length;
+            let doneCount = 0;
+
+            let itemsHtml = '';
+
+            cat.tracks.forEach(tid => {
+                const meta = trackMeta[tid];
+                if (!meta) return;
+                const pct = getTrackPercent(tid, progress);
+                const done = pct === 100;
+                if (done) doneCount++;
+
+                itemsHtml += `
+                    <a href="${meta.url}" class="explore-item-card">
+                        <span class="explore-item-icon">${meta.icon}</span>
+                        <div class="explore-item-info">
+                            <div class="explore-item-title">${meta.name}</div>
+                            <div class="explore-item-type">Track · ${pct}% complete</div>
+                        </div>
+                        <div class="explore-item-status ${done ? 'done' : 'not-done'}">${done ? '✓' : ''}</div>
+                    </a>
+                `;
             });
-            
-            const phase3Percent = Math.round((phase3Done / 4) * 100);
-            document.getElementById('phase3-progress').style.width = `${phase3Percent}%`;
-            document.getElementById('phase3-text').textContent = `${phase3Percent}% Complete`;
-            
-            if (phase2Percent < 100) {
-                document.getElementById('phase-3').classList.add('locked');
-            } else if (phase3Percent === 100) {
-                document.getElementById('phase-3').classList.add('completed');
-                document.getElementById('ach-graduate').classList.add('unlocked');
-            } else if (phase3Percent > 0) {
-                document.getElementById('phase-3').classList.add('active');
-            }
-            
-            // Check entrepreneur achievement
-            if (stocksComplete && taxesComplete && bizRead) {
-                document.getElementById('ach-entrepreneur').classList.add('unlocked');
-            }
+
+            html += `
+                <div class="explore-category">
+                    <div class="explore-category-header">
+                        <span class="explore-category-icon">${cat.icon}</span>
+                        <span class="explore-category-title">${cat.name}</span>
+                        <span class="explore-category-count">${doneCount}/${totalItems} complete</span>
+                    </div>
+                    <div class="explore-items-grid">
+                        ${itemsHtml}
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById('explore-content').innerHTML = html;
+    }
+
+
+    // ==================== VIEW MANAGEMENT ====================
+
+    function showSelector() {
+        document.getElementById('pathway-selector').style.display = '';
+        document.getElementById('pathway-dashboard').style.display = 'none';
+        document.getElementById('explore-all').style.display = 'none';
+        document.getElementById('hero-title').textContent = 'Choose Your Path';
+        document.getElementById('hero-subtitle').textContent = 'Every journey starts with a single step. Pick the path that speaks to who you want to become.';
+        // Don't clear saved pathway — user might come back
+    }
+
+    function selectPathway(pathwayId) {
+        localStorage.setItem('blueprintPathway', pathwayId);
+        showDashboard(pathwayId);
+    }
+
+    function showDashboard(pathwayId) {
+        const pw = pathways[pathwayId];
+        if (!pw) return showSelector();
+
+        document.getElementById('pathway-selector').style.display = 'none';
+        document.getElementById('pathway-dashboard').style.display = '';
+        document.getElementById('explore-all').style.display = 'none';
+        document.getElementById('hero-title').textContent = `${pw.icon} ${pw.title}`;
+        document.getElementById('hero-subtitle').textContent = pw.tagline;
+
+        renderDashboard(pathwayId);
+    }
+
+    function showExploreAll() {
+        document.getElementById('pathway-selector').style.display = 'none';
+        document.getElementById('pathway-dashboard').style.display = 'none';
+        document.getElementById('explore-all').style.display = '';
+        document.getElementById('hero-title').textContent = '🔍 Explore All Content';
+        document.getElementById('hero-subtitle').textContent = 'Browse everything Blueprint to Success has to offer — 54 tracks across 7 categories and powerful tools.';
+
+        renderExploreAll();
+    }
+
+
+    // ==================== INIT ====================
+
+    document.addEventListener('DOMContentLoaded', () => {
+        renderSelector();
+
+        const savedPathway = localStorage.getItem('blueprintPathway');
+        if (savedPathway && pathways[savedPathway]) {
+            showDashboard(savedPathway);
         }
+    });
     </script>
     <script src="js/supabase.js"></script>
     <script src="js/auth.js"></script>

@@ -5,6 +5,19 @@ const aiData = {
     icon: '🤖',
     description: 'Learn to use AI tools effectively for productivity, creativity, and business.',
     graduationGoal: 'Use AI tools effectively in work and life',
+    difficulty: 'beginner',
+    prerequisites: [],
+    learningObjectives: [
+        'Understand AI capabilities and limitations',
+        'Use AI tools for productivity and creativity',
+        'Integrate AI into your workflow effectively',
+        'Evaluate and choose the right AI tools',
+        'Use AI ethically and responsibly'
+    ],
+    relatedTracks: ['productivity', 'business', 'digitalliteracy'],
+    resources: [
+        { title: 'OpenAI Documentation', url: 'https://platform.openai.com/docs' }
+    ],
     levels: [
         {
             id: 1,
@@ -37,6 +50,42 @@ const aiData = {
                         </ul>
                         <div class="highlight">
                             <strong>Key Understanding:</strong> AI is a powerful tool, not magic. It amplifies your abilities but requires human judgment to use effectively.
+                        </div>
+                    `
+                },
+                {
+                    id: 'ai-tools-overview',
+                    title: 'The AI Tool Landscape',
+                    content: `
+                        <h2>The AI Tool Landscape</h2>
+                        <h3>Text/Chat AI</h3>
+                        <ul>
+                            <li><strong>ChatGPT (OpenAI):</strong> Most popular, good general-purpose</li>
+                            <li><strong>Claude (Anthropic):</strong> Strong at analysis and long documents</li>
+                            <li><strong>Gemini (Google):</strong> Integrated with Google services</li>
+                            <li><strong>Perplexity:</strong> AI-powered search with citations</li>
+                        </ul>
+                        <h3>Image Generation</h3>
+                        <ul>
+                            <li><strong>DALL-E 3:</strong> Built into ChatGPT, easy to use</li>
+                            <li><strong>Midjourney:</strong> Highest quality artistic images</li>
+                            <li><strong>Stable Diffusion:</strong> Free, runs locally</li>
+                            <li><strong>Adobe Firefly:</strong> Commercially safe for businesses</li>
+                        </ul>
+                        <h3>Code Assistants</h3>
+                        <ul>
+                            <li><strong>GitHub Copilot:</strong> Auto-completes code as you type</li>
+                            <li><strong>Cursor:</strong> AI-first code editor</li>
+                            <li><strong>Replit:</strong> AI-assisted coding environment</li>
+                        </ul>
+                        <h3>Productivity AI</h3>
+                        <ul>
+                            <li><strong>Notion AI:</strong> Writing and organization within Notion</li>
+                            <li><strong>Otter.ai:</strong> Meeting transcription and notes</li>
+                            <li><strong>Grammarly:</strong> AI writing assistant</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Try Before You Buy:</strong> Most tools have free tiers. Try ChatGPT and Claude first—they cover most use cases. Add specialized tools as needed.
                         </div>
                     `
                 },
@@ -130,6 +179,39 @@ const aiData = {
                     `
                 },
                 {
+                    id: 'prompt-templates',
+                    title: 'Prompt Templates for Common Tasks',
+                    content: `
+                        <h2>Prompt Templates</h2>
+                        <h3>Content Creation</h3>
+                        <div class="example">
+                            "Write a [format] about [topic] for [audience]. Tone: [casual/professional]. Length: [word count]. Include: [specific elements]."
+                        </div>
+                        <h3>Analysis & Decision Making</h3>
+                        <div class="example">
+                            "Analyze [situation] from multiple perspectives. Consider pros, cons, risks, and opportunities. Present as a structured comparison."
+                        </div>
+                        <h3>Learning & Explanation</h3>
+                        <div class="example">
+                            "Explain [concept] to someone with [beginner/intermediate/expert] knowledge. Use real-world analogies. Include common misconceptions."
+                        </div>
+                        <h3>Professional Communication</h3>
+                        <div class="example">
+                            "Draft a [email/message] to [recipient] about [topic]. Goal: [what you want]. Tone: [professional/friendly/firm]. Keep it under [length]."
+                        </div>
+                        <h3>Building a Prompt Library</h3>
+                        <ul>
+                            <li>Save prompts that work well</li>
+                            <li>Organize by category (work, creative, learning)</li>
+                            <li>Iterate and improve over time</li>
+                            <li>Share with teammates for consistency</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Power Move:</strong> Build a personal prompt library. Save templates that work, tweak them, and reuse. This 10x's your AI efficiency.
+                        </div>
+                    `
+                },
+                {
                     id: 'advanced-prompting',
                     title: 'Advanced Prompting Techniques',
                     content: `
@@ -215,6 +297,35 @@ const aiData = {
                         </div>
                         <div class="highlight">
                             <strong>Best Practice:</strong> Use AI for first drafts, then edit with your voice. The final product should sound like you, not a robot.
+                        </div>
+                    `
+                },
+                {
+                    id: 'ai-data-analysis',
+                    title: 'AI for Data & Spreadsheets',
+                    content: `
+                        <h2>AI for Data & Spreadsheets</h2>
+                        <h3>Spreadsheet Tasks AI Handles</h3>
+                        <ul>
+                            <li>Writing formulas ("Write an Excel formula that...")</li>
+                            <li>Cleaning messy data</li>
+                            <li>Creating charts and visualizations</li>
+                            <li>Analyzing trends in numbers</li>
+                            <li>Creating pivot table summaries</li>
+                        </ul>
+                        <h3>Data Analysis Prompts</h3>
+                        <div class="example">
+                            "Here is my sales data [paste]. What are the top 3 trends? What should I focus on next quarter?"<br><br>
+                            "Write a Google Sheets formula to calculate the running total of column B, but only for rows where column A is 'Completed'."
+                        </div>
+                        <h3>Tools</h3>
+                        <ul>
+                            <li><strong>ChatGPT Advanced Data Analysis:</strong> Upload files, get charts and insights</li>
+                            <li><strong>Google Sheets AI:</strong> Built-in suggestions</li>
+                            <li><strong>Julius AI:</strong> Drag-and-drop data analysis</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Time Saver:</strong> Tasks that took hours of formula writing now take minutes. Paste your data, describe what you need, and AI generates the solution.
                         </div>
                     `
                 },
@@ -321,6 +432,38 @@ const aiData = {
                     `
                 },
                 {
+                    id: 'ai-images-creative',
+                    title: 'AI for Creative & Visual Work',
+                    content: `
+                        <h2>AI for Creative & Visual Work</h2>
+                        <h3>Image Generation Use Cases</h3>
+                        <ul>
+                            <li>Social media graphics and thumbnails</li>
+                            <li>Blog post featured images</li>
+                            <li>Product mockups and concepts</li>
+                            <li>Presentation visuals</li>
+                            <li>Brand asset exploration</li>
+                        </ul>
+                        <h3>Image Prompt Tips</h3>
+                        <ul>
+                            <li><strong>Be specific:</strong> "A modern minimalist office with warm lighting" beats "an office"</li>
+                            <li><strong>Include style:</strong> "watercolor," "photorealistic," "flat illustration"</li>
+                            <li><strong>Specify mood:</strong> "warm and inviting," "professional and clean"</li>
+                            <li><strong>Reference artists/styles:</strong> "in the style of Studio Ghibli"</li>
+                        </ul>
+                        <h3>Video & Audio AI</h3>
+                        <ul>
+                            <li><strong>Descript:</strong> Edit video by editing text transcript</li>
+                            <li><strong>ElevenLabs:</strong> Realistic text-to-speech</li>
+                            <li><strong>Runway:</strong> AI video generation and editing</li>
+                            <li><strong>Opus Clip:</strong> Auto-create short clips from long videos</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Business Use:</strong> A solo entrepreneur can now create professional visuals, videos, and audio that used to require a design team. This is a massive equalizer.
+                        </div>
+                    `
+                },
+                {
                     id: 'automation-workflows',
                     title: 'Building AI Workflows',
                     content: `
@@ -419,6 +562,38 @@ const aiData = {
                         </ul>
                         <div class="highlight">
                             <strong>Mindset:</strong> AI is a tool, like computers or the internet. Those who learn to use it well will thrive.
+                        </div>
+                    `
+                },
+                {
+                    id: 'ai-career-skills',
+                    title: 'AI Skills for Your Career',
+                    content: `
+                        <h2>AI Skills for Your Career</h2>
+                        <h3>Skills Employers Want</h3>
+                        <ul>
+                            <li>Prompt engineering (getting great results from AI)</li>
+                            <li>AI-assisted content creation</li>
+                            <li>Workflow automation with AI</li>
+                            <li>Data analysis using AI tools</li>
+                            <li>AI project management</li>
+                        </ul>
+                        <h3>How to Show AI Skills</h3>
+                        <ul>
+                            <li>Add "AI Tools" to resume skills section</li>
+                            <li>Describe how you used AI to improve results</li>
+                            <li>Quantify impact: "Used AI to reduce report time by 60%"</li>
+                            <li>Create a portfolio of AI-assisted projects</li>
+                        </ul>
+                        <h3>AI-Adjacent Career Paths</h3>
+                        <ul>
+                            <li><strong>AI Trainer:</strong> Teaching AI systems with human feedback</li>
+                            <li><strong>Prompt Engineer:</strong> Crafting AI prompts for businesses</li>
+                            <li><strong>AI Ethics Specialist:</strong> Ensuring responsible AI use</li>
+                            <li><strong>AI Integration Consultant:</strong> Helping businesses adopt AI</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Career Edge:</strong> In every field, the person who knows how to use AI effectively will outperform and outearn those who don't. This skill gap is your opportunity.
                         </div>
                     `
                 },

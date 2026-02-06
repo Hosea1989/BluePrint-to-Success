@@ -5,6 +5,20 @@ const marketingData = {
     icon: '📱',
     description: 'Master the complete toolkit to market your business or personal brand effectively.',
     graduationGoal: 'Launch and optimize a complete marketing strategy for any business',
+    difficulty: 'intermediate',
+    prerequisites: ['business'],
+    learningObjectives: [
+        'Develop a comprehensive marketing strategy',
+        'Use social media, email, and content marketing effectively',
+        'Understand SEO, PPC, and digital advertising',
+        'Measure and optimize marketing campaigns',
+        'Build a brand and grow an audience'
+    ],
+    relatedTracks: ['socialmedia', 'business', 'clothingbrand'],
+    resources: [
+        { title: 'HubSpot Marketing Resources', url: 'https://www.hubspot.com/marketing' },
+        { title: 'Google Digital Garage', url: 'https://learndigital.withgoogle.com/digitalgarage' }
+    ],
     levels: [
         {
             id: 1,

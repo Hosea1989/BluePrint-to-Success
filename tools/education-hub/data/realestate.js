@@ -5,6 +5,20 @@ const realestateData = {
     icon: '🏠',
     description: 'Learn how to build wealth through real estate, from REITs to rental properties.',
     graduationGoal: 'Ready to analyze and invest in your first property',
+    difficulty: 'intermediate',
+    prerequisites: ['personalfinance', 'investing'],
+    learningObjectives: [
+        'Understand different real estate investment strategies',
+        'Analyze properties for investment potential',
+        'Calculate cash flow and return on investment',
+        'Navigate financing and mortgages for investment properties',
+        'Manage rental properties or invest in REITs'
+    ],
+    relatedTracks: ['investing', 'stocks', 'personalfinance'],
+    resources: [
+        { title: 'BiggerPockets - Real Estate Investing', url: 'https://www.biggerpockets.com/' },
+        { title: 'NAREIT - REIT Education', url: 'https://www.reit.com/investing/reit-basics' }
+    ],
     levels: [
         {
             id: 1,

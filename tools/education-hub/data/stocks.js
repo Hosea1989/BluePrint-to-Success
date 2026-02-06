@@ -4,11 +4,39 @@ const stocksData = {
     title: 'Stock Market',
     icon: '📈',
     description: 'Learn how the stock market works, from basic terminology to advanced trading strategies.',
+    difficulty: 'beginner',
+    prerequisites: ['personalfinance'],
+    learningObjectives: [
+        'Explain how the stock market works and why it exists',
+        'Analyze stocks using fundamental and technical indicators',
+        'Build and manage a diversified portfolio',
+        'Evaluate risk vs. return for different investment strategies',
+        'Execute trades and manage a brokerage account'
+    ],
+    relatedTracks: ['investing', 'crypto', 'financialanalysis', 'retirement'],
+    resources: [
+        { title: 'Investor.gov - SEC', url: 'https://www.investor.gov/' },
+        { title: 'Investopedia - Stock Basics', url: 'https://www.investopedia.com/stocks-4427785' },
+        { title: 'FINRA Investor Education', url: 'https://www.finra.org/investors' }
+    ],
     levels: [
         {
             id: 1,
             title: 'Foundations',
             subtitle: 'Understanding the basics of stocks and markets',
+            learningObjectives: [
+                'Define what a stock is and why companies issue them',
+                'Identify major stock exchanges and how prices are set',
+                'Use essential stock market terminology correctly',
+                'Compare different types of investments (stocks, ETFs, bonds)'
+            ],
+            keyTakeaways: [
+                'A stock represents partial ownership in a company',
+                'Stock prices are driven by supply and demand',
+                'Brokerage accounts are needed to buy stocks',
+                'ETFs provide instant diversification for beginners'
+            ],
+            applyIt: 'Open a free brokerage account (Fidelity or Schwab) and look up 3 companies you use every day. Check their stock price, ticker symbol, and P/E ratio. Practice with paper trading before investing real money.',
             topics: [
                 {
                     id: 'what-is-stock',
@@ -319,6 +347,19 @@ const stocksData = {
             id: 2,
             title: 'Reading the Market',
             subtitle: 'Understanding charts, indicators, and market trends',
+            learningObjectives: [
+                'Read and interpret stock charts and candlestick patterns',
+                'Understand key market indicators (volume, moving averages)',
+                'Identify market trends and patterns',
+                'Use technical analysis tools effectively'
+            ],
+            keyTakeaways: [
+                'Charts show price movement over time',
+                'Volume indicates how many shares are being traded',
+                'Moving averages help identify trends',
+                'Support and resistance levels guide entry/exit points'
+            ],
+            applyIt: 'Pick one stock you're interested in and create a watchlist. Track its price for a week, noting when it hits support or resistance levels. Practice reading its chart on Yahoo Finance or your broker\'s platform.',
             topics: [
                 {
                     id: 'reading-charts',
@@ -592,6 +633,19 @@ const stocksData = {
             id: 3,
             title: 'Stock Analysis',
             subtitle: 'Fundamental and technical analysis techniques',
+            learningObjectives: [
+                'Analyze companies using fundamental metrics (P/E, revenue, debt)',
+                'Evaluate a company\'s financial health and growth potential',
+                'Use technical indicators to time entry and exit points',
+                'Combine fundamental and technical analysis for better decisions'
+            ],
+            keyTakeaways: [
+                'Fundamental analysis evaluates a company\'s financial health',
+                'P/E ratio compares stock price to earnings',
+                'Technical analysis uses charts and patterns to predict price movement',
+                'The best investors combine both approaches'
+            ],
+            applyIt: 'Pick a company you know well (like Apple or Microsoft). Research its P/E ratio, revenue growth, and debt levels. Then look at its 1-year chart and identify any trends or patterns. Write down your analysis.',
             topics: [
                 {
                     id: 'fundamental-analysis',
@@ -875,6 +929,19 @@ const stocksData = {
             id: 4,
             title: 'Investing Strategies',
             subtitle: 'Building and managing your investment portfolio',
+            learningObjectives: [
+                'Design a diversified portfolio based on your risk tolerance',
+                'Implement dollar-cost averaging to reduce risk',
+                'Rebalance your portfolio periodically',
+                'Choose between active and passive investing strategies'
+            ],
+            keyTakeaways: [
+                'Diversification reduces risk by spreading investments across assets',
+                'Dollar-cost averaging smooths out market volatility',
+                'Rebalancing keeps your portfolio aligned with your goals',
+                'Most investors should use a passive, index-based approach'
+            ],
+            applyIt: 'Create a mock portfolio with $10,000. Allocate it across 5-10 different stocks or ETFs based on your risk tolerance. Track it for a month and see how it performs. Practice rebalancing if one position grows too large.',
             topics: [
                 {
                     id: 'investing-vs-trading',
@@ -1174,6 +1241,19 @@ const stocksData = {
             id: 5,
             title: 'Advanced Topics',
             subtitle: 'Options, short selling, and tax implications',
+            learningObjectives: [
+                'Understand options trading and when to use it',
+                'Explain short selling and its risks',
+                'Minimize taxes on investment gains',
+                'Use advanced strategies for experienced investors'
+            ],
+            keyTakeaways: [
+                'Options give you the right to buy/sell at a set price',
+                'Short selling bets against a stock\'s price',
+                'Tax-loss harvesting can reduce your tax bill',
+                'Advanced strategies require significant knowledge and risk tolerance'
+            ],
+            applyIt: 'If you have taxable investments, review your gains and losses for the year. Research tax-loss harvesting strategies. Consider consulting a tax professional before implementing advanced strategies.',
             topics: [
                 {
                     id: 'options-basics',

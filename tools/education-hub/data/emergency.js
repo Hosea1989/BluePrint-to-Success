@@ -6,6 +6,20 @@ const emergencyData = {
     description: 'Prepare for natural disasters, job loss, and economic downturns. Build resilience that protects you and your family.',
     whyItMatters: 'Emergencies don\'t announce themselves. The difference between thriving and struggling through a crisis is preparation. This track gives you practical skills to weather any storm—literal or financial.',
     graduationGoal: 'Be fully prepared for any emergency with savings, supplies, and a plan',
+    difficulty: 'beginner',
+    prerequisites: ['personalfinance'],
+    learningObjectives: [
+        'Build an emergency fund and financial safety net',
+        'Prepare for natural disasters and emergencies',
+        'Create emergency plans for your family',
+        'Navigate job loss and economic downturns',
+        'Build resilience to handle any crisis'
+    ],
+    relatedTracks: ['personalfinance', 'health', 'housing'],
+    resources: [
+        { title: 'FEMA Preparedness', url: 'https://www.ready.gov/' },
+        { title: 'Red Cross Emergency Preparedness', url: 'https://www.redcross.org/get-help/how-to-prepare-for-emergencies' }
+    ],
     levels: [
         {
             id: 1,

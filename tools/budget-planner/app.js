@@ -26,7 +26,7 @@ function checkGettingStarted() {
 
 // ==================== THEME ====================
 function initTheme() {
-    const savedTheme = localStorage.getItem('budgetPlannerTheme') || 'light';
+    const savedTheme = localStorage.getItem('blueprintTheme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeButton(savedTheme);
 }
@@ -35,8 +35,9 @@ function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('budgetPlannerTheme', newTheme);
+    localStorage.setItem('blueprintTheme', newTheme);
     updateThemeButton(newTheme);
+    showThemeToast(newTheme);
 }
 
 function updateThemeButton(theme) {
@@ -668,4 +669,29 @@ function setupEventListeners() {
             localStorage.setItem('budgetPlannerData', JSON.stringify(data));
         }, 1000);
     });
+}
+
+// ==================== THEME TOAST ====================
+function showThemeToast(theme) {
+    let container = document.getElementById('toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.className = 'toast-container';
+        container.id = 'toast-container';
+        document.body.appendChild(container);
+    }
+    const toast = document.createElement('div');
+    toast.className = 'toast info';
+    toast.style.position = 'relative';
+    toast.innerHTML = `
+        <span class="toast-icon">${theme === 'dark' ? '🌙' : '☀️'}</span>
+        <div class="toast-body">
+            <div class="toast-title">${theme === 'dark' ? 'Dark mode' : 'Light mode'}</div>
+            <div class="toast-message">${theme === 'dark' ? 'Easy on the eyes.' : 'Bright and clear.'}</div>
+        </div>
+        <button class="toast-close" onclick="this.parentElement.classList.add('toast-exit'); setTimeout(() => this.parentElement.remove(), 300)">✕</button>
+        <div class="toast-progress" style="animation-duration: 2000ms"></div>
+    `;
+    container.appendChild(toast);
+    setTimeout(() => { if (toast.parentElement) { toast.classList.add('toast-exit'); setTimeout(() => toast.remove(), 300); } }, 2000);
 }

@@ -5,6 +5,19 @@ const productivityData = {
     icon: '🎯',
     description: 'Build systems that actually work for your brain, especially if traditional advice hasn\'t helped.',
     graduationGoal: 'Have systems that actually work for your brain',
+    difficulty: 'beginner',
+    prerequisites: [],
+    learningObjectives: [
+        'Build productivity systems that work for your brain',
+        'Master time management and prioritization',
+        'Overcome procrastination and build focus',
+        'Use tools and techniques effectively',
+        'Create sustainable productivity habits'
+    ],
+    relatedTracks: ['communication', 'career', 'emotionaliq'],
+    resources: [
+        { title: 'Getting Things Done', url: 'https://gettingthingsdone.com/' }
+    ],
     levels: [
         {
             id: 1,

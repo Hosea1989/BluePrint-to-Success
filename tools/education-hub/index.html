@@ -4,94 +4,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Education Hub | Blueprint to Success</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%236366f1'/><stop offset='100%25' style='stop-color:%238b5cf6'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23g)'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='white' font-family='system-ui' font-weight='bold'>B</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../../auth/style.css">
     <!-- Supabase JS (CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        /* Main Navigation - matches site style */
-        .main-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 60px;
-            background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1001;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 24px;
-        }
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-decoration: none;
-            color: var(--text-primary);
-        }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .nav-links a {
-            padding: 8px 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-        .nav-links a:hover {
-            background: var(--bg-tertiary);
-            color: var(--text-primary);
-        }
-        .nav-links a.active {
-            background: var(--accent-gradient);
-            color: white;
-        }
-        .app-container { padding-top: 60px; }
-        
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-        }
+        .app-container { padding-top: var(--nav-height); }
     </style>
 </head>
 <body>
-    <!-- Main Navigation -->
+    <!-- Navigation -->
     <nav class="main-nav">
-        <a href="../../index.html" class="nav-brand">
-            <span>📘</span>
-            <span>Blueprint to Success</span>
-        </a>
-        <div class="nav-links">
-            <a href="../../index.html">Dashboard</a>
-            <a href="../../roadmap.html">Roadmap</a>
-            <a href="index.html" class="active">🎓 Learn</a>
-            <a href="../../guides/index.html">Guides</a>
-            <a href="../budget-planner/index.html">Budget</a>
-            <div class="auth-nav-container">
-                <button id="auth-nav-btn"><span>Sign In</span></button>
-                <div id="auth-dropdown">
-                    <button class="dropdown-item" data-action="profile">👤 Profile</button>
-                    <div class="dropdown-divider"></div>
-                    <button class="dropdown-item danger" data-action="logout">🚪 Sign Out</button>
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <span class="logo-icon">📘</span>
+                <span class="logo-text">Blueprint to Success</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html" class="nav-link">Dashboard</a>
+                <a href="../../roadmap.html" class="nav-link">Roadmap</a>
+                <a href="index.html" class="nav-link highlight active">🎓 Learn</a>
+                <div class="toolbox-nav-container">
+                    <button class="toolbox-btn">🧰 Toolbox <span class="toolbox-arrow">▾</span></button>
+                    <div class="toolbox-dropdown">
+                        <a href="../budget-planner/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">💰</span>
+                            <div class="toolbox-item-info">
+                                <strong>Budget Planner</strong>
+                                <small>Track income, expenses & savings</small>
+                            </div>
+                        </a>
+                        <a href="../compound-calculator/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">💹</span>
+                            <div class="toolbox-item-info">
+                                <strong>Compound Interest Calculator</strong>
+                                <small>See how your money grows over time</small>
+                            </div>
+                        </a>
+                        <a href="../debt-payoff/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">🎯</span>
+                            <div class="toolbox-item-info">
+                                <strong>Debt Payoff Calculator</strong>
+                                <small>Plan your path to debt freedom</small>
+                            </div>
+                        </a>
+                        <a href="../net-worth/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">📊</span>
+                            <div class="toolbox-item-info">
+                                <strong>Net Worth Tracker</strong>
+                                <small>Track assets & liabilities</small>
+                            </div>
+                        </a>
+                        <a href="../goal-tracker/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">🎯</span>
+                            <div class="toolbox-item-info">
+                                <strong>Goal Tracker</strong>
+                                <small>Set goals & track milestones</small>
+                            </div>
+                        </a>
+                        <a href="../resume-builder/index.html" class="toolbox-item">
+                            <span class="toolbox-item-icon">📄</span>
+                            <div class="toolbox-item-info">
+                                <strong>Resume Builder</strong>
+                                <small>Build a professional resume</small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="theme-btn">🌙</button>
+                <div class="auth-nav-container">
+                    <button id="auth-nav-btn"><span>Sign In</span></button>
+                    <div id="auth-dropdown">
+                        <button class="dropdown-item" data-action="profile">👤 Profile</button>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item danger" data-action="logout">🚪 Sign Out</button>
+                    </div>
                 </div>
             </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="../../index.html" class="mobile-link">Dashboard</a>
+        <a href="../../roadmap.html" class="mobile-link">Roadmap</a>
+        <a href="index.html" class="mobile-link highlight active">🎓 Learn</a>
+        <div class="mobile-toolbox-section">
+            <span class="mobile-toolbox-label">🧰 Toolbox</span>
+            <a href="../budget-planner/index.html" class="mobile-link">💰 Budget Planner</a>
+            <a href="../compound-calculator/index.html" class="mobile-link">💹 Compound Calculator</a>
+            <a href="../debt-payoff/index.html" class="mobile-link">🎯 Debt Payoff</a>
+            <a href="../net-worth/index.html" class="mobile-link">📊 Net Worth Tracker</a>
+            <a href="../goal-tracker/index.html" class="mobile-link">🎯 Goal Tracker</a>
+            <a href="../resume-builder/index.html" class="mobile-link">📄 Resume Builder</a>
+        </div>
+        <a href="../../auth/login.html" class="mobile-link" id="mobile-auth-link">Sign In</a>
+    </div>
+
     <div class="app-container">
+        <!-- Sidebar Toggle Button (visible when sidebar is collapsed) -->
+        <button class="sidebar-toggle" id="sidebar-toggle" title="Toggle sidebar">
+            <span class="sidebar-toggle-icon">☰</span>
+        </button>
+
         <!-- Sidebar Navigation -->
-        <nav class="sidebar">
+        <nav class="sidebar" id="edu-sidebar">
             <div class="sidebar-header">
                 <h1>📚 Education Hub</h1>
                 <p>Blueprint to Success</p>
+                <button class="sidebar-collapse-btn" id="sidebar-collapse-btn" title="Collapse sidebar">✕</button>
             </div>
             
             <div class="nav-section">
@@ -101,21 +128,12 @@
                 </button>
             </div>
             
-            <!-- Sidebar tracks will be populated by JavaScript -->
-            <div class="nav-section" id="sidebar-tracks">
+            <!-- Sidebar tracks will be populated by JavaScript (with collapsible categories) -->
+            <div class="sidebar-tracks-container" id="sidebar-tracks">
                 <h3 class="nav-title">Loading Tracks...</h3>
             </div>
             
-            <div class="nav-section">
-                <h3 class="nav-title">Tools</h3>
-                <a href="../budget-planner/index.html" class="nav-item nav-link">
-                    <span class="nav-icon">💰</span>
-                    <span class="nav-text">Budget Planner</span>
-                </a>
-            </div>
-            
             <div class="sidebar-footer">
-                <button id="theme-toggle" class="theme-btn">🌙</button>
                 <button id="reset-progress" class="reset-btn">Reset Progress</button>
             </div>
         </nav>
@@ -124,52 +142,86 @@
         <main class="main-content">
             <!-- Home View -->
             <section class="view active" id="view-home">
-                <div class="view-header">
-                    <h1>Welcome to the Education Hub</h1>
-                    <p>Master new skills from beginner to pro. Choose a category and track to start learning.</p>
+
+                <!-- Hero Introduction -->
+                <div class="edu-hero">
+                    <div class="edu-hero-content">
+                        <span class="edu-hero-label">Welcome to the Education Hub</span>
+                        <h1 class="edu-hero-title">Knowledge is power.<br>Know your shit, nobody can mess with you.</h1>
+                        <p class="edu-hero-subtitle">The system wasn't built to educate you on the things that actually matter — money, rights, health, career, technology. That's why this exists. Every course here is designed to give you real knowledge you can use <em>today</em>, not theory you'll forget tomorrow.</p>
+                    </div>
                 </div>
 
-                <!-- What is this? Getting started guide -->
-                <div class="getting-started-box" id="edu-getting-started" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1)); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 16px; padding: 24px; margin-bottom: 32px;">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-                        <h2 style="font-size: 1.2rem; display: flex; align-items: center; gap: 8px; margin: 0;">
-                            <span>🎓</span> How This Works
-                        </h2>
-                        <button onclick="this.parentElement.parentElement.style.display='none'; localStorage.setItem('eduHubIntroDismissed','true');" style="background: var(--bg-tertiary); border: none; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 1rem;">×</button>
-                    </div>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 20px;">
-                        <div style="display: flex; align-items: flex-start; gap: 12px; background: var(--bg-secondary); padding: 16px; border-radius: 12px;">
-                            <span style="width: 32px; height: 32px; min-width: 32px; background: var(--accent-gradient); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">1</span>
-                            <div>
-                                <strong style="font-size: 0.95rem;">Pick a Track</strong>
-                                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 4px 0 0;">Choose a topic below (Stocks, Credit, AI, etc.)</p>
-                            </div>
+                <!-- Why This Matters -->
+                <div class="edu-why-section">
+                    <div class="edu-why-cards">
+                        <div class="edu-why-card">
+                            <span class="edu-why-icon">🛡️</span>
+                            <h3>Protect Yourself</h3>
+                            <p>When you understand your rights, your finances, and how systems work — you stop being an easy target. Landlords, employers, creditors, scammers — they rely on you not knowing better.</p>
                         </div>
-                        <div style="display: flex; align-items: flex-start; gap: 12px; background: var(--bg-secondary); padding: 16px; border-radius: 12px;">
-                            <span style="width: 32px; height: 32px; min-width: 32px; background: var(--accent-gradient); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">2</span>
-                            <div>
-                                <strong style="font-size: 0.95rem;">Read the Lessons</strong>
-                                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 4px 0 0;">Each track has 5 levels with bite-sized lessons</p>
-                            </div>
+                        <div class="edu-why-card">
+                            <span class="edu-why-icon">💰</span>
+                            <h3>Build Real Wealth</h3>
+                            <p>Credit scores, investing, taxes, debt strategy — this isn't taught in school. Every dollar you waste from not knowing is money someone else pockets. Learn the game so you can win it.</p>
                         </div>
-                        <div style="display: flex; align-items: flex-start; gap: 12px; background: var(--bg-secondary); padding: 16px; border-radius: 12px;">
-                            <span style="width: 32px; height: 32px; min-width: 32px; background: var(--accent-gradient); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">3</span>
-                            <div>
-                                <strong style="font-size: 0.95rem;">Pass the Quiz</strong>
-                                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 4px 0 0;">Take a quiz at the end of each level (70% to pass)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="background: var(--success); color: white; padding: 12px 16px; border-radius: 8px; display: flex; align-items: center; gap: 12px;">
-                        <span style="font-size: 1.5rem;">🎯</span>
-                        <div>
-                            <strong>Recommended first track:</strong> Start with <strong>Stock Market</strong> (Finance) or <strong>Credit Building</strong> — both are practical for building wealth.
+                        <div class="edu-why-card">
+                            <span class="edu-why-icon">🚀</span>
+                            <h3>Level Up Your Life</h3>
+                            <p>Whether it's landing a better job, starting a business, learning to code, or just making smarter decisions — education is the one investment that always pays off.</p>
                         </div>
                     </div>
                 </div>
-                
+
+                <!-- What's Inside -->
+                <div class="edu-whats-inside">
+                    <div class="edu-whats-inside-header">
+                        <h2>What You'll Learn Here</h2>
+                        <p>57 tracks across 7 categories — from money management to coding to knowing your legal rights. Each track is broken into levels with bite-sized lessons and quizzes to make sure it sticks.</p>
+                    </div>
+                    <div class="edu-category-pills">
+                        <div class="edu-pill"><span>💰</span> Finance — stocks, credit, taxes, investing, real estate, debt, insurance &amp; more</div>
+                        <div class="edu-pill"><span>💼</span> Business — entrepreneurship, freelancing, marketing, negotiation, branding</div>
+                        <div class="edu-pill"><span>💻</span> Tech — Python, JavaScript, web dev, AI, cybersecurity, app development, game dev</div>
+                        <div class="edu-pill"><span>⚖️</span> Civic &amp; Rights — labor law, consumer rights, contracts, government benefits</div>
+                        <div class="edu-pill"><span>🛡️</span> Life Skills — health, housing, career planning, emergency prep, travel</div>
+                        <div class="edu-pill"><span>🌱</span> Personal Growth — productivity, communication, emotional intelligence, self-care</div>
+                        <div class="edu-pill"><span>🌐</span> Digital — online safety, digital footprint, navigating the internet smartly</div>
+                    </div>
+                </div>
+
+                <!-- How It Works (compact) -->
+                <div class="edu-how-it-works" id="edu-getting-started">
+                    <h3>How It Works</h3>
+                    <div class="edu-how-steps">
+                        <div class="edu-how-step">
+                            <span class="edu-how-num">1</span>
+                            <div>
+                                <strong>Pick a Track</strong>
+                                <p>Choose any topic that interests you from the categories below.</p>
+                            </div>
+                        </div>
+                        <div class="edu-how-step">
+                            <span class="edu-how-num">2</span>
+                            <div>
+                                <strong>Learn Step by Step</strong>
+                                <p>Each track has multiple levels. Lessons unlock one at a time so you build on what you've learned.</p>
+                            </div>
+                        </div>
+                        <div class="edu-how-step">
+                            <span class="edu-how-num">3</span>
+                            <div>
+                                <strong>Prove You Know It</strong>
+                                <p>Pass a quiz at the end of each level (70% to move on), then crush the final exam to graduate.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="edu-how-dismiss" onclick="this.parentElement.style.display='none'; localStorage.setItem('eduHubIntroDismissed','true');">Got it, let me learn</button>
+                </div>
+
+                <!-- Overall Progress -->
                 <div class="overall-progress">
-                    <h3>Overall Progress</h3>
+                    <h3>Your Progress</h3>
                     <div class="progress-bar large">
                         <div class="progress-fill" id="overall-progress-fill" style="width: 0%"></div>
                     </div>
@@ -207,6 +259,16 @@
                     </div>
                 </div>
 
+                <!-- Prerequisites Section -->
+                <div class="prerequisites-section" id="prerequisites-container" style="display: none;">
+                    <!-- Populated by JavaScript -->
+                </div>
+
+                <!-- Learning Objectives Section -->
+                <div class="track-objectives-section" id="track-objectives-container" style="display: none;">
+                    <!-- Populated by JavaScript -->
+                </div>
+
                 <!-- Graduation Goal Banner -->
                 <div class="graduation-goal" id="graduation-goal">
                     <span class="goal-icon">🎯</span>
@@ -218,6 +280,16 @@
                 
                 <div class="levels-container" id="levels-container">
                     <!-- Levels will be populated by JavaScript -->
+                </div>
+                
+                <!-- Related Tracks Section -->
+                <div class="related-tracks-section" id="related-tracks-container" style="display: none;">
+                    <!-- Populated by JavaScript -->
+                </div>
+                
+                <!-- Resources Section -->
+                <div class="track-resources-section" id="track-resources-container" style="display: none;">
+                    <!-- Populated by JavaScript -->
                 </div>
                 
                 <!-- Final Exam Banner -->
@@ -271,6 +343,11 @@
                         <!-- Lesson content loaded dynamically -->
                     </div>
                     
+                    <!-- Key Takeaways Container (shown before quiz) -->
+                    <div class="key-takeaways-section" id="key-takeaways-container" style="display: none;">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                    
                     <div class="lesson-nav">
                         <button class="lesson-nav-btn prev" id="lesson-prev">← Previous</button>
                         <span class="lesson-progress" id="lesson-progress">1 of 5</span>
@@ -322,6 +399,17 @@
                             <span class="score-number" id="results-score">80%</span>
                             <span class="score-label">Final Score</span>
                         </div>
+                        
+                        <!-- Key Takeaways (shown if failed) -->
+                        <div class="quiz-takeaways-section" id="quiz-takeaways-container" style="display: none;">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                        
+                        <!-- Apply It Prompt (shown if passed) -->
+                        <div class="apply-it-section" id="apply-it-container" style="display: none;">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                        
                         <div class="results-actions">
                             <button class="results-btn primary" id="results-continue">Continue to Next Level →</button>
                             <button class="results-btn secondary" id="results-retry">Retry Quiz</button>
@@ -392,29 +480,92 @@
     <script src="data/crypto.js"></script>
     <script src="data/credit.js"></script>
     <script src="data/retirement.js"></script>
+    <script src="data/personalfinance.js"></script>
+    <script src="data/debt.js"></script>
+    <script src="data/insurance.js"></script>
+    <script src="data/banking.js"></script>
+    <script src="data/studentloans.js"></script>
+    <script src="data/estateplanning.js"></script>
+    <script src="data/investing.js"></script>
+    <script src="data/behavioralfinance.js"></script>
+    <script src="data/financialanalysis.js"></script>
+    <script src="data/fintech.js"></script>
     <!-- Business -->
     <script src="data/business.js"></script>
     <script src="data/freelancing.js"></script>
     <script src="data/negotiation.js"></script>
     <script src="data/marketing.js"></script>
+    <script src="data/nonprofits.js"></script>
+    <script src="data/clothingbrand.js"></script>
+    <script src="data/socialmedia.js"></script>
     <!-- Tech -->
     <script src="data/ai.js"></script>
     <script src="data/cybersecurity.js"></script>
+    <script src="data/python.js"></script>
+    <script src="data/javascript.js"></script>
+    <script src="data/webdev.js"></script>
+    <script src="data/htmlcss.js"></script>
+    <script src="data/java.js"></script>
+    <script src="data/csharp.js"></script>
+    <script src="data/swift.js"></script>
+    <script src="data/appdev.js"></script>
+    <script src="data/datascience.js"></script>
+    <script src="data/flutter.js"></script>
+    <script src="data/gamedev.js"></script>
+    <script src="data/softwaredev.js"></script>
     <!-- Civic & Rights -->
-    <script src="data/nonprofits.js"></script>
     <script src="data/labor.js"></script>
+    <script src="data/workplacerights.js"></script>
+    <script src="data/contracts.js"></script>
+    <script src="data/consumerrights.js"></script>
+    <script src="data/benefits.js"></script>
     <script src="data/politics.js"></script>
     <script src="data/california.js"></script>
     <!-- Personal -->
     <script src="data/productivity.js"></script>
+    <script src="data/communication.js"></script>
+    <script src="data/emotionaliq.js"></script>
     <!-- Life Skills -->
     <script src="data/emergency.js"></script>
     <script src="data/career.js"></script>
     <script src="data/health.js"></script>
     <script src="data/housing.js"></script>
+    <script src="data/transportation.js"></script>
+    <script src="data/familyplanning.js"></script>
+    <script src="data/travel.js"></script>
+    <!-- Personal Growth -->
+    <script src="data/selfcare.js"></script>
+    <script src="data/languagelearning.js"></script>
+    <!-- Digital -->
+    <script src="data/digitalliteracy.js"></script>
+    <!-- Mobile Bottom Tab Bar -->
+    <nav class="mobile-tab-bar" id="mobile-tab-bar">
+        <a href="../../index.html" class="tab-item">
+            <span class="tab-icon">🏠</span>
+            <span class="tab-label">Home</span>
+        </a>
+        <a href="index.html" class="tab-item active">
+            <span class="tab-icon">🎓</span>
+            <span class="tab-label">Learn</span>
+        </a>
+        <a href="../../roadmap.html" class="tab-item">
+            <span class="tab-icon">🗺️</span>
+            <span class="tab-label">Roadmap</span>
+        </a>
+    </nav>
+
     <!-- Auth -->
     <script src="../../js/supabase.js"></script>
     <script src="../../js/auth.js"></script>
+    <!-- Quiz Bank (supplementary questions by category) -->
+    <script src="data/quiz-bank-init.js"></script>
+    <script src="data/quiz-bank-finance.js"></script>
+    <script src="data/quiz-bank-business.js"></script>
+    <script src="data/quiz-bank-tech.js"></script>
+    <script src="data/quiz-bank-civic.js"></script>
+    <script src="data/quiz-bank-lifeskills.js"></script>
+    <script src="data/quiz-bank-personal.js"></script>
+    <script src="data/quiz-bank-digital.js"></script>
     <!-- Main App -->
     <script src="app.js"></script>
 </body>

@@ -5,6 +5,21 @@ const retirementData = {
     icon: '🏖️',
     description: 'Plan for your future with 401(k)s, IRAs, and long-term investing strategies.',
     graduationGoal: 'Have a clear retirement strategy and accounts in place',
+    difficulty: 'beginner',
+    prerequisites: ['personalfinance', 'investing'],
+    learningObjectives: [
+        'Understand different retirement accounts (401k, IRA, Roth)',
+        'Calculate how much you need to retire comfortably',
+        'Maximize employer matching and tax advantages',
+        'Create a retirement savings plan',
+        'Manage retirement accounts effectively'
+    ],
+    relatedTracks: ['investing', 'personalfinance', 'stocks', 'estateplanning'],
+    resources: [
+        { title: 'Social Security Administration', url: 'https://www.ssa.gov/' },
+        { title: 'IRS - Retirement Plans', url: 'https://www.irs.gov/retirement-plans' },
+        { title: 'AARP Retirement Planning', url: 'https://www.aarp.org/retirement/' }
+    ],
     levels: [
         {
             id: 1,

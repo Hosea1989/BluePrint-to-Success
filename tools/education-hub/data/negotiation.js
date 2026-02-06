@@ -5,6 +5,19 @@ const negotiationData = {
     icon: '🤝',
     description: 'Learn to negotiate salary, contracts, and everyday situations confidently.',
     graduationGoal: 'Confidently negotiate in any situation',
+    difficulty: 'beginner',
+    prerequisites: [],
+    learningObjectives: [
+        'Master negotiation fundamentals and strategies',
+        'Negotiate salary and job offers effectively',
+        'Handle contract negotiations confidently',
+        'Use negotiation in everyday situations',
+        'Create win-win outcomes'
+    ],
+    relatedTracks: ['career', 'business', 'freelancing'],
+    resources: [
+        { title: 'Harvard Program on Negotiation', url: 'https://www.pon.harvard.edu/' }
+    ],
     levels: [
         {
             id: 1,

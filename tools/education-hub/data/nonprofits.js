@@ -4,6 +4,20 @@ const nonprofitsData = {
     title: 'Nonprofit Organizations',
     icon: '🤝',
     description: 'Learn how nonprofits work, their tax benefits, and how to start your own 501(c)(3).',
+    difficulty: 'intermediate',
+    prerequisites: ['business'],
+    learningObjectives: [
+        'Understand how nonprofits work and their legal structure',
+        'Navigate 501(c)(3) formation and compliance',
+        'Fundraise and manage nonprofit finances',
+        'Build a board and manage volunteers',
+        'Create sustainable impact'
+    ],
+    relatedTracks: ['business', 'taxes'],
+    resources: [
+        { title: 'IRS - Tax Information for Charities', url: 'https://www.irs.gov/charities-non-profits' },
+        { title: 'National Council of Nonprofits', url: 'https://www.councilofnonprofits.org/' }
+    ],
     levels: [
         {
             id: 1,

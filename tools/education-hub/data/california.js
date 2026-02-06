@@ -5,6 +5,20 @@ const californiaData = {
     icon: '⚖️',
     description: 'Know your rights in California—police interactions, housing, employment, and more.',
     graduationGoal: 'Know your rights and how to protect yourself in California',
+    difficulty: 'beginner',
+    prerequisites: [],
+    learningObjectives: [
+        'Understand your rights in police interactions',
+        'Know California-specific housing and tenant rights',
+        'Understand employment laws in California',
+        'Navigate California government and services',
+        'Protect yourself using California law'
+    ],
+    relatedTracks: ['labor', 'workplacerights', 'housing', 'politics'],
+    resources: [
+        { title: 'California Courts Self-Help', url: 'https://www.courts.ca.gov/selfhelp.htm' },
+        { title: 'CA.gov Official Portal', url: 'https://www.ca.gov/' }
+    ],
     levels: [
         {
             id: 1,

@@ -5,6 +5,20 @@ const cybersecurityData = {
     icon: '🔒',
     description: 'Protect yourself, your data, and your business from online threats.',
     graduationGoal: 'Protect yourself and your business online',
+    difficulty: 'beginner',
+    prerequisites: ['digitalliteracy'],
+    learningObjectives: [
+        'Protect your personal data and accounts from hackers',
+        'Recognize and avoid phishing and social engineering attacks',
+        'Use strong passwords and two-factor authentication',
+        'Secure your devices and networks',
+        'Protect your business from cyber threats'
+    ],
+    relatedTracks: ['digitalliteracy', 'business'],
+    resources: [
+        { title: 'CISA Cybersecurity Resources', url: 'https://www.cisa.gov/cybersecurity' },
+        { title: 'Stay Safe Online', url: 'https://staysafeonline.org/' }
+    ],
     levels: [
         {
             id: 1,
@@ -39,6 +53,38 @@ const cybersecurityData = {
                         </ul>
                         <div class="highlight">
                             <strong>Reality:</strong> Cybersecurity isn't about being paranoid—it's about basic hygiene, like locking your door. Simple steps prevent most attacks.
+                        </div>
+                    `
+                },
+                {
+                    id: 'data-breaches',
+                    title: 'Data Breaches & Your Information',
+                    content: `
+                        <h2>Data Breaches & Your Information</h2>
+                        <h3>Your Data Is Already Out There</h3>
+                        <ul>
+                            <li>Average person's data has been in 5+ breaches</li>
+                            <li>Check at HaveIBeenPwned.com (enter your email)</li>
+                            <li>Breached data is sold on the dark web</li>
+                            <li>Name, email, password, SSN, credit card—all at risk</li>
+                        </ul>
+                        <h3>What Happens After a Breach</h3>
+                        <ul>
+                            <li>Credential stuffing (hackers try your password on other sites)</li>
+                            <li>Identity theft (using your info to open accounts)</li>
+                            <li>Targeted phishing (personalized scam emails)</li>
+                            <li>Social engineering (using your info to manipulate you)</li>
+                        </ul>
+                        <h3>Protecting Yourself</h3>
+                        <ul>
+                            <li><strong>Unique passwords everywhere</strong> (most important step)</li>
+                            <li><strong>Freeze your credit</strong> at all 3 bureaus (free)</li>
+                            <li><strong>Monitor your credit</strong> (Credit Karma, free)</li>
+                            <li><strong>Set up fraud alerts</strong> on financial accounts</li>
+                            <li><strong>Use 2FA</strong> on everything important</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Action Now:</strong> Go to HaveIBeenPwned.com and check your email. If breached (likely), change those passwords immediately and enable 2FA.
                         </div>
                     `
                 },
@@ -269,6 +315,44 @@ const cybersecurityData = {
                     `
                 },
                 {
+                    id: 'mobile-security',
+                    title: 'Mobile Phone Security',
+                    content: `
+                        <h2>Mobile Phone Security</h2>
+                        <h3>Your Phone Is Your Most Vulnerable Device</h3>
+                        <ul>
+                            <li>Contains banking apps, email, photos, messages</li>
+                            <li>Always connected, always with you</li>
+                            <li>Often less protected than computers</li>
+                        </ul>
+                        <h3>Essential Mobile Security</h3>
+                        <ul>
+                            <li><strong>Biometric lock:</strong> Face ID or fingerprint + strong passcode</li>
+                            <li><strong>Auto-lock:</strong> Set to 30 seconds - 1 minute</li>
+                            <li><strong>Auto-updates:</strong> Enable automatic OS and app updates</li>
+                            <li><strong>Find My Phone:</strong> Enable remote locate and wipe</li>
+                            <li><strong>App permissions:</strong> Review what apps can access (camera, location, contacts)</li>
+                        </ul>
+                        <h3>App Safety</h3>
+                        <ul>
+                            <li>Only install from official app stores</li>
+                            <li>Check reviews and download counts</li>
+                            <li>Be cautious with permission requests</li>
+                            <li>Delete apps you don't use</li>
+                            <li>Review app permissions regularly</li>
+                        </ul>
+                        <h3>SIM Swapping Protection</h3>
+                        <ul>
+                            <li>Set a PIN/password with your carrier</li>
+                            <li>Use authenticator apps instead of SMS for 2FA</li>
+                            <li>Consider switching to eSIM (harder to swap)</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>If Your Phone Is Stolen:</strong> Remotely wipe it immediately. Change passwords for banking and email. Report to carrier and police.
+                        </div>
+                    `
+                },
+                {
                     id: 'backups',
                     title: 'Backup Strategy',
                     content: `
@@ -455,6 +539,37 @@ const cybersecurityData = {
                         </ul>
                         <div class="highlight">
                             <strong>Small Business Reality:</strong> You don't need enterprise security. Solid basics (passwords, 2FA, backups, training) stop most attacks.
+                        </div>
+                    `
+                },
+                {
+                    id: 'security-culture',
+                    title: 'Building a Security Culture',
+                    content: `
+                        <h2>Building a Security Culture</h2>
+                        <h3>Security Is Everyone's Responsibility</h3>
+                        <ul>
+                            <li>80% of breaches involve human error</li>
+                            <li>Technology alone can't protect you—people must be trained</li>
+                            <li>Security culture = making safe behavior the default</li>
+                        </ul>
+                        <h3>Training Your Team</h3>
+                        <ul>
+                            <li>Regular phishing simulation tests</li>
+                            <li>Monthly security awareness tips</li>
+                            <li>Clear reporting process for suspicious activity</li>
+                            <li>Reward reporting, never punish honest mistakes</li>
+                        </ul>
+                        <h3>Security Policies Every Business Needs</h3>
+                        <ul>
+                            <li><strong>Acceptable Use Policy:</strong> How company devices/accounts should be used</li>
+                            <li><strong>Password Policy:</strong> Requirements + password manager mandate</li>
+                            <li><strong>BYOD Policy:</strong> Rules for personal devices accessing company data</li>
+                            <li><strong>Data Handling Policy:</strong> How sensitive data is stored, shared, and destroyed</li>
+                            <li><strong>Incident Response Plan:</strong> Step-by-step actions when a breach occurs</li>
+                        </ul>
+                        <div class="highlight">
+                            <strong>Culture Tip:</strong> The best security culture makes good security easy and bad security hard. Remove friction from safe choices.
                         </div>
                     `
                 },

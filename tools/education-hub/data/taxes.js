@@ -4,6 +4,20 @@ const taxesData = {
     title: 'Business Taxes',
     icon: '🧾',
     description: 'Understand why businesses pay taxes, deductions, and strategies to minimize tax burden legally.',
+    difficulty: 'intermediate',
+    prerequisites: ['personalfinance', 'business'],
+    learningObjectives: [
+        'Understand how business taxes work and when they\'re due',
+        'Identify deductible business expenses',
+        'Choose the right business structure for tax benefits',
+        'File business taxes correctly and on time',
+        'Use legal strategies to minimize tax burden'
+    ],
+    relatedTracks: ['business', 'personalfinance', 'freelancing'],
+    resources: [
+        { title: 'IRS Small Business Tax Center', url: 'https://www.irs.gov/businesses/small-businesses-self-employed' },
+        { title: 'SBA - Tax Information', url: 'https://www.sba.gov/business-guide/manage-your-business/manage-your-business-taxes' }
+    ],
     levels: [
         {
             id: 1,
